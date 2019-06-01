@@ -1,0 +1,4 @@
+/node_modules
+/prisma/*
+/src/generated
+/src/schema.graphql

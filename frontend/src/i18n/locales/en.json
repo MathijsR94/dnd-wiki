@@ -1,0 +1,18 @@
+{
+  "translation": {
+    "home": {
+      "welcome": "Welcome to React and react-i18next"
+    },
+    "forms": {
+      "invalid": {
+        "email": "Invalid email"
+      },
+      "required": "This field is required",
+      "minLength": "The number of characters is too short"
+    },
+    "campaign": {
+      "create": "Create",
+      "label": "Campaign"
+    }
+  }
+}
