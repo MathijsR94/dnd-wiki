@@ -1,5 +1,8 @@
 import ApolloClient from 'apollo-boost';
+import { InMemoryCache } from 'apollo-cache-inmemory';
 
 export const client = new ApolloClient({
-  uri: 'http://localhost:4000'
+  cache: new InMemoryCache(),
+  uri: 'http://localhost:4000',
+  credentials: 'same-origin'
 });

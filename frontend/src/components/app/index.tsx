@@ -9,11 +9,11 @@ import {
 } from '@material-ui/core';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { ApolloProvider } from 'react-apollo';
+import { BrowserRouter as Router } from 'react-router-dom';
 import '../../i18n';
 import { client } from '../../apolloClient';
 import Nav from '../nav';
-// import Content from './Content';
-// import Header from './Header';
+import Main from '../main';
 
 const theme = createMuiTheme({
   typography: {
@@ -86,11 +86,6 @@ const styles = createStyles({
     flex: 1,
     display: 'flex',
     flexDirection: 'column'
-  },
-  mainContent: {
-    flex: 1,
-    padding: '48px 36px 0',
-    background: '#fff'
   }
 });
 
@@ -113,27 +108,29 @@ class Paperbase extends React.Component<Props, State> {
     return (
       <MuiThemeProvider theme={theme}>
         <ApolloProvider client={client}>
-          <div className={classes.root}>
-            <CssBaseline />
-            <nav className={classes.drawer}>
-              <Hidden smUp implementation="js">
-                {/* <Navigator
-                PaperProps={{ style: { width: drawerWidth } }}
-                variant="temporary"
-                open={this.state.mobileOpen}
-                onClose={this.handleDrawerToggle}
-              /> */}
-              </Hidden>
-              <Hidden xsDown implementation="css">
-                {/* <Navigator PaperProps={{ style: { width: drawerWidth } }} /> */}
-                <Nav />
-              </Hidden>
-            </nav>
-            <div className={classes.appContent}>
-              {/* <Header onDrawerToggle={this.handleDrawerToggle} /> */}
-              <main className={classes.mainContent}>{/* <Content /> */}</main>
+          <Router>
+            <div className={classes.root}>
+              <CssBaseline />
+              <nav className={classes.drawer}>
+                <Hidden smUp implementation="js">
+                  <Nav
+                    PaperProps={{ style: { width: drawerWidth } }}
+                    // variant="temporary"
+                    // open={this.state.mobileOpen}
+                    // onClose={this.handleDrawerToggle}
+                  />
+                </Hidden>
+                <Hidden xsDown implementation="css">
+                  {/* <Navigator PaperProps={{ style: { width: drawerWidth } }} /> */}
+                  <Nav PaperProps={{ style: { width: drawerWidth } }} />
+                </Hidden>
+              </nav>
+              <div className={classes.appContent}>
+                {/* <Header onDrawerToggle={this.handleDrawerToggle} /> */}
+                <Main />
+              </div>
             </div>
-          </div>
+          </Router>
         </ApolloProvider>
       </MuiThemeProvider>
     );

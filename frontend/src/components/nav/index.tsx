@@ -2,30 +2,23 @@ import React, { Fragment, FunctionComponentElement } from 'react';
 import { Theme } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import {
-  Divider,
   Drawer,
   List,
   ListItem,
-  Icon,
-  ListItemIcon,
+  Link,
   ListItemText,
   createStyles,
   withStyles,
   WithStyles
 } from '@material-ui/core';
 import classNames from 'classnames';
+import { Link as RouterLink } from 'react-router-dom';
 
 const items = [
   {
     label: 'campaign.label',
-    children: [{ label: 'campaign.create', icon: 'add' }]
-  },
-  {
-    label: 'Quality',
     children: [
-      { label: 'Analytics', icon: '' },
-      { label: 'Performance', icon: '' },
-      { label: 'Test Lab', icon: '' }
+      { label: 'campaign.create', icon: 'add', route: '/campaign/create' }
     ]
   }
 ];
@@ -52,35 +45,18 @@ const styles = (theme: Theme) =>
     campaign: {
       fontSize: 24,
       color: theme.palette.common.black
-    },
-    itemActionable: {
-      '&:hover': {
-        backgroundColor: 'rgba(255, 255, 255, 0.08)'
-      }
-    },
-    itemActiveItem: {
-      color: '#4fc3f7'
-    },
-    itemPrimary: {
-      color: 'inherit',
-      fontSize: theme.typography.fontSize,
-      '&$textDense': {
-        fontSize: theme.typography.fontSize
-      }
-    },
-    textDense: {},
-    divider: {
-      marginTop: theme.spacing(2)
     }
   });
 
-interface Props extends WithStyles<typeof styles> {}
+interface Props extends WithStyles<typeof styles> {
+  PaperProps?: any;
+}
 
 export default withStyles(styles)(
-  ({ classes }: Props): FunctionComponentElement<Props> => {
+  ({ classes, ...other }: Props): FunctionComponentElement<Props> => {
     const { t } = useTranslation();
     return (
-      <Drawer variant="permanent">
+      <Drawer variant="permanent" {...other}>
         <List disablePadding>
           <ListItem
             className={classNames(
@@ -89,7 +65,7 @@ export default withStyles(styles)(
               classes.itemCategory
             )}
           >
-            Semper Solari
+            Campaign select
           </ListItem>
           {items.map(({ label, children }) => (
             <Fragment key={label}>
@@ -102,23 +78,16 @@ export default withStyles(styles)(
                   {t(label)}
                 </ListItemText>
               </ListItem>
-              {children.map(({ label: childLabel, icon }) => (
+              {children.map(({ label: childLabel, route }) => (
                 <ListItem
                   button
                   dense
                   key={childLabel}
-                  className={classNames(classes.item, classes.itemActionable)}
+                  className={classes.item}
                 >
-                  <ListItemIcon>
-                    <Icon>{icon}</Icon>
-                  </ListItemIcon>
-                  <ListItemText
-                    classes={{
-                      primary: classes.itemPrimary
-                    }}
-                  >
+                  <Link component={RouterLink} to={route}>
                     {t(childLabel)}
-                  </ListItemText>
+                  </Link>
                 </ListItem>
               ))}
             </Fragment>
