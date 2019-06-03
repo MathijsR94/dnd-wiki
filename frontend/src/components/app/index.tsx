@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from "react";
 import {
   CssBaseline,
   Hidden,
@@ -6,14 +6,14 @@ import {
   withStyles,
   WithStyles,
   createStyles
-} from '@material-ui/core';
-import { MuiThemeProvider } from '@material-ui/core/styles';
-import { ApolloProvider } from 'react-apollo';
-import { BrowserRouter as Router } from 'react-router-dom';
-import '../../i18n';
-import { client } from '../../apolloClient';
-import Nav from '../nav';
-import Main from '../main';
+} from "@material-ui/core";
+import { MuiThemeProvider } from "@material-ui/core/styles";
+import { ApolloProvider } from "react-apollo";
+import { BrowserRouter as Router } from "react-router-dom";
+import "../../i18n";
+import { client } from "../../apolloClient";
+import Nav from "../nav";
+import Main from "../main";
 
 const theme = createMuiTheme({
   typography: {
@@ -25,9 +25,9 @@ const theme = createMuiTheme({
   },
   palette: {
     primary: {
-      light: '#63ccff',
-      main: '#009be5',
-      dark: '#006db3'
+      light: "#63ccff",
+      main: "#009be5",
+      dark: "#006db3"
     }
   },
   shape: {
@@ -36,22 +36,22 @@ const theme = createMuiTheme({
   overrides: {
     MuiDrawer: {
       paper: {
-        backgroundColor: '#f6f8fb'
+        backgroundColor: "#f6f8fb"
       }
     },
     MuiListItemIcon: {
       root: {
-        color: '#004499'
+        color: "#004499"
       }
     },
     MuiButton: {
       label: {
-        textTransform: 'none'
+        textTransform: "none"
       },
       contained: {
-        boxShadow: 'none',
-        '&:active': {
-          boxShadow: 'none'
+        boxShadow: "none",
+        "&:active": {
+          boxShadow: "none"
         }
       }
     },
@@ -73,36 +73,29 @@ const drawerWidth = 256;
 
 const styles = createStyles({
   root: {
-    display: 'flex',
-    minHeight: '100vh'
+    display: "flex",
+    minHeight: "100vh"
   },
   drawer: {
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up("sm")]: {
       width: drawerWidth,
       flexShrink: 0
     }
   },
   appContent: {
     flex: 1,
-    display: 'flex',
-    flexDirection: 'column'
+    display: "flex",
+    flexDirection: "column"
   }
 });
 
 interface Props extends WithStyles<typeof styles> {}
-type State = {
-  mobileOpen: boolean;
-};
-class Paperbase extends React.Component<Props, State> {
-  state = {
-    mobileOpen: false
-  };
 
-  handleDrawerToggle = () => {
-    this.setState(state => ({ mobileOpen: !state.mobileOpen }));
-  };
-
-  render() {
+class Paperbase extends React.Component<Props> {
+  /**
+   * @inheritdoc
+   */
+  render(): ReactNode {
     const { classes } = this.props;
 
     return (
@@ -113,20 +106,13 @@ class Paperbase extends React.Component<Props, State> {
               <CssBaseline />
               <nav className={classes.drawer}>
                 <Hidden smUp implementation="js">
-                  <Nav
-                    PaperProps={{ style: { width: drawerWidth } }}
-                    // variant="temporary"
-                    // open={this.state.mobileOpen}
-                    // onClose={this.handleDrawerToggle}
-                  />
+                  <Nav PaperProps={{ style: { width: drawerWidth } }} />
                 </Hidden>
                 <Hidden xsDown implementation="css">
-                  {/* <Navigator PaperProps={{ style: { width: drawerWidth } }} /> */}
                   <Nav PaperProps={{ style: { width: drawerWidth } }} />
                 </Hidden>
               </nav>
               <div className={classes.appContent}>
-                {/* <Header onDrawerToggle={this.handleDrawerToggle} /> */}
                 <Main />
               </div>
             </div>

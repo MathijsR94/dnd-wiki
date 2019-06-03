@@ -309,6 +309,7 @@ type Campaign {
   updatedAt: DateTime!
   locations(where: LocationWhereInput, orderBy: LocationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Location!]
   players(where: CharacterWhereInput, orderBy: CharacterOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Character!]
+  dm: User!
 }
 
 type CampaignConnection {
@@ -322,10 +323,11 @@ input CampaignCreateInput {
   name: String!
   locations: LocationCreateManyWithoutCampaignInput
   players: CharacterCreateManyWithoutCampaignInput
+  dm: UserCreateOneWithoutCampaignsInput!
 }
 
-input CampaignCreateManyInput {
-  create: [CampaignCreateInput!]
+input CampaignCreateManyWithoutDmInput {
+  create: [CampaignCreateWithoutDmInput!]
   connect: [CampaignWhereUniqueInput!]
 }
 
@@ -339,16 +341,25 @@ input CampaignCreateOneWithoutPlayersInput {
   connect: CampaignWhereUniqueInput
 }
 
+input CampaignCreateWithoutDmInput {
+  id: ID
+  name: String!
+  locations: LocationCreateManyWithoutCampaignInput
+  players: CharacterCreateManyWithoutCampaignInput
+}
+
 input CampaignCreateWithoutLocationsInput {
   id: ID
   name: String!
   players: CharacterCreateManyWithoutCampaignInput
+  dm: UserCreateOneWithoutCampaignsInput!
 }
 
 input CampaignCreateWithoutPlayersInput {
   id: ID
   name: String!
   locations: LocationCreateManyWithoutCampaignInput
+  dm: UserCreateOneWithoutCampaignsInput!
 }
 
 type CampaignEdge {
@@ -442,36 +453,31 @@ input CampaignSubscriptionWhereInput {
   NOT: [CampaignSubscriptionWhereInput!]
 }
 
-input CampaignUpdateDataInput {
-  name: String
-  locations: LocationUpdateManyWithoutCampaignInput
-  players: CharacterUpdateManyWithoutCampaignInput
-}
-
 input CampaignUpdateInput {
   name: String
   locations: LocationUpdateManyWithoutCampaignInput
   players: CharacterUpdateManyWithoutCampaignInput
+  dm: UserUpdateOneRequiredWithoutCampaignsInput
 }
 
 input CampaignUpdateManyDataInput {
   name: String
 }
 
-input CampaignUpdateManyInput {
-  create: [CampaignCreateInput!]
-  update: [CampaignUpdateWithWhereUniqueNestedInput!]
-  upsert: [CampaignUpsertWithWhereUniqueNestedInput!]
+input CampaignUpdateManyMutationInput {
+  name: String
+}
+
+input CampaignUpdateManyWithoutDmInput {
+  create: [CampaignCreateWithoutDmInput!]
   delete: [CampaignWhereUniqueInput!]
   connect: [CampaignWhereUniqueInput!]
   set: [CampaignWhereUniqueInput!]
   disconnect: [CampaignWhereUniqueInput!]
+  update: [CampaignUpdateWithWhereUniqueWithoutDmInput!]
+  upsert: [CampaignUpsertWithWhereUniqueWithoutDmInput!]
   deleteMany: [CampaignScalarWhereInput!]
   updateMany: [CampaignUpdateManyWithWhereNestedInput!]
-}
-
-input CampaignUpdateManyMutationInput {
-  name: String
 }
 
 input CampaignUpdateManyWithWhereNestedInput {
@@ -493,19 +499,27 @@ input CampaignUpdateOneRequiredWithoutPlayersInput {
   connect: CampaignWhereUniqueInput
 }
 
+input CampaignUpdateWithoutDmDataInput {
+  name: String
+  locations: LocationUpdateManyWithoutCampaignInput
+  players: CharacterUpdateManyWithoutCampaignInput
+}
+
 input CampaignUpdateWithoutLocationsDataInput {
   name: String
   players: CharacterUpdateManyWithoutCampaignInput
+  dm: UserUpdateOneRequiredWithoutCampaignsInput
 }
 
 input CampaignUpdateWithoutPlayersDataInput {
   name: String
   locations: LocationUpdateManyWithoutCampaignInput
+  dm: UserUpdateOneRequiredWithoutCampaignsInput
 }
 
-input CampaignUpdateWithWhereUniqueNestedInput {
+input CampaignUpdateWithWhereUniqueWithoutDmInput {
   where: CampaignWhereUniqueInput!
-  data: CampaignUpdateDataInput!
+  data: CampaignUpdateWithoutDmDataInput!
 }
 
 input CampaignUpsertWithoutLocationsInput {
@@ -518,10 +532,10 @@ input CampaignUpsertWithoutPlayersInput {
   create: CampaignCreateWithoutPlayersInput!
 }
 
-input CampaignUpsertWithWhereUniqueNestedInput {
+input CampaignUpsertWithWhereUniqueWithoutDmInput {
   where: CampaignWhereUniqueInput!
-  update: CampaignUpdateDataInput!
-  create: CampaignCreateInput!
+  update: CampaignUpdateWithoutDmDataInput!
+  create: CampaignCreateWithoutDmInput!
 }
 
 input CampaignWhereInput {
@@ -575,6 +589,7 @@ input CampaignWhereInput {
   players_every: CharacterWhereInput
   players_some: CharacterWhereInput
   players_none: CharacterWhereInput
+  dm: UserWhereInput
   AND: [CampaignWhereInput!]
   OR: [CampaignWhereInput!]
   NOT: [CampaignWhereInput!]
@@ -591,6 +606,7 @@ type Character {
   type: CHARACTER_TYPE!
   metadata: CharacterMetadata
   campaign: Campaign!
+  user: User
 }
 
 enum CHARACTER_STATUS {
@@ -616,6 +632,7 @@ input CharacterCreateInput {
   type: CHARACTER_TYPE!
   metadata: CharacterMetadataCreateOneWithoutCharacterInput
   campaign: CampaignCreateOneWithoutPlayersInput!
+  user: UserCreateOneWithoutCharactersInput
 }
 
 input CharacterCreateManyInput {
@@ -625,6 +642,11 @@ input CharacterCreateManyInput {
 
 input CharacterCreateManyWithoutCampaignInput {
   create: [CharacterCreateWithoutCampaignInput!]
+  connect: [CharacterWhereUniqueInput!]
+}
+
+input CharacterCreateManyWithoutUserInput {
+  create: [CharacterCreateWithoutUserInput!]
   connect: [CharacterWhereUniqueInput!]
 }
 
@@ -644,6 +666,7 @@ input CharacterCreateWithoutCampaignInput {
   lastName: String
   type: CHARACTER_TYPE!
   metadata: CharacterMetadataCreateOneWithoutCharacterInput
+  user: UserCreateOneWithoutCharactersInput
 }
 
 input CharacterCreateWithoutMetadataInput {
@@ -651,6 +674,16 @@ input CharacterCreateWithoutMetadataInput {
   firstName: String!
   lastName: String
   type: CHARACTER_TYPE!
+  campaign: CampaignCreateOneWithoutPlayersInput!
+  user: UserCreateOneWithoutCharactersInput
+}
+
+input CharacterCreateWithoutUserInput {
+  id: ID
+  firstName: String!
+  lastName: String
+  type: CHARACTER_TYPE!
+  metadata: CharacterMetadataCreateOneWithoutCharacterInput
   campaign: CampaignCreateOneWithoutPlayersInput!
 }
 
@@ -961,6 +994,7 @@ input CharacterUpdateDataInput {
   type: CHARACTER_TYPE
   metadata: CharacterMetadataUpdateOneWithoutCharacterInput
   campaign: CampaignUpdateOneRequiredWithoutPlayersInput
+  user: UserUpdateOneWithoutCharactersInput
 }
 
 input CharacterUpdateInput {
@@ -969,6 +1003,7 @@ input CharacterUpdateInput {
   type: CHARACTER_TYPE
   metadata: CharacterMetadataUpdateOneWithoutCharacterInput
   campaign: CampaignUpdateOneRequiredWithoutPlayersInput
+  user: UserUpdateOneWithoutCharactersInput
 }
 
 input CharacterUpdateManyDataInput {
@@ -1007,6 +1042,18 @@ input CharacterUpdateManyWithoutCampaignInput {
   updateMany: [CharacterUpdateManyWithWhereNestedInput!]
 }
 
+input CharacterUpdateManyWithoutUserInput {
+  create: [CharacterCreateWithoutUserInput!]
+  delete: [CharacterWhereUniqueInput!]
+  connect: [CharacterWhereUniqueInput!]
+  set: [CharacterWhereUniqueInput!]
+  disconnect: [CharacterWhereUniqueInput!]
+  update: [CharacterUpdateWithWhereUniqueWithoutUserInput!]
+  upsert: [CharacterUpsertWithWhereUniqueWithoutUserInput!]
+  deleteMany: [CharacterScalarWhereInput!]
+  updateMany: [CharacterUpdateManyWithWhereNestedInput!]
+}
+
 input CharacterUpdateManyWithWhereNestedInput {
   where: CharacterScalarWhereInput!
   data: CharacterUpdateManyDataInput!
@@ -1040,12 +1087,22 @@ input CharacterUpdateWithoutCampaignDataInput {
   lastName: String
   type: CHARACTER_TYPE
   metadata: CharacterMetadataUpdateOneWithoutCharacterInput
+  user: UserUpdateOneWithoutCharactersInput
 }
 
 input CharacterUpdateWithoutMetadataDataInput {
   firstName: String
   lastName: String
   type: CHARACTER_TYPE
+  campaign: CampaignUpdateOneRequiredWithoutPlayersInput
+  user: UserUpdateOneWithoutCharactersInput
+}
+
+input CharacterUpdateWithoutUserDataInput {
+  firstName: String
+  lastName: String
+  type: CHARACTER_TYPE
+  metadata: CharacterMetadataUpdateOneWithoutCharacterInput
   campaign: CampaignUpdateOneRequiredWithoutPlayersInput
 }
 
@@ -1057,6 +1114,11 @@ input CharacterUpdateWithWhereUniqueNestedInput {
 input CharacterUpdateWithWhereUniqueWithoutCampaignInput {
   where: CharacterWhereUniqueInput!
   data: CharacterUpdateWithoutCampaignDataInput!
+}
+
+input CharacterUpdateWithWhereUniqueWithoutUserInput {
+  where: CharacterWhereUniqueInput!
+  data: CharacterUpdateWithoutUserDataInput!
 }
 
 input CharacterUpsertNestedInput {
@@ -1079,6 +1141,12 @@ input CharacterUpsertWithWhereUniqueWithoutCampaignInput {
   where: CharacterWhereUniqueInput!
   update: CharacterUpdateWithoutCampaignDataInput!
   create: CharacterCreateWithoutCampaignInput!
+}
+
+input CharacterUpsertWithWhereUniqueWithoutUserInput {
+  where: CharacterWhereUniqueInput!
+  update: CharacterUpdateWithoutUserDataInput!
+  create: CharacterCreateWithoutUserInput!
 }
 
 input CharacterWhereInput {
@@ -1130,6 +1198,7 @@ input CharacterWhereInput {
   type_not_in: [CHARACTER_TYPE!]
   metadata: CharacterMetadataWhereInput
   campaign: CampaignWhereInput
+  user: UserWhereInput
   AND: [CharacterWhereInput!]
   OR: [CharacterWhereInput!]
   NOT: [CharacterWhereInput!]
@@ -3861,10 +3930,44 @@ input UserCreateInput {
   email: String!
   password: String!
   role: ROLE
-  campaigns: CampaignCreateManyInput
+  campaigns: CampaignCreateManyWithoutDmInput
   firstName: String
   lastName: String
-  characters: CharacterCreateManyInput
+  characters: CharacterCreateManyWithoutUserInput
+  resetToken: String
+  resetTokenExpiry: String
+}
+
+input UserCreateOneWithoutCampaignsInput {
+  create: UserCreateWithoutCampaignsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutCharactersInput {
+  create: UserCreateWithoutCharactersInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutCampaignsInput {
+  id: ID
+  email: String!
+  password: String!
+  role: ROLE
+  firstName: String
+  lastName: String
+  characters: CharacterCreateManyWithoutUserInput
+  resetToken: String
+  resetTokenExpiry: String
+}
+
+input UserCreateWithoutCharactersInput {
+  id: ID
+  email: String!
+  password: String!
+  role: ROLE
+  campaigns: CampaignCreateManyWithoutDmInput
+  firstName: String
+  lastName: String
   resetToken: String
   resetTokenExpiry: String
 }
@@ -3932,10 +4035,10 @@ input UserUpdateInput {
   email: String
   password: String
   role: ROLE
-  campaigns: CampaignUpdateManyInput
+  campaigns: CampaignUpdateManyWithoutDmInput
   firstName: String
   lastName: String
-  characters: CharacterUpdateManyInput
+  characters: CharacterUpdateManyWithoutUserInput
   resetToken: String
   resetTokenExpiry: String
 }
@@ -3948,6 +4051,54 @@ input UserUpdateManyMutationInput {
   lastName: String
   resetToken: String
   resetTokenExpiry: String
+}
+
+input UserUpdateOneRequiredWithoutCampaignsInput {
+  create: UserCreateWithoutCampaignsInput
+  update: UserUpdateWithoutCampaignsDataInput
+  upsert: UserUpsertWithoutCampaignsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserUpdateOneWithoutCharactersInput {
+  create: UserCreateWithoutCharactersInput
+  update: UserUpdateWithoutCharactersDataInput
+  upsert: UserUpsertWithoutCharactersInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: UserWhereUniqueInput
+}
+
+input UserUpdateWithoutCampaignsDataInput {
+  email: String
+  password: String
+  role: ROLE
+  firstName: String
+  lastName: String
+  characters: CharacterUpdateManyWithoutUserInput
+  resetToken: String
+  resetTokenExpiry: String
+}
+
+input UserUpdateWithoutCharactersDataInput {
+  email: String
+  password: String
+  role: ROLE
+  campaigns: CampaignUpdateManyWithoutDmInput
+  firstName: String
+  lastName: String
+  resetToken: String
+  resetTokenExpiry: String
+}
+
+input UserUpsertWithoutCampaignsInput {
+  update: UserUpdateWithoutCampaignsDataInput!
+  create: UserCreateWithoutCampaignsInput!
+}
+
+input UserUpsertWithoutCharactersInput {
+  update: UserUpdateWithoutCharactersDataInput!
+  create: UserCreateWithoutCharactersInput!
 }
 
 input UserWhereInput {

@@ -2,6424 +2,7336 @@
 // Please don't change this file manually but run `prisma generate` to update it.
 // For more information, please read the docs: https://www.prisma.io/docs/prisma-client/
 
-import { DocumentNode } from 'graphql';
-import { makePrismaClientClass, BaseClientOptions, Model } from 'prisma-client-lib';
-import { typeDefs } from './prisma-schema';
+import { DocumentNode } from "graphql";
+import {
+  makePrismaClientClass,
+  BaseClientOptions,
+  Model
+} from "prisma-client-lib";
+import { typeDefs } from "./prisma-schema";
 
-export type AtLeastOne<T, U = { [K in keyof T]: Pick<T, K> }> = Partial<T> & U[keyof U];
+export type AtLeastOne<T, U = { [K in keyof T]: Pick<T, K> }> = Partial<T> &
+  U[keyof U];
 
 export type Maybe<T> = T | undefined | null;
 
 export interface Exists {
-    ability: (where?: AbilityWhereInput) => Promise<boolean>;
-    campaign: (where?: CampaignWhereInput) => Promise<boolean>;
-    character: (where?: CharacterWhereInput) => Promise<boolean>;
-    characterMetadata: (where?: CharacterMetadataWhereInput) => Promise<boolean>;
-    currency: (where?: CurrencyWhereInput) => Promise<boolean>;
-    economy: (where?: EconomyWhereInput) => Promise<boolean>;
-    etnicity: (where?: EtnicityWhereInput) => Promise<boolean>;
-    flag: (where?: FlagWhereInput) => Promise<boolean>;
-    government: (where?: GovernmentWhereInput) => Promise<boolean>;
-    governmentParty: (where?: GovernmentPartyWhereInput) => Promise<boolean>;
-    hTMLContent: (where?: HTMLContentWhereInput) => Promise<boolean>;
-    language: (where?: LanguageWhereInput) => Promise<boolean>;
-    location: (where?: LocationWhereInput) => Promise<boolean>;
-    locationMetaData: (where?: LocationMetaDataWhereInput) => Promise<boolean>;
-    population: (where?: PopulationWhereInput) => Promise<boolean>;
-    religion: (where?: ReligionWhereInput) => Promise<boolean>;
-    skill: (where?: SkillWhereInput) => Promise<boolean>;
-    user: (where?: UserWhereInput) => Promise<boolean>;
+  ability: (where?: AbilityWhereInput) => Promise<boolean>;
+  campaign: (where?: CampaignWhereInput) => Promise<boolean>;
+  character: (where?: CharacterWhereInput) => Promise<boolean>;
+  characterMetadata: (where?: CharacterMetadataWhereInput) => Promise<boolean>;
+  currency: (where?: CurrencyWhereInput) => Promise<boolean>;
+  economy: (where?: EconomyWhereInput) => Promise<boolean>;
+  etnicity: (where?: EtnicityWhereInput) => Promise<boolean>;
+  flag: (where?: FlagWhereInput) => Promise<boolean>;
+  government: (where?: GovernmentWhereInput) => Promise<boolean>;
+  governmentParty: (where?: GovernmentPartyWhereInput) => Promise<boolean>;
+  hTMLContent: (where?: HTMLContentWhereInput) => Promise<boolean>;
+  language: (where?: LanguageWhereInput) => Promise<boolean>;
+  location: (where?: LocationWhereInput) => Promise<boolean>;
+  locationMetaData: (where?: LocationMetaDataWhereInput) => Promise<boolean>;
+  population: (where?: PopulationWhereInput) => Promise<boolean>;
+  religion: (where?: ReligionWhereInput) => Promise<boolean>;
+  skill: (where?: SkillWhereInput) => Promise<boolean>;
+  user: (where?: UserWhereInput) => Promise<boolean>;
 }
 
 export interface Node {}
 
-export type FragmentableArray<T> = Promise<T[]> & Fragmentable;
+export type FragmentableArray<T> = Promise<Array<T>> & Fragmentable;
 
 export interface Fragmentable {
-    $fragment<T>(fragment: string | DocumentNode): Promise<T>;
+  $fragment<T>(fragment: string | DocumentNode): Promise<T>;
 }
 
 export interface Prisma {
-    $exists: Exists;
-    $graphql: <T = any>(query: string, variables?: { [key: string]: any }) => Promise<T>;
+  $exists: Exists;
+  $graphql: <T = any>(
+    query: string,
+    variables?: { [key: string]: any }
+  ) => Promise<T>;
 
-    /**
-     * Queries
-     */
+  /**
+   * Queries
+   */
 
-    ability: (where: AbilityWhereUniqueInput) => AbilityNullablePromise;
-    abilities: (args?: {
-        where?: AbilityWhereInput;
-        orderBy?: AbilityOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => FragmentableArray<Ability>;
-    abilitiesConnection: (args?: {
-        where?: AbilityWhereInput;
-        orderBy?: AbilityOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => AbilityConnectionPromise;
-    campaign: (where: CampaignWhereUniqueInput) => CampaignNullablePromise;
-    campaigns: (args?: {
-        where?: CampaignWhereInput;
-        orderBy?: CampaignOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => FragmentableArray<Campaign>;
-    campaignsConnection: (args?: {
-        where?: CampaignWhereInput;
-        orderBy?: CampaignOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => CampaignConnectionPromise;
-    character: (where: CharacterWhereUniqueInput) => CharacterNullablePromise;
-    characters: (args?: {
-        where?: CharacterWhereInput;
-        orderBy?: CharacterOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => FragmentableArray<Character>;
-    charactersConnection: (args?: {
-        where?: CharacterWhereInput;
-        orderBy?: CharacterOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => CharacterConnectionPromise;
-    characterMetadata: (where: CharacterMetadataWhereUniqueInput) => CharacterMetadataNullablePromise;
-    characterMetadatas: (args?: {
-        where?: CharacterMetadataWhereInput;
-        orderBy?: CharacterMetadataOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => FragmentableArray<CharacterMetadata>;
-    characterMetadatasConnection: (args?: {
-        where?: CharacterMetadataWhereInput;
-        orderBy?: CharacterMetadataOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => CharacterMetadataConnectionPromise;
-    currency: (where: CurrencyWhereUniqueInput) => CurrencyNullablePromise;
-    currencies: (args?: {
-        where?: CurrencyWhereInput;
-        orderBy?: CurrencyOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => FragmentableArray<Currency>;
-    currenciesConnection: (args?: {
-        where?: CurrencyWhereInput;
-        orderBy?: CurrencyOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => CurrencyConnectionPromise;
-    economy: (where: EconomyWhereUniqueInput) => EconomyNullablePromise;
-    economies: (args?: {
-        where?: EconomyWhereInput;
-        orderBy?: EconomyOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => FragmentableArray<Economy>;
-    economiesConnection: (args?: {
-        where?: EconomyWhereInput;
-        orderBy?: EconomyOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => EconomyConnectionPromise;
-    etnicity: (where: EtnicityWhereUniqueInput) => EtnicityNullablePromise;
-    etnicities: (args?: {
-        where?: EtnicityWhereInput;
-        orderBy?: EtnicityOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => FragmentableArray<Etnicity>;
-    etnicitiesConnection: (args?: {
-        where?: EtnicityWhereInput;
-        orderBy?: EtnicityOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => EtnicityConnectionPromise;
-    flag: (where: FlagWhereUniqueInput) => FlagNullablePromise;
-    flags: (args?: {
-        where?: FlagWhereInput;
-        orderBy?: FlagOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => FragmentableArray<Flag>;
-    flagsConnection: (args?: {
-        where?: FlagWhereInput;
-        orderBy?: FlagOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => FlagConnectionPromise;
-    government: (where: GovernmentWhereUniqueInput) => GovernmentNullablePromise;
-    governments: (args?: {
-        where?: GovernmentWhereInput;
-        orderBy?: GovernmentOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => FragmentableArray<Government>;
-    governmentsConnection: (args?: {
-        where?: GovernmentWhereInput;
-        orderBy?: GovernmentOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => GovernmentConnectionPromise;
-    governmentParty: (where: GovernmentPartyWhereUniqueInput) => GovernmentPartyNullablePromise;
-    governmentParties: (args?: {
-        where?: GovernmentPartyWhereInput;
-        orderBy?: GovernmentPartyOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => FragmentableArray<GovernmentParty>;
-    governmentPartiesConnection: (args?: {
-        where?: GovernmentPartyWhereInput;
-        orderBy?: GovernmentPartyOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => GovernmentPartyConnectionPromise;
-    hTMLContent: (where: HTMLContentWhereUniqueInput) => HTMLContentNullablePromise;
-    hTMLContents: (args?: {
-        where?: HTMLContentWhereInput;
-        orderBy?: HTMLContentOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => FragmentableArray<HTMLContent>;
-    hTMLContentsConnection: (args?: {
-        where?: HTMLContentWhereInput;
-        orderBy?: HTMLContentOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => HTMLContentConnectionPromise;
-    language: (where: LanguageWhereUniqueInput) => LanguageNullablePromise;
-    languages: (args?: {
-        where?: LanguageWhereInput;
-        orderBy?: LanguageOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => FragmentableArray<Language>;
-    languagesConnection: (args?: {
-        where?: LanguageWhereInput;
-        orderBy?: LanguageOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => LanguageConnectionPromise;
-    location: (where: LocationWhereUniqueInput) => LocationNullablePromise;
-    locations: (args?: {
-        where?: LocationWhereInput;
-        orderBy?: LocationOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => FragmentableArray<Location>;
-    locationsConnection: (args?: {
-        where?: LocationWhereInput;
-        orderBy?: LocationOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => LocationConnectionPromise;
-    locationMetaData: (where: LocationMetaDataWhereUniqueInput) => LocationMetaDataNullablePromise;
-    locationMetaDatas: (args?: {
-        where?: LocationMetaDataWhereInput;
-        orderBy?: LocationMetaDataOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => FragmentableArray<LocationMetaData>;
-    locationMetaDatasConnection: (args?: {
-        where?: LocationMetaDataWhereInput;
-        orderBy?: LocationMetaDataOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => LocationMetaDataConnectionPromise;
-    population: (where: PopulationWhereUniqueInput) => PopulationNullablePromise;
-    populations: (args?: {
-        where?: PopulationWhereInput;
-        orderBy?: PopulationOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => FragmentableArray<Population>;
-    populationsConnection: (args?: {
-        where?: PopulationWhereInput;
-        orderBy?: PopulationOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => PopulationConnectionPromise;
-    religion: (where: ReligionWhereUniqueInput) => ReligionNullablePromise;
-    religions: (args?: {
-        where?: ReligionWhereInput;
-        orderBy?: ReligionOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => FragmentableArray<Religion>;
-    religionsConnection: (args?: {
-        where?: ReligionWhereInput;
-        orderBy?: ReligionOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => ReligionConnectionPromise;
-    skill: (where: SkillWhereUniqueInput) => SkillNullablePromise;
-    skills: (args?: {
-        where?: SkillWhereInput;
-        orderBy?: SkillOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => FragmentableArray<Skill>;
-    skillsConnection: (args?: {
-        where?: SkillWhereInput;
-        orderBy?: SkillOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => SkillConnectionPromise;
-    user: (where: UserWhereUniqueInput) => UserNullablePromise;
-    users: (args?: {
-        where?: UserWhereInput;
-        orderBy?: UserOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => FragmentableArray<User>;
-    usersConnection: (args?: {
-        where?: UserWhereInput;
-        orderBy?: UserOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => UserConnectionPromise;
-    node: (args: { id: ID_Output }) => Node;
+  ability: (where: AbilityWhereUniqueInput) => AbilityNullablePromise;
+  abilities: (args?: {
+    where?: AbilityWhereInput;
+    orderBy?: AbilityOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Ability>;
+  abilitiesConnection: (args?: {
+    where?: AbilityWhereInput;
+    orderBy?: AbilityOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => AbilityConnectionPromise;
+  campaign: (where: CampaignWhereUniqueInput) => CampaignNullablePromise;
+  campaigns: (args?: {
+    where?: CampaignWhereInput;
+    orderBy?: CampaignOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Campaign>;
+  campaignsConnection: (args?: {
+    where?: CampaignWhereInput;
+    orderBy?: CampaignOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => CampaignConnectionPromise;
+  character: (where: CharacterWhereUniqueInput) => CharacterNullablePromise;
+  characters: (args?: {
+    where?: CharacterWhereInput;
+    orderBy?: CharacterOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Character>;
+  charactersConnection: (args?: {
+    where?: CharacterWhereInput;
+    orderBy?: CharacterOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => CharacterConnectionPromise;
+  characterMetadata: (
+    where: CharacterMetadataWhereUniqueInput
+  ) => CharacterMetadataNullablePromise;
+  characterMetadatas: (args?: {
+    where?: CharacterMetadataWhereInput;
+    orderBy?: CharacterMetadataOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<CharacterMetadata>;
+  characterMetadatasConnection: (args?: {
+    where?: CharacterMetadataWhereInput;
+    orderBy?: CharacterMetadataOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => CharacterMetadataConnectionPromise;
+  currency: (where: CurrencyWhereUniqueInput) => CurrencyNullablePromise;
+  currencies: (args?: {
+    where?: CurrencyWhereInput;
+    orderBy?: CurrencyOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Currency>;
+  currenciesConnection: (args?: {
+    where?: CurrencyWhereInput;
+    orderBy?: CurrencyOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => CurrencyConnectionPromise;
+  economy: (where: EconomyWhereUniqueInput) => EconomyNullablePromise;
+  economies: (args?: {
+    where?: EconomyWhereInput;
+    orderBy?: EconomyOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Economy>;
+  economiesConnection: (args?: {
+    where?: EconomyWhereInput;
+    orderBy?: EconomyOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => EconomyConnectionPromise;
+  etnicity: (where: EtnicityWhereUniqueInput) => EtnicityNullablePromise;
+  etnicities: (args?: {
+    where?: EtnicityWhereInput;
+    orderBy?: EtnicityOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Etnicity>;
+  etnicitiesConnection: (args?: {
+    where?: EtnicityWhereInput;
+    orderBy?: EtnicityOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => EtnicityConnectionPromise;
+  flag: (where: FlagWhereUniqueInput) => FlagNullablePromise;
+  flags: (args?: {
+    where?: FlagWhereInput;
+    orderBy?: FlagOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Flag>;
+  flagsConnection: (args?: {
+    where?: FlagWhereInput;
+    orderBy?: FlagOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FlagConnectionPromise;
+  government: (where: GovernmentWhereUniqueInput) => GovernmentNullablePromise;
+  governments: (args?: {
+    where?: GovernmentWhereInput;
+    orderBy?: GovernmentOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Government>;
+  governmentsConnection: (args?: {
+    where?: GovernmentWhereInput;
+    orderBy?: GovernmentOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => GovernmentConnectionPromise;
+  governmentParty: (
+    where: GovernmentPartyWhereUniqueInput
+  ) => GovernmentPartyNullablePromise;
+  governmentParties: (args?: {
+    where?: GovernmentPartyWhereInput;
+    orderBy?: GovernmentPartyOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<GovernmentParty>;
+  governmentPartiesConnection: (args?: {
+    where?: GovernmentPartyWhereInput;
+    orderBy?: GovernmentPartyOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => GovernmentPartyConnectionPromise;
+  hTMLContent: (
+    where: HTMLContentWhereUniqueInput
+  ) => HTMLContentNullablePromise;
+  hTMLContents: (args?: {
+    where?: HTMLContentWhereInput;
+    orderBy?: HTMLContentOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<HTMLContent>;
+  hTMLContentsConnection: (args?: {
+    where?: HTMLContentWhereInput;
+    orderBy?: HTMLContentOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => HTMLContentConnectionPromise;
+  language: (where: LanguageWhereUniqueInput) => LanguageNullablePromise;
+  languages: (args?: {
+    where?: LanguageWhereInput;
+    orderBy?: LanguageOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Language>;
+  languagesConnection: (args?: {
+    where?: LanguageWhereInput;
+    orderBy?: LanguageOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => LanguageConnectionPromise;
+  location: (where: LocationWhereUniqueInput) => LocationNullablePromise;
+  locations: (args?: {
+    where?: LocationWhereInput;
+    orderBy?: LocationOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Location>;
+  locationsConnection: (args?: {
+    where?: LocationWhereInput;
+    orderBy?: LocationOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => LocationConnectionPromise;
+  locationMetaData: (
+    where: LocationMetaDataWhereUniqueInput
+  ) => LocationMetaDataNullablePromise;
+  locationMetaDatas: (args?: {
+    where?: LocationMetaDataWhereInput;
+    orderBy?: LocationMetaDataOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<LocationMetaData>;
+  locationMetaDatasConnection: (args?: {
+    where?: LocationMetaDataWhereInput;
+    orderBy?: LocationMetaDataOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => LocationMetaDataConnectionPromise;
+  population: (where: PopulationWhereUniqueInput) => PopulationNullablePromise;
+  populations: (args?: {
+    where?: PopulationWhereInput;
+    orderBy?: PopulationOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Population>;
+  populationsConnection: (args?: {
+    where?: PopulationWhereInput;
+    orderBy?: PopulationOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => PopulationConnectionPromise;
+  religion: (where: ReligionWhereUniqueInput) => ReligionNullablePromise;
+  religions: (args?: {
+    where?: ReligionWhereInput;
+    orderBy?: ReligionOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Religion>;
+  religionsConnection: (args?: {
+    where?: ReligionWhereInput;
+    orderBy?: ReligionOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => ReligionConnectionPromise;
+  skill: (where: SkillWhereUniqueInput) => SkillNullablePromise;
+  skills: (args?: {
+    where?: SkillWhereInput;
+    orderBy?: SkillOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Skill>;
+  skillsConnection: (args?: {
+    where?: SkillWhereInput;
+    orderBy?: SkillOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => SkillConnectionPromise;
+  user: (where: UserWhereUniqueInput) => UserNullablePromise;
+  users: (args?: {
+    where?: UserWhereInput;
+    orderBy?: UserOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<User>;
+  usersConnection: (args?: {
+    where?: UserWhereInput;
+    orderBy?: UserOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => UserConnectionPromise;
+  node: (args: { id: ID_Output }) => Node;
 
-    /**
-     * Mutations
-     */
+  /**
+   * Mutations
+   */
 
-    createAbility: (data: AbilityCreateInput) => AbilityPromise;
-    updateAbility: (args: { data: AbilityUpdateInput; where: AbilityWhereUniqueInput }) => AbilityPromise;
-    updateManyAbilities: (args: {
-        data: AbilityUpdateManyMutationInput;
-        where?: AbilityWhereInput;
-    }) => BatchPayloadPromise;
-    upsertAbility: (args: {
-        where: AbilityWhereUniqueInput;
-        create: AbilityCreateInput;
-        update: AbilityUpdateInput;
-    }) => AbilityPromise;
-    deleteAbility: (where: AbilityWhereUniqueInput) => AbilityPromise;
-    deleteManyAbilities: (where?: AbilityWhereInput) => BatchPayloadPromise;
-    createCampaign: (data: CampaignCreateInput) => CampaignPromise;
-    updateCampaign: (args: { data: CampaignUpdateInput; where: CampaignWhereUniqueInput }) => CampaignPromise;
-    updateManyCampaigns: (args: {
-        data: CampaignUpdateManyMutationInput;
-        where?: CampaignWhereInput;
-    }) => BatchPayloadPromise;
-    upsertCampaign: (args: {
-        where: CampaignWhereUniqueInput;
-        create: CampaignCreateInput;
-        update: CampaignUpdateInput;
-    }) => CampaignPromise;
-    deleteCampaign: (where: CampaignWhereUniqueInput) => CampaignPromise;
-    deleteManyCampaigns: (where?: CampaignWhereInput) => BatchPayloadPromise;
-    createCharacter: (data: CharacterCreateInput) => CharacterPromise;
-    updateCharacter: (args: { data: CharacterUpdateInput; where: CharacterWhereUniqueInput }) => CharacterPromise;
-    updateManyCharacters: (args: {
-        data: CharacterUpdateManyMutationInput;
-        where?: CharacterWhereInput;
-    }) => BatchPayloadPromise;
-    upsertCharacter: (args: {
-        where: CharacterWhereUniqueInput;
-        create: CharacterCreateInput;
-        update: CharacterUpdateInput;
-    }) => CharacterPromise;
-    deleteCharacter: (where: CharacterWhereUniqueInput) => CharacterPromise;
-    deleteManyCharacters: (where?: CharacterWhereInput) => BatchPayloadPromise;
-    createCharacterMetadata: (data: CharacterMetadataCreateInput) => CharacterMetadataPromise;
-    updateCharacterMetadata: (args: {
-        data: CharacterMetadataUpdateInput;
-        where: CharacterMetadataWhereUniqueInput;
-    }) => CharacterMetadataPromise;
-    updateManyCharacterMetadatas: (args: {
-        data: CharacterMetadataUpdateManyMutationInput;
-        where?: CharacterMetadataWhereInput;
-    }) => BatchPayloadPromise;
-    upsertCharacterMetadata: (args: {
-        where: CharacterMetadataWhereUniqueInput;
-        create: CharacterMetadataCreateInput;
-        update: CharacterMetadataUpdateInput;
-    }) => CharacterMetadataPromise;
-    deleteCharacterMetadata: (where: CharacterMetadataWhereUniqueInput) => CharacterMetadataPromise;
-    deleteManyCharacterMetadatas: (where?: CharacterMetadataWhereInput) => BatchPayloadPromise;
-    createCurrency: (data: CurrencyCreateInput) => CurrencyPromise;
-    updateCurrency: (args: { data: CurrencyUpdateInput; where: CurrencyWhereUniqueInput }) => CurrencyPromise;
-    updateManyCurrencies: (args: {
-        data: CurrencyUpdateManyMutationInput;
-        where?: CurrencyWhereInput;
-    }) => BatchPayloadPromise;
-    upsertCurrency: (args: {
-        where: CurrencyWhereUniqueInput;
-        create: CurrencyCreateInput;
-        update: CurrencyUpdateInput;
-    }) => CurrencyPromise;
-    deleteCurrency: (where: CurrencyWhereUniqueInput) => CurrencyPromise;
-    deleteManyCurrencies: (where?: CurrencyWhereInput) => BatchPayloadPromise;
-    createEconomy: (data: EconomyCreateInput) => EconomyPromise;
-    updateEconomy: (args: { data: EconomyUpdateInput; where: EconomyWhereUniqueInput }) => EconomyPromise;
-    upsertEconomy: (args: {
-        where: EconomyWhereUniqueInput;
-        create: EconomyCreateInput;
-        update: EconomyUpdateInput;
-    }) => EconomyPromise;
-    deleteEconomy: (where: EconomyWhereUniqueInput) => EconomyPromise;
-    deleteManyEconomies: (where?: EconomyWhereInput) => BatchPayloadPromise;
-    createEtnicity: (data: EtnicityCreateInput) => EtnicityPromise;
-    updateEtnicity: (args: { data: EtnicityUpdateInput; where: EtnicityWhereUniqueInput }) => EtnicityPromise;
-    updateManyEtnicities: (args: {
-        data: EtnicityUpdateManyMutationInput;
-        where?: EtnicityWhereInput;
-    }) => BatchPayloadPromise;
-    upsertEtnicity: (args: {
-        where: EtnicityWhereUniqueInput;
-        create: EtnicityCreateInput;
-        update: EtnicityUpdateInput;
-    }) => EtnicityPromise;
-    deleteEtnicity: (where: EtnicityWhereUniqueInput) => EtnicityPromise;
-    deleteManyEtnicities: (where?: EtnicityWhereInput) => BatchPayloadPromise;
-    createFlag: (data: FlagCreateInput) => FlagPromise;
-    updateFlag: (args: { data: FlagUpdateInput; where: FlagWhereUniqueInput }) => FlagPromise;
-    updateManyFlags: (args: { data: FlagUpdateManyMutationInput; where?: FlagWhereInput }) => BatchPayloadPromise;
-    upsertFlag: (args: {
-        where: FlagWhereUniqueInput;
-        create: FlagCreateInput;
-        update: FlagUpdateInput;
-    }) => FlagPromise;
-    deleteFlag: (where: FlagWhereUniqueInput) => FlagPromise;
-    deleteManyFlags: (where?: FlagWhereInput) => BatchPayloadPromise;
-    createGovernment: (data: GovernmentCreateInput) => GovernmentPromise;
-    updateGovernment: (args: { data: GovernmentUpdateInput; where: GovernmentWhereUniqueInput }) => GovernmentPromise;
-    upsertGovernment: (args: {
-        where: GovernmentWhereUniqueInput;
-        create: GovernmentCreateInput;
-        update: GovernmentUpdateInput;
-    }) => GovernmentPromise;
-    deleteGovernment: (where: GovernmentWhereUniqueInput) => GovernmentPromise;
-    deleteManyGovernments: (where?: GovernmentWhereInput) => BatchPayloadPromise;
-    createGovernmentParty: (data: GovernmentPartyCreateInput) => GovernmentPartyPromise;
-    updateGovernmentParty: (args: {
-        data: GovernmentPartyUpdateInput;
-        where: GovernmentPartyWhereUniqueInput;
-    }) => GovernmentPartyPromise;
-    updateManyGovernmentParties: (args: {
-        data: GovernmentPartyUpdateManyMutationInput;
-        where?: GovernmentPartyWhereInput;
-    }) => BatchPayloadPromise;
-    upsertGovernmentParty: (args: {
-        where: GovernmentPartyWhereUniqueInput;
-        create: GovernmentPartyCreateInput;
-        update: GovernmentPartyUpdateInput;
-    }) => GovernmentPartyPromise;
-    deleteGovernmentParty: (where: GovernmentPartyWhereUniqueInput) => GovernmentPartyPromise;
-    deleteManyGovernmentParties: (where?: GovernmentPartyWhereInput) => BatchPayloadPromise;
-    createHTMLContent: (data: HTMLContentCreateInput) => HTMLContentPromise;
-    updateHTMLContent: (args: {
-        data: HTMLContentUpdateInput;
-        where: HTMLContentWhereUniqueInput;
-    }) => HTMLContentPromise;
-    updateManyHTMLContents: (args: {
-        data: HTMLContentUpdateManyMutationInput;
-        where?: HTMLContentWhereInput;
-    }) => BatchPayloadPromise;
-    upsertHTMLContent: (args: {
-        where: HTMLContentWhereUniqueInput;
-        create: HTMLContentCreateInput;
-        update: HTMLContentUpdateInput;
-    }) => HTMLContentPromise;
-    deleteHTMLContent: (where: HTMLContentWhereUniqueInput) => HTMLContentPromise;
-    deleteManyHTMLContents: (where?: HTMLContentWhereInput) => BatchPayloadPromise;
-    createLanguage: (data: LanguageCreateInput) => LanguagePromise;
-    updateLanguage: (args: { data: LanguageUpdateInput; where: LanguageWhereUniqueInput }) => LanguagePromise;
-    updateManyLanguages: (args: {
-        data: LanguageUpdateManyMutationInput;
-        where?: LanguageWhereInput;
-    }) => BatchPayloadPromise;
-    upsertLanguage: (args: {
-        where: LanguageWhereUniqueInput;
-        create: LanguageCreateInput;
-        update: LanguageUpdateInput;
-    }) => LanguagePromise;
-    deleteLanguage: (where: LanguageWhereUniqueInput) => LanguagePromise;
-    deleteManyLanguages: (where?: LanguageWhereInput) => BatchPayloadPromise;
-    createLocation: (data: LocationCreateInput) => LocationPromise;
-    updateLocation: (args: { data: LocationUpdateInput; where: LocationWhereUniqueInput }) => LocationPromise;
-    updateManyLocations: (args: {
-        data: LocationUpdateManyMutationInput;
-        where?: LocationWhereInput;
-    }) => BatchPayloadPromise;
-    upsertLocation: (args: {
-        where: LocationWhereUniqueInput;
-        create: LocationCreateInput;
-        update: LocationUpdateInput;
-    }) => LocationPromise;
-    deleteLocation: (where: LocationWhereUniqueInput) => LocationPromise;
-    deleteManyLocations: (where?: LocationWhereInput) => BatchPayloadPromise;
-    createLocationMetaData: (data: LocationMetaDataCreateInput) => LocationMetaDataPromise;
-    updateLocationMetaData: (args: {
-        data: LocationMetaDataUpdateInput;
-        where: LocationMetaDataWhereUniqueInput;
-    }) => LocationMetaDataPromise;
-    updateManyLocationMetaDatas: (args: {
-        data: LocationMetaDataUpdateManyMutationInput;
-        where?: LocationMetaDataWhereInput;
-    }) => BatchPayloadPromise;
-    upsertLocationMetaData: (args: {
-        where: LocationMetaDataWhereUniqueInput;
-        create: LocationMetaDataCreateInput;
-        update: LocationMetaDataUpdateInput;
-    }) => LocationMetaDataPromise;
-    deleteLocationMetaData: (where: LocationMetaDataWhereUniqueInput) => LocationMetaDataPromise;
-    deleteManyLocationMetaDatas: (where?: LocationMetaDataWhereInput) => BatchPayloadPromise;
-    createPopulation: (data: PopulationCreateInput) => PopulationPromise;
-    updatePopulation: (args: { data: PopulationUpdateInput; where: PopulationWhereUniqueInput }) => PopulationPromise;
-    updateManyPopulations: (args: {
-        data: PopulationUpdateManyMutationInput;
-        where?: PopulationWhereInput;
-    }) => BatchPayloadPromise;
-    upsertPopulation: (args: {
-        where: PopulationWhereUniqueInput;
-        create: PopulationCreateInput;
-        update: PopulationUpdateInput;
-    }) => PopulationPromise;
-    deletePopulation: (where: PopulationWhereUniqueInput) => PopulationPromise;
-    deleteManyPopulations: (where?: PopulationWhereInput) => BatchPayloadPromise;
-    createReligion: (data: ReligionCreateInput) => ReligionPromise;
-    updateReligion: (args: { data: ReligionUpdateInput; where: ReligionWhereUniqueInput }) => ReligionPromise;
-    updateManyReligions: (args: {
-        data: ReligionUpdateManyMutationInput;
-        where?: ReligionWhereInput;
-    }) => BatchPayloadPromise;
-    upsertReligion: (args: {
-        where: ReligionWhereUniqueInput;
-        create: ReligionCreateInput;
-        update: ReligionUpdateInput;
-    }) => ReligionPromise;
-    deleteReligion: (where: ReligionWhereUniqueInput) => ReligionPromise;
-    deleteManyReligions: (where?: ReligionWhereInput) => BatchPayloadPromise;
-    createSkill: (data: SkillCreateInput) => SkillPromise;
-    updateSkill: (args: { data: SkillUpdateInput; where: SkillWhereUniqueInput }) => SkillPromise;
-    updateManySkills: (args: { data: SkillUpdateManyMutationInput; where?: SkillWhereInput }) => BatchPayloadPromise;
-    upsertSkill: (args: {
-        where: SkillWhereUniqueInput;
-        create: SkillCreateInput;
-        update: SkillUpdateInput;
-    }) => SkillPromise;
-    deleteSkill: (where: SkillWhereUniqueInput) => SkillPromise;
-    deleteManySkills: (where?: SkillWhereInput) => BatchPayloadPromise;
-    createUser: (data: UserCreateInput) => UserPromise;
-    updateUser: (args: { data: UserUpdateInput; where: UserWhereUniqueInput }) => UserPromise;
-    updateManyUsers: (args: { data: UserUpdateManyMutationInput; where?: UserWhereInput }) => BatchPayloadPromise;
-    upsertUser: (args: {
-        where: UserWhereUniqueInput;
-        create: UserCreateInput;
-        update: UserUpdateInput;
-    }) => UserPromise;
-    deleteUser: (where: UserWhereUniqueInput) => UserPromise;
-    deleteManyUsers: (where?: UserWhereInput) => BatchPayloadPromise;
+  createAbility: (data: AbilityCreateInput) => AbilityPromise;
+  updateAbility: (args: {
+    data: AbilityUpdateInput;
+    where: AbilityWhereUniqueInput;
+  }) => AbilityPromise;
+  updateManyAbilities: (args: {
+    data: AbilityUpdateManyMutationInput;
+    where?: AbilityWhereInput;
+  }) => BatchPayloadPromise;
+  upsertAbility: (args: {
+    where: AbilityWhereUniqueInput;
+    create: AbilityCreateInput;
+    update: AbilityUpdateInput;
+  }) => AbilityPromise;
+  deleteAbility: (where: AbilityWhereUniqueInput) => AbilityPromise;
+  deleteManyAbilities: (where?: AbilityWhereInput) => BatchPayloadPromise;
+  createCampaign: (data: CampaignCreateInput) => CampaignPromise;
+  updateCampaign: (args: {
+    data: CampaignUpdateInput;
+    where: CampaignWhereUniqueInput;
+  }) => CampaignPromise;
+  updateManyCampaigns: (args: {
+    data: CampaignUpdateManyMutationInput;
+    where?: CampaignWhereInput;
+  }) => BatchPayloadPromise;
+  upsertCampaign: (args: {
+    where: CampaignWhereUniqueInput;
+    create: CampaignCreateInput;
+    update: CampaignUpdateInput;
+  }) => CampaignPromise;
+  deleteCampaign: (where: CampaignWhereUniqueInput) => CampaignPromise;
+  deleteManyCampaigns: (where?: CampaignWhereInput) => BatchPayloadPromise;
+  createCharacter: (data: CharacterCreateInput) => CharacterPromise;
+  updateCharacter: (args: {
+    data: CharacterUpdateInput;
+    where: CharacterWhereUniqueInput;
+  }) => CharacterPromise;
+  updateManyCharacters: (args: {
+    data: CharacterUpdateManyMutationInput;
+    where?: CharacterWhereInput;
+  }) => BatchPayloadPromise;
+  upsertCharacter: (args: {
+    where: CharacterWhereUniqueInput;
+    create: CharacterCreateInput;
+    update: CharacterUpdateInput;
+  }) => CharacterPromise;
+  deleteCharacter: (where: CharacterWhereUniqueInput) => CharacterPromise;
+  deleteManyCharacters: (where?: CharacterWhereInput) => BatchPayloadPromise;
+  createCharacterMetadata: (
+    data: CharacterMetadataCreateInput
+  ) => CharacterMetadataPromise;
+  updateCharacterMetadata: (args: {
+    data: CharacterMetadataUpdateInput;
+    where: CharacterMetadataWhereUniqueInput;
+  }) => CharacterMetadataPromise;
+  updateManyCharacterMetadatas: (args: {
+    data: CharacterMetadataUpdateManyMutationInput;
+    where?: CharacterMetadataWhereInput;
+  }) => BatchPayloadPromise;
+  upsertCharacterMetadata: (args: {
+    where: CharacterMetadataWhereUniqueInput;
+    create: CharacterMetadataCreateInput;
+    update: CharacterMetadataUpdateInput;
+  }) => CharacterMetadataPromise;
+  deleteCharacterMetadata: (
+    where: CharacterMetadataWhereUniqueInput
+  ) => CharacterMetadataPromise;
+  deleteManyCharacterMetadatas: (
+    where?: CharacterMetadataWhereInput
+  ) => BatchPayloadPromise;
+  createCurrency: (data: CurrencyCreateInput) => CurrencyPromise;
+  updateCurrency: (args: {
+    data: CurrencyUpdateInput;
+    where: CurrencyWhereUniqueInput;
+  }) => CurrencyPromise;
+  updateManyCurrencies: (args: {
+    data: CurrencyUpdateManyMutationInput;
+    where?: CurrencyWhereInput;
+  }) => BatchPayloadPromise;
+  upsertCurrency: (args: {
+    where: CurrencyWhereUniqueInput;
+    create: CurrencyCreateInput;
+    update: CurrencyUpdateInput;
+  }) => CurrencyPromise;
+  deleteCurrency: (where: CurrencyWhereUniqueInput) => CurrencyPromise;
+  deleteManyCurrencies: (where?: CurrencyWhereInput) => BatchPayloadPromise;
+  createEconomy: (data: EconomyCreateInput) => EconomyPromise;
+  updateEconomy: (args: {
+    data: EconomyUpdateInput;
+    where: EconomyWhereUniqueInput;
+  }) => EconomyPromise;
+  upsertEconomy: (args: {
+    where: EconomyWhereUniqueInput;
+    create: EconomyCreateInput;
+    update: EconomyUpdateInput;
+  }) => EconomyPromise;
+  deleteEconomy: (where: EconomyWhereUniqueInput) => EconomyPromise;
+  deleteManyEconomies: (where?: EconomyWhereInput) => BatchPayloadPromise;
+  createEtnicity: (data: EtnicityCreateInput) => EtnicityPromise;
+  updateEtnicity: (args: {
+    data: EtnicityUpdateInput;
+    where: EtnicityWhereUniqueInput;
+  }) => EtnicityPromise;
+  updateManyEtnicities: (args: {
+    data: EtnicityUpdateManyMutationInput;
+    where?: EtnicityWhereInput;
+  }) => BatchPayloadPromise;
+  upsertEtnicity: (args: {
+    where: EtnicityWhereUniqueInput;
+    create: EtnicityCreateInput;
+    update: EtnicityUpdateInput;
+  }) => EtnicityPromise;
+  deleteEtnicity: (where: EtnicityWhereUniqueInput) => EtnicityPromise;
+  deleteManyEtnicities: (where?: EtnicityWhereInput) => BatchPayloadPromise;
+  createFlag: (data: FlagCreateInput) => FlagPromise;
+  updateFlag: (args: {
+    data: FlagUpdateInput;
+    where: FlagWhereUniqueInput;
+  }) => FlagPromise;
+  updateManyFlags: (args: {
+    data: FlagUpdateManyMutationInput;
+    where?: FlagWhereInput;
+  }) => BatchPayloadPromise;
+  upsertFlag: (args: {
+    where: FlagWhereUniqueInput;
+    create: FlagCreateInput;
+    update: FlagUpdateInput;
+  }) => FlagPromise;
+  deleteFlag: (where: FlagWhereUniqueInput) => FlagPromise;
+  deleteManyFlags: (where?: FlagWhereInput) => BatchPayloadPromise;
+  createGovernment: (data: GovernmentCreateInput) => GovernmentPromise;
+  updateGovernment: (args: {
+    data: GovernmentUpdateInput;
+    where: GovernmentWhereUniqueInput;
+  }) => GovernmentPromise;
+  upsertGovernment: (args: {
+    where: GovernmentWhereUniqueInput;
+    create: GovernmentCreateInput;
+    update: GovernmentUpdateInput;
+  }) => GovernmentPromise;
+  deleteGovernment: (where: GovernmentWhereUniqueInput) => GovernmentPromise;
+  deleteManyGovernments: (where?: GovernmentWhereInput) => BatchPayloadPromise;
+  createGovernmentParty: (
+    data: GovernmentPartyCreateInput
+  ) => GovernmentPartyPromise;
+  updateGovernmentParty: (args: {
+    data: GovernmentPartyUpdateInput;
+    where: GovernmentPartyWhereUniqueInput;
+  }) => GovernmentPartyPromise;
+  updateManyGovernmentParties: (args: {
+    data: GovernmentPartyUpdateManyMutationInput;
+    where?: GovernmentPartyWhereInput;
+  }) => BatchPayloadPromise;
+  upsertGovernmentParty: (args: {
+    where: GovernmentPartyWhereUniqueInput;
+    create: GovernmentPartyCreateInput;
+    update: GovernmentPartyUpdateInput;
+  }) => GovernmentPartyPromise;
+  deleteGovernmentParty: (
+    where: GovernmentPartyWhereUniqueInput
+  ) => GovernmentPartyPromise;
+  deleteManyGovernmentParties: (
+    where?: GovernmentPartyWhereInput
+  ) => BatchPayloadPromise;
+  createHTMLContent: (data: HTMLContentCreateInput) => HTMLContentPromise;
+  updateHTMLContent: (args: {
+    data: HTMLContentUpdateInput;
+    where: HTMLContentWhereUniqueInput;
+  }) => HTMLContentPromise;
+  updateManyHTMLContents: (args: {
+    data: HTMLContentUpdateManyMutationInput;
+    where?: HTMLContentWhereInput;
+  }) => BatchPayloadPromise;
+  upsertHTMLContent: (args: {
+    where: HTMLContentWhereUniqueInput;
+    create: HTMLContentCreateInput;
+    update: HTMLContentUpdateInput;
+  }) => HTMLContentPromise;
+  deleteHTMLContent: (where: HTMLContentWhereUniqueInput) => HTMLContentPromise;
+  deleteManyHTMLContents: (
+    where?: HTMLContentWhereInput
+  ) => BatchPayloadPromise;
+  createLanguage: (data: LanguageCreateInput) => LanguagePromise;
+  updateLanguage: (args: {
+    data: LanguageUpdateInput;
+    where: LanguageWhereUniqueInput;
+  }) => LanguagePromise;
+  updateManyLanguages: (args: {
+    data: LanguageUpdateManyMutationInput;
+    where?: LanguageWhereInput;
+  }) => BatchPayloadPromise;
+  upsertLanguage: (args: {
+    where: LanguageWhereUniqueInput;
+    create: LanguageCreateInput;
+    update: LanguageUpdateInput;
+  }) => LanguagePromise;
+  deleteLanguage: (where: LanguageWhereUniqueInput) => LanguagePromise;
+  deleteManyLanguages: (where?: LanguageWhereInput) => BatchPayloadPromise;
+  createLocation: (data: LocationCreateInput) => LocationPromise;
+  updateLocation: (args: {
+    data: LocationUpdateInput;
+    where: LocationWhereUniqueInput;
+  }) => LocationPromise;
+  updateManyLocations: (args: {
+    data: LocationUpdateManyMutationInput;
+    where?: LocationWhereInput;
+  }) => BatchPayloadPromise;
+  upsertLocation: (args: {
+    where: LocationWhereUniqueInput;
+    create: LocationCreateInput;
+    update: LocationUpdateInput;
+  }) => LocationPromise;
+  deleteLocation: (where: LocationWhereUniqueInput) => LocationPromise;
+  deleteManyLocations: (where?: LocationWhereInput) => BatchPayloadPromise;
+  createLocationMetaData: (
+    data: LocationMetaDataCreateInput
+  ) => LocationMetaDataPromise;
+  updateLocationMetaData: (args: {
+    data: LocationMetaDataUpdateInput;
+    where: LocationMetaDataWhereUniqueInput;
+  }) => LocationMetaDataPromise;
+  updateManyLocationMetaDatas: (args: {
+    data: LocationMetaDataUpdateManyMutationInput;
+    where?: LocationMetaDataWhereInput;
+  }) => BatchPayloadPromise;
+  upsertLocationMetaData: (args: {
+    where: LocationMetaDataWhereUniqueInput;
+    create: LocationMetaDataCreateInput;
+    update: LocationMetaDataUpdateInput;
+  }) => LocationMetaDataPromise;
+  deleteLocationMetaData: (
+    where: LocationMetaDataWhereUniqueInput
+  ) => LocationMetaDataPromise;
+  deleteManyLocationMetaDatas: (
+    where?: LocationMetaDataWhereInput
+  ) => BatchPayloadPromise;
+  createPopulation: (data: PopulationCreateInput) => PopulationPromise;
+  updatePopulation: (args: {
+    data: PopulationUpdateInput;
+    where: PopulationWhereUniqueInput;
+  }) => PopulationPromise;
+  updateManyPopulations: (args: {
+    data: PopulationUpdateManyMutationInput;
+    where?: PopulationWhereInput;
+  }) => BatchPayloadPromise;
+  upsertPopulation: (args: {
+    where: PopulationWhereUniqueInput;
+    create: PopulationCreateInput;
+    update: PopulationUpdateInput;
+  }) => PopulationPromise;
+  deletePopulation: (where: PopulationWhereUniqueInput) => PopulationPromise;
+  deleteManyPopulations: (where?: PopulationWhereInput) => BatchPayloadPromise;
+  createReligion: (data: ReligionCreateInput) => ReligionPromise;
+  updateReligion: (args: {
+    data: ReligionUpdateInput;
+    where: ReligionWhereUniqueInput;
+  }) => ReligionPromise;
+  updateManyReligions: (args: {
+    data: ReligionUpdateManyMutationInput;
+    where?: ReligionWhereInput;
+  }) => BatchPayloadPromise;
+  upsertReligion: (args: {
+    where: ReligionWhereUniqueInput;
+    create: ReligionCreateInput;
+    update: ReligionUpdateInput;
+  }) => ReligionPromise;
+  deleteReligion: (where: ReligionWhereUniqueInput) => ReligionPromise;
+  deleteManyReligions: (where?: ReligionWhereInput) => BatchPayloadPromise;
+  createSkill: (data: SkillCreateInput) => SkillPromise;
+  updateSkill: (args: {
+    data: SkillUpdateInput;
+    where: SkillWhereUniqueInput;
+  }) => SkillPromise;
+  updateManySkills: (args: {
+    data: SkillUpdateManyMutationInput;
+    where?: SkillWhereInput;
+  }) => BatchPayloadPromise;
+  upsertSkill: (args: {
+    where: SkillWhereUniqueInput;
+    create: SkillCreateInput;
+    update: SkillUpdateInput;
+  }) => SkillPromise;
+  deleteSkill: (where: SkillWhereUniqueInput) => SkillPromise;
+  deleteManySkills: (where?: SkillWhereInput) => BatchPayloadPromise;
+  createUser: (data: UserCreateInput) => UserPromise;
+  updateUser: (args: {
+    data: UserUpdateInput;
+    where: UserWhereUniqueInput;
+  }) => UserPromise;
+  updateManyUsers: (args: {
+    data: UserUpdateManyMutationInput;
+    where?: UserWhereInput;
+  }) => BatchPayloadPromise;
+  upsertUser: (args: {
+    where: UserWhereUniqueInput;
+    create: UserCreateInput;
+    update: UserUpdateInput;
+  }) => UserPromise;
+  deleteUser: (where: UserWhereUniqueInput) => UserPromise;
+  deleteManyUsers: (where?: UserWhereInput) => BatchPayloadPromise;
 
-    /**
-     * Subscriptions
-     */
+  /**
+   * Subscriptions
+   */
 
-    $subscribe: Subscription;
+  $subscribe: Subscription;
 }
 
 export interface Subscription {
-    ability: (where?: AbilitySubscriptionWhereInput) => AbilitySubscriptionPayloadSubscription;
-    campaign: (where?: CampaignSubscriptionWhereInput) => CampaignSubscriptionPayloadSubscription;
-    character: (where?: CharacterSubscriptionWhereInput) => CharacterSubscriptionPayloadSubscription;
-    characterMetadata: (
-        where?: CharacterMetadataSubscriptionWhereInput,
-    ) => CharacterMetadataSubscriptionPayloadSubscription;
-    currency: (where?: CurrencySubscriptionWhereInput) => CurrencySubscriptionPayloadSubscription;
-    economy: (where?: EconomySubscriptionWhereInput) => EconomySubscriptionPayloadSubscription;
-    etnicity: (where?: EtnicitySubscriptionWhereInput) => EtnicitySubscriptionPayloadSubscription;
-    flag: (where?: FlagSubscriptionWhereInput) => FlagSubscriptionPayloadSubscription;
-    government: (where?: GovernmentSubscriptionWhereInput) => GovernmentSubscriptionPayloadSubscription;
-    governmentParty: (where?: GovernmentPartySubscriptionWhereInput) => GovernmentPartySubscriptionPayloadSubscription;
-    hTMLContent: (where?: HTMLContentSubscriptionWhereInput) => HTMLContentSubscriptionPayloadSubscription;
-    language: (where?: LanguageSubscriptionWhereInput) => LanguageSubscriptionPayloadSubscription;
-    location: (where?: LocationSubscriptionWhereInput) => LocationSubscriptionPayloadSubscription;
-    locationMetaData: (
-        where?: LocationMetaDataSubscriptionWhereInput,
-    ) => LocationMetaDataSubscriptionPayloadSubscription;
-    population: (where?: PopulationSubscriptionWhereInput) => PopulationSubscriptionPayloadSubscription;
-    religion: (where?: ReligionSubscriptionWhereInput) => ReligionSubscriptionPayloadSubscription;
-    skill: (where?: SkillSubscriptionWhereInput) => SkillSubscriptionPayloadSubscription;
-    user: (where?: UserSubscriptionWhereInput) => UserSubscriptionPayloadSubscription;
+  ability: (
+    where?: AbilitySubscriptionWhereInput
+  ) => AbilitySubscriptionPayloadSubscription;
+  campaign: (
+    where?: CampaignSubscriptionWhereInput
+  ) => CampaignSubscriptionPayloadSubscription;
+  character: (
+    where?: CharacterSubscriptionWhereInput
+  ) => CharacterSubscriptionPayloadSubscription;
+  characterMetadata: (
+    where?: CharacterMetadataSubscriptionWhereInput
+  ) => CharacterMetadataSubscriptionPayloadSubscription;
+  currency: (
+    where?: CurrencySubscriptionWhereInput
+  ) => CurrencySubscriptionPayloadSubscription;
+  economy: (
+    where?: EconomySubscriptionWhereInput
+  ) => EconomySubscriptionPayloadSubscription;
+  etnicity: (
+    where?: EtnicitySubscriptionWhereInput
+  ) => EtnicitySubscriptionPayloadSubscription;
+  flag: (
+    where?: FlagSubscriptionWhereInput
+  ) => FlagSubscriptionPayloadSubscription;
+  government: (
+    where?: GovernmentSubscriptionWhereInput
+  ) => GovernmentSubscriptionPayloadSubscription;
+  governmentParty: (
+    where?: GovernmentPartySubscriptionWhereInput
+  ) => GovernmentPartySubscriptionPayloadSubscription;
+  hTMLContent: (
+    where?: HTMLContentSubscriptionWhereInput
+  ) => HTMLContentSubscriptionPayloadSubscription;
+  language: (
+    where?: LanguageSubscriptionWhereInput
+  ) => LanguageSubscriptionPayloadSubscription;
+  location: (
+    where?: LocationSubscriptionWhereInput
+  ) => LocationSubscriptionPayloadSubscription;
+  locationMetaData: (
+    where?: LocationMetaDataSubscriptionWhereInput
+  ) => LocationMetaDataSubscriptionPayloadSubscription;
+  population: (
+    where?: PopulationSubscriptionWhereInput
+  ) => PopulationSubscriptionPayloadSubscription;
+  religion: (
+    where?: ReligionSubscriptionWhereInput
+  ) => ReligionSubscriptionPayloadSubscription;
+  skill: (
+    where?: SkillSubscriptionWhereInput
+  ) => SkillSubscriptionPayloadSubscription;
+  user: (
+    where?: UserSubscriptionWhereInput
+  ) => UserSubscriptionPayloadSubscription;
 }
 
 export interface ClientConstructor<T> {
-    new (options?: BaseClientOptions): T;
+  new (options?: BaseClientOptions): T;
 }
 
 /**
  * Types
  */
 
-export type ALIGNMENT = 'LG' | 'NG' | 'CG' | 'LN' | 'TN' | 'CN' | 'LE' | 'NE' | 'CE';
+export type ALIGNMENT =
+  | "LG"
+  | "NG"
+  | "CG"
+  | "LN"
+  | "TN"
+  | "CN"
+  | "LE"
+  | "NE"
+  | "CE";
 
-export type WEATHER = 'Wind' | 'Sun' | 'Cloudy' | 'Snow';
+export type WEATHER = "Wind" | "Sun" | "Cloudy" | "Snow";
 
-export type CampaignOrderByInput =
-    | 'id_ASC'
-    | 'id_DESC'
-    | 'name_ASC'
-    | 'name_DESC'
-    | 'createdAt_ASC'
-    | 'createdAt_DESC'
-    | 'updatedAt_ASC'
-    | 'updatedAt_DESC';
+export type GovernmentPartyOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "name_ASC"
+  | "name_DESC";
 
-export type ABILITY_TYPE = 'STR' | 'DEX' | 'CON' | 'INT' | 'WIS' | 'CHA';
-
-export type GovernmentPartyOrderByInput = 'id_ASC' | 'id_DESC' | 'name_ASC' | 'name_DESC';
-
-export type ROLE = 'PLAYER' | 'ADMIN';
+export type ABILITY_TYPE = "STR" | "DEX" | "CON" | "INT" | "WIS" | "CHA";
 
 export type FlagOrderByInput =
-    | 'id_ASC'
-    | 'id_DESC'
-    | 'imageSrc_ASC'
-    | 'imageSrc_DESC'
-    | 'description_ASC'
-    | 'description_DESC';
-
-export type CHARACTER_TYPE = 'PC' | 'NPC';
-
-export type LOCATION_TYPE =
-    | 'Village'
-    | 'City'
-    | 'BigCity'
-    | 'Municipality'
-    | 'Province'
-    | 'State'
-    | 'Country'
-    | 'Continent'
-    | 'World'
-    | 'Universe'
-    | 'Plane';
-
-export type GovernmentOrderByInput = 'id_ASC' | 'id_DESC';
-
-export type EtnicityOrderByInput = 'id_ASC' | 'id_DESC' | 'name_ASC' | 'name_DESC';
-
-export type CurrencyOrderByInput = 'id_ASC' | 'id_DESC' | 'name_ASC' | 'name_DESC' | 'sign_ASC' | 'sign_DESC';
-
-export type CharacterOrderByInput =
-    | 'id_ASC'
-    | 'id_DESC'
-    | 'firstName_ASC'
-    | 'firstName_DESC'
-    | 'lastName_ASC'
-    | 'lastName_DESC'
-    | 'type_ASC'
-    | 'type_DESC';
-
-export type SKILL =
-    | 'Acrobatics'
-    | 'AnimalHandling'
-    | 'Arcana'
-    | 'Athletics'
-    | 'Deception'
-    | 'History'
-    | 'Insight'
-    | 'Intimidation'
-    | 'Investigation'
-    | 'Medicine'
-    | 'Nature'
-    | 'Perception'
-    | 'Performance'
-    | 'Persuasion'
-    | 'Religion'
-    | 'SleightOfHand'
-    | 'Stealth'
-    | 'Survival';
-
-export type DENSITY_UNIT = 'SqKm' | 'Custom';
-
-export type RACE = 'Dragonborn' | 'Dwarf' | 'Elf' | 'Gnome' | 'HalfElf' | 'HalfOrc' | 'Halfling' | 'Human' | 'Tiefling';
-
-export type HTMLContentOrderByInput = 'id_ASC' | 'id_DESC' | 'content_ASC' | 'content_DESC';
-
-export type MutationType = 'CREATED' | 'UPDATED' | 'DELETED';
-
-export type LANGUAGE_SCRIPT = 'Common' | 'Dwarvish' | 'Elvish' | 'Infernal' | 'Celestial' | 'Draconic' | 'None';
+  | "id_ASC"
+  | "id_DESC"
+  | "imageSrc_ASC"
+  | "imageSrc_DESC"
+  | "description_ASC"
+  | "description_DESC";
 
 export type PopulationOrderByInput =
-    | 'id_ASC'
-    | 'id_DESC'
-    | 'inhabitants_ASC'
-    | 'inhabitants_DESC'
-    | 'density_ASC'
-    | 'density_DESC'
-    | 'densityUnit_ASC'
-    | 'densityUnit_DESC';
+  | "id_ASC"
+  | "id_DESC"
+  | "inhabitants_ASC"
+  | "inhabitants_DESC"
+  | "density_ASC"
+  | "density_DESC"
+  | "densityUnit_ASC"
+  | "densityUnit_DESC";
 
-export type ReligionOrderByInput = 'id_ASC' | 'id_DESC' | 'name_ASC' | 'name_DESC';
+export type EtnicityOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "name_ASC"
+  | "name_DESC";
 
-export type EconomyOrderByInput = 'id_ASC' | 'id_DESC';
+export type CHARACTER_TYPE = "PC" | "NPC";
 
-export type LanguageOrderByInput = 'id_ASC' | 'id_DESC' | 'name_ASC' | 'name_DESC' | 'script_ASC' | 'script_DESC';
+export type LOCATION_TYPE =
+  | "Village"
+  | "City"
+  | "BigCity"
+  | "Municipality"
+  | "Province"
+  | "State"
+  | "Country"
+  | "Continent"
+  | "World"
+  | "Universe"
+  | "Plane";
 
-export type CHARACTER_STATUS = 'ALIVE' | 'DEAD';
+export type EconomyOrderByInput = "id_ASC" | "id_DESC";
 
-export type CLIMATE = 'Tropical' | 'Dry' | 'Mild' | 'Continental' | 'Polar';
-
-export type AbilityOrderByInput =
-    | 'id_ASC'
-    | 'id_DESC'
-    | 'type_ASC'
-    | 'type_DESC'
-    | 'value_ASC'
-    | 'value_DESC'
-    | 'modifier_ASC'
-    | 'modifier_DESC';
-
-export type SkillOrderByInput = 'id_ASC' | 'id_DESC' | 'name_ASC' | 'name_DESC' | 'value_ASC' | 'value_DESC';
-
-export type LocationOrderByInput =
-    | 'id_ASC'
-    | 'id_DESC'
-    | 'type_ASC'
-    | 'type_DESC'
-    | 'name_ASC'
-    | 'name_DESC'
-    | 'parent_ASC'
-    | 'parent_DESC';
-
-export type CLASS =
-    | 'Barbarian'
-    | 'Bard'
-    | 'Cleric'
-    | 'Druid'
-    | 'Fighter'
-    | 'Monk'
-    | 'Paladin'
-    | 'Ranger'
-    | 'Rogue'
-    | 'Sorcerer'
-    | 'Warlock'
-    | 'Wizard';
+export type CharacterOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "firstName_ASC"
+  | "firstName_DESC"
+  | "lastName_ASC"
+  | "lastName_DESC"
+  | "type_ASC"
+  | "type_DESC";
 
 export type CharacterMetadataOrderByInput =
-    | 'id_ASC'
-    | 'id_DESC'
-    | 'status_ASC'
-    | 'status_DESC'
-    | 'race_ASC'
-    | 'race_DESC'
-    | 'class_ASC'
-    | 'class_DESC'
-    | 'alignment_ASC'
-    | 'alignment_DESC'
-    | 'height_ASC'
-    | 'height_DESC'
-    | 'weight_ASC'
-    | 'weight_DESC';
+  | "id_ASC"
+  | "id_DESC"
+  | "status_ASC"
+  | "status_DESC"
+  | "race_ASC"
+  | "race_DESC"
+  | "class_ASC"
+  | "class_DESC"
+  | "alignment_ASC"
+  | "alignment_DESC"
+  | "height_ASC"
+  | "height_DESC"
+  | "weight_ASC"
+  | "weight_DESC";
+
+export type HTMLContentOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "content_ASC"
+  | "content_DESC";
+
+export type SKILL =
+  | "Acrobatics"
+  | "AnimalHandling"
+  | "Arcana"
+  | "Athletics"
+  | "Deception"
+  | "History"
+  | "Insight"
+  | "Intimidation"
+  | "Investigation"
+  | "Medicine"
+  | "Nature"
+  | "Perception"
+  | "Performance"
+  | "Persuasion"
+  | "Religion"
+  | "SleightOfHand"
+  | "Stealth"
+  | "Survival";
+
+export type DENSITY_UNIT = "SqKm" | "Custom";
+
+export type RACE =
+  | "Dragonborn"
+  | "Dwarf"
+  | "Elf"
+  | "Gnome"
+  | "HalfElf"
+  | "HalfOrc"
+  | "Halfling"
+  | "Human"
+  | "Tiefling";
+
+export type ReligionOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "name_ASC"
+  | "name_DESC";
+
+export type MutationType = "CREATED" | "UPDATED" | "DELETED";
+
+export type LANGUAGE_SCRIPT =
+  | "Common"
+  | "Dwarvish"
+  | "Elvish"
+  | "Infernal"
+  | "Celestial"
+  | "Draconic"
+  | "None";
 
 export type LocationMetaDataOrderByInput =
-    | 'id_ASC'
-    | 'id_DESC'
-    | 'weather_ASC'
-    | 'weather_DESC'
-    | 'climate_ASC'
-    | 'climate_DESC';
+  | "id_ASC"
+  | "id_DESC"
+  | "weather_ASC"
+  | "weather_DESC"
+  | "climate_ASC"
+  | "climate_DESC";
+
+export type LanguageOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "name_ASC"
+  | "name_DESC"
+  | "script_ASC"
+  | "script_DESC";
+
+export type CurrencyOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "name_ASC"
+  | "name_DESC"
+  | "sign_ASC"
+  | "sign_DESC";
+
+export type LocationOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "type_ASC"
+  | "type_DESC"
+  | "name_ASC"
+  | "name_DESC"
+  | "parent_ASC"
+  | "parent_DESC";
+
+export type CHARACTER_STATUS = "ALIVE" | "DEAD";
+
+export type CLIMATE = "Tropical" | "Dry" | "Mild" | "Continental" | "Polar";
+
+export type ROLE = "PLAYER" | "ADMIN";
+
+export type AbilityOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "type_ASC"
+  | "type_DESC"
+  | "value_ASC"
+  | "value_DESC"
+  | "modifier_ASC"
+  | "modifier_DESC";
+
+export type SkillOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "name_ASC"
+  | "name_DESC"
+  | "value_ASC"
+  | "value_DESC";
+
+export type CLASS =
+  | "Barbarian"
+  | "Bard"
+  | "Cleric"
+  | "Druid"
+  | "Fighter"
+  | "Monk"
+  | "Paladin"
+  | "Ranger"
+  | "Rogue"
+  | "Sorcerer"
+  | "Warlock"
+  | "Wizard";
+
+export type CampaignOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "name_ASC"
+  | "name_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
+export type GovernmentOrderByInput = "id_ASC" | "id_DESC";
 
 export type UserOrderByInput =
-    | 'id_ASC'
-    | 'id_DESC'
-    | 'createdAt_ASC'
-    | 'createdAt_DESC'
-    | 'updatedAt_ASC'
-    | 'updatedAt_DESC'
-    | 'email_ASC'
-    | 'email_DESC'
-    | 'password_ASC'
-    | 'password_DESC'
-    | 'role_ASC'
-    | 'role_DESC'
-    | 'firstName_ASC'
-    | 'firstName_DESC'
-    | 'lastName_ASC'
-    | 'lastName_DESC'
-    | 'resetToken_ASC'
-    | 'resetToken_DESC'
-    | 'resetTokenExpiry_ASC'
-    | 'resetTokenExpiry_DESC';
+  | "id_ASC"
+  | "id_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC"
+  | "email_ASC"
+  | "email_DESC"
+  | "password_ASC"
+  | "password_DESC"
+  | "role_ASC"
+  | "role_DESC"
+  | "firstName_ASC"
+  | "firstName_DESC"
+  | "lastName_ASC"
+  | "lastName_DESC"
+  | "resetToken_ASC"
+  | "resetToken_DESC"
+  | "resetTokenExpiry_ASC"
+  | "resetTokenExpiry_DESC";
 
-export interface CharacterMetadataUpsertWithoutCharacterInput {
-    update: CharacterMetadataUpdateWithoutCharacterDataInput;
-    create: CharacterMetadataCreateWithoutCharacterInput;
+export interface CampaignUpdateOneRequiredWithoutPlayersInput {
+  create?: Maybe<CampaignCreateWithoutPlayersInput>;
+  update?: Maybe<CampaignUpdateWithoutPlayersDataInput>;
+  upsert?: Maybe<CampaignUpsertWithoutPlayersInput>;
+  connect?: Maybe<CampaignWhereUniqueInput>;
 }
 
 export type AbilityWhereUniqueInput = AtLeastOne<{
-    id: Maybe<ID_Input>;
+  id: Maybe<ID_Input>;
 }>;
 
-export interface LanguageUpdateWithWhereUniqueNestedInput {
-    where: LanguageWhereUniqueInput;
-    data: LanguageUpdateDataInput;
+export interface LanguageUpdateDataInput {
+  name?: Maybe<String>;
+  script?: Maybe<LANGUAGE_SCRIPT>;
+  location?: Maybe<LocationUpdateManyInput>;
 }
 
 export interface GovernmentPartyWhereInput {
-    id?: Maybe<ID_Input>;
-    id_not?: Maybe<ID_Input>;
-    id_in?: Maybe<ID_Input[] | ID_Input>;
-    id_not_in?: Maybe<ID_Input[] | ID_Input>;
-    id_lt?: Maybe<ID_Input>;
-    id_lte?: Maybe<ID_Input>;
-    id_gt?: Maybe<ID_Input>;
-    id_gte?: Maybe<ID_Input>;
-    id_contains?: Maybe<ID_Input>;
-    id_not_contains?: Maybe<ID_Input>;
-    id_starts_with?: Maybe<ID_Input>;
-    id_not_starts_with?: Maybe<ID_Input>;
-    id_ends_with?: Maybe<ID_Input>;
-    id_not_ends_with?: Maybe<ID_Input>;
-    leader?: Maybe<CharacterWhereInput>;
-    name?: Maybe<string>;
-    name_not?: Maybe<string>;
-    name_in?: Maybe<string[] | string>;
-    name_not_in?: Maybe<string[] | string>;
-    name_lt?: Maybe<string>;
-    name_lte?: Maybe<string>;
-    name_gt?: Maybe<string>;
-    name_gte?: Maybe<string>;
-    name_contains?: Maybe<string>;
-    name_not_contains?: Maybe<string>;
-    name_starts_with?: Maybe<string>;
-    name_not_starts_with?: Maybe<string>;
-    name_ends_with?: Maybe<string>;
-    name_not_ends_with?: Maybe<string>;
-    content_every?: Maybe<HTMLContentWhereInput>;
-    content_some?: Maybe<HTMLContentWhereInput>;
-    content_none?: Maybe<HTMLContentWhereInput>;
-    government?: Maybe<GovernmentWhereInput>;
-    AND?: Maybe<GovernmentPartyWhereInput[] | GovernmentPartyWhereInput>;
-    OR?: Maybe<GovernmentPartyWhereInput[] | GovernmentPartyWhereInput>;
-    NOT?: Maybe<GovernmentPartyWhereInput[] | GovernmentPartyWhereInput>;
-}
-
-export interface LanguageUpdateDataInput {
-    name?: Maybe<string>;
-    script?: Maybe<LANGUAGE_SCRIPT>;
-    location?: Maybe<LocationUpdateManyInput>;
-}
-
-export interface CurrencyWhereInput {
-    id?: Maybe<ID_Input>;
-    id_not?: Maybe<ID_Input>;
-    id_in?: Maybe<ID_Input[] | ID_Input>;
-    id_not_in?: Maybe<ID_Input[] | ID_Input>;
-    id_lt?: Maybe<ID_Input>;
-    id_lte?: Maybe<ID_Input>;
-    id_gt?: Maybe<ID_Input>;
-    id_gte?: Maybe<ID_Input>;
-    id_contains?: Maybe<ID_Input>;
-    id_not_contains?: Maybe<ID_Input>;
-    id_starts_with?: Maybe<ID_Input>;
-    id_not_starts_with?: Maybe<ID_Input>;
-    id_ends_with?: Maybe<ID_Input>;
-    id_not_ends_with?: Maybe<ID_Input>;
-    name?: Maybe<string>;
-    name_not?: Maybe<string>;
-    name_in?: Maybe<string[] | string>;
-    name_not_in?: Maybe<string[] | string>;
-    name_lt?: Maybe<string>;
-    name_lte?: Maybe<string>;
-    name_gt?: Maybe<string>;
-    name_gte?: Maybe<string>;
-    name_contains?: Maybe<string>;
-    name_not_contains?: Maybe<string>;
-    name_starts_with?: Maybe<string>;
-    name_not_starts_with?: Maybe<string>;
-    name_ends_with?: Maybe<string>;
-    name_not_ends_with?: Maybe<string>;
-    sign?: Maybe<string>;
-    sign_not?: Maybe<string>;
-    sign_in?: Maybe<string[] | string>;
-    sign_not_in?: Maybe<string[] | string>;
-    sign_lt?: Maybe<string>;
-    sign_lte?: Maybe<string>;
-    sign_gt?: Maybe<string>;
-    sign_gte?: Maybe<string>;
-    sign_contains?: Maybe<string>;
-    sign_not_contains?: Maybe<string>;
-    sign_starts_with?: Maybe<string>;
-    sign_not_starts_with?: Maybe<string>;
-    sign_ends_with?: Maybe<string>;
-    sign_not_ends_with?: Maybe<string>;
-    AND?: Maybe<CurrencyWhereInput[] | CurrencyWhereInput>;
-    OR?: Maybe<CurrencyWhereInput[] | CurrencyWhereInput>;
-    NOT?: Maybe<CurrencyWhereInput[] | CurrencyWhereInput>;
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  leader?: Maybe<CharacterWhereInput>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  content_every?: Maybe<HTMLContentWhereInput>;
+  content_some?: Maybe<HTMLContentWhereInput>;
+  content_none?: Maybe<HTMLContentWhereInput>;
+  government?: Maybe<GovernmentWhereInput>;
+  AND?: Maybe<GovernmentPartyWhereInput[] | GovernmentPartyWhereInput>;
+  OR?: Maybe<GovernmentPartyWhereInput[] | GovernmentPartyWhereInput>;
+  NOT?: Maybe<GovernmentPartyWhereInput[] | GovernmentPartyWhereInput>;
 }
 
 export interface LanguageUpsertWithWhereUniqueNestedInput {
-    where: LanguageWhereUniqueInput;
-    update: LanguageUpdateDataInput;
-    create: LanguageCreateInput;
+  where: LanguageWhereUniqueInput;
+  update: LanguageUpdateDataInput;
+  create: LanguageCreateInput;
 }
 
-export interface FlagWhereInput {
-    id?: Maybe<ID_Input>;
-    id_not?: Maybe<ID_Input>;
-    id_in?: Maybe<ID_Input[] | ID_Input>;
-    id_not_in?: Maybe<ID_Input[] | ID_Input>;
-    id_lt?: Maybe<ID_Input>;
-    id_lte?: Maybe<ID_Input>;
-    id_gt?: Maybe<ID_Input>;
-    id_gte?: Maybe<ID_Input>;
-    id_contains?: Maybe<ID_Input>;
-    id_not_contains?: Maybe<ID_Input>;
-    id_starts_with?: Maybe<ID_Input>;
-    id_not_starts_with?: Maybe<ID_Input>;
-    id_ends_with?: Maybe<ID_Input>;
-    id_not_ends_with?: Maybe<ID_Input>;
-    imageSrc?: Maybe<string>;
-    imageSrc_not?: Maybe<string>;
-    imageSrc_in?: Maybe<string[] | string>;
-    imageSrc_not_in?: Maybe<string[] | string>;
-    imageSrc_lt?: Maybe<string>;
-    imageSrc_lte?: Maybe<string>;
-    imageSrc_gt?: Maybe<string>;
-    imageSrc_gte?: Maybe<string>;
-    imageSrc_contains?: Maybe<string>;
-    imageSrc_not_contains?: Maybe<string>;
-    imageSrc_starts_with?: Maybe<string>;
-    imageSrc_not_starts_with?: Maybe<string>;
-    imageSrc_ends_with?: Maybe<string>;
-    imageSrc_not_ends_with?: Maybe<string>;
-    description?: Maybe<string>;
-    description_not?: Maybe<string>;
-    description_in?: Maybe<string[] | string>;
-    description_not_in?: Maybe<string[] | string>;
-    description_lt?: Maybe<string>;
-    description_lte?: Maybe<string>;
-    description_gt?: Maybe<string>;
-    description_gte?: Maybe<string>;
-    description_contains?: Maybe<string>;
-    description_not_contains?: Maybe<string>;
-    description_starts_with?: Maybe<string>;
-    description_not_starts_with?: Maybe<string>;
-    description_ends_with?: Maybe<string>;
-    description_not_ends_with?: Maybe<string>;
-    location?: Maybe<LocationWhereInput>;
-    AND?: Maybe<FlagWhereInput[] | FlagWhereInput>;
-    OR?: Maybe<FlagWhereInput[] | FlagWhereInput>;
-    NOT?: Maybe<FlagWhereInput[] | FlagWhereInput>;
-}
-
-export interface HTMLContentCreateInput {
-    id?: Maybe<ID_Input>;
-    content: string;
-    invisibleTo?: Maybe<CharacterCreateManyInput>;
-}
-
-export interface CampaignCreateInput {
-    id?: Maybe<ID_Input>;
-    name: string;
-    locations?: Maybe<LocationCreateManyWithoutCampaignInput>;
-    players?: Maybe<CharacterCreateManyWithoutCampaignInput>;
-}
-
-export interface CharacterCreateManyInput {
-    create?: Maybe<CharacterCreateInput[] | CharacterCreateInput>;
-    connect?: Maybe<CharacterWhereUniqueInput[] | CharacterWhereUniqueInput>;
+export interface CurrencyWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  sign?: Maybe<String>;
+  sign_not?: Maybe<String>;
+  sign_in?: Maybe<String[] | String>;
+  sign_not_in?: Maybe<String[] | String>;
+  sign_lt?: Maybe<String>;
+  sign_lte?: Maybe<String>;
+  sign_gt?: Maybe<String>;
+  sign_gte?: Maybe<String>;
+  sign_contains?: Maybe<String>;
+  sign_not_contains?: Maybe<String>;
+  sign_starts_with?: Maybe<String>;
+  sign_not_starts_with?: Maybe<String>;
+  sign_ends_with?: Maybe<String>;
+  sign_not_ends_with?: Maybe<String>;
+  AND?: Maybe<CurrencyWhereInput[] | CurrencyWhereInput>;
+  OR?: Maybe<CurrencyWhereInput[] | CurrencyWhereInput>;
+  NOT?: Maybe<CurrencyWhereInput[] | CurrencyWhereInput>;
 }
 
 export interface LanguageScalarWhereInput {
-    id?: Maybe<ID_Input>;
-    id_not?: Maybe<ID_Input>;
-    id_in?: Maybe<ID_Input[] | ID_Input>;
-    id_not_in?: Maybe<ID_Input[] | ID_Input>;
-    id_lt?: Maybe<ID_Input>;
-    id_lte?: Maybe<ID_Input>;
-    id_gt?: Maybe<ID_Input>;
-    id_gte?: Maybe<ID_Input>;
-    id_contains?: Maybe<ID_Input>;
-    id_not_contains?: Maybe<ID_Input>;
-    id_starts_with?: Maybe<ID_Input>;
-    id_not_starts_with?: Maybe<ID_Input>;
-    id_ends_with?: Maybe<ID_Input>;
-    id_not_ends_with?: Maybe<ID_Input>;
-    name?: Maybe<string>;
-    name_not?: Maybe<string>;
-    name_in?: Maybe<string[] | string>;
-    name_not_in?: Maybe<string[] | string>;
-    name_lt?: Maybe<string>;
-    name_lte?: Maybe<string>;
-    name_gt?: Maybe<string>;
-    name_gte?: Maybe<string>;
-    name_contains?: Maybe<string>;
-    name_not_contains?: Maybe<string>;
-    name_starts_with?: Maybe<string>;
-    name_not_starts_with?: Maybe<string>;
-    name_ends_with?: Maybe<string>;
-    name_not_ends_with?: Maybe<string>;
-    script?: Maybe<LANGUAGE_SCRIPT>;
-    script_not?: Maybe<LANGUAGE_SCRIPT>;
-    script_in?: Maybe<LANGUAGE_SCRIPT[] | LANGUAGE_SCRIPT>;
-    script_not_in?: Maybe<LANGUAGE_SCRIPT[] | LANGUAGE_SCRIPT>;
-    AND?: Maybe<LanguageScalarWhereInput[] | LanguageScalarWhereInput>;
-    OR?: Maybe<LanguageScalarWhereInput[] | LanguageScalarWhereInput>;
-    NOT?: Maybe<LanguageScalarWhereInput[] | LanguageScalarWhereInput>;
-}
-
-export interface EtnicityCreateManyInput {
-    create?: Maybe<EtnicityCreateInput[] | EtnicityCreateInput>;
-    connect?: Maybe<EtnicityWhereUniqueInput[] | EtnicityWhereUniqueInput>;
-}
-
-export interface SkillSubscriptionWhereInput {
-    mutation_in?: Maybe<MutationType[] | MutationType>;
-    updatedFields_contains?: Maybe<string>;
-    updatedFields_contains_every?: Maybe<string[] | string>;
-    updatedFields_contains_some?: Maybe<string[] | string>;
-    node?: Maybe<SkillWhereInput>;
-    AND?: Maybe<SkillSubscriptionWhereInput[] | SkillSubscriptionWhereInput>;
-    OR?: Maybe<SkillSubscriptionWhereInput[] | SkillSubscriptionWhereInput>;
-    NOT?: Maybe<SkillSubscriptionWhereInput[] | SkillSubscriptionWhereInput>;
-}
-
-export interface EtnicityCreateInput {
-    id?: Maybe<ID_Input>;
-    name: string;
-}
-
-export interface HTMLContentWhereInput {
-    id?: Maybe<ID_Input>;
-    id_not?: Maybe<ID_Input>;
-    id_in?: Maybe<ID_Input[] | ID_Input>;
-    id_not_in?: Maybe<ID_Input[] | ID_Input>;
-    id_lt?: Maybe<ID_Input>;
-    id_lte?: Maybe<ID_Input>;
-    id_gt?: Maybe<ID_Input>;
-    id_gte?: Maybe<ID_Input>;
-    id_contains?: Maybe<ID_Input>;
-    id_not_contains?: Maybe<ID_Input>;
-    id_starts_with?: Maybe<ID_Input>;
-    id_not_starts_with?: Maybe<ID_Input>;
-    id_ends_with?: Maybe<ID_Input>;
-    id_not_ends_with?: Maybe<ID_Input>;
-    content?: Maybe<string>;
-    content_not?: Maybe<string>;
-    content_in?: Maybe<string[] | string>;
-    content_not_in?: Maybe<string[] | string>;
-    content_lt?: Maybe<string>;
-    content_lte?: Maybe<string>;
-    content_gt?: Maybe<string>;
-    content_gte?: Maybe<string>;
-    content_contains?: Maybe<string>;
-    content_not_contains?: Maybe<string>;
-    content_starts_with?: Maybe<string>;
-    content_not_starts_with?: Maybe<string>;
-    content_ends_with?: Maybe<string>;
-    content_not_ends_with?: Maybe<string>;
-    invisibleTo_every?: Maybe<CharacterWhereInput>;
-    invisibleTo_some?: Maybe<CharacterWhereInput>;
-    invisibleTo_none?: Maybe<CharacterWhereInput>;
-    AND?: Maybe<HTMLContentWhereInput[] | HTMLContentWhereInput>;
-    OR?: Maybe<HTMLContentWhereInput[] | HTMLContentWhereInput>;
-    NOT?: Maybe<HTMLContentWhereInput[] | HTMLContentWhereInput>;
-}
-
-export interface FlagCreateManyInput {
-    create?: Maybe<FlagCreateInput[] | FlagCreateInput>;
-    connect?: Maybe<FlagWhereUniqueInput[] | FlagWhereUniqueInput>;
-}
-
-export interface ReligionWhereInput {
-    id?: Maybe<ID_Input>;
-    id_not?: Maybe<ID_Input>;
-    id_in?: Maybe<ID_Input[] | ID_Input>;
-    id_not_in?: Maybe<ID_Input[] | ID_Input>;
-    id_lt?: Maybe<ID_Input>;
-    id_lte?: Maybe<ID_Input>;
-    id_gt?: Maybe<ID_Input>;
-    id_gte?: Maybe<ID_Input>;
-    id_contains?: Maybe<ID_Input>;
-    id_not_contains?: Maybe<ID_Input>;
-    id_starts_with?: Maybe<ID_Input>;
-    id_not_starts_with?: Maybe<ID_Input>;
-    id_ends_with?: Maybe<ID_Input>;
-    id_not_ends_with?: Maybe<ID_Input>;
-    name?: Maybe<string>;
-    name_not?: Maybe<string>;
-    name_in?: Maybe<string[] | string>;
-    name_not_in?: Maybe<string[] | string>;
-    name_lt?: Maybe<string>;
-    name_lte?: Maybe<string>;
-    name_gt?: Maybe<string>;
-    name_gte?: Maybe<string>;
-    name_contains?: Maybe<string>;
-    name_not_contains?: Maybe<string>;
-    name_starts_with?: Maybe<string>;
-    name_not_starts_with?: Maybe<string>;
-    name_ends_with?: Maybe<string>;
-    name_not_ends_with?: Maybe<string>;
-    deity?: Maybe<CharacterWhereInput>;
-    content_every?: Maybe<HTMLContentWhereInput>;
-    content_some?: Maybe<HTMLContentWhereInput>;
-    content_none?: Maybe<HTMLContentWhereInput>;
-    location?: Maybe<LocationWhereInput>;
-    AND?: Maybe<ReligionWhereInput[] | ReligionWhereInput>;
-    OR?: Maybe<ReligionWhereInput[] | ReligionWhereInput>;
-    NOT?: Maybe<ReligionWhereInput[] | ReligionWhereInput>;
-}
-
-export interface FlagCreateInput {
-    id?: Maybe<ID_Input>;
-    imageSrc?: Maybe<string>;
-    description: string;
-    location?: Maybe<LocationCreateOneInput>;
-}
-
-export interface LanguageWhereInput {
-    id?: Maybe<ID_Input>;
-    id_not?: Maybe<ID_Input>;
-    id_in?: Maybe<ID_Input[] | ID_Input>;
-    id_not_in?: Maybe<ID_Input[] | ID_Input>;
-    id_lt?: Maybe<ID_Input>;
-    id_lte?: Maybe<ID_Input>;
-    id_gt?: Maybe<ID_Input>;
-    id_gte?: Maybe<ID_Input>;
-    id_contains?: Maybe<ID_Input>;
-    id_not_contains?: Maybe<ID_Input>;
-    id_starts_with?: Maybe<ID_Input>;
-    id_not_starts_with?: Maybe<ID_Input>;
-    id_ends_with?: Maybe<ID_Input>;
-    id_not_ends_with?: Maybe<ID_Input>;
-    name?: Maybe<string>;
-    name_not?: Maybe<string>;
-    name_in?: Maybe<string[] | string>;
-    name_not_in?: Maybe<string[] | string>;
-    name_lt?: Maybe<string>;
-    name_lte?: Maybe<string>;
-    name_gt?: Maybe<string>;
-    name_gte?: Maybe<string>;
-    name_contains?: Maybe<string>;
-    name_not_contains?: Maybe<string>;
-    name_starts_with?: Maybe<string>;
-    name_not_starts_with?: Maybe<string>;
-    name_ends_with?: Maybe<string>;
-    name_not_ends_with?: Maybe<string>;
-    script?: Maybe<LANGUAGE_SCRIPT>;
-    script_not?: Maybe<LANGUAGE_SCRIPT>;
-    script_in?: Maybe<LANGUAGE_SCRIPT[] | LANGUAGE_SCRIPT>;
-    script_not_in?: Maybe<LANGUAGE_SCRIPT[] | LANGUAGE_SCRIPT>;
-    location_every?: Maybe<LocationWhereInput>;
-    location_some?: Maybe<LocationWhereInput>;
-    location_none?: Maybe<LocationWhereInput>;
-    AND?: Maybe<LanguageWhereInput[] | LanguageWhereInput>;
-    OR?: Maybe<LanguageWhereInput[] | LanguageWhereInput>;
-    NOT?: Maybe<LanguageWhereInput[] | LanguageWhereInput>;
-}
-
-export interface EconomyCreateOneInput {
-    create?: Maybe<EconomyCreateInput>;
-    connect?: Maybe<EconomyWhereUniqueInput>;
-}
-
-export interface PopulationWhereInput {
-    id?: Maybe<ID_Input>;
-    id_not?: Maybe<ID_Input>;
-    id_in?: Maybe<ID_Input[] | ID_Input>;
-    id_not_in?: Maybe<ID_Input[] | ID_Input>;
-    id_lt?: Maybe<ID_Input>;
-    id_lte?: Maybe<ID_Input>;
-    id_gt?: Maybe<ID_Input>;
-    id_gte?: Maybe<ID_Input>;
-    id_contains?: Maybe<ID_Input>;
-    id_not_contains?: Maybe<ID_Input>;
-    id_starts_with?: Maybe<ID_Input>;
-    id_not_starts_with?: Maybe<ID_Input>;
-    id_ends_with?: Maybe<ID_Input>;
-    id_not_ends_with?: Maybe<ID_Input>;
-    location?: Maybe<LocationWhereInput>;
-    inhabitants?: Maybe<Int>;
-    inhabitants_not?: Maybe<Int>;
-    inhabitants_in?: Maybe<Int[] | Int>;
-    inhabitants_not_in?: Maybe<Int[] | Int>;
-    inhabitants_lt?: Maybe<Int>;
-    inhabitants_lte?: Maybe<Int>;
-    inhabitants_gt?: Maybe<Int>;
-    inhabitants_gte?: Maybe<Int>;
-    density?: Maybe<Int>;
-    density_not?: Maybe<Int>;
-    density_in?: Maybe<Int[] | Int>;
-    density_not_in?: Maybe<Int[] | Int>;
-    density_lt?: Maybe<Int>;
-    density_lte?: Maybe<Int>;
-    density_gt?: Maybe<Int>;
-    density_gte?: Maybe<Int>;
-    densityUnit?: Maybe<DENSITY_UNIT>;
-    densityUnit_not?: Maybe<DENSITY_UNIT>;
-    densityUnit_in?: Maybe<DENSITY_UNIT[] | DENSITY_UNIT>;
-    densityUnit_not_in?: Maybe<DENSITY_UNIT[] | DENSITY_UNIT>;
-    AND?: Maybe<PopulationWhereInput[] | PopulationWhereInput>;
-    OR?: Maybe<PopulationWhereInput[] | PopulationWhereInput>;
-    NOT?: Maybe<PopulationWhereInput[] | PopulationWhereInput>;
-}
-
-export interface EconomyCreateInput {
-    id?: Maybe<ID_Input>;
-    currency?: Maybe<CurrencyCreateOneInput>;
-    location?: Maybe<LocationCreateManyInput>;
-}
-
-export interface LanguageSubscriptionWhereInput {
-    mutation_in?: Maybe<MutationType[] | MutationType>;
-    updatedFields_contains?: Maybe<string>;
-    updatedFields_contains_every?: Maybe<string[] | string>;
-    updatedFields_contains_some?: Maybe<string[] | string>;
-    node?: Maybe<LanguageWhereInput>;
-    AND?: Maybe<LanguageSubscriptionWhereInput[] | LanguageSubscriptionWhereInput>;
-    OR?: Maybe<LanguageSubscriptionWhereInput[] | LanguageSubscriptionWhereInput>;
-    NOT?: Maybe<LanguageSubscriptionWhereInput[] | LanguageSubscriptionWhereInput>;
-}
-
-export interface CurrencyCreateOneInput {
-    create?: Maybe<CurrencyCreateInput>;
-    connect?: Maybe<CurrencyWhereUniqueInput>;
-}
-
-export interface HTMLContentSubscriptionWhereInput {
-    mutation_in?: Maybe<MutationType[] | MutationType>;
-    updatedFields_contains?: Maybe<string>;
-    updatedFields_contains_every?: Maybe<string[] | string>;
-    updatedFields_contains_some?: Maybe<string[] | string>;
-    node?: Maybe<HTMLContentWhereInput>;
-    AND?: Maybe<HTMLContentSubscriptionWhereInput[] | HTMLContentSubscriptionWhereInput>;
-    OR?: Maybe<HTMLContentSubscriptionWhereInput[] | HTMLContentSubscriptionWhereInput>;
-    NOT?: Maybe<HTMLContentSubscriptionWhereInput[] | HTMLContentSubscriptionWhereInput>;
-}
-
-export interface CurrencyCreateInput {
-    id?: Maybe<ID_Input>;
-    name: string;
-    sign?: Maybe<string>;
-}
-
-export interface GovernmentSubscriptionWhereInput {
-    mutation_in?: Maybe<MutationType[] | MutationType>;
-    updatedFields_contains?: Maybe<string>;
-    updatedFields_contains_every?: Maybe<string[] | string>;
-    updatedFields_contains_some?: Maybe<string[] | string>;
-    node?: Maybe<GovernmentWhereInput>;
-    AND?: Maybe<GovernmentSubscriptionWhereInput[] | GovernmentSubscriptionWhereInput>;
-    OR?: Maybe<GovernmentSubscriptionWhereInput[] | GovernmentSubscriptionWhereInput>;
-    NOT?: Maybe<GovernmentSubscriptionWhereInput[] | GovernmentSubscriptionWhereInput>;
-}
-
-export interface GovernmentCreateOneInput {
-    create?: Maybe<GovernmentCreateInput>;
-    connect?: Maybe<GovernmentWhereUniqueInput>;
-}
-
-export interface EtnicitySubscriptionWhereInput {
-    mutation_in?: Maybe<MutationType[] | MutationType>;
-    updatedFields_contains?: Maybe<string>;
-    updatedFields_contains_every?: Maybe<string[] | string>;
-    updatedFields_contains_some?: Maybe<string[] | string>;
-    node?: Maybe<EtnicityWhereInput>;
-    AND?: Maybe<EtnicitySubscriptionWhereInput[] | EtnicitySubscriptionWhereInput>;
-    OR?: Maybe<EtnicitySubscriptionWhereInput[] | EtnicitySubscriptionWhereInput>;
-    NOT?: Maybe<EtnicitySubscriptionWhereInput[] | EtnicitySubscriptionWhereInput>;
-}
-
-export interface GovernmentCreateInput {
-    id?: Maybe<ID_Input>;
-    leader?: Maybe<CharacterCreateOneInput>;
-    parties?: Maybe<GovernmentPartyCreateManyWithoutGovernmentInput>;
-    content?: Maybe<HTMLContentCreateManyInput>;
-}
-
-export interface CurrencySubscriptionWhereInput {
-    mutation_in?: Maybe<MutationType[] | MutationType>;
-    updatedFields_contains?: Maybe<string>;
-    updatedFields_contains_every?: Maybe<string[] | string>;
-    updatedFields_contains_some?: Maybe<string[] | string>;
-    node?: Maybe<CurrencyWhereInput>;
-    AND?: Maybe<CurrencySubscriptionWhereInput[] | CurrencySubscriptionWhereInput>;
-    OR?: Maybe<CurrencySubscriptionWhereInput[] | CurrencySubscriptionWhereInput>;
-    NOT?: Maybe<CurrencySubscriptionWhereInput[] | CurrencySubscriptionWhereInput>;
-}
-
-export interface GovernmentPartyCreateManyWithoutGovernmentInput {
-    create?: Maybe<GovernmentPartyCreateWithoutGovernmentInput[] | GovernmentPartyCreateWithoutGovernmentInput>;
-    connect?: Maybe<GovernmentPartyWhereUniqueInput[] | GovernmentPartyWhereUniqueInput>;
-}
-
-export interface CharacterSubscriptionWhereInput {
-    mutation_in?: Maybe<MutationType[] | MutationType>;
-    updatedFields_contains?: Maybe<string>;
-    updatedFields_contains_every?: Maybe<string[] | string>;
-    updatedFields_contains_some?: Maybe<string[] | string>;
-    node?: Maybe<CharacterWhereInput>;
-    AND?: Maybe<CharacterSubscriptionWhereInput[] | CharacterSubscriptionWhereInput>;
-    OR?: Maybe<CharacterSubscriptionWhereInput[] | CharacterSubscriptionWhereInput>;
-    NOT?: Maybe<CharacterSubscriptionWhereInput[] | CharacterSubscriptionWhereInput>;
-}
-
-export interface GovernmentPartyCreateWithoutGovernmentInput {
-    id?: Maybe<ID_Input>;
-    leader?: Maybe<CharacterCreateOneInput>;
-    name: string;
-    content?: Maybe<HTMLContentCreateManyInput>;
-}
-
-export interface AbilitySubscriptionWhereInput {
-    mutation_in?: Maybe<MutationType[] | MutationType>;
-    updatedFields_contains?: Maybe<string>;
-    updatedFields_contains_every?: Maybe<string[] | string>;
-    updatedFields_contains_some?: Maybe<string[] | string>;
-    node?: Maybe<AbilityWhereInput>;
-    AND?: Maybe<AbilitySubscriptionWhereInput[] | AbilitySubscriptionWhereInput>;
-    OR?: Maybe<AbilitySubscriptionWhereInput[] | AbilitySubscriptionWhereInput>;
-    NOT?: Maybe<AbilitySubscriptionWhereInput[] | AbilitySubscriptionWhereInput>;
-}
-
-export interface CampaignCreateOneWithoutLocationsInput {
-    create?: Maybe<CampaignCreateWithoutLocationsInput>;
-    connect?: Maybe<CampaignWhereUniqueInput>;
-}
-
-export interface CampaignWhereInput {
-    id?: Maybe<ID_Input>;
-    id_not?: Maybe<ID_Input>;
-    id_in?: Maybe<ID_Input[] | ID_Input>;
-    id_not_in?: Maybe<ID_Input[] | ID_Input>;
-    id_lt?: Maybe<ID_Input>;
-    id_lte?: Maybe<ID_Input>;
-    id_gt?: Maybe<ID_Input>;
-    id_gte?: Maybe<ID_Input>;
-    id_contains?: Maybe<ID_Input>;
-    id_not_contains?: Maybe<ID_Input>;
-    id_starts_with?: Maybe<ID_Input>;
-    id_not_starts_with?: Maybe<ID_Input>;
-    id_ends_with?: Maybe<ID_Input>;
-    id_not_ends_with?: Maybe<ID_Input>;
-    name?: Maybe<string>;
-    name_not?: Maybe<string>;
-    name_in?: Maybe<string[] | string>;
-    name_not_in?: Maybe<string[] | string>;
-    name_lt?: Maybe<string>;
-    name_lte?: Maybe<string>;
-    name_gt?: Maybe<string>;
-    name_gte?: Maybe<string>;
-    name_contains?: Maybe<string>;
-    name_not_contains?: Maybe<string>;
-    name_starts_with?: Maybe<string>;
-    name_not_starts_with?: Maybe<string>;
-    name_ends_with?: Maybe<string>;
-    name_not_ends_with?: Maybe<string>;
-    createdAt?: Maybe<DateTimeInput>;
-    createdAt_not?: Maybe<DateTimeInput>;
-    createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-    createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-    createdAt_lt?: Maybe<DateTimeInput>;
-    createdAt_lte?: Maybe<DateTimeInput>;
-    createdAt_gt?: Maybe<DateTimeInput>;
-    createdAt_gte?: Maybe<DateTimeInput>;
-    updatedAt?: Maybe<DateTimeInput>;
-    updatedAt_not?: Maybe<DateTimeInput>;
-    updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-    updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-    updatedAt_lt?: Maybe<DateTimeInput>;
-    updatedAt_lte?: Maybe<DateTimeInput>;
-    updatedAt_gt?: Maybe<DateTimeInput>;
-    updatedAt_gte?: Maybe<DateTimeInput>;
-    locations_every?: Maybe<LocationWhereInput>;
-    locations_some?: Maybe<LocationWhereInput>;
-    locations_none?: Maybe<LocationWhereInput>;
-    players_every?: Maybe<CharacterWhereInput>;
-    players_some?: Maybe<CharacterWhereInput>;
-    players_none?: Maybe<CharacterWhereInput>;
-    AND?: Maybe<CampaignWhereInput[] | CampaignWhereInput>;
-    OR?: Maybe<CampaignWhereInput[] | CampaignWhereInput>;
-    NOT?: Maybe<CampaignWhereInput[] | CampaignWhereInput>;
-}
-
-export interface CampaignCreateWithoutLocationsInput {
-    id?: Maybe<ID_Input>;
-    name: string;
-    players?: Maybe<CharacterCreateManyWithoutCampaignInput>;
-}
-
-export interface CampaignUpdateManyDataInput {
-    name?: Maybe<string>;
-}
-
-export interface CharacterCreateManyWithoutCampaignInput {
-    create?: Maybe<CharacterCreateWithoutCampaignInput[] | CharacterCreateWithoutCampaignInput>;
-    connect?: Maybe<CharacterWhereUniqueInput[] | CharacterWhereUniqueInput>;
-}
-
-export type CharacterWhereUniqueInput = AtLeastOne<{
-    id: Maybe<ID_Input>;
-}>;
-
-export interface CharacterCreateWithoutCampaignInput {
-    id?: Maybe<ID_Input>;
-    firstName: string;
-    lastName?: Maybe<string>;
-    type: CHARACTER_TYPE;
-    metadata?: Maybe<CharacterMetadataCreateOneWithoutCharacterInput>;
-}
-
-export interface CampaignUpsertWithWhereUniqueNestedInput {
-    where: CampaignWhereUniqueInput;
-    update: CampaignUpdateDataInput;
-    create: CampaignCreateInput;
-}
-
-export interface AbilityUpdateInput {
-    type?: Maybe<ABILITY_TYPE>;
-    value?: Maybe<Int>;
-    modifier?: Maybe<Int>;
-    character?: Maybe<CharacterUpdateOneRequiredInput>;
-}
-
-export type CharacterMetadataWhereUniqueInput = AtLeastOne<{
-    id: Maybe<ID_Input>;
-}>;
-
-export interface CharacterUpdateOneRequiredInput {
-    create?: Maybe<CharacterCreateInput>;
-    update?: Maybe<CharacterUpdateDataInput>;
-    upsert?: Maybe<CharacterUpsertNestedInput>;
-    connect?: Maybe<CharacterWhereUniqueInput>;
-}
-
-export interface CampaignUpdateWithWhereUniqueNestedInput {
-    where: CampaignWhereUniqueInput;
-    data: CampaignUpdateDataInput;
-}
-
-export interface CharacterUpdateDataInput {
-    firstName?: Maybe<string>;
-    lastName?: Maybe<string>;
-    type?: Maybe<CHARACTER_TYPE>;
-    metadata?: Maybe<CharacterMetadataUpdateOneWithoutCharacterInput>;
-    campaign?: Maybe<CampaignUpdateOneRequiredWithoutPlayersInput>;
-}
-
-export interface UserUpdateInput {
-    email?: Maybe<string>;
-    password?: Maybe<string>;
-    role?: Maybe<ROLE>;
-    campaigns?: Maybe<CampaignUpdateManyInput>;
-    firstName?: Maybe<string>;
-    lastName?: Maybe<string>;
-    characters?: Maybe<CharacterUpdateManyInput>;
-    resetToken?: Maybe<string>;
-    resetTokenExpiry?: Maybe<string>;
-}
-
-export interface CharacterMetadataUpdateOneWithoutCharacterInput {
-    create?: Maybe<CharacterMetadataCreateWithoutCharacterInput>;
-    update?: Maybe<CharacterMetadataUpdateWithoutCharacterDataInput>;
-    upsert?: Maybe<CharacterMetadataUpsertWithoutCharacterInput>;
-    delete?: Maybe<boolean>;
-    disconnect?: Maybe<boolean>;
-    connect?: Maybe<CharacterMetadataWhereUniqueInput>;
-}
-
-export interface CharacterMetadataWhereInput {
-    id?: Maybe<ID_Input>;
-    id_not?: Maybe<ID_Input>;
-    id_in?: Maybe<ID_Input[] | ID_Input>;
-    id_not_in?: Maybe<ID_Input[] | ID_Input>;
-    id_lt?: Maybe<ID_Input>;
-    id_lte?: Maybe<ID_Input>;
-    id_gt?: Maybe<ID_Input>;
-    id_gte?: Maybe<ID_Input>;
-    id_contains?: Maybe<ID_Input>;
-    id_not_contains?: Maybe<ID_Input>;
-    id_starts_with?: Maybe<ID_Input>;
-    id_not_starts_with?: Maybe<ID_Input>;
-    id_ends_with?: Maybe<ID_Input>;
-    id_not_ends_with?: Maybe<ID_Input>;
-    character?: Maybe<CharacterWhereInput>;
-    abilities_every?: Maybe<AbilityWhereInput>;
-    abilities_some?: Maybe<AbilityWhereInput>;
-    abilities_none?: Maybe<AbilityWhereInput>;
-    skills_every?: Maybe<SkillWhereInput>;
-    skills_some?: Maybe<SkillWhereInput>;
-    skills_none?: Maybe<SkillWhereInput>;
-    status?: Maybe<CHARACTER_STATUS>;
-    status_not?: Maybe<CHARACTER_STATUS>;
-    status_in?: Maybe<CHARACTER_STATUS[] | CHARACTER_STATUS>;
-    status_not_in?: Maybe<CHARACTER_STATUS[] | CHARACTER_STATUS>;
-    race?: Maybe<RACE>;
-    race_not?: Maybe<RACE>;
-    race_in?: Maybe<RACE[] | RACE>;
-    race_not_in?: Maybe<RACE[] | RACE>;
-    class?: Maybe<CLASS>;
-    class_not?: Maybe<CLASS>;
-    class_in?: Maybe<CLASS[] | CLASS>;
-    class_not_in?: Maybe<CLASS[] | CLASS>;
-    alignment?: Maybe<ALIGNMENT>;
-    alignment_not?: Maybe<ALIGNMENT>;
-    alignment_in?: Maybe<ALIGNMENT[] | ALIGNMENT>;
-    alignment_not_in?: Maybe<ALIGNMENT[] | ALIGNMENT>;
-    height?: Maybe<Int>;
-    height_not?: Maybe<Int>;
-    height_in?: Maybe<Int[] | Int>;
-    height_not_in?: Maybe<Int[] | Int>;
-    height_lt?: Maybe<Int>;
-    height_lte?: Maybe<Int>;
-    height_gt?: Maybe<Int>;
-    height_gte?: Maybe<Int>;
-    weight?: Maybe<Int>;
-    weight_not?: Maybe<Int>;
-    weight_in?: Maybe<Int[] | Int>;
-    weight_not_in?: Maybe<Int[] | Int>;
-    weight_lt?: Maybe<Int>;
-    weight_lte?: Maybe<Int>;
-    weight_gt?: Maybe<Int>;
-    weight_gte?: Maybe<Int>;
-    AND?: Maybe<CharacterMetadataWhereInput[] | CharacterMetadataWhereInput>;
-    OR?: Maybe<CharacterMetadataWhereInput[] | CharacterMetadataWhereInput>;
-    NOT?: Maybe<CharacterMetadataWhereInput[] | CharacterMetadataWhereInput>;
-}
-
-export interface CharacterMetadataUpdateWithoutCharacterDataInput {
-    abilities?: Maybe<AbilityUpdateManyInput>;
-    skills?: Maybe<SkillUpdateManyInput>;
-    status?: Maybe<CHARACTER_STATUS>;
-    race?: Maybe<RACE>;
-    class?: Maybe<CLASS>;
-    alignment?: Maybe<ALIGNMENT>;
-    height?: Maybe<Int>;
-    weight?: Maybe<Int>;
-}
-
-export interface UserCreateInput {
-    id?: Maybe<ID_Input>;
-    email: string;
-    password: string;
-    role?: Maybe<ROLE>;
-    campaigns?: Maybe<CampaignCreateManyInput>;
-    firstName?: Maybe<string>;
-    lastName?: Maybe<string>;
-    characters?: Maybe<CharacterCreateManyInput>;
-    resetToken?: Maybe<string>;
-    resetTokenExpiry?: Maybe<string>;
-}
-
-export interface AbilityUpdateManyInput {
-    create?: Maybe<AbilityCreateInput[] | AbilityCreateInput>;
-    update?: Maybe<AbilityUpdateWithWhereUniqueNestedInput[] | AbilityUpdateWithWhereUniqueNestedInput>;
-    upsert?: Maybe<AbilityUpsertWithWhereUniqueNestedInput[] | AbilityUpsertWithWhereUniqueNestedInput>;
-    delete?: Maybe<AbilityWhereUniqueInput[] | AbilityWhereUniqueInput>;
-    connect?: Maybe<AbilityWhereUniqueInput[] | AbilityWhereUniqueInput>;
-    set?: Maybe<AbilityWhereUniqueInput[] | AbilityWhereUniqueInput>;
-    disconnect?: Maybe<AbilityWhereUniqueInput[] | AbilityWhereUniqueInput>;
-    deleteMany?: Maybe<AbilityScalarWhereInput[] | AbilityScalarWhereInput>;
-    updateMany?: Maybe<AbilityUpdateManyWithWhereNestedInput[] | AbilityUpdateManyWithWhereNestedInput>;
-}
-
-export type EconomyWhereUniqueInput = AtLeastOne<{
-    id: Maybe<ID_Input>;
-}>;
-
-export interface AbilityUpdateWithWhereUniqueNestedInput {
-    where: AbilityWhereUniqueInput;
-    data: AbilityUpdateDataInput;
-}
-
-export interface SkillUpdateInput {
-    name?: Maybe<SKILL>;
-    value?: Maybe<Int>;
-    character?: Maybe<CharacterUpdateOneRequiredInput>;
-}
-
-export interface AbilityUpdateDataInput {
-    type?: Maybe<ABILITY_TYPE>;
-    value?: Maybe<Int>;
-    modifier?: Maybe<Int>;
-    character?: Maybe<CharacterUpdateOneRequiredInput>;
-}
-
-export interface ReligionUpdateInput {
-    name?: Maybe<string>;
-    deity?: Maybe<CharacterUpdateOneInput>;
-    content?: Maybe<HTMLContentUpdateManyInput>;
-    location?: Maybe<LocationUpdateOneInput>;
-}
-
-export interface AbilityUpsertWithWhereUniqueNestedInput {
-    where: AbilityWhereUniqueInput;
-    update: AbilityUpdateDataInput;
-    create: AbilityCreateInput;
-}
-
-export interface PopulationUpdateManyMutationInput {
-    inhabitants?: Maybe<Int>;
-    density?: Maybe<Int>;
-    densityUnit?: Maybe<DENSITY_UNIT>;
-}
-
-export interface AbilityScalarWhereInput {
-    id?: Maybe<ID_Input>;
-    id_not?: Maybe<ID_Input>;
-    id_in?: Maybe<ID_Input[] | ID_Input>;
-    id_not_in?: Maybe<ID_Input[] | ID_Input>;
-    id_lt?: Maybe<ID_Input>;
-    id_lte?: Maybe<ID_Input>;
-    id_gt?: Maybe<ID_Input>;
-    id_gte?: Maybe<ID_Input>;
-    id_contains?: Maybe<ID_Input>;
-    id_not_contains?: Maybe<ID_Input>;
-    id_starts_with?: Maybe<ID_Input>;
-    id_not_starts_with?: Maybe<ID_Input>;
-    id_ends_with?: Maybe<ID_Input>;
-    id_not_ends_with?: Maybe<ID_Input>;
-    type?: Maybe<ABILITY_TYPE>;
-    type_not?: Maybe<ABILITY_TYPE>;
-    type_in?: Maybe<ABILITY_TYPE[] | ABILITY_TYPE>;
-    type_not_in?: Maybe<ABILITY_TYPE[] | ABILITY_TYPE>;
-    value?: Maybe<Int>;
-    value_not?: Maybe<Int>;
-    value_in?: Maybe<Int[] | Int>;
-    value_not_in?: Maybe<Int[] | Int>;
-    value_lt?: Maybe<Int>;
-    value_lte?: Maybe<Int>;
-    value_gt?: Maybe<Int>;
-    value_gte?: Maybe<Int>;
-    modifier?: Maybe<Int>;
-    modifier_not?: Maybe<Int>;
-    modifier_in?: Maybe<Int[] | Int>;
-    modifier_not_in?: Maybe<Int[] | Int>;
-    modifier_lt?: Maybe<Int>;
-    modifier_lte?: Maybe<Int>;
-    modifier_gt?: Maybe<Int>;
-    modifier_gte?: Maybe<Int>;
-    AND?: Maybe<AbilityScalarWhereInput[] | AbilityScalarWhereInput>;
-    OR?: Maybe<AbilityScalarWhereInput[] | AbilityScalarWhereInput>;
-    NOT?: Maybe<AbilityScalarWhereInput[] | AbilityScalarWhereInput>;
-}
-
-export interface LocationMetaDataUpdateManyMutationInput {
-    weather?: Maybe<WEATHER>;
-    climate?: Maybe<CLIMATE>;
-}
-
-export interface AbilityUpdateManyWithWhereNestedInput {
-    where: AbilityScalarWhereInput;
-    data: AbilityUpdateManyDataInput;
-}
-
-export interface LocationUpsertWithoutMetadataInput {
-    update: LocationUpdateWithoutMetadataDataInput;
-    create: LocationCreateWithoutMetadataInput;
-}
-
-export interface AbilityUpdateManyDataInput {
-    type?: Maybe<ABILITY_TYPE>;
-    value?: Maybe<Int>;
-    modifier?: Maybe<Int>;
-}
-
-export interface LocationUpdateOneRequiredWithoutMetadataInput {
-    create?: Maybe<LocationCreateWithoutMetadataInput>;
-    update?: Maybe<LocationUpdateWithoutMetadataDataInput>;
-    upsert?: Maybe<LocationUpsertWithoutMetadataInput>;
-    connect?: Maybe<LocationWhereUniqueInput>;
-}
-
-export interface SkillUpdateManyInput {
-    create?: Maybe<SkillCreateInput[] | SkillCreateInput>;
-    update?: Maybe<SkillUpdateWithWhereUniqueNestedInput[] | SkillUpdateWithWhereUniqueNestedInput>;
-    upsert?: Maybe<SkillUpsertWithWhereUniqueNestedInput[] | SkillUpsertWithWhereUniqueNestedInput>;
-    delete?: Maybe<SkillWhereUniqueInput[] | SkillWhereUniqueInput>;
-    connect?: Maybe<SkillWhereUniqueInput[] | SkillWhereUniqueInput>;
-    set?: Maybe<SkillWhereUniqueInput[] | SkillWhereUniqueInput>;
-    disconnect?: Maybe<SkillWhereUniqueInput[] | SkillWhereUniqueInput>;
-    deleteMany?: Maybe<SkillScalarWhereInput[] | SkillScalarWhereInput>;
-    updateMany?: Maybe<SkillUpdateManyWithWhereNestedInput[] | SkillUpdateManyWithWhereNestedInput>;
-}
-
-export interface AbilityWhereInput {
-    id?: Maybe<ID_Input>;
-    id_not?: Maybe<ID_Input>;
-    id_in?: Maybe<ID_Input[] | ID_Input>;
-    id_not_in?: Maybe<ID_Input[] | ID_Input>;
-    id_lt?: Maybe<ID_Input>;
-    id_lte?: Maybe<ID_Input>;
-    id_gt?: Maybe<ID_Input>;
-    id_gte?: Maybe<ID_Input>;
-    id_contains?: Maybe<ID_Input>;
-    id_not_contains?: Maybe<ID_Input>;
-    id_starts_with?: Maybe<ID_Input>;
-    id_not_starts_with?: Maybe<ID_Input>;
-    id_ends_with?: Maybe<ID_Input>;
-    id_not_ends_with?: Maybe<ID_Input>;
-    type?: Maybe<ABILITY_TYPE>;
-    type_not?: Maybe<ABILITY_TYPE>;
-    type_in?: Maybe<ABILITY_TYPE[] | ABILITY_TYPE>;
-    type_not_in?: Maybe<ABILITY_TYPE[] | ABILITY_TYPE>;
-    value?: Maybe<Int>;
-    value_not?: Maybe<Int>;
-    value_in?: Maybe<Int[] | Int>;
-    value_not_in?: Maybe<Int[] | Int>;
-    value_lt?: Maybe<Int>;
-    value_lte?: Maybe<Int>;
-    value_gt?: Maybe<Int>;
-    value_gte?: Maybe<Int>;
-    modifier?: Maybe<Int>;
-    modifier_not?: Maybe<Int>;
-    modifier_in?: Maybe<Int[] | Int>;
-    modifier_not_in?: Maybe<Int[] | Int>;
-    modifier_lt?: Maybe<Int>;
-    modifier_lte?: Maybe<Int>;
-    modifier_gt?: Maybe<Int>;
-    modifier_gte?: Maybe<Int>;
-    character?: Maybe<CharacterWhereInput>;
-    AND?: Maybe<AbilityWhereInput[] | AbilityWhereInput>;
-    OR?: Maybe<AbilityWhereInput[] | AbilityWhereInput>;
-    NOT?: Maybe<AbilityWhereInput[] | AbilityWhereInput>;
-}
-
-export interface SkillUpdateWithWhereUniqueNestedInput {
-    where: SkillWhereUniqueInput;
-    data: SkillUpdateDataInput;
-}
-
-export interface LocationCreateWithoutMetadataInput {
-    id?: Maybe<ID_Input>;
-    type: LOCATION_TYPE;
-    name: string;
-    locations?: Maybe<LocationCreateManyInput>;
-    campaign: CampaignCreateOneWithoutLocationsInput;
-    parent?: Maybe<ID_Input>;
-}
-
-export interface SkillUpdateDataInput {
-    name?: Maybe<SKILL>;
-    value?: Maybe<Int>;
-    character?: Maybe<CharacterUpdateOneRequiredInput>;
-}
-
-export type GovernmentPartyWhereUniqueInput = AtLeastOne<{
-    id: Maybe<ID_Input>;
-}>;
-
-export interface SkillUpsertWithWhereUniqueNestedInput {
-    where: SkillWhereUniqueInput;
-    update: SkillUpdateDataInput;
-    create: SkillCreateInput;
-}
-
-export interface LocationUpdateManyMutationInput {
-    type?: Maybe<LOCATION_TYPE>;
-    name?: Maybe<string>;
-    parent?: Maybe<ID_Input>;
-}
-
-export interface SkillScalarWhereInput {
-    id?: Maybe<ID_Input>;
-    id_not?: Maybe<ID_Input>;
-    id_in?: Maybe<ID_Input[] | ID_Input>;
-    id_not_in?: Maybe<ID_Input[] | ID_Input>;
-    id_lt?: Maybe<ID_Input>;
-    id_lte?: Maybe<ID_Input>;
-    id_gt?: Maybe<ID_Input>;
-    id_gte?: Maybe<ID_Input>;
-    id_contains?: Maybe<ID_Input>;
-    id_not_contains?: Maybe<ID_Input>;
-    id_starts_with?: Maybe<ID_Input>;
-    id_not_starts_with?: Maybe<ID_Input>;
-    id_ends_with?: Maybe<ID_Input>;
-    id_not_ends_with?: Maybe<ID_Input>;
-    name?: Maybe<SKILL>;
-    name_not?: Maybe<SKILL>;
-    name_in?: Maybe<SKILL[] | SKILL>;
-    name_not_in?: Maybe<SKILL[] | SKILL>;
-    value?: Maybe<Int>;
-    value_not?: Maybe<Int>;
-    value_in?: Maybe<Int[] | Int>;
-    value_not_in?: Maybe<Int[] | Int>;
-    value_lt?: Maybe<Int>;
-    value_lte?: Maybe<Int>;
-    value_gt?: Maybe<Int>;
-    value_gte?: Maybe<Int>;
-    AND?: Maybe<SkillScalarWhereInput[] | SkillScalarWhereInput>;
-    OR?: Maybe<SkillScalarWhereInput[] | SkillScalarWhereInput>;
-    NOT?: Maybe<SkillScalarWhereInput[] | SkillScalarWhereInput>;
-}
-
-export type HTMLContentWhereUniqueInput = AtLeastOne<{
-    id: Maybe<ID_Input>;
-}>;
-
-export interface SkillUpdateManyWithWhereNestedInput {
-    where: SkillScalarWhereInput;
-    data: SkillUpdateManyDataInput;
-}
-
-export interface LanguageUpdateInput {
-    name?: Maybe<string>;
-    script?: Maybe<LANGUAGE_SCRIPT>;
-    location?: Maybe<LocationUpdateManyInput>;
-}
-
-export interface SkillUpdateManyDataInput {
-    name?: Maybe<SKILL>;
-    value?: Maybe<Int>;
-}
-
-export type LanguageWhereUniqueInput = AtLeastOne<{
-    id: Maybe<ID_Input>;
-}>;
-
-export interface CharacterUpdateInput {
-    firstName?: Maybe<string>;
-    lastName?: Maybe<string>;
-    type?: Maybe<CHARACTER_TYPE>;
-    metadata?: Maybe<CharacterMetadataUpdateOneWithoutCharacterInput>;
-    campaign?: Maybe<CampaignUpdateOneRequiredWithoutPlayersInput>;
-}
-
-export interface GovernmentPartyUpdateManyMutationInput {
-    name?: Maybe<string>;
-}
-
-export interface CampaignUpdateOneRequiredWithoutPlayersInput {
-    create?: Maybe<CampaignCreateWithoutPlayersInput>;
-    update?: Maybe<CampaignUpdateWithoutPlayersDataInput>;
-    upsert?: Maybe<CampaignUpsertWithoutPlayersInput>;
-    connect?: Maybe<CampaignWhereUniqueInput>;
-}
-
-export type LocationWhereUniqueInput = AtLeastOne<{
-    id: Maybe<ID_Input>;
-}>;
-
-export interface CampaignUpdateWithoutPlayersDataInput {
-    name?: Maybe<string>;
-    locations?: Maybe<LocationUpdateManyWithoutCampaignInput>;
-}
-
-export interface GovernmentUpdateOneWithoutPartiesInput {
-    create?: Maybe<GovernmentCreateWithoutPartiesInput>;
-    update?: Maybe<GovernmentUpdateWithoutPartiesDataInput>;
-    upsert?: Maybe<GovernmentUpsertWithoutPartiesInput>;
-    delete?: Maybe<boolean>;
-    disconnect?: Maybe<boolean>;
-    connect?: Maybe<GovernmentWhereUniqueInput>;
-}
-
-export interface LocationUpdateManyWithoutCampaignInput {
-    create?: Maybe<LocationCreateWithoutCampaignInput[] | LocationCreateWithoutCampaignInput>;
-    delete?: Maybe<LocationWhereUniqueInput[] | LocationWhereUniqueInput>;
-    connect?: Maybe<LocationWhereUniqueInput[] | LocationWhereUniqueInput>;
-    set?: Maybe<LocationWhereUniqueInput[] | LocationWhereUniqueInput>;
-    disconnect?: Maybe<LocationWhereUniqueInput[] | LocationWhereUniqueInput>;
-    update?: Maybe<
-        LocationUpdateWithWhereUniqueWithoutCampaignInput[] | LocationUpdateWithWhereUniqueWithoutCampaignInput
-    >;
-    upsert?: Maybe<
-        LocationUpsertWithWhereUniqueWithoutCampaignInput[] | LocationUpsertWithWhereUniqueWithoutCampaignInput
-    >;
-    deleteMany?: Maybe<LocationScalarWhereInput[] | LocationScalarWhereInput>;
-    updateMany?: Maybe<LocationUpdateManyWithWhereNestedInput[] | LocationUpdateManyWithWhereNestedInput>;
-}
-
-export type LocationMetaDataWhereUniqueInput = AtLeastOne<{
-    id: Maybe<ID_Input>;
-}>;
-
-export interface LocationUpdateWithWhereUniqueWithoutCampaignInput {
-    where: LocationWhereUniqueInput;
-    data: LocationUpdateWithoutCampaignDataInput;
-}
-
-export interface GovernmentCreateOneWithoutPartiesInput {
-    create?: Maybe<GovernmentCreateWithoutPartiesInput>;
-    connect?: Maybe<GovernmentWhereUniqueInput>;
-}
-
-export interface LocationUpdateWithoutCampaignDataInput {
-    type?: Maybe<LOCATION_TYPE>;
-    name?: Maybe<string>;
-    locations?: Maybe<LocationUpdateManyInput>;
-    metadata?: Maybe<LocationMetaDataUpdateOneWithoutLocationInput>;
-    parent?: Maybe<ID_Input>;
-}
-
-export interface GovernmentUpdateInput {
-    leader?: Maybe<CharacterUpdateOneInput>;
-    parties?: Maybe<GovernmentPartyUpdateManyWithoutGovernmentInput>;
-    content?: Maybe<HTMLContentUpdateManyInput>;
-}
-
-export interface LocationUpdateManyInput {
-    create?: Maybe<LocationCreateInput[] | LocationCreateInput>;
-    update?: Maybe<LocationUpdateWithWhereUniqueNestedInput[] | LocationUpdateWithWhereUniqueNestedInput>;
-    upsert?: Maybe<LocationUpsertWithWhereUniqueNestedInput[] | LocationUpsertWithWhereUniqueNestedInput>;
-    delete?: Maybe<LocationWhereUniqueInput[] | LocationWhereUniqueInput>;
-    connect?: Maybe<LocationWhereUniqueInput[] | LocationWhereUniqueInput>;
-    set?: Maybe<LocationWhereUniqueInput[] | LocationWhereUniqueInput>;
-    disconnect?: Maybe<LocationWhereUniqueInput[] | LocationWhereUniqueInput>;
-    deleteMany?: Maybe<LocationScalarWhereInput[] | LocationScalarWhereInput>;
-    updateMany?: Maybe<LocationUpdateManyWithWhereNestedInput[] | LocationUpdateManyWithWhereNestedInput>;
-}
-
-export interface FlagUpdateManyMutationInput {
-    imageSrc?: Maybe<string>;
-    description?: Maybe<string>;
-}
-
-export interface LocationUpdateWithWhereUniqueNestedInput {
-    where: LocationWhereUniqueInput;
-    data: LocationUpdateDataInput;
-}
-
-export interface EtnicityUpdateManyMutationInput {
-    name?: Maybe<string>;
-}
-
-export interface LocationUpdateDataInput {
-    type?: Maybe<LOCATION_TYPE>;
-    name?: Maybe<string>;
-    locations?: Maybe<LocationUpdateManyInput>;
-    metadata?: Maybe<LocationMetaDataUpdateOneWithoutLocationInput>;
-    campaign?: Maybe<CampaignUpdateOneRequiredWithoutLocationsInput>;
-    parent?: Maybe<ID_Input>;
-}
-
-export type ReligionWhereUniqueInput = AtLeastOne<{
-    id: Maybe<ID_Input>;
-}>;
-
-export interface LocationMetaDataUpdateOneWithoutLocationInput {
-    create?: Maybe<LocationMetaDataCreateWithoutLocationInput>;
-    update?: Maybe<LocationMetaDataUpdateWithoutLocationDataInput>;
-    upsert?: Maybe<LocationMetaDataUpsertWithoutLocationInput>;
-    delete?: Maybe<boolean>;
-    disconnect?: Maybe<boolean>;
-    connect?: Maybe<LocationMetaDataWhereUniqueInput>;
-}
-
-export interface CurrencyUpdateManyMutationInput {
-    name?: Maybe<string>;
-    sign?: Maybe<string>;
-}
-
-export interface LocationMetaDataUpdateWithoutLocationDataInput {
-    population?: Maybe<PopulationUpdateOneInput>;
-    languages?: Maybe<LanguageUpdateManyInput>;
-    religions?: Maybe<ReligionUpdateManyInput>;
-    ethnicities?: Maybe<EtnicityUpdateManyInput>;
-    flag?: Maybe<FlagUpdateManyInput>;
-    economy?: Maybe<EconomyUpdateOneInput>;
-    government?: Maybe<GovernmentUpdateOneInput>;
-    weather?: Maybe<WEATHER>;
-    climate?: Maybe<CLIMATE>;
-}
-
-export type SkillWhereUniqueInput = AtLeastOne<{
-    id: Maybe<ID_Input>;
-}>;
-
-export interface PopulationUpdateOneInput {
-    create?: Maybe<PopulationCreateInput>;
-    update?: Maybe<PopulationUpdateDataInput>;
-    upsert?: Maybe<PopulationUpsertNestedInput>;
-    delete?: Maybe<boolean>;
-    disconnect?: Maybe<boolean>;
-    connect?: Maybe<PopulationWhereUniqueInput>;
-}
-
-export interface CharacterUpsertWithoutMetadataInput {
-    update: CharacterUpdateWithoutMetadataDataInput;
-    create: CharacterCreateWithoutMetadataInput;
-}
-
-export interface PopulationUpdateDataInput {
-    location?: Maybe<LocationUpdateOneRequiredInput>;
-    inhabitants?: Maybe<Int>;
-    density?: Maybe<Int>;
-    densityUnit?: Maybe<DENSITY_UNIT>;
-}
-
-export type UserWhereUniqueInput = AtLeastOne<{
-    id: Maybe<ID_Input>;
-    email?: Maybe<string>;
-}>;
-
-export interface LocationUpdateOneRequiredInput {
-    create?: Maybe<LocationCreateInput>;
-    update?: Maybe<LocationUpdateDataInput>;
-    upsert?: Maybe<LocationUpsertNestedInput>;
-    connect?: Maybe<LocationWhereUniqueInput>;
-}
-
-export interface CharacterMetadataUpdateInput {
-    character?: Maybe<CharacterUpdateOneRequiredWithoutMetadataInput>;
-    abilities?: Maybe<AbilityUpdateManyInput>;
-    skills?: Maybe<SkillUpdateManyInput>;
-    status?: Maybe<CHARACTER_STATUS>;
-    race?: Maybe<RACE>;
-    class?: Maybe<CLASS>;
-    alignment?: Maybe<ALIGNMENT>;
-    height?: Maybe<Int>;
-    weight?: Maybe<Int>;
-}
-
-export interface LocationUpsertNestedInput {
-    update: LocationUpdateDataInput;
-    create: LocationCreateInput;
-}
-
-export interface CharacterCreateWithoutMetadataInput {
-    id?: Maybe<ID_Input>;
-    firstName: string;
-    lastName?: Maybe<string>;
-    type: CHARACTER_TYPE;
-    campaign: CampaignCreateOneWithoutPlayersInput;
-}
-
-export interface PopulationUpsertNestedInput {
-    update: PopulationUpdateDataInput;
-    create: PopulationCreateInput;
-}
-
-export interface CharacterMetadataCreateInput {
-    id?: Maybe<ID_Input>;
-    character: CharacterCreateOneWithoutMetadataInput;
-    abilities?: Maybe<AbilityCreateManyInput>;
-    skills?: Maybe<SkillCreateManyInput>;
-    status?: Maybe<CHARACTER_STATUS>;
-    race?: Maybe<RACE>;
-    class?: Maybe<CLASS>;
-    alignment?: Maybe<ALIGNMENT>;
-    height?: Maybe<Int>;
-    weight?: Maybe<Int>;
-}
-
-export interface LanguageUpdateManyInput {
-    create?: Maybe<LanguageCreateInput[] | LanguageCreateInput>;
-    update?: Maybe<LanguageUpdateWithWhereUniqueNestedInput[] | LanguageUpdateWithWhereUniqueNestedInput>;
-    upsert?: Maybe<LanguageUpsertWithWhereUniqueNestedInput[] | LanguageUpsertWithWhereUniqueNestedInput>;
-    delete?: Maybe<LanguageWhereUniqueInput[] | LanguageWhereUniqueInput>;
-    connect?: Maybe<LanguageWhereUniqueInput[] | LanguageWhereUniqueInput>;
-    set?: Maybe<LanguageWhereUniqueInput[] | LanguageWhereUniqueInput>;
-    disconnect?: Maybe<LanguageWhereUniqueInput[] | LanguageWhereUniqueInput>;
-    deleteMany?: Maybe<LanguageScalarWhereInput[] | LanguageScalarWhereInput>;
-    updateMany?: Maybe<LanguageUpdateManyWithWhereNestedInput[] | LanguageUpdateManyWithWhereNestedInput>;
-}
-
-export interface CharacterCreateOneInput {
-    create?: Maybe<CharacterCreateInput>;
-    connect?: Maybe<CharacterWhereUniqueInput>;
-}
-
-export interface GovernmentWhereInput {
-    id?: Maybe<ID_Input>;
-    id_not?: Maybe<ID_Input>;
-    id_in?: Maybe<ID_Input[] | ID_Input>;
-    id_not_in?: Maybe<ID_Input[] | ID_Input>;
-    id_lt?: Maybe<ID_Input>;
-    id_lte?: Maybe<ID_Input>;
-    id_gt?: Maybe<ID_Input>;
-    id_gte?: Maybe<ID_Input>;
-    id_contains?: Maybe<ID_Input>;
-    id_not_contains?: Maybe<ID_Input>;
-    id_starts_with?: Maybe<ID_Input>;
-    id_not_starts_with?: Maybe<ID_Input>;
-    id_ends_with?: Maybe<ID_Input>;
-    id_not_ends_with?: Maybe<ID_Input>;
-    leader?: Maybe<CharacterWhereInput>;
-    parties_every?: Maybe<GovernmentPartyWhereInput>;
-    parties_some?: Maybe<GovernmentPartyWhereInput>;
-    parties_none?: Maybe<GovernmentPartyWhereInput>;
-    content_every?: Maybe<HTMLContentWhereInput>;
-    content_some?: Maybe<HTMLContentWhereInput>;
-    content_none?: Maybe<HTMLContentWhereInput>;
-    AND?: Maybe<GovernmentWhereInput[] | GovernmentWhereInput>;
-    OR?: Maybe<GovernmentWhereInput[] | GovernmentWhereInput>;
-    NOT?: Maybe<GovernmentWhereInput[] | GovernmentWhereInput>;
-}
-
-export interface CharacterMetadataCreateOneWithoutCharacterInput {
-    create?: Maybe<CharacterMetadataCreateWithoutCharacterInput>;
-    connect?: Maybe<CharacterMetadataWhereUniqueInput>;
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  script?: Maybe<LANGUAGE_SCRIPT>;
+  script_not?: Maybe<LANGUAGE_SCRIPT>;
+  script_in?: Maybe<LANGUAGE_SCRIPT[] | LANGUAGE_SCRIPT>;
+  script_not_in?: Maybe<LANGUAGE_SCRIPT[] | LANGUAGE_SCRIPT>;
+  AND?: Maybe<LanguageScalarWhereInput[] | LanguageScalarWhereInput>;
+  OR?: Maybe<LanguageScalarWhereInput[] | LanguageScalarWhereInput>;
+  NOT?: Maybe<LanguageScalarWhereInput[] | LanguageScalarWhereInput>;
 }
 
 export interface EconomyWhereInput {
-    id?: Maybe<ID_Input>;
-    id_not?: Maybe<ID_Input>;
-    id_in?: Maybe<ID_Input[] | ID_Input>;
-    id_not_in?: Maybe<ID_Input[] | ID_Input>;
-    id_lt?: Maybe<ID_Input>;
-    id_lte?: Maybe<ID_Input>;
-    id_gt?: Maybe<ID_Input>;
-    id_gte?: Maybe<ID_Input>;
-    id_contains?: Maybe<ID_Input>;
-    id_not_contains?: Maybe<ID_Input>;
-    id_starts_with?: Maybe<ID_Input>;
-    id_not_starts_with?: Maybe<ID_Input>;
-    id_ends_with?: Maybe<ID_Input>;
-    id_not_ends_with?: Maybe<ID_Input>;
-    currency?: Maybe<CurrencyWhereInput>;
-    location_every?: Maybe<LocationWhereInput>;
-    location_some?: Maybe<LocationWhereInput>;
-    location_none?: Maybe<LocationWhereInput>;
-    AND?: Maybe<EconomyWhereInput[] | EconomyWhereInput>;
-    OR?: Maybe<EconomyWhereInput[] | EconomyWhereInput>;
-    NOT?: Maybe<EconomyWhereInput[] | EconomyWhereInput>;
-}
-
-export interface AbilityCreateManyInput {
-    create?: Maybe<AbilityCreateInput[] | AbilityCreateInput>;
-    connect?: Maybe<AbilityWhereUniqueInput[] | AbilityWhereUniqueInput>;
-}
-
-export interface CampaignUpdateManyMutationInput {
-    name?: Maybe<string>;
-}
-
-export interface SkillCreateInput {
-    id?: Maybe<ID_Input>;
-    name: SKILL;
-    value: Int;
-    character: CharacterCreateOneInput;
-}
-
-export interface EtnicityWhereInput {
-    id?: Maybe<ID_Input>;
-    id_not?: Maybe<ID_Input>;
-    id_in?: Maybe<ID_Input[] | ID_Input>;
-    id_not_in?: Maybe<ID_Input[] | ID_Input>;
-    id_lt?: Maybe<ID_Input>;
-    id_lte?: Maybe<ID_Input>;
-    id_gt?: Maybe<ID_Input>;
-    id_gte?: Maybe<ID_Input>;
-    id_contains?: Maybe<ID_Input>;
-    id_not_contains?: Maybe<ID_Input>;
-    id_starts_with?: Maybe<ID_Input>;
-    id_not_starts_with?: Maybe<ID_Input>;
-    id_ends_with?: Maybe<ID_Input>;
-    id_not_ends_with?: Maybe<ID_Input>;
-    name?: Maybe<string>;
-    name_not?: Maybe<string>;
-    name_in?: Maybe<string[] | string>;
-    name_not_in?: Maybe<string[] | string>;
-    name_lt?: Maybe<string>;
-    name_lte?: Maybe<string>;
-    name_gt?: Maybe<string>;
-    name_gte?: Maybe<string>;
-    name_contains?: Maybe<string>;
-    name_not_contains?: Maybe<string>;
-    name_starts_with?: Maybe<string>;
-    name_not_starts_with?: Maybe<string>;
-    name_ends_with?: Maybe<string>;
-    name_not_ends_with?: Maybe<string>;
-    AND?: Maybe<EtnicityWhereInput[] | EtnicityWhereInput>;
-    OR?: Maybe<EtnicityWhereInput[] | EtnicityWhereInput>;
-    NOT?: Maybe<EtnicityWhereInput[] | EtnicityWhereInput>;
-}
-
-export interface CampaignCreateWithoutPlayersInput {
-    id?: Maybe<ID_Input>;
-    name: string;
-    locations?: Maybe<LocationCreateManyWithoutCampaignInput>;
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  currency?: Maybe<CurrencyWhereInput>;
+  location_every?: Maybe<LocationWhereInput>;
+  location_some?: Maybe<LocationWhereInput>;
+  location_none?: Maybe<LocationWhereInput>;
+  AND?: Maybe<EconomyWhereInput[] | EconomyWhereInput>;
+  OR?: Maybe<EconomyWhereInput[] | EconomyWhereInput>;
+  NOT?: Maybe<EconomyWhereInput[] | EconomyWhereInput>;
 }
 
 export interface LanguageUpdateManyWithWhereNestedInput {
-    where: LanguageScalarWhereInput;
-    data: LanguageUpdateManyDataInput;
-}
-
-export interface LocationCreateWithoutCampaignInput {
-    id?: Maybe<ID_Input>;
-    type: LOCATION_TYPE;
-    name: string;
-    locations?: Maybe<LocationCreateManyInput>;
-    metadata?: Maybe<LocationMetaDataCreateOneWithoutLocationInput>;
-    parent?: Maybe<ID_Input>;
-}
-
-export interface LanguageUpdateManyDataInput {
-    name?: Maybe<string>;
-    script?: Maybe<LANGUAGE_SCRIPT>;
-}
-
-export interface LocationCreateInput {
-    id?: Maybe<ID_Input>;
-    type: LOCATION_TYPE;
-    name: string;
-    locations?: Maybe<LocationCreateManyInput>;
-    metadata?: Maybe<LocationMetaDataCreateOneWithoutLocationInput>;
-    campaign: CampaignCreateOneWithoutLocationsInput;
-    parent?: Maybe<ID_Input>;
-}
-
-export interface ReligionUpdateManyInput {
-    create?: Maybe<ReligionCreateInput[] | ReligionCreateInput>;
-    update?: Maybe<ReligionUpdateWithWhereUniqueNestedInput[] | ReligionUpdateWithWhereUniqueNestedInput>;
-    upsert?: Maybe<ReligionUpsertWithWhereUniqueNestedInput[] | ReligionUpsertWithWhereUniqueNestedInput>;
-    delete?: Maybe<ReligionWhereUniqueInput[] | ReligionWhereUniqueInput>;
-    connect?: Maybe<ReligionWhereUniqueInput[] | ReligionWhereUniqueInput>;
-    set?: Maybe<ReligionWhereUniqueInput[] | ReligionWhereUniqueInput>;
-    disconnect?: Maybe<ReligionWhereUniqueInput[] | ReligionWhereUniqueInput>;
-    deleteMany?: Maybe<ReligionScalarWhereInput[] | ReligionScalarWhereInput>;
-    updateMany?: Maybe<ReligionUpdateManyWithWhereNestedInput[] | ReligionUpdateManyWithWhereNestedInput>;
-}
-
-export interface LocationMetaDataCreateWithoutLocationInput {
-    id?: Maybe<ID_Input>;
-    population?: Maybe<PopulationCreateOneInput>;
-    languages?: Maybe<LanguageCreateManyInput>;
-    religions?: Maybe<ReligionCreateManyInput>;
-    ethnicities?: Maybe<EtnicityCreateManyInput>;
-    flag?: Maybe<FlagCreateManyInput>;
-    economy?: Maybe<EconomyCreateOneInput>;
-    government?: Maybe<GovernmentCreateOneInput>;
-    weather?: Maybe<WEATHER>;
-    climate?: Maybe<CLIMATE>;
-}
-
-export interface ReligionUpdateWithWhereUniqueNestedInput {
-    where: ReligionWhereUniqueInput;
-    data: ReligionUpdateDataInput;
-}
-
-export interface PopulationCreateInput {
-    id?: Maybe<ID_Input>;
-    location: LocationCreateOneInput;
-    inhabitants: Int;
-    density: Int;
-    densityUnit: DENSITY_UNIT;
-}
-
-export interface ReligionUpdateDataInput {
-    name?: Maybe<string>;
-    deity?: Maybe<CharacterUpdateOneInput>;
-    content?: Maybe<HTMLContentUpdateManyInput>;
-    location?: Maybe<LocationUpdateOneInput>;
-}
-
-export interface LanguageCreateManyInput {
-    create?: Maybe<LanguageCreateInput[] | LanguageCreateInput>;
-    connect?: Maybe<LanguageWhereUniqueInput[] | LanguageWhereUniqueInput>;
-}
-
-export interface CharacterUpdateOneInput {
-    create?: Maybe<CharacterCreateInput>;
-    update?: Maybe<CharacterUpdateDataInput>;
-    upsert?: Maybe<CharacterUpsertNestedInput>;
-    delete?: Maybe<boolean>;
-    disconnect?: Maybe<boolean>;
-    connect?: Maybe<CharacterWhereUniqueInput>;
-}
-
-export interface ReligionCreateManyInput {
-    create?: Maybe<ReligionCreateInput[] | ReligionCreateInput>;
-    connect?: Maybe<ReligionWhereUniqueInput[] | ReligionWhereUniqueInput>;
-}
-
-export interface CharacterUpsertNestedInput {
-    update: CharacterUpdateDataInput;
-    create: CharacterCreateInput;
-}
-
-export interface HTMLContentCreateManyInput {
-    create?: Maybe<HTMLContentCreateInput[] | HTMLContentCreateInput>;
-    connect?: Maybe<HTMLContentWhereUniqueInput[] | HTMLContentWhereUniqueInput>;
-}
-
-export interface HTMLContentUpdateManyInput {
-    create?: Maybe<HTMLContentCreateInput[] | HTMLContentCreateInput>;
-    update?: Maybe<HTMLContentUpdateWithWhereUniqueNestedInput[] | HTMLContentUpdateWithWhereUniqueNestedInput>;
-    upsert?: Maybe<HTMLContentUpsertWithWhereUniqueNestedInput[] | HTMLContentUpsertWithWhereUniqueNestedInput>;
-    delete?: Maybe<HTMLContentWhereUniqueInput[] | HTMLContentWhereUniqueInput>;
-    connect?: Maybe<HTMLContentWhereUniqueInput[] | HTMLContentWhereUniqueInput>;
-    set?: Maybe<HTMLContentWhereUniqueInput[] | HTMLContentWhereUniqueInput>;
-    disconnect?: Maybe<HTMLContentWhereUniqueInput[] | HTMLContentWhereUniqueInput>;
-    deleteMany?: Maybe<HTMLContentScalarWhereInput[] | HTMLContentScalarWhereInput>;
-    updateMany?: Maybe<HTMLContentUpdateManyWithWhereNestedInput[] | HTMLContentUpdateManyWithWhereNestedInput>;
-}
-
-export interface ReligionSubscriptionWhereInput {
-    mutation_in?: Maybe<MutationType[] | MutationType>;
-    updatedFields_contains?: Maybe<string>;
-    updatedFields_contains_every?: Maybe<string[] | string>;
-    updatedFields_contains_some?: Maybe<string[] | string>;
-    node?: Maybe<ReligionWhereInput>;
-    AND?: Maybe<ReligionSubscriptionWhereInput[] | ReligionSubscriptionWhereInput>;
-    OR?: Maybe<ReligionSubscriptionWhereInput[] | ReligionSubscriptionWhereInput>;
-    NOT?: Maybe<ReligionSubscriptionWhereInput[] | ReligionSubscriptionWhereInput>;
-}
-
-export interface HTMLContentUpdateWithWhereUniqueNestedInput {
-    where: HTMLContentWhereUniqueInput;
-    data: HTMLContentUpdateDataInput;
-}
-
-export interface LocationMetaDataSubscriptionWhereInput {
-    mutation_in?: Maybe<MutationType[] | MutationType>;
-    updatedFields_contains?: Maybe<string>;
-    updatedFields_contains_every?: Maybe<string[] | string>;
-    updatedFields_contains_some?: Maybe<string[] | string>;
-    node?: Maybe<LocationMetaDataWhereInput>;
-    AND?: Maybe<LocationMetaDataSubscriptionWhereInput[] | LocationMetaDataSubscriptionWhereInput>;
-    OR?: Maybe<LocationMetaDataSubscriptionWhereInput[] | LocationMetaDataSubscriptionWhereInput>;
-    NOT?: Maybe<LocationMetaDataSubscriptionWhereInput[] | LocationMetaDataSubscriptionWhereInput>;
-}
-
-export interface HTMLContentUpdateDataInput {
-    content?: Maybe<string>;
-    invisibleTo?: Maybe<CharacterUpdateManyInput>;
-}
-
-export interface LocationMetaDataWhereInput {
-    id?: Maybe<ID_Input>;
-    id_not?: Maybe<ID_Input>;
-    id_in?: Maybe<ID_Input[] | ID_Input>;
-    id_not_in?: Maybe<ID_Input[] | ID_Input>;
-    id_lt?: Maybe<ID_Input>;
-    id_lte?: Maybe<ID_Input>;
-    id_gt?: Maybe<ID_Input>;
-    id_gte?: Maybe<ID_Input>;
-    id_contains?: Maybe<ID_Input>;
-    id_not_contains?: Maybe<ID_Input>;
-    id_starts_with?: Maybe<ID_Input>;
-    id_not_starts_with?: Maybe<ID_Input>;
-    id_ends_with?: Maybe<ID_Input>;
-    id_not_ends_with?: Maybe<ID_Input>;
-    location?: Maybe<LocationWhereInput>;
-    population?: Maybe<PopulationWhereInput>;
-    languages_every?: Maybe<LanguageWhereInput>;
-    languages_some?: Maybe<LanguageWhereInput>;
-    languages_none?: Maybe<LanguageWhereInput>;
-    religions_every?: Maybe<ReligionWhereInput>;
-    religions_some?: Maybe<ReligionWhereInput>;
-    religions_none?: Maybe<ReligionWhereInput>;
-    ethnicities_every?: Maybe<EtnicityWhereInput>;
-    ethnicities_some?: Maybe<EtnicityWhereInput>;
-    ethnicities_none?: Maybe<EtnicityWhereInput>;
-    flag_every?: Maybe<FlagWhereInput>;
-    flag_some?: Maybe<FlagWhereInput>;
-    flag_none?: Maybe<FlagWhereInput>;
-    economy?: Maybe<EconomyWhereInput>;
-    government?: Maybe<GovernmentWhereInput>;
-    weather?: Maybe<WEATHER>;
-    weather_not?: Maybe<WEATHER>;
-    weather_in?: Maybe<WEATHER[] | WEATHER>;
-    weather_not_in?: Maybe<WEATHER[] | WEATHER>;
-    climate?: Maybe<CLIMATE>;
-    climate_not?: Maybe<CLIMATE>;
-    climate_in?: Maybe<CLIMATE[] | CLIMATE>;
-    climate_not_in?: Maybe<CLIMATE[] | CLIMATE>;
-    AND?: Maybe<LocationMetaDataWhereInput[] | LocationMetaDataWhereInput>;
-    OR?: Maybe<LocationMetaDataWhereInput[] | LocationMetaDataWhereInput>;
-    NOT?: Maybe<LocationMetaDataWhereInput[] | LocationMetaDataWhereInput>;
-}
-
-export interface CharacterUpdateManyInput {
-    create?: Maybe<CharacterCreateInput[] | CharacterCreateInput>;
-    update?: Maybe<CharacterUpdateWithWhereUniqueNestedInput[] | CharacterUpdateWithWhereUniqueNestedInput>;
-    upsert?: Maybe<CharacterUpsertWithWhereUniqueNestedInput[] | CharacterUpsertWithWhereUniqueNestedInput>;
-    delete?: Maybe<CharacterWhereUniqueInput[] | CharacterWhereUniqueInput>;
-    connect?: Maybe<CharacterWhereUniqueInput[] | CharacterWhereUniqueInput>;
-    set?: Maybe<CharacterWhereUniqueInput[] | CharacterWhereUniqueInput>;
-    disconnect?: Maybe<CharacterWhereUniqueInput[] | CharacterWhereUniqueInput>;
-    deleteMany?: Maybe<CharacterScalarWhereInput[] | CharacterScalarWhereInput>;
-    updateMany?: Maybe<CharacterUpdateManyWithWhereNestedInput[] | CharacterUpdateManyWithWhereNestedInput>;
-}
-
-export interface GovernmentPartySubscriptionWhereInput {
-    mutation_in?: Maybe<MutationType[] | MutationType>;
-    updatedFields_contains?: Maybe<string>;
-    updatedFields_contains_every?: Maybe<string[] | string>;
-    updatedFields_contains_some?: Maybe<string[] | string>;
-    node?: Maybe<GovernmentPartyWhereInput>;
-    AND?: Maybe<GovernmentPartySubscriptionWhereInput[] | GovernmentPartySubscriptionWhereInput>;
-    OR?: Maybe<GovernmentPartySubscriptionWhereInput[] | GovernmentPartySubscriptionWhereInput>;
-    NOT?: Maybe<GovernmentPartySubscriptionWhereInput[] | GovernmentPartySubscriptionWhereInput>;
-}
-
-export interface CharacterUpdateWithWhereUniqueNestedInput {
-    where: CharacterWhereUniqueInput;
-    data: CharacterUpdateDataInput;
-}
-
-export interface EconomySubscriptionWhereInput {
-    mutation_in?: Maybe<MutationType[] | MutationType>;
-    updatedFields_contains?: Maybe<string>;
-    updatedFields_contains_every?: Maybe<string[] | string>;
-    updatedFields_contains_some?: Maybe<string[] | string>;
-    node?: Maybe<EconomyWhereInput>;
-    AND?: Maybe<EconomySubscriptionWhereInput[] | EconomySubscriptionWhereInput>;
-    OR?: Maybe<EconomySubscriptionWhereInput[] | EconomySubscriptionWhereInput>;
-    NOT?: Maybe<EconomySubscriptionWhereInput[] | EconomySubscriptionWhereInput>;
-}
-
-export interface CharacterUpsertWithWhereUniqueNestedInput {
-    where: CharacterWhereUniqueInput;
-    update: CharacterUpdateDataInput;
-    create: CharacterCreateInput;
-}
-
-export interface CampaignSubscriptionWhereInput {
-    mutation_in?: Maybe<MutationType[] | MutationType>;
-    updatedFields_contains?: Maybe<string>;
-    updatedFields_contains_every?: Maybe<string[] | string>;
-    updatedFields_contains_some?: Maybe<string[] | string>;
-    node?: Maybe<CampaignWhereInput>;
-    AND?: Maybe<CampaignSubscriptionWhereInput[] | CampaignSubscriptionWhereInput>;
-    OR?: Maybe<CampaignSubscriptionWhereInput[] | CampaignSubscriptionWhereInput>;
-    NOT?: Maybe<CampaignSubscriptionWhereInput[] | CampaignSubscriptionWhereInput>;
-}
-
-export interface CharacterScalarWhereInput {
-    id?: Maybe<ID_Input>;
-    id_not?: Maybe<ID_Input>;
-    id_in?: Maybe<ID_Input[] | ID_Input>;
-    id_not_in?: Maybe<ID_Input[] | ID_Input>;
-    id_lt?: Maybe<ID_Input>;
-    id_lte?: Maybe<ID_Input>;
-    id_gt?: Maybe<ID_Input>;
-    id_gte?: Maybe<ID_Input>;
-    id_contains?: Maybe<ID_Input>;
-    id_not_contains?: Maybe<ID_Input>;
-    id_starts_with?: Maybe<ID_Input>;
-    id_not_starts_with?: Maybe<ID_Input>;
-    id_ends_with?: Maybe<ID_Input>;
-    id_not_ends_with?: Maybe<ID_Input>;
-    firstName?: Maybe<string>;
-    firstName_not?: Maybe<string>;
-    firstName_in?: Maybe<string[] | string>;
-    firstName_not_in?: Maybe<string[] | string>;
-    firstName_lt?: Maybe<string>;
-    firstName_lte?: Maybe<string>;
-    firstName_gt?: Maybe<string>;
-    firstName_gte?: Maybe<string>;
-    firstName_contains?: Maybe<string>;
-    firstName_not_contains?: Maybe<string>;
-    firstName_starts_with?: Maybe<string>;
-    firstName_not_starts_with?: Maybe<string>;
-    firstName_ends_with?: Maybe<string>;
-    firstName_not_ends_with?: Maybe<string>;
-    lastName?: Maybe<string>;
-    lastName_not?: Maybe<string>;
-    lastName_in?: Maybe<string[] | string>;
-    lastName_not_in?: Maybe<string[] | string>;
-    lastName_lt?: Maybe<string>;
-    lastName_lte?: Maybe<string>;
-    lastName_gt?: Maybe<string>;
-    lastName_gte?: Maybe<string>;
-    lastName_contains?: Maybe<string>;
-    lastName_not_contains?: Maybe<string>;
-    lastName_starts_with?: Maybe<string>;
-    lastName_not_starts_with?: Maybe<string>;
-    lastName_ends_with?: Maybe<string>;
-    lastName_not_ends_with?: Maybe<string>;
-    type?: Maybe<CHARACTER_TYPE>;
-    type_not?: Maybe<CHARACTER_TYPE>;
-    type_in?: Maybe<CHARACTER_TYPE[] | CHARACTER_TYPE>;
-    type_not_in?: Maybe<CHARACTER_TYPE[] | CHARACTER_TYPE>;
-    AND?: Maybe<CharacterScalarWhereInput[] | CharacterScalarWhereInput>;
-    OR?: Maybe<CharacterScalarWhereInput[] | CharacterScalarWhereInput>;
-    NOT?: Maybe<CharacterScalarWhereInput[] | CharacterScalarWhereInput>;
-}
-
-export interface UserUpdateManyMutationInput {
-    email?: Maybe<string>;
-    password?: Maybe<string>;
-    role?: Maybe<ROLE>;
-    firstName?: Maybe<string>;
-    lastName?: Maybe<string>;
-    resetToken?: Maybe<string>;
-    resetTokenExpiry?: Maybe<string>;
-}
-
-export interface CharacterUpdateManyWithWhereNestedInput {
-    where: CharacterScalarWhereInput;
-    data: CharacterUpdateManyDataInput;
-}
-
-export interface CampaignScalarWhereInput {
-    id?: Maybe<ID_Input>;
-    id_not?: Maybe<ID_Input>;
-    id_in?: Maybe<ID_Input[] | ID_Input>;
-    id_not_in?: Maybe<ID_Input[] | ID_Input>;
-    id_lt?: Maybe<ID_Input>;
-    id_lte?: Maybe<ID_Input>;
-    id_gt?: Maybe<ID_Input>;
-    id_gte?: Maybe<ID_Input>;
-    id_contains?: Maybe<ID_Input>;
-    id_not_contains?: Maybe<ID_Input>;
-    id_starts_with?: Maybe<ID_Input>;
-    id_not_starts_with?: Maybe<ID_Input>;
-    id_ends_with?: Maybe<ID_Input>;
-    id_not_ends_with?: Maybe<ID_Input>;
-    name?: Maybe<string>;
-    name_not?: Maybe<string>;
-    name_in?: Maybe<string[] | string>;
-    name_not_in?: Maybe<string[] | string>;
-    name_lt?: Maybe<string>;
-    name_lte?: Maybe<string>;
-    name_gt?: Maybe<string>;
-    name_gte?: Maybe<string>;
-    name_contains?: Maybe<string>;
-    name_not_contains?: Maybe<string>;
-    name_starts_with?: Maybe<string>;
-    name_not_starts_with?: Maybe<string>;
-    name_ends_with?: Maybe<string>;
-    name_not_ends_with?: Maybe<string>;
-    createdAt?: Maybe<DateTimeInput>;
-    createdAt_not?: Maybe<DateTimeInput>;
-    createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-    createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-    createdAt_lt?: Maybe<DateTimeInput>;
-    createdAt_lte?: Maybe<DateTimeInput>;
-    createdAt_gt?: Maybe<DateTimeInput>;
-    createdAt_gte?: Maybe<DateTimeInput>;
-    updatedAt?: Maybe<DateTimeInput>;
-    updatedAt_not?: Maybe<DateTimeInput>;
-    updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-    updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-    updatedAt_lt?: Maybe<DateTimeInput>;
-    updatedAt_lte?: Maybe<DateTimeInput>;
-    updatedAt_gt?: Maybe<DateTimeInput>;
-    updatedAt_gte?: Maybe<DateTimeInput>;
-    AND?: Maybe<CampaignScalarWhereInput[] | CampaignScalarWhereInput>;
-    OR?: Maybe<CampaignScalarWhereInput[] | CampaignScalarWhereInput>;
-    NOT?: Maybe<CampaignScalarWhereInput[] | CampaignScalarWhereInput>;
-}
-
-export interface CharacterUpdateManyDataInput {
-    firstName?: Maybe<string>;
-    lastName?: Maybe<string>;
-    type?: Maybe<CHARACTER_TYPE>;
-}
-
-export interface SkillWhereInput {
-    id?: Maybe<ID_Input>;
-    id_not?: Maybe<ID_Input>;
-    id_in?: Maybe<ID_Input[] | ID_Input>;
-    id_not_in?: Maybe<ID_Input[] | ID_Input>;
-    id_lt?: Maybe<ID_Input>;
-    id_lte?: Maybe<ID_Input>;
-    id_gt?: Maybe<ID_Input>;
-    id_gte?: Maybe<ID_Input>;
-    id_contains?: Maybe<ID_Input>;
-    id_not_contains?: Maybe<ID_Input>;
-    id_starts_with?: Maybe<ID_Input>;
-    id_not_starts_with?: Maybe<ID_Input>;
-    id_ends_with?: Maybe<ID_Input>;
-    id_not_ends_with?: Maybe<ID_Input>;
-    name?: Maybe<SKILL>;
-    name_not?: Maybe<SKILL>;
-    name_in?: Maybe<SKILL[] | SKILL>;
-    name_not_in?: Maybe<SKILL[] | SKILL>;
-    value?: Maybe<Int>;
-    value_not?: Maybe<Int>;
-    value_in?: Maybe<Int[] | Int>;
-    value_not_in?: Maybe<Int[] | Int>;
-    value_lt?: Maybe<Int>;
-    value_lte?: Maybe<Int>;
-    value_gt?: Maybe<Int>;
-    value_gte?: Maybe<Int>;
-    character?: Maybe<CharacterWhereInput>;
-    AND?: Maybe<SkillWhereInput[] | SkillWhereInput>;
-    OR?: Maybe<SkillWhereInput[] | SkillWhereInput>;
-    NOT?: Maybe<SkillWhereInput[] | SkillWhereInput>;
-}
-
-export interface HTMLContentUpsertWithWhereUniqueNestedInput {
-    where: HTMLContentWhereUniqueInput;
-    update: HTMLContentUpdateDataInput;
-    create: HTMLContentCreateInput;
-}
-
-export type CurrencyWhereUniqueInput = AtLeastOne<{
-    id: Maybe<ID_Input>;
-}>;
-
-export interface HTMLContentScalarWhereInput {
-    id?: Maybe<ID_Input>;
-    id_not?: Maybe<ID_Input>;
-    id_in?: Maybe<ID_Input[] | ID_Input>;
-    id_not_in?: Maybe<ID_Input[] | ID_Input>;
-    id_lt?: Maybe<ID_Input>;
-    id_lte?: Maybe<ID_Input>;
-    id_gt?: Maybe<ID_Input>;
-    id_gte?: Maybe<ID_Input>;
-    id_contains?: Maybe<ID_Input>;
-    id_not_contains?: Maybe<ID_Input>;
-    id_starts_with?: Maybe<ID_Input>;
-    id_not_starts_with?: Maybe<ID_Input>;
-    id_ends_with?: Maybe<ID_Input>;
-    id_not_ends_with?: Maybe<ID_Input>;
-    content?: Maybe<string>;
-    content_not?: Maybe<string>;
-    content_in?: Maybe<string[] | string>;
-    content_not_in?: Maybe<string[] | string>;
-    content_lt?: Maybe<string>;
-    content_lte?: Maybe<string>;
-    content_gt?: Maybe<string>;
-    content_gte?: Maybe<string>;
-    content_contains?: Maybe<string>;
-    content_not_contains?: Maybe<string>;
-    content_starts_with?: Maybe<string>;
-    content_not_starts_with?: Maybe<string>;
-    content_ends_with?: Maybe<string>;
-    content_not_ends_with?: Maybe<string>;
-    AND?: Maybe<HTMLContentScalarWhereInput[] | HTMLContentScalarWhereInput>;
-    OR?: Maybe<HTMLContentScalarWhereInput[] | HTMLContentScalarWhereInput>;
-    NOT?: Maybe<HTMLContentScalarWhereInput[] | HTMLContentScalarWhereInput>;
-}
-
-export interface SkillUpdateManyMutationInput {
-    name?: Maybe<SKILL>;
-    value?: Maybe<Int>;
-}
-
-export interface HTMLContentUpdateManyWithWhereNestedInput {
-    where: HTMLContentScalarWhereInput;
-    data: HTMLContentUpdateManyDataInput;
-}
-
-export interface ReligionUpdateManyMutationInput {
-    name?: Maybe<string>;
-}
-
-export interface HTMLContentUpdateManyDataInput {
-    content?: Maybe<string>;
-}
-
-export interface PopulationUpdateInput {
-    location?: Maybe<LocationUpdateOneRequiredInput>;
-    inhabitants?: Maybe<Int>;
-    density?: Maybe<Int>;
-    densityUnit?: Maybe<DENSITY_UNIT>;
-}
-
-export interface LocationUpdateOneInput {
-    create?: Maybe<LocationCreateInput>;
-    update?: Maybe<LocationUpdateDataInput>;
-    upsert?: Maybe<LocationUpsertNestedInput>;
-    delete?: Maybe<boolean>;
-    disconnect?: Maybe<boolean>;
-    connect?: Maybe<LocationWhereUniqueInput>;
-}
-
-export interface LocationUpdateWithoutMetadataDataInput {
-    type?: Maybe<LOCATION_TYPE>;
-    name?: Maybe<string>;
-    locations?: Maybe<LocationUpdateManyInput>;
-    campaign?: Maybe<CampaignUpdateOneRequiredWithoutLocationsInput>;
-    parent?: Maybe<ID_Input>;
-}
-
-export interface ReligionUpsertWithWhereUniqueNestedInput {
-    where: ReligionWhereUniqueInput;
-    update: ReligionUpdateDataInput;
-    create: ReligionCreateInput;
-}
-
-export interface LocationMetaDataUpdateInput {
-    location?: Maybe<LocationUpdateOneRequiredWithoutMetadataInput>;
-    population?: Maybe<PopulationUpdateOneInput>;
-    languages?: Maybe<LanguageUpdateManyInput>;
-    religions?: Maybe<ReligionUpdateManyInput>;
-    ethnicities?: Maybe<EtnicityUpdateManyInput>;
-    flag?: Maybe<FlagUpdateManyInput>;
-    economy?: Maybe<EconomyUpdateOneInput>;
-    government?: Maybe<GovernmentUpdateOneInput>;
-    weather?: Maybe<WEATHER>;
-    climate?: Maybe<CLIMATE>;
-}
-
-export interface ReligionScalarWhereInput {
-    id?: Maybe<ID_Input>;
-    id_not?: Maybe<ID_Input>;
-    id_in?: Maybe<ID_Input[] | ID_Input>;
-    id_not_in?: Maybe<ID_Input[] | ID_Input>;
-    id_lt?: Maybe<ID_Input>;
-    id_lte?: Maybe<ID_Input>;
-    id_gt?: Maybe<ID_Input>;
-    id_gte?: Maybe<ID_Input>;
-    id_contains?: Maybe<ID_Input>;
-    id_not_contains?: Maybe<ID_Input>;
-    id_starts_with?: Maybe<ID_Input>;
-    id_not_starts_with?: Maybe<ID_Input>;
-    id_ends_with?: Maybe<ID_Input>;
-    id_not_ends_with?: Maybe<ID_Input>;
-    name?: Maybe<string>;
-    name_not?: Maybe<string>;
-    name_in?: Maybe<string[] | string>;
-    name_not_in?: Maybe<string[] | string>;
-    name_lt?: Maybe<string>;
-    name_lte?: Maybe<string>;
-    name_gt?: Maybe<string>;
-    name_gte?: Maybe<string>;
-    name_contains?: Maybe<string>;
-    name_not_contains?: Maybe<string>;
-    name_starts_with?: Maybe<string>;
-    name_not_starts_with?: Maybe<string>;
-    name_ends_with?: Maybe<string>;
-    name_not_ends_with?: Maybe<string>;
-    AND?: Maybe<ReligionScalarWhereInput[] | ReligionScalarWhereInput>;
-    OR?: Maybe<ReligionScalarWhereInput[] | ReligionScalarWhereInput>;
-    NOT?: Maybe<ReligionScalarWhereInput[] | ReligionScalarWhereInput>;
-}
-
-export interface LocationMetaDataCreateInput {
-    id?: Maybe<ID_Input>;
-    location: LocationCreateOneWithoutMetadataInput;
-    population?: Maybe<PopulationCreateOneInput>;
-    languages?: Maybe<LanguageCreateManyInput>;
-    religions?: Maybe<ReligionCreateManyInput>;
-    ethnicities?: Maybe<EtnicityCreateManyInput>;
-    flag?: Maybe<FlagCreateManyInput>;
-    economy?: Maybe<EconomyCreateOneInput>;
-    government?: Maybe<GovernmentCreateOneInput>;
-    weather?: Maybe<WEATHER>;
-    climate?: Maybe<CLIMATE>;
-}
-
-export interface ReligionUpdateManyWithWhereNestedInput {
-    where: ReligionScalarWhereInput;
-    data: ReligionUpdateManyDataInput;
-}
-
-export interface LanguageUpdateManyMutationInput {
-    name?: Maybe<string>;
-    script?: Maybe<LANGUAGE_SCRIPT>;
-}
-
-export interface ReligionUpdateManyDataInput {
-    name?: Maybe<string>;
-}
-
-export interface HTMLContentUpdateInput {
-    content?: Maybe<string>;
-    invisibleTo?: Maybe<CharacterUpdateManyInput>;
-}
-
-export interface EtnicityUpdateManyInput {
-    create?: Maybe<EtnicityCreateInput[] | EtnicityCreateInput>;
-    update?: Maybe<EtnicityUpdateWithWhereUniqueNestedInput[] | EtnicityUpdateWithWhereUniqueNestedInput>;
-    upsert?: Maybe<EtnicityUpsertWithWhereUniqueNestedInput[] | EtnicityUpsertWithWhereUniqueNestedInput>;
-    delete?: Maybe<EtnicityWhereUniqueInput[] | EtnicityWhereUniqueInput>;
-    connect?: Maybe<EtnicityWhereUniqueInput[] | EtnicityWhereUniqueInput>;
-    set?: Maybe<EtnicityWhereUniqueInput[] | EtnicityWhereUniqueInput>;
-    disconnect?: Maybe<EtnicityWhereUniqueInput[] | EtnicityWhereUniqueInput>;
-    deleteMany?: Maybe<EtnicityScalarWhereInput[] | EtnicityScalarWhereInput>;
-    updateMany?: Maybe<EtnicityUpdateManyWithWhereNestedInput[] | EtnicityUpdateManyWithWhereNestedInput>;
-}
-
-export interface GovernmentUpdateWithoutPartiesDataInput {
-    leader?: Maybe<CharacterUpdateOneInput>;
-    content?: Maybe<HTMLContentUpdateManyInput>;
-}
-
-export interface EtnicityUpdateWithWhereUniqueNestedInput {
-    where: EtnicityWhereUniqueInput;
-    data: EtnicityUpdateDataInput;
-}
-
-export interface GovernmentCreateWithoutPartiesInput {
-    id?: Maybe<ID_Input>;
-    leader?: Maybe<CharacterCreateOneInput>;
-    content?: Maybe<HTMLContentCreateManyInput>;
-}
-
-export interface EtnicityUpdateDataInput {
-    name?: Maybe<string>;
-}
-
-export type PopulationWhereUniqueInput = AtLeastOne<{
-    id: Maybe<ID_Input>;
-}>;
-
-export interface EtnicityUpsertWithWhereUniqueNestedInput {
-    where: EtnicityWhereUniqueInput;
-    update: EtnicityUpdateDataInput;
-    create: EtnicityCreateInput;
-}
-
-export interface EtnicityUpdateInput {
-    name?: Maybe<string>;
-}
-
-export interface EtnicityScalarWhereInput {
-    id?: Maybe<ID_Input>;
-    id_not?: Maybe<ID_Input>;
-    id_in?: Maybe<ID_Input[] | ID_Input>;
-    id_not_in?: Maybe<ID_Input[] | ID_Input>;
-    id_lt?: Maybe<ID_Input>;
-    id_lte?: Maybe<ID_Input>;
-    id_gt?: Maybe<ID_Input>;
-    id_gte?: Maybe<ID_Input>;
-    id_contains?: Maybe<ID_Input>;
-    id_not_contains?: Maybe<ID_Input>;
-    id_starts_with?: Maybe<ID_Input>;
-    id_not_starts_with?: Maybe<ID_Input>;
-    id_ends_with?: Maybe<ID_Input>;
-    id_not_ends_with?: Maybe<ID_Input>;
-    name?: Maybe<string>;
-    name_not?: Maybe<string>;
-    name_in?: Maybe<string[] | string>;
-    name_not_in?: Maybe<string[] | string>;
-    name_lt?: Maybe<string>;
-    name_lte?: Maybe<string>;
-    name_gt?: Maybe<string>;
-    name_gte?: Maybe<string>;
-    name_contains?: Maybe<string>;
-    name_not_contains?: Maybe<string>;
-    name_starts_with?: Maybe<string>;
-    name_not_starts_with?: Maybe<string>;
-    name_ends_with?: Maybe<string>;
-    name_not_ends_with?: Maybe<string>;
-    AND?: Maybe<EtnicityScalarWhereInput[] | EtnicityScalarWhereInput>;
-    OR?: Maybe<EtnicityScalarWhereInput[] | EtnicityScalarWhereInput>;
-    NOT?: Maybe<EtnicityScalarWhereInput[] | EtnicityScalarWhereInput>;
-}
-
-export interface CurrencyUpdateInput {
-    name?: Maybe<string>;
-    sign?: Maybe<string>;
-}
-
-export interface EtnicityUpdateManyWithWhereNestedInput {
-    where: EtnicityScalarWhereInput;
-    data: EtnicityUpdateManyDataInput;
-}
-
-export interface CharacterUpdateWithoutMetadataDataInput {
-    firstName?: Maybe<string>;
-    lastName?: Maybe<string>;
-    type?: Maybe<CHARACTER_TYPE>;
-    campaign?: Maybe<CampaignUpdateOneRequiredWithoutPlayersInput>;
-}
-
-export interface EtnicityUpdateManyDataInput {
-    name?: Maybe<string>;
-}
-
-export interface UserWhereInput {
-    id?: Maybe<ID_Input>;
-    id_not?: Maybe<ID_Input>;
-    id_in?: Maybe<ID_Input[] | ID_Input>;
-    id_not_in?: Maybe<ID_Input[] | ID_Input>;
-    id_lt?: Maybe<ID_Input>;
-    id_lte?: Maybe<ID_Input>;
-    id_gt?: Maybe<ID_Input>;
-    id_gte?: Maybe<ID_Input>;
-    id_contains?: Maybe<ID_Input>;
-    id_not_contains?: Maybe<ID_Input>;
-    id_starts_with?: Maybe<ID_Input>;
-    id_not_starts_with?: Maybe<ID_Input>;
-    id_ends_with?: Maybe<ID_Input>;
-    id_not_ends_with?: Maybe<ID_Input>;
-    createdAt?: Maybe<DateTimeInput>;
-    createdAt_not?: Maybe<DateTimeInput>;
-    createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-    createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-    createdAt_lt?: Maybe<DateTimeInput>;
-    createdAt_lte?: Maybe<DateTimeInput>;
-    createdAt_gt?: Maybe<DateTimeInput>;
-    createdAt_gte?: Maybe<DateTimeInput>;
-    updatedAt?: Maybe<DateTimeInput>;
-    updatedAt_not?: Maybe<DateTimeInput>;
-    updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-    updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-    updatedAt_lt?: Maybe<DateTimeInput>;
-    updatedAt_lte?: Maybe<DateTimeInput>;
-    updatedAt_gt?: Maybe<DateTimeInput>;
-    updatedAt_gte?: Maybe<DateTimeInput>;
-    email?: Maybe<string>;
-    email_not?: Maybe<string>;
-    email_in?: Maybe<string[] | string>;
-    email_not_in?: Maybe<string[] | string>;
-    email_lt?: Maybe<string>;
-    email_lte?: Maybe<string>;
-    email_gt?: Maybe<string>;
-    email_gte?: Maybe<string>;
-    email_contains?: Maybe<string>;
-    email_not_contains?: Maybe<string>;
-    email_starts_with?: Maybe<string>;
-    email_not_starts_with?: Maybe<string>;
-    email_ends_with?: Maybe<string>;
-    email_not_ends_with?: Maybe<string>;
-    password?: Maybe<string>;
-    password_not?: Maybe<string>;
-    password_in?: Maybe<string[] | string>;
-    password_not_in?: Maybe<string[] | string>;
-    password_lt?: Maybe<string>;
-    password_lte?: Maybe<string>;
-    password_gt?: Maybe<string>;
-    password_gte?: Maybe<string>;
-    password_contains?: Maybe<string>;
-    password_not_contains?: Maybe<string>;
-    password_starts_with?: Maybe<string>;
-    password_not_starts_with?: Maybe<string>;
-    password_ends_with?: Maybe<string>;
-    password_not_ends_with?: Maybe<string>;
-    role?: Maybe<ROLE>;
-    role_not?: Maybe<ROLE>;
-    role_in?: Maybe<ROLE[] | ROLE>;
-    role_not_in?: Maybe<ROLE[] | ROLE>;
-    campaigns_every?: Maybe<CampaignWhereInput>;
-    campaigns_some?: Maybe<CampaignWhereInput>;
-    campaigns_none?: Maybe<CampaignWhereInput>;
-    firstName?: Maybe<string>;
-    firstName_not?: Maybe<string>;
-    firstName_in?: Maybe<string[] | string>;
-    firstName_not_in?: Maybe<string[] | string>;
-    firstName_lt?: Maybe<string>;
-    firstName_lte?: Maybe<string>;
-    firstName_gt?: Maybe<string>;
-    firstName_gte?: Maybe<string>;
-    firstName_contains?: Maybe<string>;
-    firstName_not_contains?: Maybe<string>;
-    firstName_starts_with?: Maybe<string>;
-    firstName_not_starts_with?: Maybe<string>;
-    firstName_ends_with?: Maybe<string>;
-    firstName_not_ends_with?: Maybe<string>;
-    lastName?: Maybe<string>;
-    lastName_not?: Maybe<string>;
-    lastName_in?: Maybe<string[] | string>;
-    lastName_not_in?: Maybe<string[] | string>;
-    lastName_lt?: Maybe<string>;
-    lastName_lte?: Maybe<string>;
-    lastName_gt?: Maybe<string>;
-    lastName_gte?: Maybe<string>;
-    lastName_contains?: Maybe<string>;
-    lastName_not_contains?: Maybe<string>;
-    lastName_starts_with?: Maybe<string>;
-    lastName_not_starts_with?: Maybe<string>;
-    lastName_ends_with?: Maybe<string>;
-    lastName_not_ends_with?: Maybe<string>;
-    characters_every?: Maybe<CharacterWhereInput>;
-    characters_some?: Maybe<CharacterWhereInput>;
-    characters_none?: Maybe<CharacterWhereInput>;
-    resetToken?: Maybe<string>;
-    resetToken_not?: Maybe<string>;
-    resetToken_in?: Maybe<string[] | string>;
-    resetToken_not_in?: Maybe<string[] | string>;
-    resetToken_lt?: Maybe<string>;
-    resetToken_lte?: Maybe<string>;
-    resetToken_gt?: Maybe<string>;
-    resetToken_gte?: Maybe<string>;
-    resetToken_contains?: Maybe<string>;
-    resetToken_not_contains?: Maybe<string>;
-    resetToken_starts_with?: Maybe<string>;
-    resetToken_not_starts_with?: Maybe<string>;
-    resetToken_ends_with?: Maybe<string>;
-    resetToken_not_ends_with?: Maybe<string>;
-    resetTokenExpiry?: Maybe<string>;
-    resetTokenExpiry_not?: Maybe<string>;
-    resetTokenExpiry_in?: Maybe<string[] | string>;
-    resetTokenExpiry_not_in?: Maybe<string[] | string>;
-    resetTokenExpiry_lt?: Maybe<string>;
-    resetTokenExpiry_lte?: Maybe<string>;
-    resetTokenExpiry_gt?: Maybe<string>;
-    resetTokenExpiry_gte?: Maybe<string>;
-    resetTokenExpiry_contains?: Maybe<string>;
-    resetTokenExpiry_not_contains?: Maybe<string>;
-    resetTokenExpiry_starts_with?: Maybe<string>;
-    resetTokenExpiry_not_starts_with?: Maybe<string>;
-    resetTokenExpiry_ends_with?: Maybe<string>;
-    resetTokenExpiry_not_ends_with?: Maybe<string>;
-    AND?: Maybe<UserWhereInput[] | UserWhereInput>;
-    OR?: Maybe<UserWhereInput[] | UserWhereInput>;
-    NOT?: Maybe<UserWhereInput[] | UserWhereInput>;
-}
-
-export interface FlagUpdateManyInput {
-    create?: Maybe<FlagCreateInput[] | FlagCreateInput>;
-    update?: Maybe<FlagUpdateWithWhereUniqueNestedInput[] | FlagUpdateWithWhereUniqueNestedInput>;
-    upsert?: Maybe<FlagUpsertWithWhereUniqueNestedInput[] | FlagUpsertWithWhereUniqueNestedInput>;
-    delete?: Maybe<FlagWhereUniqueInput[] | FlagWhereUniqueInput>;
-    connect?: Maybe<FlagWhereUniqueInput[] | FlagWhereUniqueInput>;
-    set?: Maybe<FlagWhereUniqueInput[] | FlagWhereUniqueInput>;
-    disconnect?: Maybe<FlagWhereUniqueInput[] | FlagWhereUniqueInput>;
-    deleteMany?: Maybe<FlagScalarWhereInput[] | FlagScalarWhereInput>;
-    updateMany?: Maybe<FlagUpdateManyWithWhereNestedInput[] | FlagUpdateManyWithWhereNestedInput>;
-}
-
-export interface CharacterUpdateManyMutationInput {
-    firstName?: Maybe<string>;
-    lastName?: Maybe<string>;
-    type?: Maybe<CHARACTER_TYPE>;
-}
-
-export interface FlagUpdateWithWhereUniqueNestedInput {
-    where: FlagWhereUniqueInput;
-    data: FlagUpdateDataInput;
-}
-
-export interface CharacterCreateInput {
-    id?: Maybe<ID_Input>;
-    firstName: string;
-    lastName?: Maybe<string>;
-    type: CHARACTER_TYPE;
-    metadata?: Maybe<CharacterMetadataCreateOneWithoutCharacterInput>;
-    campaign: CampaignCreateOneWithoutPlayersInput;
-}
-
-export interface FlagUpdateDataInput {
-    imageSrc?: Maybe<string>;
-    description?: Maybe<string>;
-    location?: Maybe<LocationUpdateOneInput>;
-}
-
-export interface SkillCreateManyInput {
-    create?: Maybe<SkillCreateInput[] | SkillCreateInput>;
-    connect?: Maybe<SkillWhereUniqueInput[] | SkillWhereUniqueInput>;
-}
-
-export interface FlagUpsertWithWhereUniqueNestedInput {
-    where: FlagWhereUniqueInput;
-    update: FlagUpdateDataInput;
-    create: FlagCreateInput;
-}
-
-export interface LocationCreateManyWithoutCampaignInput {
-    create?: Maybe<LocationCreateWithoutCampaignInput[] | LocationCreateWithoutCampaignInput>;
-    connect?: Maybe<LocationWhereUniqueInput[] | LocationWhereUniqueInput>;
-}
-
-export interface FlagScalarWhereInput {
-    id?: Maybe<ID_Input>;
-    id_not?: Maybe<ID_Input>;
-    id_in?: Maybe<ID_Input[] | ID_Input>;
-    id_not_in?: Maybe<ID_Input[] | ID_Input>;
-    id_lt?: Maybe<ID_Input>;
-    id_lte?: Maybe<ID_Input>;
-    id_gt?: Maybe<ID_Input>;
-    id_gte?: Maybe<ID_Input>;
-    id_contains?: Maybe<ID_Input>;
-    id_not_contains?: Maybe<ID_Input>;
-    id_starts_with?: Maybe<ID_Input>;
-    id_not_starts_with?: Maybe<ID_Input>;
-    id_ends_with?: Maybe<ID_Input>;
-    id_not_ends_with?: Maybe<ID_Input>;
-    imageSrc?: Maybe<string>;
-    imageSrc_not?: Maybe<string>;
-    imageSrc_in?: Maybe<string[] | string>;
-    imageSrc_not_in?: Maybe<string[] | string>;
-    imageSrc_lt?: Maybe<string>;
-    imageSrc_lte?: Maybe<string>;
-    imageSrc_gt?: Maybe<string>;
-    imageSrc_gte?: Maybe<string>;
-    imageSrc_contains?: Maybe<string>;
-    imageSrc_not_contains?: Maybe<string>;
-    imageSrc_starts_with?: Maybe<string>;
-    imageSrc_not_starts_with?: Maybe<string>;
-    imageSrc_ends_with?: Maybe<string>;
-    imageSrc_not_ends_with?: Maybe<string>;
-    description?: Maybe<string>;
-    description_not?: Maybe<string>;
-    description_in?: Maybe<string[] | string>;
-    description_not_in?: Maybe<string[] | string>;
-    description_lt?: Maybe<string>;
-    description_lte?: Maybe<string>;
-    description_gt?: Maybe<string>;
-    description_gte?: Maybe<string>;
-    description_contains?: Maybe<string>;
-    description_not_contains?: Maybe<string>;
-    description_starts_with?: Maybe<string>;
-    description_not_starts_with?: Maybe<string>;
-    description_ends_with?: Maybe<string>;
-    description_not_ends_with?: Maybe<string>;
-    AND?: Maybe<FlagScalarWhereInput[] | FlagScalarWhereInput>;
-    OR?: Maybe<FlagScalarWhereInput[] | FlagScalarWhereInput>;
-    NOT?: Maybe<FlagScalarWhereInput[] | FlagScalarWhereInput>;
-}
-
-export interface LocationMetaDataCreateOneWithoutLocationInput {
-    create?: Maybe<LocationMetaDataCreateWithoutLocationInput>;
-    connect?: Maybe<LocationMetaDataWhereUniqueInput>;
-}
-
-export interface FlagUpdateManyWithWhereNestedInput {
-    where: FlagScalarWhereInput;
-    data: FlagUpdateManyDataInput;
-}
-
-export interface LocationCreateOneInput {
-    create?: Maybe<LocationCreateInput>;
-    connect?: Maybe<LocationWhereUniqueInput>;
-}
-
-export interface FlagUpdateManyDataInput {
-    imageSrc?: Maybe<string>;
-    description?: Maybe<string>;
-}
-
-export interface ReligionCreateInput {
-    id?: Maybe<ID_Input>;
-    name: string;
-    deity?: Maybe<CharacterCreateOneInput>;
-    content?: Maybe<HTMLContentCreateManyInput>;
-    location?: Maybe<LocationCreateOneInput>;
-}
-
-export interface EconomyUpdateOneInput {
-    create?: Maybe<EconomyCreateInput>;
-    update?: Maybe<EconomyUpdateDataInput>;
-    upsert?: Maybe<EconomyUpsertNestedInput>;
-    delete?: Maybe<boolean>;
-    disconnect?: Maybe<boolean>;
-    connect?: Maybe<EconomyWhereUniqueInput>;
-}
-
-export interface PopulationSubscriptionWhereInput {
-    mutation_in?: Maybe<MutationType[] | MutationType>;
-    updatedFields_contains?: Maybe<string>;
-    updatedFields_contains_every?: Maybe<string[] | string>;
-    updatedFields_contains_some?: Maybe<string[] | string>;
-    node?: Maybe<PopulationWhereInput>;
-    AND?: Maybe<PopulationSubscriptionWhereInput[] | PopulationSubscriptionWhereInput>;
-    OR?: Maybe<PopulationSubscriptionWhereInput[] | PopulationSubscriptionWhereInput>;
-    NOT?: Maybe<PopulationSubscriptionWhereInput[] | PopulationSubscriptionWhereInput>;
-}
-
-export interface EconomyUpdateDataInput {
-    currency?: Maybe<CurrencyUpdateOneInput>;
-    location?: Maybe<LocationUpdateManyInput>;
-}
-
-export interface LocationWhereInput {
-    id?: Maybe<ID_Input>;
-    id_not?: Maybe<ID_Input>;
-    id_in?: Maybe<ID_Input[] | ID_Input>;
-    id_not_in?: Maybe<ID_Input[] | ID_Input>;
-    id_lt?: Maybe<ID_Input>;
-    id_lte?: Maybe<ID_Input>;
-    id_gt?: Maybe<ID_Input>;
-    id_gte?: Maybe<ID_Input>;
-    id_contains?: Maybe<ID_Input>;
-    id_not_contains?: Maybe<ID_Input>;
-    id_starts_with?: Maybe<ID_Input>;
-    id_not_starts_with?: Maybe<ID_Input>;
-    id_ends_with?: Maybe<ID_Input>;
-    id_not_ends_with?: Maybe<ID_Input>;
-    type?: Maybe<LOCATION_TYPE>;
-    type_not?: Maybe<LOCATION_TYPE>;
-    type_in?: Maybe<LOCATION_TYPE[] | LOCATION_TYPE>;
-    type_not_in?: Maybe<LOCATION_TYPE[] | LOCATION_TYPE>;
-    name?: Maybe<string>;
-    name_not?: Maybe<string>;
-    name_in?: Maybe<string[] | string>;
-    name_not_in?: Maybe<string[] | string>;
-    name_lt?: Maybe<string>;
-    name_lte?: Maybe<string>;
-    name_gt?: Maybe<string>;
-    name_gte?: Maybe<string>;
-    name_contains?: Maybe<string>;
-    name_not_contains?: Maybe<string>;
-    name_starts_with?: Maybe<string>;
-    name_not_starts_with?: Maybe<string>;
-    name_ends_with?: Maybe<string>;
-    name_not_ends_with?: Maybe<string>;
-    locations_every?: Maybe<LocationWhereInput>;
-    locations_some?: Maybe<LocationWhereInput>;
-    locations_none?: Maybe<LocationWhereInput>;
-    metadata?: Maybe<LocationMetaDataWhereInput>;
-    campaign?: Maybe<CampaignWhereInput>;
-    parent?: Maybe<ID_Input>;
-    parent_not?: Maybe<ID_Input>;
-    parent_in?: Maybe<ID_Input[] | ID_Input>;
-    parent_not_in?: Maybe<ID_Input[] | ID_Input>;
-    parent_lt?: Maybe<ID_Input>;
-    parent_lte?: Maybe<ID_Input>;
-    parent_gt?: Maybe<ID_Input>;
-    parent_gte?: Maybe<ID_Input>;
-    parent_contains?: Maybe<ID_Input>;
-    parent_not_contains?: Maybe<ID_Input>;
-    parent_starts_with?: Maybe<ID_Input>;
-    parent_not_starts_with?: Maybe<ID_Input>;
-    parent_ends_with?: Maybe<ID_Input>;
-    parent_not_ends_with?: Maybe<ID_Input>;
-    AND?: Maybe<LocationWhereInput[] | LocationWhereInput>;
-    OR?: Maybe<LocationWhereInput[] | LocationWhereInput>;
-    NOT?: Maybe<LocationWhereInput[] | LocationWhereInput>;
-}
-
-export interface CurrencyUpdateOneInput {
-    create?: Maybe<CurrencyCreateInput>;
-    update?: Maybe<CurrencyUpdateDataInput>;
-    upsert?: Maybe<CurrencyUpsertNestedInput>;
-    delete?: Maybe<boolean>;
-    disconnect?: Maybe<boolean>;
-    connect?: Maybe<CurrencyWhereUniqueInput>;
-}
-
-export interface CharacterMetadataSubscriptionWhereInput {
-    mutation_in?: Maybe<MutationType[] | MutationType>;
-    updatedFields_contains?: Maybe<string>;
-    updatedFields_contains_every?: Maybe<string[] | string>;
-    updatedFields_contains_some?: Maybe<string[] | string>;
-    node?: Maybe<CharacterMetadataWhereInput>;
-    AND?: Maybe<CharacterMetadataSubscriptionWhereInput[] | CharacterMetadataSubscriptionWhereInput>;
-    OR?: Maybe<CharacterMetadataSubscriptionWhereInput[] | CharacterMetadataSubscriptionWhereInput>;
-    NOT?: Maybe<CharacterMetadataSubscriptionWhereInput[] | CharacterMetadataSubscriptionWhereInput>;
-}
-
-export interface CurrencyUpdateDataInput {
-    name?: Maybe<string>;
-    sign?: Maybe<string>;
-}
-
-export interface CampaignUpdateManyWithWhereNestedInput {
-    where: CampaignScalarWhereInput;
-    data: CampaignUpdateManyDataInput;
-}
-
-export interface CurrencyUpsertNestedInput {
-    update: CurrencyUpdateDataInput;
-    create: CurrencyCreateInput;
-}
-
-export interface CampaignUpdateManyInput {
-    create?: Maybe<CampaignCreateInput[] | CampaignCreateInput>;
-    update?: Maybe<CampaignUpdateWithWhereUniqueNestedInput[] | CampaignUpdateWithWhereUniqueNestedInput>;
-    upsert?: Maybe<CampaignUpsertWithWhereUniqueNestedInput[] | CampaignUpsertWithWhereUniqueNestedInput>;
-    delete?: Maybe<CampaignWhereUniqueInput[] | CampaignWhereUniqueInput>;
-    connect?: Maybe<CampaignWhereUniqueInput[] | CampaignWhereUniqueInput>;
-    set?: Maybe<CampaignWhereUniqueInput[] | CampaignWhereUniqueInput>;
-    disconnect?: Maybe<CampaignWhereUniqueInput[] | CampaignWhereUniqueInput>;
-    deleteMany?: Maybe<CampaignScalarWhereInput[] | CampaignScalarWhereInput>;
-    updateMany?: Maybe<CampaignUpdateManyWithWhereNestedInput[] | CampaignUpdateManyWithWhereNestedInput>;
-}
-
-export interface EconomyUpsertNestedInput {
-    update: EconomyUpdateDataInput;
-    create: EconomyCreateInput;
-}
-
-export interface CharacterWhereInput {
-    id?: Maybe<ID_Input>;
-    id_not?: Maybe<ID_Input>;
-    id_in?: Maybe<ID_Input[] | ID_Input>;
-    id_not_in?: Maybe<ID_Input[] | ID_Input>;
-    id_lt?: Maybe<ID_Input>;
-    id_lte?: Maybe<ID_Input>;
-    id_gt?: Maybe<ID_Input>;
-    id_gte?: Maybe<ID_Input>;
-    id_contains?: Maybe<ID_Input>;
-    id_not_contains?: Maybe<ID_Input>;
-    id_starts_with?: Maybe<ID_Input>;
-    id_not_starts_with?: Maybe<ID_Input>;
-    id_ends_with?: Maybe<ID_Input>;
-    id_not_ends_with?: Maybe<ID_Input>;
-    firstName?: Maybe<string>;
-    firstName_not?: Maybe<string>;
-    firstName_in?: Maybe<string[] | string>;
-    firstName_not_in?: Maybe<string[] | string>;
-    firstName_lt?: Maybe<string>;
-    firstName_lte?: Maybe<string>;
-    firstName_gt?: Maybe<string>;
-    firstName_gte?: Maybe<string>;
-    firstName_contains?: Maybe<string>;
-    firstName_not_contains?: Maybe<string>;
-    firstName_starts_with?: Maybe<string>;
-    firstName_not_starts_with?: Maybe<string>;
-    firstName_ends_with?: Maybe<string>;
-    firstName_not_ends_with?: Maybe<string>;
-    lastName?: Maybe<string>;
-    lastName_not?: Maybe<string>;
-    lastName_in?: Maybe<string[] | string>;
-    lastName_not_in?: Maybe<string[] | string>;
-    lastName_lt?: Maybe<string>;
-    lastName_lte?: Maybe<string>;
-    lastName_gt?: Maybe<string>;
-    lastName_gte?: Maybe<string>;
-    lastName_contains?: Maybe<string>;
-    lastName_not_contains?: Maybe<string>;
-    lastName_starts_with?: Maybe<string>;
-    lastName_not_starts_with?: Maybe<string>;
-    lastName_ends_with?: Maybe<string>;
-    lastName_not_ends_with?: Maybe<string>;
-    type?: Maybe<CHARACTER_TYPE>;
-    type_not?: Maybe<CHARACTER_TYPE>;
-    type_in?: Maybe<CHARACTER_TYPE[] | CHARACTER_TYPE>;
-    type_not_in?: Maybe<CHARACTER_TYPE[] | CHARACTER_TYPE>;
-    metadata?: Maybe<CharacterMetadataWhereInput>;
-    campaign?: Maybe<CampaignWhereInput>;
-    AND?: Maybe<CharacterWhereInput[] | CharacterWhereInput>;
-    OR?: Maybe<CharacterWhereInput[] | CharacterWhereInput>;
-    NOT?: Maybe<CharacterWhereInput[] | CharacterWhereInput>;
-}
-
-export interface GovernmentUpdateOneInput {
-    create?: Maybe<GovernmentCreateInput>;
-    update?: Maybe<GovernmentUpdateDataInput>;
-    upsert?: Maybe<GovernmentUpsertNestedInput>;
-    delete?: Maybe<boolean>;
-    disconnect?: Maybe<boolean>;
-    connect?: Maybe<GovernmentWhereUniqueInput>;
-}
-
-export type FlagWhereUniqueInput = AtLeastOne<{
-    id: Maybe<ID_Input>;
-}>;
-
-export interface GovernmentUpdateDataInput {
-    leader?: Maybe<CharacterUpdateOneInput>;
-    parties?: Maybe<GovernmentPartyUpdateManyWithoutGovernmentInput>;
-    content?: Maybe<HTMLContentUpdateManyInput>;
-}
-
-export interface LocationCreateOneWithoutMetadataInput {
-    create?: Maybe<LocationCreateWithoutMetadataInput>;
-    connect?: Maybe<LocationWhereUniqueInput>;
-}
-
-export interface GovernmentPartyUpdateManyWithoutGovernmentInput {
-    create?: Maybe<GovernmentPartyCreateWithoutGovernmentInput[] | GovernmentPartyCreateWithoutGovernmentInput>;
-    delete?: Maybe<GovernmentPartyWhereUniqueInput[] | GovernmentPartyWhereUniqueInput>;
-    connect?: Maybe<GovernmentPartyWhereUniqueInput[] | GovernmentPartyWhereUniqueInput>;
-    set?: Maybe<GovernmentPartyWhereUniqueInput[] | GovernmentPartyWhereUniqueInput>;
-    disconnect?: Maybe<GovernmentPartyWhereUniqueInput[] | GovernmentPartyWhereUniqueInput>;
-    update?: Maybe<
-        | GovernmentPartyUpdateWithWhereUniqueWithoutGovernmentInput[]
-        | GovernmentPartyUpdateWithWhereUniqueWithoutGovernmentInput
-    >;
-    upsert?: Maybe<
-        | GovernmentPartyUpsertWithWhereUniqueWithoutGovernmentInput[]
-        | GovernmentPartyUpsertWithWhereUniqueWithoutGovernmentInput
-    >;
-    deleteMany?: Maybe<GovernmentPartyScalarWhereInput[] | GovernmentPartyScalarWhereInput>;
-    updateMany?: Maybe<GovernmentPartyUpdateManyWithWhereNestedInput[] | GovernmentPartyUpdateManyWithWhereNestedInput>;
-}
-
-export interface HTMLContentUpdateManyMutationInput {
-    content?: Maybe<string>;
-}
-
-export interface GovernmentPartyUpdateWithWhereUniqueWithoutGovernmentInput {
-    where: GovernmentPartyWhereUniqueInput;
-    data: GovernmentPartyUpdateWithoutGovernmentDataInput;
-}
-
-export interface GovernmentPartyUpdateInput {
-    leader?: Maybe<CharacterUpdateOneInput>;
-    name?: Maybe<string>;
-    content?: Maybe<HTMLContentUpdateManyInput>;
-    government?: Maybe<GovernmentUpdateOneWithoutPartiesInput>;
-}
-
-export interface GovernmentPartyUpdateWithoutGovernmentDataInput {
-    leader?: Maybe<CharacterUpdateOneInput>;
-    name?: Maybe<string>;
-    content?: Maybe<HTMLContentUpdateManyInput>;
-}
-
-export interface FlagUpdateInput {
-    imageSrc?: Maybe<string>;
-    description?: Maybe<string>;
-    location?: Maybe<LocationUpdateOneInput>;
-}
-
-export interface GovernmentPartyUpsertWithWhereUniqueWithoutGovernmentInput {
-    where: GovernmentPartyWhereUniqueInput;
-    update: GovernmentPartyUpdateWithoutGovernmentDataInput;
-    create: GovernmentPartyCreateWithoutGovernmentInput;
-}
-
-export interface CharacterMetadataUpdateManyMutationInput {
-    status?: Maybe<CHARACTER_STATUS>;
-    race?: Maybe<RACE>;
-    class?: Maybe<CLASS>;
-    alignment?: Maybe<ALIGNMENT>;
-    height?: Maybe<Int>;
-    weight?: Maybe<Int>;
-}
-
-export interface GovernmentPartyScalarWhereInput {
-    id?: Maybe<ID_Input>;
-    id_not?: Maybe<ID_Input>;
-    id_in?: Maybe<ID_Input[] | ID_Input>;
-    id_not_in?: Maybe<ID_Input[] | ID_Input>;
-    id_lt?: Maybe<ID_Input>;
-    id_lte?: Maybe<ID_Input>;
-    id_gt?: Maybe<ID_Input>;
-    id_gte?: Maybe<ID_Input>;
-    id_contains?: Maybe<ID_Input>;
-    id_not_contains?: Maybe<ID_Input>;
-    id_starts_with?: Maybe<ID_Input>;
-    id_not_starts_with?: Maybe<ID_Input>;
-    id_ends_with?: Maybe<ID_Input>;
-    id_not_ends_with?: Maybe<ID_Input>;
-    name?: Maybe<string>;
-    name_not?: Maybe<string>;
-    name_in?: Maybe<string[] | string>;
-    name_not_in?: Maybe<string[] | string>;
-    name_lt?: Maybe<string>;
-    name_lte?: Maybe<string>;
-    name_gt?: Maybe<string>;
-    name_gte?: Maybe<string>;
-    name_contains?: Maybe<string>;
-    name_not_contains?: Maybe<string>;
-    name_starts_with?: Maybe<string>;
-    name_not_starts_with?: Maybe<string>;
-    name_ends_with?: Maybe<string>;
-    name_not_ends_with?: Maybe<string>;
-    AND?: Maybe<GovernmentPartyScalarWhereInput[] | GovernmentPartyScalarWhereInput>;
-    OR?: Maybe<GovernmentPartyScalarWhereInput[] | GovernmentPartyScalarWhereInput>;
-    NOT?: Maybe<GovernmentPartyScalarWhereInput[] | GovernmentPartyScalarWhereInput>;
-}
-
-export interface CharacterCreateOneWithoutMetadataInput {
-    create?: Maybe<CharacterCreateWithoutMetadataInput>;
-    connect?: Maybe<CharacterWhereUniqueInput>;
-}
-
-export interface GovernmentPartyUpdateManyWithWhereNestedInput {
-    where: GovernmentPartyScalarWhereInput;
-    data: GovernmentPartyUpdateManyDataInput;
-}
-
-export interface CharacterMetadataCreateWithoutCharacterInput {
-    id?: Maybe<ID_Input>;
-    abilities?: Maybe<AbilityCreateManyInput>;
-    skills?: Maybe<SkillCreateManyInput>;
-    status?: Maybe<CHARACTER_STATUS>;
-    race?: Maybe<RACE>;
-    class?: Maybe<CLASS>;
-    alignment?: Maybe<ALIGNMENT>;
-    height?: Maybe<Int>;
-    weight?: Maybe<Int>;
-}
-
-export interface GovernmentPartyUpdateManyDataInput {
-    name?: Maybe<string>;
-}
-
-export interface LocationCreateManyInput {
-    create?: Maybe<LocationCreateInput[] | LocationCreateInput>;
-    connect?: Maybe<LocationWhereUniqueInput[] | LocationWhereUniqueInput>;
-}
-
-export interface GovernmentUpsertNestedInput {
-    update: GovernmentUpdateDataInput;
-    create: GovernmentCreateInput;
-}
-
-export interface LanguageCreateInput {
-    id?: Maybe<ID_Input>;
-    name: string;
-    script?: Maybe<LANGUAGE_SCRIPT>;
-    location?: Maybe<LocationCreateManyInput>;
-}
-
-export interface LocationMetaDataUpsertWithoutLocationInput {
-    update: LocationMetaDataUpdateWithoutLocationDataInput;
-    create: LocationMetaDataCreateWithoutLocationInput;
-}
-
-export interface LocationSubscriptionWhereInput {
-    mutation_in?: Maybe<MutationType[] | MutationType>;
-    updatedFields_contains?: Maybe<string>;
-    updatedFields_contains_every?: Maybe<string[] | string>;
-    updatedFields_contains_some?: Maybe<string[] | string>;
-    node?: Maybe<LocationWhereInput>;
-    AND?: Maybe<LocationSubscriptionWhereInput[] | LocationSubscriptionWhereInput>;
-    OR?: Maybe<LocationSubscriptionWhereInput[] | LocationSubscriptionWhereInput>;
-    NOT?: Maybe<LocationSubscriptionWhereInput[] | LocationSubscriptionWhereInput>;
-}
-
-export interface CampaignUpdateOneRequiredWithoutLocationsInput {
-    create?: Maybe<CampaignCreateWithoutLocationsInput>;
-    update?: Maybe<CampaignUpdateWithoutLocationsDataInput>;
-    upsert?: Maybe<CampaignUpsertWithoutLocationsInput>;
-    connect?: Maybe<CampaignWhereUniqueInput>;
-}
-
-export type CampaignWhereUniqueInput = AtLeastOne<{
-    id: Maybe<ID_Input>;
-}>;
-
-export interface CampaignUpdateWithoutLocationsDataInput {
-    name?: Maybe<string>;
-    players?: Maybe<CharacterUpdateManyWithoutCampaignInput>;
-}
-
-export interface CampaignCreateManyInput {
-    create?: Maybe<CampaignCreateInput[] | CampaignCreateInput>;
-    connect?: Maybe<CampaignWhereUniqueInput[] | CampaignWhereUniqueInput>;
-}
-
-export interface CharacterUpdateManyWithoutCampaignInput {
-    create?: Maybe<CharacterCreateWithoutCampaignInput[] | CharacterCreateWithoutCampaignInput>;
-    delete?: Maybe<CharacterWhereUniqueInput[] | CharacterWhereUniqueInput>;
-    connect?: Maybe<CharacterWhereUniqueInput[] | CharacterWhereUniqueInput>;
-    set?: Maybe<CharacterWhereUniqueInput[] | CharacterWhereUniqueInput>;
-    disconnect?: Maybe<CharacterWhereUniqueInput[] | CharacterWhereUniqueInput>;
-    update?: Maybe<
-        CharacterUpdateWithWhereUniqueWithoutCampaignInput[] | CharacterUpdateWithWhereUniqueWithoutCampaignInput
-    >;
-    upsert?: Maybe<
-        CharacterUpsertWithWhereUniqueWithoutCampaignInput[] | CharacterUpsertWithWhereUniqueWithoutCampaignInput
-    >;
-    deleteMany?: Maybe<CharacterScalarWhereInput[] | CharacterScalarWhereInput>;
-    updateMany?: Maybe<CharacterUpdateManyWithWhereNestedInput[] | CharacterUpdateManyWithWhereNestedInput>;
-}
-
-export type GovernmentWhereUniqueInput = AtLeastOne<{
-    id: Maybe<ID_Input>;
-}>;
-
-export interface CharacterUpdateWithWhereUniqueWithoutCampaignInput {
-    where: CharacterWhereUniqueInput;
-    data: CharacterUpdateWithoutCampaignDataInput;
-}
-
-export interface GovernmentUpsertWithoutPartiesInput {
-    update: GovernmentUpdateWithoutPartiesDataInput;
-    create: GovernmentCreateWithoutPartiesInput;
-}
-
-export interface CharacterUpdateWithoutCampaignDataInput {
-    firstName?: Maybe<string>;
-    lastName?: Maybe<string>;
-    type?: Maybe<CHARACTER_TYPE>;
-    metadata?: Maybe<CharacterMetadataUpdateOneWithoutCharacterInput>;
-}
-
-export interface EconomyUpdateInput {
-    currency?: Maybe<CurrencyUpdateOneInput>;
-    location?: Maybe<LocationUpdateManyInput>;
-}
-
-export interface CharacterUpsertWithWhereUniqueWithoutCampaignInput {
-    where: CharacterWhereUniqueInput;
-    update: CharacterUpdateWithoutCampaignDataInput;
-    create: CharacterCreateWithoutCampaignInput;
-}
-
-export interface AbilityCreateInput {
-    id?: Maybe<ID_Input>;
-    type: ABILITY_TYPE;
-    value: Int;
-    modifier: Int;
-    character: CharacterCreateOneInput;
-}
-
-export interface CampaignUpsertWithoutLocationsInput {
-    update: CampaignUpdateWithoutLocationsDataInput;
-    create: CampaignCreateWithoutLocationsInput;
-}
-
-export interface PopulationCreateOneInput {
-    create?: Maybe<PopulationCreateInput>;
-    connect?: Maybe<PopulationWhereUniqueInput>;
+  where: LanguageScalarWhereInput;
+  data: LanguageUpdateManyDataInput;
+}
+
+export interface EtnicityWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  AND?: Maybe<EtnicityWhereInput[] | EtnicityWhereInput>;
+  OR?: Maybe<EtnicityWhereInput[] | EtnicityWhereInput>;
+  NOT?: Maybe<EtnicityWhereInput[] | EtnicityWhereInput>;
+}
+
+export interface GovernmentCreateOneInput {
+  create?: Maybe<GovernmentCreateInput>;
+  connect?: Maybe<GovernmentWhereUniqueInput>;
 }
 
 export interface LocationUpsertWithWhereUniqueNestedInput {
-    where: LocationWhereUniqueInput;
-    update: LocationUpdateDataInput;
-    create: LocationCreateInput;
+  where: LocationWhereUniqueInput;
+  update: LocationUpdateDataInput;
+  create: LocationCreateInput;
+}
+
+export interface GovernmentCreateInput {
+  id?: Maybe<ID_Input>;
+  leader?: Maybe<CharacterCreateOneInput>;
+  parties?: Maybe<GovernmentPartyCreateManyWithoutGovernmentInput>;
+  content?: Maybe<HTMLContentCreateManyInput>;
+}
+
+export interface LanguageUpdateManyDataInput {
+  name?: Maybe<String>;
+  script?: Maybe<LANGUAGE_SCRIPT>;
+}
+
+export interface GovernmentPartyCreateManyWithoutGovernmentInput {
+  create?: Maybe<
+    | GovernmentPartyCreateWithoutGovernmentInput[]
+    | GovernmentPartyCreateWithoutGovernmentInput
+  >;
+  connect?: Maybe<
+    GovernmentPartyWhereUniqueInput[] | GovernmentPartyWhereUniqueInput
+  >;
+}
+
+export interface SkillSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<SkillWhereInput>;
+  AND?: Maybe<SkillSubscriptionWhereInput[] | SkillSubscriptionWhereInput>;
+  OR?: Maybe<SkillSubscriptionWhereInput[] | SkillSubscriptionWhereInput>;
+  NOT?: Maybe<SkillSubscriptionWhereInput[] | SkillSubscriptionWhereInput>;
+}
+
+export interface GovernmentPartyCreateWithoutGovernmentInput {
+  id?: Maybe<ID_Input>;
+  leader?: Maybe<CharacterCreateOneInput>;
+  name: String;
+  content?: Maybe<HTMLContentCreateManyInput>;
+}
+
+export interface ReligionWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  deity?: Maybe<CharacterWhereInput>;
+  content_every?: Maybe<HTMLContentWhereInput>;
+  content_some?: Maybe<HTMLContentWhereInput>;
+  content_none?: Maybe<HTMLContentWhereInput>;
+  location?: Maybe<LocationWhereInput>;
+  AND?: Maybe<ReligionWhereInput[] | ReligionWhereInput>;
+  OR?: Maybe<ReligionWhereInput[] | ReligionWhereInput>;
+  NOT?: Maybe<ReligionWhereInput[] | ReligionWhereInput>;
+}
+
+export interface CampaignCreateOneWithoutLocationsInput {
+  create?: Maybe<CampaignCreateWithoutLocationsInput>;
+  connect?: Maybe<CampaignWhereUniqueInput>;
+}
+
+export interface LanguageWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  script?: Maybe<LANGUAGE_SCRIPT>;
+  script_not?: Maybe<LANGUAGE_SCRIPT>;
+  script_in?: Maybe<LANGUAGE_SCRIPT[] | LANGUAGE_SCRIPT>;
+  script_not_in?: Maybe<LANGUAGE_SCRIPT[] | LANGUAGE_SCRIPT>;
+  location_every?: Maybe<LocationWhereInput>;
+  location_some?: Maybe<LocationWhereInput>;
+  location_none?: Maybe<LocationWhereInput>;
+  AND?: Maybe<LanguageWhereInput[] | LanguageWhereInput>;
+  OR?: Maybe<LanguageWhereInput[] | LanguageWhereInput>;
+  NOT?: Maybe<LanguageWhereInput[] | LanguageWhereInput>;
+}
+
+export interface CampaignCreateWithoutLocationsInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  players?: Maybe<CharacterCreateManyWithoutCampaignInput>;
+  dm: UserCreateOneWithoutCampaignsInput;
+}
+
+export interface PopulationWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  location?: Maybe<LocationWhereInput>;
+  inhabitants?: Maybe<Int>;
+  inhabitants_not?: Maybe<Int>;
+  inhabitants_in?: Maybe<Int[] | Int>;
+  inhabitants_not_in?: Maybe<Int[] | Int>;
+  inhabitants_lt?: Maybe<Int>;
+  inhabitants_lte?: Maybe<Int>;
+  inhabitants_gt?: Maybe<Int>;
+  inhabitants_gte?: Maybe<Int>;
+  density?: Maybe<Int>;
+  density_not?: Maybe<Int>;
+  density_in?: Maybe<Int[] | Int>;
+  density_not_in?: Maybe<Int[] | Int>;
+  density_lt?: Maybe<Int>;
+  density_lte?: Maybe<Int>;
+  density_gt?: Maybe<Int>;
+  density_gte?: Maybe<Int>;
+  densityUnit?: Maybe<DENSITY_UNIT>;
+  densityUnit_not?: Maybe<DENSITY_UNIT>;
+  densityUnit_in?: Maybe<DENSITY_UNIT[] | DENSITY_UNIT>;
+  densityUnit_not_in?: Maybe<DENSITY_UNIT[] | DENSITY_UNIT>;
+  AND?: Maybe<PopulationWhereInput[] | PopulationWhereInput>;
+  OR?: Maybe<PopulationWhereInput[] | PopulationWhereInput>;
+  NOT?: Maybe<PopulationWhereInput[] | PopulationWhereInput>;
+}
+
+export interface CharacterCreateManyWithoutCampaignInput {
+  create?: Maybe<
+    CharacterCreateWithoutCampaignInput[] | CharacterCreateWithoutCampaignInput
+  >;
+  connect?: Maybe<CharacterWhereUniqueInput[] | CharacterWhereUniqueInput>;
+}
+
+export interface LocationMetaDataWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  location?: Maybe<LocationWhereInput>;
+  population?: Maybe<PopulationWhereInput>;
+  languages_every?: Maybe<LanguageWhereInput>;
+  languages_some?: Maybe<LanguageWhereInput>;
+  languages_none?: Maybe<LanguageWhereInput>;
+  religions_every?: Maybe<ReligionWhereInput>;
+  religions_some?: Maybe<ReligionWhereInput>;
+  religions_none?: Maybe<ReligionWhereInput>;
+  ethnicities_every?: Maybe<EtnicityWhereInput>;
+  ethnicities_some?: Maybe<EtnicityWhereInput>;
+  ethnicities_none?: Maybe<EtnicityWhereInput>;
+  flag_every?: Maybe<FlagWhereInput>;
+  flag_some?: Maybe<FlagWhereInput>;
+  flag_none?: Maybe<FlagWhereInput>;
+  economy?: Maybe<EconomyWhereInput>;
+  government?: Maybe<GovernmentWhereInput>;
+  weather?: Maybe<WEATHER>;
+  weather_not?: Maybe<WEATHER>;
+  weather_in?: Maybe<WEATHER[] | WEATHER>;
+  weather_not_in?: Maybe<WEATHER[] | WEATHER>;
+  climate?: Maybe<CLIMATE>;
+  climate_not?: Maybe<CLIMATE>;
+  climate_in?: Maybe<CLIMATE[] | CLIMATE>;
+  climate_not_in?: Maybe<CLIMATE[] | CLIMATE>;
+  AND?: Maybe<LocationMetaDataWhereInput[] | LocationMetaDataWhereInput>;
+  OR?: Maybe<LocationMetaDataWhereInput[] | LocationMetaDataWhereInput>;
+  NOT?: Maybe<LocationMetaDataWhereInput[] | LocationMetaDataWhereInput>;
+}
+
+export interface CharacterCreateWithoutCampaignInput {
+  id?: Maybe<ID_Input>;
+  firstName: String;
+  lastName?: Maybe<String>;
+  type: CHARACTER_TYPE;
+  metadata?: Maybe<CharacterMetadataCreateOneWithoutCharacterInput>;
+  user?: Maybe<UserCreateOneWithoutCharactersInput>;
+}
+
+export interface LanguageSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<LanguageWhereInput>;
+  AND?: Maybe<
+    LanguageSubscriptionWhereInput[] | LanguageSubscriptionWhereInput
+  >;
+  OR?: Maybe<LanguageSubscriptionWhereInput[] | LanguageSubscriptionWhereInput>;
+  NOT?: Maybe<
+    LanguageSubscriptionWhereInput[] | LanguageSubscriptionWhereInput
+  >;
+}
+
+export interface UserCreateOneWithoutCharactersInput {
+  create?: Maybe<UserCreateWithoutCharactersInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface GovernmentPartySubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<GovernmentPartyWhereInput>;
+  AND?: Maybe<
+    | GovernmentPartySubscriptionWhereInput[]
+    | GovernmentPartySubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    | GovernmentPartySubscriptionWhereInput[]
+    | GovernmentPartySubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    | GovernmentPartySubscriptionWhereInput[]
+    | GovernmentPartySubscriptionWhereInput
+  >;
+}
+
+export interface UserCreateWithoutCharactersInput {
+  id?: Maybe<ID_Input>;
+  email: String;
+  password: String;
+  role?: Maybe<ROLE>;
+  campaigns?: Maybe<CampaignCreateManyWithoutDmInput>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  resetToken?: Maybe<String>;
+  resetTokenExpiry?: Maybe<String>;
 }
 
 export interface FlagSubscriptionWhereInput {
-    mutation_in?: Maybe<MutationType[] | MutationType>;
-    updatedFields_contains?: Maybe<string>;
-    updatedFields_contains_every?: Maybe<string[] | string>;
-    updatedFields_contains_some?: Maybe<string[] | string>;
-    node?: Maybe<FlagWhereInput>;
-    AND?: Maybe<FlagSubscriptionWhereInput[] | FlagSubscriptionWhereInput>;
-    OR?: Maybe<FlagSubscriptionWhereInput[] | FlagSubscriptionWhereInput>;
-    NOT?: Maybe<FlagSubscriptionWhereInput[] | FlagSubscriptionWhereInput>;
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<FlagWhereInput>;
+  AND?: Maybe<FlagSubscriptionWhereInput[] | FlagSubscriptionWhereInput>;
+  OR?: Maybe<FlagSubscriptionWhereInput[] | FlagSubscriptionWhereInput>;
+  NOT?: Maybe<FlagSubscriptionWhereInput[] | FlagSubscriptionWhereInput>;
 }
 
-export interface LocationScalarWhereInput {
-    id?: Maybe<ID_Input>;
-    id_not?: Maybe<ID_Input>;
-    id_in?: Maybe<ID_Input[] | ID_Input>;
-    id_not_in?: Maybe<ID_Input[] | ID_Input>;
-    id_lt?: Maybe<ID_Input>;
-    id_lte?: Maybe<ID_Input>;
-    id_gt?: Maybe<ID_Input>;
-    id_gte?: Maybe<ID_Input>;
-    id_contains?: Maybe<ID_Input>;
-    id_not_contains?: Maybe<ID_Input>;
-    id_starts_with?: Maybe<ID_Input>;
-    id_not_starts_with?: Maybe<ID_Input>;
-    id_ends_with?: Maybe<ID_Input>;
-    id_not_ends_with?: Maybe<ID_Input>;
-    type?: Maybe<LOCATION_TYPE>;
-    type_not?: Maybe<LOCATION_TYPE>;
-    type_in?: Maybe<LOCATION_TYPE[] | LOCATION_TYPE>;
-    type_not_in?: Maybe<LOCATION_TYPE[] | LOCATION_TYPE>;
-    name?: Maybe<string>;
-    name_not?: Maybe<string>;
-    name_in?: Maybe<string[] | string>;
-    name_not_in?: Maybe<string[] | string>;
-    name_lt?: Maybe<string>;
-    name_lte?: Maybe<string>;
-    name_gt?: Maybe<string>;
-    name_gte?: Maybe<string>;
-    name_contains?: Maybe<string>;
-    name_not_contains?: Maybe<string>;
-    name_starts_with?: Maybe<string>;
-    name_not_starts_with?: Maybe<string>;
-    name_ends_with?: Maybe<string>;
-    name_not_ends_with?: Maybe<string>;
-    parent?: Maybe<ID_Input>;
-    parent_not?: Maybe<ID_Input>;
-    parent_in?: Maybe<ID_Input[] | ID_Input>;
-    parent_not_in?: Maybe<ID_Input[] | ID_Input>;
-    parent_lt?: Maybe<ID_Input>;
-    parent_lte?: Maybe<ID_Input>;
-    parent_gt?: Maybe<ID_Input>;
-    parent_gte?: Maybe<ID_Input>;
-    parent_contains?: Maybe<ID_Input>;
-    parent_not_contains?: Maybe<ID_Input>;
-    parent_starts_with?: Maybe<ID_Input>;
-    parent_not_starts_with?: Maybe<ID_Input>;
-    parent_ends_with?: Maybe<ID_Input>;
-    parent_not_ends_with?: Maybe<ID_Input>;
-    AND?: Maybe<LocationScalarWhereInput[] | LocationScalarWhereInput>;
-    OR?: Maybe<LocationScalarWhereInput[] | LocationScalarWhereInput>;
-    NOT?: Maybe<LocationScalarWhereInput[] | LocationScalarWhereInput>;
+export interface CampaignCreateManyWithoutDmInput {
+  create?: Maybe<CampaignCreateWithoutDmInput[] | CampaignCreateWithoutDmInput>;
+  connect?: Maybe<CampaignWhereUniqueInput[] | CampaignWhereUniqueInput>;
+}
+
+export interface CampaignWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  locations_every?: Maybe<LocationWhereInput>;
+  locations_some?: Maybe<LocationWhereInput>;
+  locations_none?: Maybe<LocationWhereInput>;
+  players_every?: Maybe<CharacterWhereInput>;
+  players_some?: Maybe<CharacterWhereInput>;
+  players_none?: Maybe<CharacterWhereInput>;
+  dm?: Maybe<UserWhereInput>;
+  AND?: Maybe<CampaignWhereInput[] | CampaignWhereInput>;
+  OR?: Maybe<CampaignWhereInput[] | CampaignWhereInput>;
+  NOT?: Maybe<CampaignWhereInput[] | CampaignWhereInput>;
+}
+
+export interface CampaignCreateWithoutDmInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  locations?: Maybe<LocationCreateManyWithoutCampaignInput>;
+  players?: Maybe<CharacterCreateManyWithoutCampaignInput>;
+}
+
+export interface CurrencySubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<CurrencyWhereInput>;
+  AND?: Maybe<
+    CurrencySubscriptionWhereInput[] | CurrencySubscriptionWhereInput
+  >;
+  OR?: Maybe<CurrencySubscriptionWhereInput[] | CurrencySubscriptionWhereInput>;
+  NOT?: Maybe<
+    CurrencySubscriptionWhereInput[] | CurrencySubscriptionWhereInput
+  >;
+}
+
+export interface UserCreateOneWithoutCampaignsInput {
+  create?: Maybe<UserCreateWithoutCampaignsInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface CharacterMetadataSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<CharacterMetadataWhereInput>;
+  AND?: Maybe<
+    | CharacterMetadataSubscriptionWhereInput[]
+    | CharacterMetadataSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    | CharacterMetadataSubscriptionWhereInput[]
+    | CharacterMetadataSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    | CharacterMetadataSubscriptionWhereInput[]
+    | CharacterMetadataSubscriptionWhereInput
+  >;
+}
+
+export interface UserCreateWithoutCampaignsInput {
+  id?: Maybe<ID_Input>;
+  email: String;
+  password: String;
+  role?: Maybe<ROLE>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  characters?: Maybe<CharacterCreateManyWithoutUserInput>;
+  resetToken?: Maybe<String>;
+  resetTokenExpiry?: Maybe<String>;
+}
+
+export interface CampaignSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<CampaignWhereInput>;
+  AND?: Maybe<
+    CampaignSubscriptionWhereInput[] | CampaignSubscriptionWhereInput
+  >;
+  OR?: Maybe<CampaignSubscriptionWhereInput[] | CampaignSubscriptionWhereInput>;
+  NOT?: Maybe<
+    CampaignSubscriptionWhereInput[] | CampaignSubscriptionWhereInput
+  >;
+}
+
+export interface CharacterCreateManyWithoutUserInput {
+  create?: Maybe<
+    CharacterCreateWithoutUserInput[] | CharacterCreateWithoutUserInput
+  >;
+  connect?: Maybe<CharacterWhereUniqueInput[] | CharacterWhereUniqueInput>;
+}
+
+export interface UserUpdateManyMutationInput {
+  email?: Maybe<String>;
+  password?: Maybe<String>;
+  role?: Maybe<ROLE>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  resetToken?: Maybe<String>;
+  resetTokenExpiry?: Maybe<String>;
+}
+
+export interface CharacterCreateWithoutUserInput {
+  id?: Maybe<ID_Input>;
+  firstName: String;
+  lastName?: Maybe<String>;
+  type: CHARACTER_TYPE;
+  metadata?: Maybe<CharacterMetadataCreateOneWithoutCharacterInput>;
+  campaign: CampaignCreateOneWithoutPlayersInput;
+}
+
+export interface UserUpdateInput {
+  email?: Maybe<String>;
+  password?: Maybe<String>;
+  role?: Maybe<ROLE>;
+  campaigns?: Maybe<CampaignUpdateManyWithoutDmInput>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  characters?: Maybe<CharacterUpdateManyWithoutUserInput>;
+  resetToken?: Maybe<String>;
+  resetTokenExpiry?: Maybe<String>;
+}
+
+export interface AbilityUpdateInput {
+  type?: Maybe<ABILITY_TYPE>;
+  value?: Maybe<Int>;
+  modifier?: Maybe<Int>;
+  character?: Maybe<CharacterUpdateOneRequiredInput>;
+}
+
+export interface SkillUpdateManyMutationInput {
+  name?: Maybe<SKILL>;
+  value?: Maybe<Int>;
+}
+
+export interface CharacterUpdateOneRequiredInput {
+  create?: Maybe<CharacterCreateInput>;
+  update?: Maybe<CharacterUpdateDataInput>;
+  upsert?: Maybe<CharacterUpsertNestedInput>;
+  connect?: Maybe<CharacterWhereUniqueInput>;
+}
+
+export interface SkillUpdateInput {
+  name?: Maybe<SKILL>;
+  value?: Maybe<Int>;
+  character?: Maybe<CharacterUpdateOneRequiredInput>;
+}
+
+export interface CharacterUpdateDataInput {
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  type?: Maybe<CHARACTER_TYPE>;
+  metadata?: Maybe<CharacterMetadataUpdateOneWithoutCharacterInput>;
+  campaign?: Maybe<CampaignUpdateOneRequiredWithoutPlayersInput>;
+  user?: Maybe<UserUpdateOneWithoutCharactersInput>;
+}
+
+export interface ReligionUpdateInput {
+  name?: Maybe<String>;
+  deity?: Maybe<CharacterUpdateOneInput>;
+  content?: Maybe<HTMLContentUpdateManyInput>;
+  location?: Maybe<LocationUpdateOneInput>;
+}
+
+export interface CharacterMetadataUpdateOneWithoutCharacterInput {
+  create?: Maybe<CharacterMetadataCreateWithoutCharacterInput>;
+  update?: Maybe<CharacterMetadataUpdateWithoutCharacterDataInput>;
+  upsert?: Maybe<CharacterMetadataUpsertWithoutCharacterInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<CharacterMetadataWhereUniqueInput>;
+}
+
+export interface CharacterMetadataWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  character?: Maybe<CharacterWhereInput>;
+  abilities_every?: Maybe<AbilityWhereInput>;
+  abilities_some?: Maybe<AbilityWhereInput>;
+  abilities_none?: Maybe<AbilityWhereInput>;
+  skills_every?: Maybe<SkillWhereInput>;
+  skills_some?: Maybe<SkillWhereInput>;
+  skills_none?: Maybe<SkillWhereInput>;
+  status?: Maybe<CHARACTER_STATUS>;
+  status_not?: Maybe<CHARACTER_STATUS>;
+  status_in?: Maybe<CHARACTER_STATUS[] | CHARACTER_STATUS>;
+  status_not_in?: Maybe<CHARACTER_STATUS[] | CHARACTER_STATUS>;
+  race?: Maybe<RACE>;
+  race_not?: Maybe<RACE>;
+  race_in?: Maybe<RACE[] | RACE>;
+  race_not_in?: Maybe<RACE[] | RACE>;
+  class?: Maybe<CLASS>;
+  class_not?: Maybe<CLASS>;
+  class_in?: Maybe<CLASS[] | CLASS>;
+  class_not_in?: Maybe<CLASS[] | CLASS>;
+  alignment?: Maybe<ALIGNMENT>;
+  alignment_not?: Maybe<ALIGNMENT>;
+  alignment_in?: Maybe<ALIGNMENT[] | ALIGNMENT>;
+  alignment_not_in?: Maybe<ALIGNMENT[] | ALIGNMENT>;
+  height?: Maybe<Int>;
+  height_not?: Maybe<Int>;
+  height_in?: Maybe<Int[] | Int>;
+  height_not_in?: Maybe<Int[] | Int>;
+  height_lt?: Maybe<Int>;
+  height_lte?: Maybe<Int>;
+  height_gt?: Maybe<Int>;
+  height_gte?: Maybe<Int>;
+  weight?: Maybe<Int>;
+  weight_not?: Maybe<Int>;
+  weight_in?: Maybe<Int[] | Int>;
+  weight_not_in?: Maybe<Int[] | Int>;
+  weight_lt?: Maybe<Int>;
+  weight_lte?: Maybe<Int>;
+  weight_gt?: Maybe<Int>;
+  weight_gte?: Maybe<Int>;
+  AND?: Maybe<CharacterMetadataWhereInput[] | CharacterMetadataWhereInput>;
+  OR?: Maybe<CharacterMetadataWhereInput[] | CharacterMetadataWhereInput>;
+  NOT?: Maybe<CharacterMetadataWhereInput[] | CharacterMetadataWhereInput>;
+}
+
+export interface CharacterMetadataUpdateWithoutCharacterDataInput {
+  abilities?: Maybe<AbilityUpdateManyInput>;
+  skills?: Maybe<SkillUpdateManyInput>;
+  status?: Maybe<CHARACTER_STATUS>;
+  race?: Maybe<RACE>;
+  class?: Maybe<CLASS>;
+  alignment?: Maybe<ALIGNMENT>;
+  height?: Maybe<Int>;
+  weight?: Maybe<Int>;
+}
+
+export interface PopulationUpdateInput {
+  location?: Maybe<LocationUpdateOneRequiredInput>;
+  inhabitants?: Maybe<Int>;
+  density?: Maybe<Int>;
+  densityUnit?: Maybe<DENSITY_UNIT>;
+}
+
+export interface AbilityUpdateManyInput {
+  create?: Maybe<AbilityCreateInput[] | AbilityCreateInput>;
+  update?: Maybe<
+    | AbilityUpdateWithWhereUniqueNestedInput[]
+    | AbilityUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | AbilityUpsertWithWhereUniqueNestedInput[]
+    | AbilityUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<AbilityWhereUniqueInput[] | AbilityWhereUniqueInput>;
+  connect?: Maybe<AbilityWhereUniqueInput[] | AbilityWhereUniqueInput>;
+  set?: Maybe<AbilityWhereUniqueInput[] | AbilityWhereUniqueInput>;
+  disconnect?: Maybe<AbilityWhereUniqueInput[] | AbilityWhereUniqueInput>;
+  deleteMany?: Maybe<AbilityScalarWhereInput[] | AbilityScalarWhereInput>;
+  updateMany?: Maybe<
+    | AbilityUpdateManyWithWhereNestedInput[]
+    | AbilityUpdateManyWithWhereNestedInput
+  >;
+}
+
+export type CurrencyWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface AbilityUpdateWithWhereUniqueNestedInput {
+  where: AbilityWhereUniqueInput;
+  data: AbilityUpdateDataInput;
+}
+
+export interface LocationUpsertWithoutMetadataInput {
+  update: LocationUpdateWithoutMetadataDataInput;
+  create: LocationCreateWithoutMetadataInput;
+}
+
+export interface AbilityUpdateDataInput {
+  type?: Maybe<ABILITY_TYPE>;
+  value?: Maybe<Int>;
+  modifier?: Maybe<Int>;
+  character?: Maybe<CharacterUpdateOneRequiredInput>;
+}
+
+export interface LocationUpdateOneRequiredWithoutMetadataInput {
+  create?: Maybe<LocationCreateWithoutMetadataInput>;
+  update?: Maybe<LocationUpdateWithoutMetadataDataInput>;
+  upsert?: Maybe<LocationUpsertWithoutMetadataInput>;
+  connect?: Maybe<LocationWhereUniqueInput>;
+}
+
+export interface AbilityUpsertWithWhereUniqueNestedInput {
+  where: AbilityWhereUniqueInput;
+  update: AbilityUpdateDataInput;
+  create: AbilityCreateInput;
+}
+
+export interface AbilityWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  type?: Maybe<ABILITY_TYPE>;
+  type_not?: Maybe<ABILITY_TYPE>;
+  type_in?: Maybe<ABILITY_TYPE[] | ABILITY_TYPE>;
+  type_not_in?: Maybe<ABILITY_TYPE[] | ABILITY_TYPE>;
+  value?: Maybe<Int>;
+  value_not?: Maybe<Int>;
+  value_in?: Maybe<Int[] | Int>;
+  value_not_in?: Maybe<Int[] | Int>;
+  value_lt?: Maybe<Int>;
+  value_lte?: Maybe<Int>;
+  value_gt?: Maybe<Int>;
+  value_gte?: Maybe<Int>;
+  modifier?: Maybe<Int>;
+  modifier_not?: Maybe<Int>;
+  modifier_in?: Maybe<Int[] | Int>;
+  modifier_not_in?: Maybe<Int[] | Int>;
+  modifier_lt?: Maybe<Int>;
+  modifier_lte?: Maybe<Int>;
+  modifier_gt?: Maybe<Int>;
+  modifier_gte?: Maybe<Int>;
+  character?: Maybe<CharacterWhereInput>;
+  AND?: Maybe<AbilityWhereInput[] | AbilityWhereInput>;
+  OR?: Maybe<AbilityWhereInput[] | AbilityWhereInput>;
+  NOT?: Maybe<AbilityWhereInput[] | AbilityWhereInput>;
+}
+
+export interface AbilityScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  type?: Maybe<ABILITY_TYPE>;
+  type_not?: Maybe<ABILITY_TYPE>;
+  type_in?: Maybe<ABILITY_TYPE[] | ABILITY_TYPE>;
+  type_not_in?: Maybe<ABILITY_TYPE[] | ABILITY_TYPE>;
+  value?: Maybe<Int>;
+  value_not?: Maybe<Int>;
+  value_in?: Maybe<Int[] | Int>;
+  value_not_in?: Maybe<Int[] | Int>;
+  value_lt?: Maybe<Int>;
+  value_lte?: Maybe<Int>;
+  value_gt?: Maybe<Int>;
+  value_gte?: Maybe<Int>;
+  modifier?: Maybe<Int>;
+  modifier_not?: Maybe<Int>;
+  modifier_in?: Maybe<Int[] | Int>;
+  modifier_not_in?: Maybe<Int[] | Int>;
+  modifier_lt?: Maybe<Int>;
+  modifier_lte?: Maybe<Int>;
+  modifier_gt?: Maybe<Int>;
+  modifier_gte?: Maybe<Int>;
+  AND?: Maybe<AbilityScalarWhereInput[] | AbilityScalarWhereInput>;
+  OR?: Maybe<AbilityScalarWhereInput[] | AbilityScalarWhereInput>;
+  NOT?: Maybe<AbilityScalarWhereInput[] | AbilityScalarWhereInput>;
+}
+
+export interface LocationCreateWithoutMetadataInput {
+  id?: Maybe<ID_Input>;
+  type: LOCATION_TYPE;
+  name: String;
+  locations?: Maybe<LocationCreateManyInput>;
+  campaign: CampaignCreateOneWithoutLocationsInput;
+  parent?: Maybe<ID_Input>;
+}
+
+export interface AbilityUpdateManyWithWhereNestedInput {
+  where: AbilityScalarWhereInput;
+  data: AbilityUpdateManyDataInput;
 }
 
 export type EtnicityWhereUniqueInput = AtLeastOne<{
-    id: Maybe<ID_Input>;
+  id: Maybe<ID_Input>;
 }>;
 
+export interface AbilityUpdateManyDataInput {
+  type?: Maybe<ABILITY_TYPE>;
+  value?: Maybe<Int>;
+  modifier?: Maybe<Int>;
+}
+
+export interface LocationUpdateManyMutationInput {
+  type?: Maybe<LOCATION_TYPE>;
+  name?: Maybe<String>;
+  parent?: Maybe<ID_Input>;
+}
+
+export interface SkillUpdateManyInput {
+  create?: Maybe<SkillCreateInput[] | SkillCreateInput>;
+  update?: Maybe<
+    | SkillUpdateWithWhereUniqueNestedInput[]
+    | SkillUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | SkillUpsertWithWhereUniqueNestedInput[]
+    | SkillUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<SkillWhereUniqueInput[] | SkillWhereUniqueInput>;
+  connect?: Maybe<SkillWhereUniqueInput[] | SkillWhereUniqueInput>;
+  set?: Maybe<SkillWhereUniqueInput[] | SkillWhereUniqueInput>;
+  disconnect?: Maybe<SkillWhereUniqueInput[] | SkillWhereUniqueInput>;
+  deleteMany?: Maybe<SkillScalarWhereInput[] | SkillScalarWhereInput>;
+  updateMany?: Maybe<
+    SkillUpdateManyWithWhereNestedInput[] | SkillUpdateManyWithWhereNestedInput
+  >;
+}
+
+export type FlagWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface SkillUpdateWithWhereUniqueNestedInput {
+  where: SkillWhereUniqueInput;
+  data: SkillUpdateDataInput;
+}
+
+export interface LanguageUpdateInput {
+  name?: Maybe<String>;
+  script?: Maybe<LANGUAGE_SCRIPT>;
+  location?: Maybe<LocationUpdateManyInput>;
+}
+
+export interface SkillUpdateDataInput {
+  name?: Maybe<SKILL>;
+  value?: Maybe<Int>;
+  character?: Maybe<CharacterUpdateOneRequiredInput>;
+}
+
+export type GovernmentWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface SkillUpsertWithWhereUniqueNestedInput {
+  where: SkillWhereUniqueInput;
+  update: SkillUpdateDataInput;
+  create: SkillCreateInput;
+}
+
+export interface GovernmentPartyUpdateManyMutationInput {
+  name?: Maybe<String>;
+}
+
+export interface SkillScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<SKILL>;
+  name_not?: Maybe<SKILL>;
+  name_in?: Maybe<SKILL[] | SKILL>;
+  name_not_in?: Maybe<SKILL[] | SKILL>;
+  value?: Maybe<Int>;
+  value_not?: Maybe<Int>;
+  value_in?: Maybe<Int[] | Int>;
+  value_not_in?: Maybe<Int[] | Int>;
+  value_lt?: Maybe<Int>;
+  value_lte?: Maybe<Int>;
+  value_gt?: Maybe<Int>;
+  value_gte?: Maybe<Int>;
+  AND?: Maybe<SkillScalarWhereInput[] | SkillScalarWhereInput>;
+  OR?: Maybe<SkillScalarWhereInput[] | SkillScalarWhereInput>;
+  NOT?: Maybe<SkillScalarWhereInput[] | SkillScalarWhereInput>;
+}
+
+export interface GovernmentUpdateWithoutPartiesDataInput {
+  leader?: Maybe<CharacterUpdateOneInput>;
+  content?: Maybe<HTMLContentUpdateManyInput>;
+}
+
+export interface SkillUpdateManyWithWhereNestedInput {
+  where: SkillScalarWhereInput;
+  data: SkillUpdateManyDataInput;
+}
+
+export interface GovernmentUpdateOneWithoutPartiesInput {
+  create?: Maybe<GovernmentCreateWithoutPartiesInput>;
+  update?: Maybe<GovernmentUpdateWithoutPartiesDataInput>;
+  upsert?: Maybe<GovernmentUpsertWithoutPartiesInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<GovernmentWhereUniqueInput>;
+}
+
+export interface SkillUpdateManyDataInput {
+  name?: Maybe<SKILL>;
+  value?: Maybe<Int>;
+}
+
+export interface GovernmentCreateWithoutPartiesInput {
+  id?: Maybe<ID_Input>;
+  leader?: Maybe<CharacterCreateOneInput>;
+  content?: Maybe<HTMLContentCreateManyInput>;
+}
+
+export interface CharacterMetadataUpsertWithoutCharacterInput {
+  update: CharacterMetadataUpdateWithoutCharacterDataInput;
+  create: CharacterMetadataCreateWithoutCharacterInput;
+}
+
+export interface GovernmentCreateOneWithoutPartiesInput {
+  create?: Maybe<GovernmentCreateWithoutPartiesInput>;
+  connect?: Maybe<GovernmentWhereUniqueInput>;
+}
+
 export interface LocationUpdateManyWithWhereNestedInput {
-    where: LocationScalarWhereInput;
-    data: LocationUpdateManyDataInput;
+  where: LocationScalarWhereInput;
+  data: LocationUpdateManyDataInput;
 }
 
-export interface GovernmentPartyCreateInput {
-    id?: Maybe<ID_Input>;
-    leader?: Maybe<CharacterCreateOneInput>;
-    name: string;
-    content?: Maybe<HTMLContentCreateManyInput>;
-    government?: Maybe<GovernmentCreateOneWithoutPartiesInput>;
+export interface GovernmentUpdateInput {
+  leader?: Maybe<CharacterUpdateOneInput>;
+  parties?: Maybe<GovernmentPartyUpdateManyWithoutGovernmentInput>;
+  content?: Maybe<HTMLContentUpdateManyInput>;
 }
 
-export interface LocationUpdateManyDataInput {
-    type?: Maybe<LOCATION_TYPE>;
-    name?: Maybe<string>;
-    parent?: Maybe<ID_Input>;
+export interface CampaignUpdateWithoutPlayersDataInput {
+  name?: Maybe<String>;
+  locations?: Maybe<LocationUpdateManyWithoutCampaignInput>;
+  dm?: Maybe<UserUpdateOneRequiredWithoutCampaignsInput>;
 }
 
-export interface CampaignCreateOneWithoutPlayersInput {
-    create?: Maybe<CampaignCreateWithoutPlayersInput>;
-    connect?: Maybe<CampaignWhereUniqueInput>;
+export interface FlagUpdateManyMutationInput {
+  imageSrc?: Maybe<String>;
+  description?: Maybe<String>;
 }
 
-export interface CampaignUpdateInput {
-    name?: Maybe<string>;
-    locations?: Maybe<LocationUpdateManyWithoutCampaignInput>;
-    players?: Maybe<CharacterUpdateManyWithoutCampaignInput>;
+export interface LocationUpdateManyWithoutCampaignInput {
+  create?: Maybe<
+    LocationCreateWithoutCampaignInput[] | LocationCreateWithoutCampaignInput
+  >;
+  delete?: Maybe<LocationWhereUniqueInput[] | LocationWhereUniqueInput>;
+  connect?: Maybe<LocationWhereUniqueInput[] | LocationWhereUniqueInput>;
+  set?: Maybe<LocationWhereUniqueInput[] | LocationWhereUniqueInput>;
+  disconnect?: Maybe<LocationWhereUniqueInput[] | LocationWhereUniqueInput>;
+  update?: Maybe<
+    | LocationUpdateWithWhereUniqueWithoutCampaignInput[]
+    | LocationUpdateWithWhereUniqueWithoutCampaignInput
+  >;
+  upsert?: Maybe<
+    | LocationUpsertWithWhereUniqueWithoutCampaignInput[]
+    | LocationUpsertWithWhereUniqueWithoutCampaignInput
+  >;
+  deleteMany?: Maybe<LocationScalarWhereInput[] | LocationScalarWhereInput>;
+  updateMany?: Maybe<
+    | LocationUpdateManyWithWhereNestedInput[]
+    | LocationUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface EtnicityUpdateManyMutationInput {
+  name?: Maybe<String>;
+}
+
+export interface LocationUpdateWithWhereUniqueWithoutCampaignInput {
+  where: LocationWhereUniqueInput;
+  data: LocationUpdateWithoutCampaignDataInput;
+}
+
+export interface EtnicityUpdateInput {
+  name?: Maybe<String>;
+}
+
+export interface LocationUpdateWithoutCampaignDataInput {
+  type?: Maybe<LOCATION_TYPE>;
+  name?: Maybe<String>;
+  locations?: Maybe<LocationUpdateManyInput>;
+  metadata?: Maybe<LocationMetaDataUpdateOneWithoutLocationInput>;
+  parent?: Maybe<ID_Input>;
+}
+
+export interface CurrencyUpdateManyMutationInput {
+  name?: Maybe<String>;
+  sign?: Maybe<String>;
+}
+
+export interface LocationUpdateManyInput {
+  create?: Maybe<LocationCreateInput[] | LocationCreateInput>;
+  update?: Maybe<
+    | LocationUpdateWithWhereUniqueNestedInput[]
+    | LocationUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | LocationUpsertWithWhereUniqueNestedInput[]
+    | LocationUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<LocationWhereUniqueInput[] | LocationWhereUniqueInput>;
+  connect?: Maybe<LocationWhereUniqueInput[] | LocationWhereUniqueInput>;
+  set?: Maybe<LocationWhereUniqueInput[] | LocationWhereUniqueInput>;
+  disconnect?: Maybe<LocationWhereUniqueInput[] | LocationWhereUniqueInput>;
+  deleteMany?: Maybe<LocationScalarWhereInput[] | LocationScalarWhereInput>;
+  updateMany?: Maybe<
+    | LocationUpdateManyWithWhereNestedInput[]
+    | LocationUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface CurrencyUpdateInput {
+  name?: Maybe<String>;
+  sign?: Maybe<String>;
+}
+
+export interface LocationUpdateWithWhereUniqueNestedInput {
+  where: LocationWhereUniqueInput;
+  data: LocationUpdateDataInput;
+}
+
+export interface CharacterUpsertWithoutMetadataInput {
+  update: CharacterUpdateWithoutMetadataDataInput;
+  create: CharacterCreateWithoutMetadataInput;
+}
+
+export interface LocationUpdateDataInput {
+  type?: Maybe<LOCATION_TYPE>;
+  name?: Maybe<String>;
+  locations?: Maybe<LocationUpdateManyInput>;
+  metadata?: Maybe<LocationMetaDataUpdateOneWithoutLocationInput>;
+  campaign?: Maybe<CampaignUpdateOneRequiredWithoutLocationsInput>;
+  parent?: Maybe<ID_Input>;
+}
+
+export type PopulationWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface LocationMetaDataUpdateOneWithoutLocationInput {
+  create?: Maybe<LocationMetaDataCreateWithoutLocationInput>;
+  update?: Maybe<LocationMetaDataUpdateWithoutLocationDataInput>;
+  upsert?: Maybe<LocationMetaDataUpsertWithoutLocationInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<LocationMetaDataWhereUniqueInput>;
+}
+
+export interface CharacterMetadataUpdateInput {
+  character?: Maybe<CharacterUpdateOneRequiredWithoutMetadataInput>;
+  abilities?: Maybe<AbilityUpdateManyInput>;
+  skills?: Maybe<SkillUpdateManyInput>;
+  status?: Maybe<CHARACTER_STATUS>;
+  race?: Maybe<RACE>;
+  class?: Maybe<CLASS>;
+  alignment?: Maybe<ALIGNMENT>;
+  height?: Maybe<Int>;
+  weight?: Maybe<Int>;
+}
+
+export interface LocationMetaDataUpdateWithoutLocationDataInput {
+  population?: Maybe<PopulationUpdateOneInput>;
+  languages?: Maybe<LanguageUpdateManyInput>;
+  religions?: Maybe<ReligionUpdateManyInput>;
+  ethnicities?: Maybe<EtnicityUpdateManyInput>;
+  flag?: Maybe<FlagUpdateManyInput>;
+  economy?: Maybe<EconomyUpdateOneInput>;
+  government?: Maybe<GovernmentUpdateOneInput>;
+  weather?: Maybe<WEATHER>;
+  climate?: Maybe<CLIMATE>;
+}
+
+export interface CharacterCreateOneWithoutMetadataInput {
+  create?: Maybe<CharacterCreateWithoutMetadataInput>;
+  connect?: Maybe<CharacterWhereUniqueInput>;
+}
+
+export interface PopulationUpdateOneInput {
+  create?: Maybe<PopulationCreateInput>;
+  update?: Maybe<PopulationUpdateDataInput>;
+  upsert?: Maybe<PopulationUpsertNestedInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<PopulationWhereUniqueInput>;
+}
+
+export interface CharacterMetadataCreateInput {
+  id?: Maybe<ID_Input>;
+  character: CharacterCreateOneWithoutMetadataInput;
+  abilities?: Maybe<AbilityCreateManyInput>;
+  skills?: Maybe<SkillCreateManyInput>;
+  status?: Maybe<CHARACTER_STATUS>;
+  race?: Maybe<RACE>;
+  class?: Maybe<CLASS>;
+  alignment?: Maybe<ALIGNMENT>;
+  height?: Maybe<Int>;
+  weight?: Maybe<Int>;
+}
+
+export interface PopulationUpdateDataInput {
+  location?: Maybe<LocationUpdateOneRequiredInput>;
+  inhabitants?: Maybe<Int>;
+  density?: Maybe<Int>;
+  densityUnit?: Maybe<DENSITY_UNIT>;
+}
+
+export interface CharacterUpdateInput {
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  type?: Maybe<CHARACTER_TYPE>;
+  metadata?: Maybe<CharacterMetadataUpdateOneWithoutCharacterInput>;
+  campaign?: Maybe<CampaignUpdateOneRequiredWithoutPlayersInput>;
+  user?: Maybe<UserUpdateOneWithoutCharactersInput>;
+}
+
+export interface LocationUpdateOneRequiredInput {
+  create?: Maybe<LocationCreateInput>;
+  update?: Maybe<LocationUpdateDataInput>;
+  upsert?: Maybe<LocationUpsertNestedInput>;
+  connect?: Maybe<LocationWhereUniqueInput>;
+}
+
+export interface CampaignUpdateManyMutationInput {
+  name?: Maybe<String>;
+}
+
+export interface LocationUpsertNestedInput {
+  update: LocationUpdateDataInput;
+  create: LocationCreateInput;
+}
+
+export interface CampaignCreateInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  locations?: Maybe<LocationCreateManyWithoutCampaignInput>;
+  players?: Maybe<CharacterCreateManyWithoutCampaignInput>;
+  dm: UserCreateOneWithoutCampaignsInput;
+}
+
+export interface PopulationUpsertNestedInput {
+  update: PopulationUpdateDataInput;
+  create: PopulationCreateInput;
 }
 
 export interface AbilityUpdateManyMutationInput {
-    type?: Maybe<ABILITY_TYPE>;
-    value?: Maybe<Int>;
-    modifier?: Maybe<Int>;
+  type?: Maybe<ABILITY_TYPE>;
+  value?: Maybe<Int>;
+  modifier?: Maybe<Int>;
 }
 
-export interface CampaignUpsertWithoutPlayersInput {
-    update: CampaignUpdateWithoutPlayersDataInput;
-    create: CampaignCreateWithoutPlayersInput;
+export interface LanguageUpdateManyInput {
+  create?: Maybe<LanguageCreateInput[] | LanguageCreateInput>;
+  update?: Maybe<
+    | LanguageUpdateWithWhereUniqueNestedInput[]
+    | LanguageUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | LanguageUpsertWithWhereUniqueNestedInput[]
+    | LanguageUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<LanguageWhereUniqueInput[] | LanguageWhereUniqueInput>;
+  connect?: Maybe<LanguageWhereUniqueInput[] | LanguageWhereUniqueInput>;
+  set?: Maybe<LanguageWhereUniqueInput[] | LanguageWhereUniqueInput>;
+  disconnect?: Maybe<LanguageWhereUniqueInput[] | LanguageWhereUniqueInput>;
+  deleteMany?: Maybe<LanguageScalarWhereInput[] | LanguageScalarWhereInput>;
+  updateMany?: Maybe<
+    | LanguageUpdateManyWithWhereNestedInput[]
+    | LanguageUpdateManyWithWhereNestedInput
+  >;
 }
 
 export interface LocationUpsertWithWhereUniqueWithoutCampaignInput {
-    where: LocationWhereUniqueInput;
-    update: LocationUpdateWithoutCampaignDataInput;
-    create: LocationCreateWithoutCampaignInput;
+  where: LocationWhereUniqueInput;
+  update: LocationUpdateWithoutCampaignDataInput;
+  create: LocationCreateWithoutCampaignInput;
 }
 
-export interface UserSubscriptionWhereInput {
-    mutation_in?: Maybe<MutationType[] | MutationType>;
-    updatedFields_contains?: Maybe<string>;
-    updatedFields_contains_every?: Maybe<string[] | string>;
-    updatedFields_contains_some?: Maybe<string[] | string>;
-    node?: Maybe<UserWhereInput>;
-    AND?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
-    OR?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
-    NOT?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+export interface LanguageUpdateWithWhereUniqueNestedInput {
+  where: LanguageWhereUniqueInput;
+  data: LanguageUpdateDataInput;
 }
 
-export interface CharacterUpdateOneRequiredWithoutMetadataInput {
-    create?: Maybe<CharacterCreateWithoutMetadataInput>;
-    update?: Maybe<CharacterUpdateWithoutMetadataDataInput>;
-    upsert?: Maybe<CharacterUpsertWithoutMetadataInput>;
-    connect?: Maybe<CharacterWhereUniqueInput>;
+export interface CharacterCreateOneInput {
+  create?: Maybe<CharacterCreateInput>;
+  connect?: Maybe<CharacterWhereUniqueInput>;
+}
+
+export interface GovernmentWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  leader?: Maybe<CharacterWhereInput>;
+  parties_every?: Maybe<GovernmentPartyWhereInput>;
+  parties_some?: Maybe<GovernmentPartyWhereInput>;
+  parties_none?: Maybe<GovernmentPartyWhereInput>;
+  content_every?: Maybe<HTMLContentWhereInput>;
+  content_some?: Maybe<HTMLContentWhereInput>;
+  content_none?: Maybe<HTMLContentWhereInput>;
+  AND?: Maybe<GovernmentWhereInput[] | GovernmentWhereInput>;
+  OR?: Maybe<GovernmentWhereInput[] | GovernmentWhereInput>;
+  NOT?: Maybe<GovernmentWhereInput[] | GovernmentWhereInput>;
+}
+
+export interface CharacterMetadataCreateOneWithoutCharacterInput {
+  create?: Maybe<CharacterMetadataCreateWithoutCharacterInput>;
+  connect?: Maybe<CharacterMetadataWhereUniqueInput>;
+}
+
+export interface UserWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  email?: Maybe<String>;
+  email_not?: Maybe<String>;
+  email_in?: Maybe<String[] | String>;
+  email_not_in?: Maybe<String[] | String>;
+  email_lt?: Maybe<String>;
+  email_lte?: Maybe<String>;
+  email_gt?: Maybe<String>;
+  email_gte?: Maybe<String>;
+  email_contains?: Maybe<String>;
+  email_not_contains?: Maybe<String>;
+  email_starts_with?: Maybe<String>;
+  email_not_starts_with?: Maybe<String>;
+  email_ends_with?: Maybe<String>;
+  email_not_ends_with?: Maybe<String>;
+  password?: Maybe<String>;
+  password_not?: Maybe<String>;
+  password_in?: Maybe<String[] | String>;
+  password_not_in?: Maybe<String[] | String>;
+  password_lt?: Maybe<String>;
+  password_lte?: Maybe<String>;
+  password_gt?: Maybe<String>;
+  password_gte?: Maybe<String>;
+  password_contains?: Maybe<String>;
+  password_not_contains?: Maybe<String>;
+  password_starts_with?: Maybe<String>;
+  password_not_starts_with?: Maybe<String>;
+  password_ends_with?: Maybe<String>;
+  password_not_ends_with?: Maybe<String>;
+  role?: Maybe<ROLE>;
+  role_not?: Maybe<ROLE>;
+  role_in?: Maybe<ROLE[] | ROLE>;
+  role_not_in?: Maybe<ROLE[] | ROLE>;
+  campaigns_every?: Maybe<CampaignWhereInput>;
+  campaigns_some?: Maybe<CampaignWhereInput>;
+  campaigns_none?: Maybe<CampaignWhereInput>;
+  firstName?: Maybe<String>;
+  firstName_not?: Maybe<String>;
+  firstName_in?: Maybe<String[] | String>;
+  firstName_not_in?: Maybe<String[] | String>;
+  firstName_lt?: Maybe<String>;
+  firstName_lte?: Maybe<String>;
+  firstName_gt?: Maybe<String>;
+  firstName_gte?: Maybe<String>;
+  firstName_contains?: Maybe<String>;
+  firstName_not_contains?: Maybe<String>;
+  firstName_starts_with?: Maybe<String>;
+  firstName_not_starts_with?: Maybe<String>;
+  firstName_ends_with?: Maybe<String>;
+  firstName_not_ends_with?: Maybe<String>;
+  lastName?: Maybe<String>;
+  lastName_not?: Maybe<String>;
+  lastName_in?: Maybe<String[] | String>;
+  lastName_not_in?: Maybe<String[] | String>;
+  lastName_lt?: Maybe<String>;
+  lastName_lte?: Maybe<String>;
+  lastName_gt?: Maybe<String>;
+  lastName_gte?: Maybe<String>;
+  lastName_contains?: Maybe<String>;
+  lastName_not_contains?: Maybe<String>;
+  lastName_starts_with?: Maybe<String>;
+  lastName_not_starts_with?: Maybe<String>;
+  lastName_ends_with?: Maybe<String>;
+  lastName_not_ends_with?: Maybe<String>;
+  characters_every?: Maybe<CharacterWhereInput>;
+  characters_some?: Maybe<CharacterWhereInput>;
+  characters_none?: Maybe<CharacterWhereInput>;
+  resetToken?: Maybe<String>;
+  resetToken_not?: Maybe<String>;
+  resetToken_in?: Maybe<String[] | String>;
+  resetToken_not_in?: Maybe<String[] | String>;
+  resetToken_lt?: Maybe<String>;
+  resetToken_lte?: Maybe<String>;
+  resetToken_gt?: Maybe<String>;
+  resetToken_gte?: Maybe<String>;
+  resetToken_contains?: Maybe<String>;
+  resetToken_not_contains?: Maybe<String>;
+  resetToken_starts_with?: Maybe<String>;
+  resetToken_not_starts_with?: Maybe<String>;
+  resetToken_ends_with?: Maybe<String>;
+  resetToken_not_ends_with?: Maybe<String>;
+  resetTokenExpiry?: Maybe<String>;
+  resetTokenExpiry_not?: Maybe<String>;
+  resetTokenExpiry_in?: Maybe<String[] | String>;
+  resetTokenExpiry_not_in?: Maybe<String[] | String>;
+  resetTokenExpiry_lt?: Maybe<String>;
+  resetTokenExpiry_lte?: Maybe<String>;
+  resetTokenExpiry_gt?: Maybe<String>;
+  resetTokenExpiry_gte?: Maybe<String>;
+  resetTokenExpiry_contains?: Maybe<String>;
+  resetTokenExpiry_not_contains?: Maybe<String>;
+  resetTokenExpiry_starts_with?: Maybe<String>;
+  resetTokenExpiry_not_starts_with?: Maybe<String>;
+  resetTokenExpiry_ends_with?: Maybe<String>;
+  resetTokenExpiry_not_ends_with?: Maybe<String>;
+  AND?: Maybe<UserWhereInput[] | UserWhereInput>;
+  OR?: Maybe<UserWhereInput[] | UserWhereInput>;
+  NOT?: Maybe<UserWhereInput[] | UserWhereInput>;
+}
+
+export interface AbilityCreateManyInput {
+  create?: Maybe<AbilityCreateInput[] | AbilityCreateInput>;
+  connect?: Maybe<AbilityWhereUniqueInput[] | AbilityWhereUniqueInput>;
+}
+
+export interface FlagWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  imageSrc?: Maybe<String>;
+  imageSrc_not?: Maybe<String>;
+  imageSrc_in?: Maybe<String[] | String>;
+  imageSrc_not_in?: Maybe<String[] | String>;
+  imageSrc_lt?: Maybe<String>;
+  imageSrc_lte?: Maybe<String>;
+  imageSrc_gt?: Maybe<String>;
+  imageSrc_gte?: Maybe<String>;
+  imageSrc_contains?: Maybe<String>;
+  imageSrc_not_contains?: Maybe<String>;
+  imageSrc_starts_with?: Maybe<String>;
+  imageSrc_not_starts_with?: Maybe<String>;
+  imageSrc_ends_with?: Maybe<String>;
+  imageSrc_not_ends_with?: Maybe<String>;
+  description?: Maybe<String>;
+  description_not?: Maybe<String>;
+  description_in?: Maybe<String[] | String>;
+  description_not_in?: Maybe<String[] | String>;
+  description_lt?: Maybe<String>;
+  description_lte?: Maybe<String>;
+  description_gt?: Maybe<String>;
+  description_gte?: Maybe<String>;
+  description_contains?: Maybe<String>;
+  description_not_contains?: Maybe<String>;
+  description_starts_with?: Maybe<String>;
+  description_not_starts_with?: Maybe<String>;
+  description_ends_with?: Maybe<String>;
+  description_not_ends_with?: Maybe<String>;
+  location?: Maybe<LocationWhereInput>;
+  AND?: Maybe<FlagWhereInput[] | FlagWhereInput>;
+  OR?: Maybe<FlagWhereInput[] | FlagWhereInput>;
+  NOT?: Maybe<FlagWhereInput[] | FlagWhereInput>;
+}
+
+export interface SkillCreateInput {
+  id?: Maybe<ID_Input>;
+  name: SKILL;
+  value: Int;
+  character: CharacterCreateOneInput;
+}
+
+export interface LocationScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  type?: Maybe<LOCATION_TYPE>;
+  type_not?: Maybe<LOCATION_TYPE>;
+  type_in?: Maybe<LOCATION_TYPE[] | LOCATION_TYPE>;
+  type_not_in?: Maybe<LOCATION_TYPE[] | LOCATION_TYPE>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  parent?: Maybe<ID_Input>;
+  parent_not?: Maybe<ID_Input>;
+  parent_in?: Maybe<ID_Input[] | ID_Input>;
+  parent_not_in?: Maybe<ID_Input[] | ID_Input>;
+  parent_lt?: Maybe<ID_Input>;
+  parent_lte?: Maybe<ID_Input>;
+  parent_gt?: Maybe<ID_Input>;
+  parent_gte?: Maybe<ID_Input>;
+  parent_contains?: Maybe<ID_Input>;
+  parent_not_contains?: Maybe<ID_Input>;
+  parent_starts_with?: Maybe<ID_Input>;
+  parent_not_starts_with?: Maybe<ID_Input>;
+  parent_ends_with?: Maybe<ID_Input>;
+  parent_not_ends_with?: Maybe<ID_Input>;
+  AND?: Maybe<LocationScalarWhereInput[] | LocationScalarWhereInput>;
+  OR?: Maybe<LocationScalarWhereInput[] | LocationScalarWhereInput>;
+  NOT?: Maybe<LocationScalarWhereInput[] | LocationScalarWhereInput>;
+}
+
+export interface CampaignCreateWithoutPlayersInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  locations?: Maybe<LocationCreateManyWithoutCampaignInput>;
+  dm: UserCreateOneWithoutCampaignsInput;
+}
+
+export interface HTMLContentWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  content?: Maybe<String>;
+  content_not?: Maybe<String>;
+  content_in?: Maybe<String[] | String>;
+  content_not_in?: Maybe<String[] | String>;
+  content_lt?: Maybe<String>;
+  content_lte?: Maybe<String>;
+  content_gt?: Maybe<String>;
+  content_gte?: Maybe<String>;
+  content_contains?: Maybe<String>;
+  content_not_contains?: Maybe<String>;
+  content_starts_with?: Maybe<String>;
+  content_not_starts_with?: Maybe<String>;
+  content_ends_with?: Maybe<String>;
+  content_not_ends_with?: Maybe<String>;
+  invisibleTo_every?: Maybe<CharacterWhereInput>;
+  invisibleTo_some?: Maybe<CharacterWhereInput>;
+  invisibleTo_none?: Maybe<CharacterWhereInput>;
+  AND?: Maybe<HTMLContentWhereInput[] | HTMLContentWhereInput>;
+  OR?: Maybe<HTMLContentWhereInput[] | HTMLContentWhereInput>;
+  NOT?: Maybe<HTMLContentWhereInput[] | HTMLContentWhereInput>;
+}
+
+export interface LocationCreateWithoutCampaignInput {
+  id?: Maybe<ID_Input>;
+  type: LOCATION_TYPE;
+  name: String;
+  locations?: Maybe<LocationCreateManyInput>;
+  metadata?: Maybe<LocationMetaDataCreateOneWithoutLocationInput>;
+  parent?: Maybe<ID_Input>;
+}
+
+export interface ReligionUpdateManyInput {
+  create?: Maybe<ReligionCreateInput[] | ReligionCreateInput>;
+  update?: Maybe<
+    | ReligionUpdateWithWhereUniqueNestedInput[]
+    | ReligionUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | ReligionUpsertWithWhereUniqueNestedInput[]
+    | ReligionUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<ReligionWhereUniqueInput[] | ReligionWhereUniqueInput>;
+  connect?: Maybe<ReligionWhereUniqueInput[] | ReligionWhereUniqueInput>;
+  set?: Maybe<ReligionWhereUniqueInput[] | ReligionWhereUniqueInput>;
+  disconnect?: Maybe<ReligionWhereUniqueInput[] | ReligionWhereUniqueInput>;
+  deleteMany?: Maybe<ReligionScalarWhereInput[] | ReligionScalarWhereInput>;
+  updateMany?: Maybe<
+    | ReligionUpdateManyWithWhereNestedInput[]
+    | ReligionUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface LocationCreateInput {
+  id?: Maybe<ID_Input>;
+  type: LOCATION_TYPE;
+  name: String;
+  locations?: Maybe<LocationCreateManyInput>;
+  metadata?: Maybe<LocationMetaDataCreateOneWithoutLocationInput>;
+  campaign: CampaignCreateOneWithoutLocationsInput;
+  parent?: Maybe<ID_Input>;
+}
+
+export interface ReligionUpdateWithWhereUniqueNestedInput {
+  where: ReligionWhereUniqueInput;
+  data: ReligionUpdateDataInput;
+}
+
+export interface LocationMetaDataCreateWithoutLocationInput {
+  id?: Maybe<ID_Input>;
+  population?: Maybe<PopulationCreateOneInput>;
+  languages?: Maybe<LanguageCreateManyInput>;
+  religions?: Maybe<ReligionCreateManyInput>;
+  ethnicities?: Maybe<EtnicityCreateManyInput>;
+  flag?: Maybe<FlagCreateManyInput>;
+  economy?: Maybe<EconomyCreateOneInput>;
+  government?: Maybe<GovernmentCreateOneInput>;
+  weather?: Maybe<WEATHER>;
+  climate?: Maybe<CLIMATE>;
+}
+
+export interface ReligionUpdateDataInput {
+  name?: Maybe<String>;
+  deity?: Maybe<CharacterUpdateOneInput>;
+  content?: Maybe<HTMLContentUpdateManyInput>;
+  location?: Maybe<LocationUpdateOneInput>;
+}
+
+export interface PopulationCreateInput {
+  id?: Maybe<ID_Input>;
+  location: LocationCreateOneInput;
+  inhabitants: Int;
+  density: Int;
+  densityUnit: DENSITY_UNIT;
+}
+
+export interface CharacterUpdateOneInput {
+  create?: Maybe<CharacterCreateInput>;
+  update?: Maybe<CharacterUpdateDataInput>;
+  upsert?: Maybe<CharacterUpsertNestedInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<CharacterWhereUniqueInput>;
+}
+
+export interface LanguageCreateManyInput {
+  create?: Maybe<LanguageCreateInput[] | LanguageCreateInput>;
+  connect?: Maybe<LanguageWhereUniqueInput[] | LanguageWhereUniqueInput>;
+}
+
+export interface CharacterUpsertNestedInput {
+  update: CharacterUpdateDataInput;
+  create: CharacterCreateInput;
+}
+
+export interface ReligionCreateManyInput {
+  create?: Maybe<ReligionCreateInput[] | ReligionCreateInput>;
+  connect?: Maybe<ReligionWhereUniqueInput[] | ReligionWhereUniqueInput>;
+}
+
+export interface HTMLContentUpdateManyInput {
+  create?: Maybe<HTMLContentCreateInput[] | HTMLContentCreateInput>;
+  update?: Maybe<
+    | HTMLContentUpdateWithWhereUniqueNestedInput[]
+    | HTMLContentUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | HTMLContentUpsertWithWhereUniqueNestedInput[]
+    | HTMLContentUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<HTMLContentWhereUniqueInput[] | HTMLContentWhereUniqueInput>;
+  connect?: Maybe<HTMLContentWhereUniqueInput[] | HTMLContentWhereUniqueInput>;
+  set?: Maybe<HTMLContentWhereUniqueInput[] | HTMLContentWhereUniqueInput>;
+  disconnect?: Maybe<
+    HTMLContentWhereUniqueInput[] | HTMLContentWhereUniqueInput
+  >;
+  deleteMany?: Maybe<
+    HTMLContentScalarWhereInput[] | HTMLContentScalarWhereInput
+  >;
+  updateMany?: Maybe<
+    | HTMLContentUpdateManyWithWhereNestedInput[]
+    | HTMLContentUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface HTMLContentCreateManyInput {
+  create?: Maybe<HTMLContentCreateInput[] | HTMLContentCreateInput>;
+  connect?: Maybe<HTMLContentWhereUniqueInput[] | HTMLContentWhereUniqueInput>;
+}
+
+export interface HTMLContentUpdateWithWhereUniqueNestedInput {
+  where: HTMLContentWhereUniqueInput;
+  data: HTMLContentUpdateDataInput;
+}
+
+export interface CharacterCreateManyInput {
+  create?: Maybe<CharacterCreateInput[] | CharacterCreateInput>;
+  connect?: Maybe<CharacterWhereUniqueInput[] | CharacterWhereUniqueInput>;
+}
+
+export interface HTMLContentUpdateDataInput {
+  content?: Maybe<String>;
+  invisibleTo?: Maybe<CharacterUpdateManyInput>;
+}
+
+export interface EtnicityCreateInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+}
+
+export interface CharacterUpdateManyInput {
+  create?: Maybe<CharacterCreateInput[] | CharacterCreateInput>;
+  update?: Maybe<
+    | CharacterUpdateWithWhereUniqueNestedInput[]
+    | CharacterUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | CharacterUpsertWithWhereUniqueNestedInput[]
+    | CharacterUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<CharacterWhereUniqueInput[] | CharacterWhereUniqueInput>;
+  connect?: Maybe<CharacterWhereUniqueInput[] | CharacterWhereUniqueInput>;
+  set?: Maybe<CharacterWhereUniqueInput[] | CharacterWhereUniqueInput>;
+  disconnect?: Maybe<CharacterWhereUniqueInput[] | CharacterWhereUniqueInput>;
+  deleteMany?: Maybe<CharacterScalarWhereInput[] | CharacterScalarWhereInput>;
+  updateMany?: Maybe<
+    | CharacterUpdateManyWithWhereNestedInput[]
+    | CharacterUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface FlagCreateInput {
+  id?: Maybe<ID_Input>;
+  imageSrc?: Maybe<String>;
+  description: String;
+  location?: Maybe<LocationCreateOneInput>;
+}
+
+export interface CharacterUpdateWithWhereUniqueNestedInput {
+  where: CharacterWhereUniqueInput;
+  data: CharacterUpdateDataInput;
+}
+
+export interface EconomyCreateInput {
+  id?: Maybe<ID_Input>;
+  currency?: Maybe<CurrencyCreateOneInput>;
+  location?: Maybe<LocationCreateManyInput>;
+}
+
+export interface CharacterUpsertWithWhereUniqueNestedInput {
+  where: CharacterWhereUniqueInput;
+  update: CharacterUpdateDataInput;
+  create: CharacterCreateInput;
+}
+
+export interface CurrencyCreateInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  sign?: Maybe<String>;
+}
+
+export interface CharacterScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  firstName?: Maybe<String>;
+  firstName_not?: Maybe<String>;
+  firstName_in?: Maybe<String[] | String>;
+  firstName_not_in?: Maybe<String[] | String>;
+  firstName_lt?: Maybe<String>;
+  firstName_lte?: Maybe<String>;
+  firstName_gt?: Maybe<String>;
+  firstName_gte?: Maybe<String>;
+  firstName_contains?: Maybe<String>;
+  firstName_not_contains?: Maybe<String>;
+  firstName_starts_with?: Maybe<String>;
+  firstName_not_starts_with?: Maybe<String>;
+  firstName_ends_with?: Maybe<String>;
+  firstName_not_ends_with?: Maybe<String>;
+  lastName?: Maybe<String>;
+  lastName_not?: Maybe<String>;
+  lastName_in?: Maybe<String[] | String>;
+  lastName_not_in?: Maybe<String[] | String>;
+  lastName_lt?: Maybe<String>;
+  lastName_lte?: Maybe<String>;
+  lastName_gt?: Maybe<String>;
+  lastName_gte?: Maybe<String>;
+  lastName_contains?: Maybe<String>;
+  lastName_not_contains?: Maybe<String>;
+  lastName_starts_with?: Maybe<String>;
+  lastName_not_starts_with?: Maybe<String>;
+  lastName_ends_with?: Maybe<String>;
+  lastName_not_ends_with?: Maybe<String>;
+  type?: Maybe<CHARACTER_TYPE>;
+  type_not?: Maybe<CHARACTER_TYPE>;
+  type_in?: Maybe<CHARACTER_TYPE[] | CHARACTER_TYPE>;
+  type_not_in?: Maybe<CHARACTER_TYPE[] | CHARACTER_TYPE>;
+  AND?: Maybe<CharacterScalarWhereInput[] | CharacterScalarWhereInput>;
+  OR?: Maybe<CharacterScalarWhereInput[] | CharacterScalarWhereInput>;
+  NOT?: Maybe<CharacterScalarWhereInput[] | CharacterScalarWhereInput>;
+}
+
+export interface ReligionSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<ReligionWhereInput>;
+  AND?: Maybe<
+    ReligionSubscriptionWhereInput[] | ReligionSubscriptionWhereInput
+  >;
+  OR?: Maybe<ReligionSubscriptionWhereInput[] | ReligionSubscriptionWhereInput>;
+  NOT?: Maybe<
+    ReligionSubscriptionWhereInput[] | ReligionSubscriptionWhereInput
+  >;
+}
+
+export interface CharacterUpdateManyWithWhereNestedInput {
+  where: CharacterScalarWhereInput;
+  data: CharacterUpdateManyDataInput;
+}
+
+export interface LocationMetaDataSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<LocationMetaDataWhereInput>;
+  AND?: Maybe<
+    | LocationMetaDataSubscriptionWhereInput[]
+    | LocationMetaDataSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    | LocationMetaDataSubscriptionWhereInput[]
+    | LocationMetaDataSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    | LocationMetaDataSubscriptionWhereInput[]
+    | LocationMetaDataSubscriptionWhereInput
+  >;
+}
+
+export interface CharacterUpdateManyDataInput {
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  type?: Maybe<CHARACTER_TYPE>;
+}
+
+export interface LocationWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  type?: Maybe<LOCATION_TYPE>;
+  type_not?: Maybe<LOCATION_TYPE>;
+  type_in?: Maybe<LOCATION_TYPE[] | LOCATION_TYPE>;
+  type_not_in?: Maybe<LOCATION_TYPE[] | LOCATION_TYPE>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  locations_every?: Maybe<LocationWhereInput>;
+  locations_some?: Maybe<LocationWhereInput>;
+  locations_none?: Maybe<LocationWhereInput>;
+  metadata?: Maybe<LocationMetaDataWhereInput>;
+  campaign?: Maybe<CampaignWhereInput>;
+  parent?: Maybe<ID_Input>;
+  parent_not?: Maybe<ID_Input>;
+  parent_in?: Maybe<ID_Input[] | ID_Input>;
+  parent_not_in?: Maybe<ID_Input[] | ID_Input>;
+  parent_lt?: Maybe<ID_Input>;
+  parent_lte?: Maybe<ID_Input>;
+  parent_gt?: Maybe<ID_Input>;
+  parent_gte?: Maybe<ID_Input>;
+  parent_contains?: Maybe<ID_Input>;
+  parent_not_contains?: Maybe<ID_Input>;
+  parent_starts_with?: Maybe<ID_Input>;
+  parent_not_starts_with?: Maybe<ID_Input>;
+  parent_ends_with?: Maybe<ID_Input>;
+  parent_not_ends_with?: Maybe<ID_Input>;
+  AND?: Maybe<LocationWhereInput[] | LocationWhereInput>;
+  OR?: Maybe<LocationWhereInput[] | LocationWhereInput>;
+  NOT?: Maybe<LocationWhereInput[] | LocationWhereInput>;
+}
+
+export interface HTMLContentUpsertWithWhereUniqueNestedInput {
+  where: HTMLContentWhereUniqueInput;
+  update: HTMLContentUpdateDataInput;
+  create: HTMLContentCreateInput;
+}
+
+export interface GovernmentSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<GovernmentWhereInput>;
+  AND?: Maybe<
+    GovernmentSubscriptionWhereInput[] | GovernmentSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    GovernmentSubscriptionWhereInput[] | GovernmentSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    GovernmentSubscriptionWhereInput[] | GovernmentSubscriptionWhereInput
+  >;
+}
+
+export interface HTMLContentScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  content?: Maybe<String>;
+  content_not?: Maybe<String>;
+  content_in?: Maybe<String[] | String>;
+  content_not_in?: Maybe<String[] | String>;
+  content_lt?: Maybe<String>;
+  content_lte?: Maybe<String>;
+  content_gt?: Maybe<String>;
+  content_gte?: Maybe<String>;
+  content_contains?: Maybe<String>;
+  content_not_contains?: Maybe<String>;
+  content_starts_with?: Maybe<String>;
+  content_not_starts_with?: Maybe<String>;
+  content_ends_with?: Maybe<String>;
+  content_not_ends_with?: Maybe<String>;
+  AND?: Maybe<HTMLContentScalarWhereInput[] | HTMLContentScalarWhereInput>;
+  OR?: Maybe<HTMLContentScalarWhereInput[] | HTMLContentScalarWhereInput>;
+  NOT?: Maybe<HTMLContentScalarWhereInput[] | HTMLContentScalarWhereInput>;
+}
+
+export interface EconomySubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<EconomyWhereInput>;
+  AND?: Maybe<EconomySubscriptionWhereInput[] | EconomySubscriptionWhereInput>;
+  OR?: Maybe<EconomySubscriptionWhereInput[] | EconomySubscriptionWhereInput>;
+  NOT?: Maybe<EconomySubscriptionWhereInput[] | EconomySubscriptionWhereInput>;
+}
+
+export interface HTMLContentUpdateManyWithWhereNestedInput {
+  where: HTMLContentScalarWhereInput;
+  data: HTMLContentUpdateManyDataInput;
+}
+
+export interface CharacterSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<CharacterWhereInput>;
+  AND?: Maybe<
+    CharacterSubscriptionWhereInput[] | CharacterSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    CharacterSubscriptionWhereInput[] | CharacterSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    CharacterSubscriptionWhereInput[] | CharacterSubscriptionWhereInput
+  >;
+}
+
+export interface HTMLContentUpdateManyDataInput {
+  content?: Maybe<String>;
+}
+
+export type CampaignWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface LocationUpdateOneInput {
+  create?: Maybe<LocationCreateInput>;
+  update?: Maybe<LocationUpdateDataInput>;
+  upsert?: Maybe<LocationUpsertNestedInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<LocationWhereUniqueInput>;
+}
+
+export type CharacterWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface ReligionUpsertWithWhereUniqueNestedInput {
+  where: ReligionWhereUniqueInput;
+  update: ReligionUpdateDataInput;
+  create: ReligionCreateInput;
+}
+
+export type CharacterMetadataWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface ReligionScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  AND?: Maybe<ReligionScalarWhereInput[] | ReligionScalarWhereInput>;
+  OR?: Maybe<ReligionScalarWhereInput[] | ReligionScalarWhereInput>;
+  NOT?: Maybe<ReligionScalarWhereInput[] | ReligionScalarWhereInput>;
+}
+
+export interface LocationMetaDataUpdateManyMutationInput {
+  weather?: Maybe<WEATHER>;
+  climate?: Maybe<CLIMATE>;
+}
+
+export interface ReligionUpdateManyWithWhereNestedInput {
+  where: ReligionScalarWhereInput;
+  data: ReligionUpdateManyDataInput;
+}
+
+export interface LocationUpdateWithoutMetadataDataInput {
+  type?: Maybe<LOCATION_TYPE>;
+  name?: Maybe<String>;
+  locations?: Maybe<LocationUpdateManyInput>;
+  campaign?: Maybe<CampaignUpdateOneRequiredWithoutLocationsInput>;
+  parent?: Maybe<ID_Input>;
+}
+
+export interface ReligionUpdateManyDataInput {
+  name?: Maybe<String>;
+}
+
+export interface LocationMetaDataUpdateInput {
+  location?: Maybe<LocationUpdateOneRequiredWithoutMetadataInput>;
+  population?: Maybe<PopulationUpdateOneInput>;
+  languages?: Maybe<LanguageUpdateManyInput>;
+  religions?: Maybe<ReligionUpdateManyInput>;
+  ethnicities?: Maybe<EtnicityUpdateManyInput>;
+  flag?: Maybe<FlagUpdateManyInput>;
+  economy?: Maybe<EconomyUpdateOneInput>;
+  government?: Maybe<GovernmentUpdateOneInput>;
+  weather?: Maybe<WEATHER>;
+  climate?: Maybe<CLIMATE>;
+}
+
+export interface EtnicityUpdateManyInput {
+  create?: Maybe<EtnicityCreateInput[] | EtnicityCreateInput>;
+  update?: Maybe<
+    | EtnicityUpdateWithWhereUniqueNestedInput[]
+    | EtnicityUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | EtnicityUpsertWithWhereUniqueNestedInput[]
+    | EtnicityUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<EtnicityWhereUniqueInput[] | EtnicityWhereUniqueInput>;
+  connect?: Maybe<EtnicityWhereUniqueInput[] | EtnicityWhereUniqueInput>;
+  set?: Maybe<EtnicityWhereUniqueInput[] | EtnicityWhereUniqueInput>;
+  disconnect?: Maybe<EtnicityWhereUniqueInput[] | EtnicityWhereUniqueInput>;
+  deleteMany?: Maybe<EtnicityScalarWhereInput[] | EtnicityScalarWhereInput>;
+  updateMany?: Maybe<
+    | EtnicityUpdateManyWithWhereNestedInput[]
+    | EtnicityUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface LocationMetaDataCreateInput {
+  id?: Maybe<ID_Input>;
+  location: LocationCreateOneWithoutMetadataInput;
+  population?: Maybe<PopulationCreateOneInput>;
+  languages?: Maybe<LanguageCreateManyInput>;
+  religions?: Maybe<ReligionCreateManyInput>;
+  ethnicities?: Maybe<EtnicityCreateManyInput>;
+  flag?: Maybe<FlagCreateManyInput>;
+  economy?: Maybe<EconomyCreateOneInput>;
+  government?: Maybe<GovernmentCreateOneInput>;
+  weather?: Maybe<WEATHER>;
+  climate?: Maybe<CLIMATE>;
+}
+
+export interface EtnicityUpdateWithWhereUniqueNestedInput {
+  where: EtnicityWhereUniqueInput;
+  data: EtnicityUpdateDataInput;
+}
+
+export interface LanguageUpdateManyMutationInput {
+  name?: Maybe<String>;
+  script?: Maybe<LANGUAGE_SCRIPT>;
+}
+
+export interface EtnicityUpdateDataInput {
+  name?: Maybe<String>;
+}
+
+export interface HTMLContentUpdateInput {
+  content?: Maybe<String>;
+  invisibleTo?: Maybe<CharacterUpdateManyInput>;
+}
+
+export interface EtnicityUpsertWithWhereUniqueNestedInput {
+  where: EtnicityWhereUniqueInput;
+  update: EtnicityUpdateDataInput;
+  create: EtnicityCreateInput;
+}
+
+export type GovernmentPartyWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface EtnicityScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  AND?: Maybe<EtnicityScalarWhereInput[] | EtnicityScalarWhereInput>;
+  OR?: Maybe<EtnicityScalarWhereInput[] | EtnicityScalarWhereInput>;
+  NOT?: Maybe<EtnicityScalarWhereInput[] | EtnicityScalarWhereInput>;
+}
+
+export type HTMLContentWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface EtnicityUpdateManyWithWhereNestedInput {
+  where: EtnicityScalarWhereInput;
+  data: EtnicityUpdateManyDataInput;
+}
+
+export type LanguageWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface EtnicityUpdateManyDataInput {
+  name?: Maybe<String>;
+}
+
+export type LocationWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface FlagUpdateManyInput {
+  create?: Maybe<FlagCreateInput[] | FlagCreateInput>;
+  update?: Maybe<
+    | FlagUpdateWithWhereUniqueNestedInput[]
+    | FlagUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | FlagUpsertWithWhereUniqueNestedInput[]
+    | FlagUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<FlagWhereUniqueInput[] | FlagWhereUniqueInput>;
+  connect?: Maybe<FlagWhereUniqueInput[] | FlagWhereUniqueInput>;
+  set?: Maybe<FlagWhereUniqueInput[] | FlagWhereUniqueInput>;
+  disconnect?: Maybe<FlagWhereUniqueInput[] | FlagWhereUniqueInput>;
+  deleteMany?: Maybe<FlagScalarWhereInput[] | FlagScalarWhereInput>;
+  updateMany?: Maybe<
+    FlagUpdateManyWithWhereNestedInput[] | FlagUpdateManyWithWhereNestedInput
+  >;
+}
+
+export type LocationMetaDataWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface FlagUpdateWithWhereUniqueNestedInput {
+  where: FlagWhereUniqueInput;
+  data: FlagUpdateDataInput;
+}
+
+export interface CharacterUpdateWithoutMetadataDataInput {
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  type?: Maybe<CHARACTER_TYPE>;
+  campaign?: Maybe<CampaignUpdateOneRequiredWithoutPlayersInput>;
+  user?: Maybe<UserUpdateOneWithoutCharactersInput>;
+}
+
+export interface FlagUpdateDataInput {
+  imageSrc?: Maybe<String>;
+  description?: Maybe<String>;
+  location?: Maybe<LocationUpdateOneInput>;
+}
+
+export interface CharacterCreateWithoutMetadataInput {
+  id?: Maybe<ID_Input>;
+  firstName: String;
+  lastName?: Maybe<String>;
+  type: CHARACTER_TYPE;
+  campaign: CampaignCreateOneWithoutPlayersInput;
+  user?: Maybe<UserCreateOneWithoutCharactersInput>;
+}
+
+export interface FlagUpsertWithWhereUniqueNestedInput {
+  where: FlagWhereUniqueInput;
+  update: FlagUpdateDataInput;
+  create: FlagCreateInput;
+}
+
+export interface CharacterUpdateManyMutationInput {
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  type?: Maybe<CHARACTER_TYPE>;
+}
+
+export interface FlagScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  imageSrc?: Maybe<String>;
+  imageSrc_not?: Maybe<String>;
+  imageSrc_in?: Maybe<String[] | String>;
+  imageSrc_not_in?: Maybe<String[] | String>;
+  imageSrc_lt?: Maybe<String>;
+  imageSrc_lte?: Maybe<String>;
+  imageSrc_gt?: Maybe<String>;
+  imageSrc_gte?: Maybe<String>;
+  imageSrc_contains?: Maybe<String>;
+  imageSrc_not_contains?: Maybe<String>;
+  imageSrc_starts_with?: Maybe<String>;
+  imageSrc_not_starts_with?: Maybe<String>;
+  imageSrc_ends_with?: Maybe<String>;
+  imageSrc_not_ends_with?: Maybe<String>;
+  description?: Maybe<String>;
+  description_not?: Maybe<String>;
+  description_in?: Maybe<String[] | String>;
+  description_not_in?: Maybe<String[] | String>;
+  description_lt?: Maybe<String>;
+  description_lte?: Maybe<String>;
+  description_gt?: Maybe<String>;
+  description_gte?: Maybe<String>;
+  description_contains?: Maybe<String>;
+  description_not_contains?: Maybe<String>;
+  description_starts_with?: Maybe<String>;
+  description_not_starts_with?: Maybe<String>;
+  description_ends_with?: Maybe<String>;
+  description_not_ends_with?: Maybe<String>;
+  AND?: Maybe<FlagScalarWhereInput[] | FlagScalarWhereInput>;
+  OR?: Maybe<FlagScalarWhereInput[] | FlagScalarWhereInput>;
+  NOT?: Maybe<FlagScalarWhereInput[] | FlagScalarWhereInput>;
+}
+
+export interface CampaignUpdateInput {
+  name?: Maybe<String>;
+  locations?: Maybe<LocationUpdateManyWithoutCampaignInput>;
+  players?: Maybe<CharacterUpdateManyWithoutCampaignInput>;
+  dm?: Maybe<UserUpdateOneRequiredWithoutCampaignsInput>;
+}
+
+export interface FlagUpdateManyWithWhereNestedInput {
+  where: FlagScalarWhereInput;
+  data: FlagUpdateManyDataInput;
+}
+
+export interface CampaignUpsertWithoutPlayersInput {
+  update: CampaignUpdateWithoutPlayersDataInput;
+  create: CampaignCreateWithoutPlayersInput;
+}
+
+export interface FlagUpdateManyDataInput {
+  imageSrc?: Maybe<String>;
+  description?: Maybe<String>;
+}
+
+export interface AbilityCreateInput {
+  id?: Maybe<ID_Input>;
+  type: ABILITY_TYPE;
+  value: Int;
+  modifier: Int;
+  character: CharacterCreateOneInput;
+}
+
+export interface EconomyUpdateOneInput {
+  create?: Maybe<EconomyCreateInput>;
+  update?: Maybe<EconomyUpdateDataInput>;
+  upsert?: Maybe<EconomyUpsertNestedInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<EconomyWhereUniqueInput>;
+}
+
+export interface CharacterMetadataCreateWithoutCharacterInput {
+  id?: Maybe<ID_Input>;
+  abilities?: Maybe<AbilityCreateManyInput>;
+  skills?: Maybe<SkillCreateManyInput>;
+  status?: Maybe<CHARACTER_STATUS>;
+  race?: Maybe<RACE>;
+  class?: Maybe<CLASS>;
+  alignment?: Maybe<ALIGNMENT>;
+  height?: Maybe<Int>;
+  weight?: Maybe<Int>;
+}
+
+export interface EconomyUpdateDataInput {
+  currency?: Maybe<CurrencyUpdateOneInput>;
+  location?: Maybe<LocationUpdateManyInput>;
+}
+
+export interface CampaignCreateOneWithoutPlayersInput {
+  create?: Maybe<CampaignCreateWithoutPlayersInput>;
+  connect?: Maybe<CampaignWhereUniqueInput>;
+}
+
+export interface CurrencyUpdateOneInput {
+  create?: Maybe<CurrencyCreateInput>;
+  update?: Maybe<CurrencyUpdateDataInput>;
+  upsert?: Maybe<CurrencyUpsertNestedInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<CurrencyWhereUniqueInput>;
+}
+
+export interface LocationCreateManyInput {
+  create?: Maybe<LocationCreateInput[] | LocationCreateInput>;
+  connect?: Maybe<LocationWhereUniqueInput[] | LocationWhereUniqueInput>;
+}
+
+export interface CurrencyUpdateDataInput {
+  name?: Maybe<String>;
+  sign?: Maybe<String>;
+}
+
+export interface PopulationCreateOneInput {
+  create?: Maybe<PopulationCreateInput>;
+  connect?: Maybe<PopulationWhereUniqueInput>;
+}
+
+export interface CurrencyUpsertNestedInput {
+  update: CurrencyUpdateDataInput;
+  create: CurrencyCreateInput;
+}
+
+export interface LanguageCreateInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  script?: Maybe<LANGUAGE_SCRIPT>;
+  location?: Maybe<LocationCreateManyInput>;
+}
+
+export interface EconomyUpsertNestedInput {
+  update: EconomyUpdateDataInput;
+  create: EconomyCreateInput;
+}
+
+export interface HTMLContentCreateInput {
+  id?: Maybe<ID_Input>;
+  content: String;
+  invisibleTo?: Maybe<CharacterCreateManyInput>;
+}
+
+export interface GovernmentUpdateOneInput {
+  create?: Maybe<GovernmentCreateInput>;
+  update?: Maybe<GovernmentUpdateDataInput>;
+  upsert?: Maybe<GovernmentUpsertNestedInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<GovernmentWhereUniqueInput>;
+}
+
+export interface FlagCreateManyInput {
+  create?: Maybe<FlagCreateInput[] | FlagCreateInput>;
+  connect?: Maybe<FlagWhereUniqueInput[] | FlagWhereUniqueInput>;
+}
+
+export interface GovernmentUpdateDataInput {
+  leader?: Maybe<CharacterUpdateOneInput>;
+  parties?: Maybe<GovernmentPartyUpdateManyWithoutGovernmentInput>;
+  content?: Maybe<HTMLContentUpdateManyInput>;
+}
+
+export interface CurrencyCreateOneInput {
+  create?: Maybe<CurrencyCreateInput>;
+  connect?: Maybe<CurrencyWhereUniqueInput>;
+}
+
+export interface GovernmentPartyUpdateManyWithoutGovernmentInput {
+  create?: Maybe<
+    | GovernmentPartyCreateWithoutGovernmentInput[]
+    | GovernmentPartyCreateWithoutGovernmentInput
+  >;
+  delete?: Maybe<
+    GovernmentPartyWhereUniqueInput[] | GovernmentPartyWhereUniqueInput
+  >;
+  connect?: Maybe<
+    GovernmentPartyWhereUniqueInput[] | GovernmentPartyWhereUniqueInput
+  >;
+  set?: Maybe<
+    GovernmentPartyWhereUniqueInput[] | GovernmentPartyWhereUniqueInput
+  >;
+  disconnect?: Maybe<
+    GovernmentPartyWhereUniqueInput[] | GovernmentPartyWhereUniqueInput
+  >;
+  update?: Maybe<
+    | GovernmentPartyUpdateWithWhereUniqueWithoutGovernmentInput[]
+    | GovernmentPartyUpdateWithWhereUniqueWithoutGovernmentInput
+  >;
+  upsert?: Maybe<
+    | GovernmentPartyUpsertWithWhereUniqueWithoutGovernmentInput[]
+    | GovernmentPartyUpsertWithWhereUniqueWithoutGovernmentInput
+  >;
+  deleteMany?: Maybe<
+    GovernmentPartyScalarWhereInput[] | GovernmentPartyScalarWhereInput
+  >;
+  updateMany?: Maybe<
+    | GovernmentPartyUpdateManyWithWhereNestedInput[]
+    | GovernmentPartyUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface PopulationSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<PopulationWhereInput>;
+  AND?: Maybe<
+    PopulationSubscriptionWhereInput[] | PopulationSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    PopulationSubscriptionWhereInput[] | PopulationSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    PopulationSubscriptionWhereInput[] | PopulationSubscriptionWhereInput
+  >;
+}
+
+export interface GovernmentPartyUpdateWithWhereUniqueWithoutGovernmentInput {
+  where: GovernmentPartyWhereUniqueInput;
+  data: GovernmentPartyUpdateWithoutGovernmentDataInput;
+}
+
+export interface HTMLContentSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<HTMLContentWhereInput>;
+  AND?: Maybe<
+    HTMLContentSubscriptionWhereInput[] | HTMLContentSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    HTMLContentSubscriptionWhereInput[] | HTMLContentSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    HTMLContentSubscriptionWhereInput[] | HTMLContentSubscriptionWhereInput
+  >;
+}
+
+export interface GovernmentPartyUpdateWithoutGovernmentDataInput {
+  leader?: Maybe<CharacterUpdateOneInput>;
+  name?: Maybe<String>;
+  content?: Maybe<HTMLContentUpdateManyInput>;
+}
+
+export interface SkillWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<SKILL>;
+  name_not?: Maybe<SKILL>;
+  name_in?: Maybe<SKILL[] | SKILL>;
+  name_not_in?: Maybe<SKILL[] | SKILL>;
+  value?: Maybe<Int>;
+  value_not?: Maybe<Int>;
+  value_in?: Maybe<Int[] | Int>;
+  value_not_in?: Maybe<Int[] | Int>;
+  value_lt?: Maybe<Int>;
+  value_lte?: Maybe<Int>;
+  value_gt?: Maybe<Int>;
+  value_gte?: Maybe<Int>;
+  character?: Maybe<CharacterWhereInput>;
+  AND?: Maybe<SkillWhereInput[] | SkillWhereInput>;
+  OR?: Maybe<SkillWhereInput[] | SkillWhereInput>;
+  NOT?: Maybe<SkillWhereInput[] | SkillWhereInput>;
+}
+
+export interface GovernmentPartyUpsertWithWhereUniqueWithoutGovernmentInput {
+  where: GovernmentPartyWhereUniqueInput;
+  update: GovernmentPartyUpdateWithoutGovernmentDataInput;
+  create: GovernmentPartyCreateWithoutGovernmentInput;
+}
+
+export interface UserCreateInput {
+  id?: Maybe<ID_Input>;
+  email: String;
+  password: String;
+  role?: Maybe<ROLE>;
+  campaigns?: Maybe<CampaignCreateManyWithoutDmInput>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  characters?: Maybe<CharacterCreateManyWithoutUserInput>;
+  resetToken?: Maybe<String>;
+  resetTokenExpiry?: Maybe<String>;
+}
+
+export interface GovernmentPartyScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  AND?: Maybe<
+    GovernmentPartyScalarWhereInput[] | GovernmentPartyScalarWhereInput
+  >;
+  OR?: Maybe<
+    GovernmentPartyScalarWhereInput[] | GovernmentPartyScalarWhereInput
+  >;
+  NOT?: Maybe<
+    GovernmentPartyScalarWhereInput[] | GovernmentPartyScalarWhereInput
+  >;
+}
+
+export interface PopulationUpdateManyMutationInput {
+  inhabitants?: Maybe<Int>;
+  density?: Maybe<Int>;
+  densityUnit?: Maybe<DENSITY_UNIT>;
+}
+
+export interface GovernmentPartyUpdateManyWithWhereNestedInput {
+  where: GovernmentPartyScalarWhereInput;
+  data: GovernmentPartyUpdateManyDataInput;
+}
+
+export type EconomyWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface GovernmentPartyUpdateManyDataInput {
+  name?: Maybe<String>;
 }
 
 export interface LocationUpdateInput {
-    type?: Maybe<LOCATION_TYPE>;
-    name?: Maybe<string>;
-    locations?: Maybe<LocationUpdateManyInput>;
-    metadata?: Maybe<LocationMetaDataUpdateOneWithoutLocationInput>;
-    campaign?: Maybe<CampaignUpdateOneRequiredWithoutLocationsInput>;
-    parent?: Maybe<ID_Input>;
+  type?: Maybe<LOCATION_TYPE>;
+  name?: Maybe<String>;
+  locations?: Maybe<LocationUpdateManyInput>;
+  metadata?: Maybe<LocationMetaDataUpdateOneWithoutLocationInput>;
+  campaign?: Maybe<CampaignUpdateOneRequiredWithoutLocationsInput>;
+  parent?: Maybe<ID_Input>;
 }
 
-export interface CampaignUpdateDataInput {
-    name?: Maybe<string>;
-    locations?: Maybe<LocationUpdateManyWithoutCampaignInput>;
-    players?: Maybe<CharacterUpdateManyWithoutCampaignInput>;
+export interface GovernmentUpsertNestedInput {
+  update: GovernmentUpdateDataInput;
+  create: GovernmentCreateInput;
+}
+
+export interface GovernmentUpsertWithoutPartiesInput {
+  update: GovernmentUpdateWithoutPartiesDataInput;
+  create: GovernmentCreateWithoutPartiesInput;
+}
+
+export interface LocationMetaDataUpsertWithoutLocationInput {
+  update: LocationMetaDataUpdateWithoutLocationDataInput;
+  create: LocationMetaDataCreateWithoutLocationInput;
+}
+
+export interface GovernmentPartyCreateInput {
+  id?: Maybe<ID_Input>;
+  leader?: Maybe<CharacterCreateOneInput>;
+  name: String;
+  content?: Maybe<HTMLContentCreateManyInput>;
+  government?: Maybe<GovernmentCreateOneWithoutPartiesInput>;
+}
+
+export interface CampaignUpdateOneRequiredWithoutLocationsInput {
+  create?: Maybe<CampaignCreateWithoutLocationsInput>;
+  update?: Maybe<CampaignUpdateWithoutLocationsDataInput>;
+  upsert?: Maybe<CampaignUpsertWithoutLocationsInput>;
+  connect?: Maybe<CampaignWhereUniqueInput>;
+}
+
+export interface EconomyUpdateInput {
+  currency?: Maybe<CurrencyUpdateOneInput>;
+  location?: Maybe<LocationUpdateManyInput>;
+}
+
+export interface CampaignUpdateWithoutLocationsDataInput {
+  name?: Maybe<String>;
+  players?: Maybe<CharacterUpdateManyWithoutCampaignInput>;
+  dm?: Maybe<UserUpdateOneRequiredWithoutCampaignsInput>;
+}
+
+export interface CharacterUpdateOneRequiredWithoutMetadataInput {
+  create?: Maybe<CharacterCreateWithoutMetadataInput>;
+  update?: Maybe<CharacterUpdateWithoutMetadataDataInput>;
+  upsert?: Maybe<CharacterUpsertWithoutMetadataInput>;
+  connect?: Maybe<CharacterWhereUniqueInput>;
+}
+
+export interface CharacterUpdateManyWithoutCampaignInput {
+  create?: Maybe<
+    CharacterCreateWithoutCampaignInput[] | CharacterCreateWithoutCampaignInput
+  >;
+  delete?: Maybe<CharacterWhereUniqueInput[] | CharacterWhereUniqueInput>;
+  connect?: Maybe<CharacterWhereUniqueInput[] | CharacterWhereUniqueInput>;
+  set?: Maybe<CharacterWhereUniqueInput[] | CharacterWhereUniqueInput>;
+  disconnect?: Maybe<CharacterWhereUniqueInput[] | CharacterWhereUniqueInput>;
+  update?: Maybe<
+    | CharacterUpdateWithWhereUniqueWithoutCampaignInput[]
+    | CharacterUpdateWithWhereUniqueWithoutCampaignInput
+  >;
+  upsert?: Maybe<
+    | CharacterUpsertWithWhereUniqueWithoutCampaignInput[]
+    | CharacterUpsertWithWhereUniqueWithoutCampaignInput
+  >;
+  deleteMany?: Maybe<CharacterScalarWhereInput[] | CharacterScalarWhereInput>;
+  updateMany?: Maybe<
+    | CharacterUpdateManyWithWhereNestedInput[]
+    | CharacterUpdateManyWithWhereNestedInput
+  >;
+}
+
+export type SkillWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface CharacterUpdateWithWhereUniqueWithoutCampaignInput {
+  where: CharacterWhereUniqueInput;
+  data: CharacterUpdateWithoutCampaignDataInput;
+}
+
+export interface LocationUpdateManyDataInput {
+  type?: Maybe<LOCATION_TYPE>;
+  name?: Maybe<String>;
+  parent?: Maybe<ID_Input>;
+}
+
+export interface CharacterUpdateWithoutCampaignDataInput {
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  type?: Maybe<CHARACTER_TYPE>;
+  metadata?: Maybe<CharacterMetadataUpdateOneWithoutCharacterInput>;
+  user?: Maybe<UserUpdateOneWithoutCharactersInput>;
+}
+
+export interface SkillCreateManyInput {
+  create?: Maybe<SkillCreateInput[] | SkillCreateInput>;
+  connect?: Maybe<SkillWhereUniqueInput[] | SkillWhereUniqueInput>;
+}
+
+export interface UserUpdateOneWithoutCharactersInput {
+  create?: Maybe<UserCreateWithoutCharactersInput>;
+  update?: Maybe<UserUpdateWithoutCharactersDataInput>;
+  upsert?: Maybe<UserUpsertWithoutCharactersInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface LocationMetaDataCreateOneWithoutLocationInput {
+  create?: Maybe<LocationMetaDataCreateWithoutLocationInput>;
+  connect?: Maybe<LocationMetaDataWhereUniqueInput>;
+}
+
+export interface UserUpdateWithoutCharactersDataInput {
+  email?: Maybe<String>;
+  password?: Maybe<String>;
+  role?: Maybe<ROLE>;
+  campaigns?: Maybe<CampaignUpdateManyWithoutDmInput>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  resetToken?: Maybe<String>;
+  resetTokenExpiry?: Maybe<String>;
+}
+
+export interface ReligionCreateInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  deity?: Maybe<CharacterCreateOneInput>;
+  content?: Maybe<HTMLContentCreateManyInput>;
+  location?: Maybe<LocationCreateOneInput>;
+}
+
+export interface CampaignUpdateManyWithoutDmInput {
+  create?: Maybe<CampaignCreateWithoutDmInput[] | CampaignCreateWithoutDmInput>;
+  delete?: Maybe<CampaignWhereUniqueInput[] | CampaignWhereUniqueInput>;
+  connect?: Maybe<CampaignWhereUniqueInput[] | CampaignWhereUniqueInput>;
+  set?: Maybe<CampaignWhereUniqueInput[] | CampaignWhereUniqueInput>;
+  disconnect?: Maybe<CampaignWhereUniqueInput[] | CampaignWhereUniqueInput>;
+  update?: Maybe<
+    | CampaignUpdateWithWhereUniqueWithoutDmInput[]
+    | CampaignUpdateWithWhereUniqueWithoutDmInput
+  >;
+  upsert?: Maybe<
+    | CampaignUpsertWithWhereUniqueWithoutDmInput[]
+    | CampaignUpsertWithWhereUniqueWithoutDmInput
+  >;
+  deleteMany?: Maybe<CampaignScalarWhereInput[] | CampaignScalarWhereInput>;
+  updateMany?: Maybe<
+    | CampaignUpdateManyWithWhereNestedInput[]
+    | CampaignUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface EconomyCreateOneInput {
+  create?: Maybe<EconomyCreateInput>;
+  connect?: Maybe<EconomyWhereUniqueInput>;
+}
+
+export interface CampaignUpdateWithWhereUniqueWithoutDmInput {
+  where: CampaignWhereUniqueInput;
+  data: CampaignUpdateWithoutDmDataInput;
+}
+
+export interface LocationSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<LocationWhereInput>;
+  AND?: Maybe<
+    LocationSubscriptionWhereInput[] | LocationSubscriptionWhereInput
+  >;
+  OR?: Maybe<LocationSubscriptionWhereInput[] | LocationSubscriptionWhereInput>;
+  NOT?: Maybe<
+    LocationSubscriptionWhereInput[] | LocationSubscriptionWhereInput
+  >;
+}
+
+export interface CampaignUpdateWithoutDmDataInput {
+  name?: Maybe<String>;
+  locations?: Maybe<LocationUpdateManyWithoutCampaignInput>;
+  players?: Maybe<CharacterUpdateManyWithoutCampaignInput>;
+}
+
+export interface AbilitySubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<AbilityWhereInput>;
+  AND?: Maybe<AbilitySubscriptionWhereInput[] | AbilitySubscriptionWhereInput>;
+  OR?: Maybe<AbilitySubscriptionWhereInput[] | AbilitySubscriptionWhereInput>;
+  NOT?: Maybe<AbilitySubscriptionWhereInput[] | AbilitySubscriptionWhereInput>;
+}
+
+export interface CampaignUpsertWithWhereUniqueWithoutDmInput {
+  where: CampaignWhereUniqueInput;
+  update: CampaignUpdateWithoutDmDataInput;
+  create: CampaignCreateWithoutDmInput;
+}
+
+export interface CharacterWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  firstName?: Maybe<String>;
+  firstName_not?: Maybe<String>;
+  firstName_in?: Maybe<String[] | String>;
+  firstName_not_in?: Maybe<String[] | String>;
+  firstName_lt?: Maybe<String>;
+  firstName_lte?: Maybe<String>;
+  firstName_gt?: Maybe<String>;
+  firstName_gte?: Maybe<String>;
+  firstName_contains?: Maybe<String>;
+  firstName_not_contains?: Maybe<String>;
+  firstName_starts_with?: Maybe<String>;
+  firstName_not_starts_with?: Maybe<String>;
+  firstName_ends_with?: Maybe<String>;
+  firstName_not_ends_with?: Maybe<String>;
+  lastName?: Maybe<String>;
+  lastName_not?: Maybe<String>;
+  lastName_in?: Maybe<String[] | String>;
+  lastName_not_in?: Maybe<String[] | String>;
+  lastName_lt?: Maybe<String>;
+  lastName_lte?: Maybe<String>;
+  lastName_gt?: Maybe<String>;
+  lastName_gte?: Maybe<String>;
+  lastName_contains?: Maybe<String>;
+  lastName_not_contains?: Maybe<String>;
+  lastName_starts_with?: Maybe<String>;
+  lastName_not_starts_with?: Maybe<String>;
+  lastName_ends_with?: Maybe<String>;
+  lastName_not_ends_with?: Maybe<String>;
+  type?: Maybe<CHARACTER_TYPE>;
+  type_not?: Maybe<CHARACTER_TYPE>;
+  type_in?: Maybe<CHARACTER_TYPE[] | CHARACTER_TYPE>;
+  type_not_in?: Maybe<CHARACTER_TYPE[] | CHARACTER_TYPE>;
+  metadata?: Maybe<CharacterMetadataWhereInput>;
+  campaign?: Maybe<CampaignWhereInput>;
+  user?: Maybe<UserWhereInput>;
+  AND?: Maybe<CharacterWhereInput[] | CharacterWhereInput>;
+  OR?: Maybe<CharacterWhereInput[] | CharacterWhereInput>;
+  NOT?: Maybe<CharacterWhereInput[] | CharacterWhereInput>;
+}
+
+export interface CampaignScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<CampaignScalarWhereInput[] | CampaignScalarWhereInput>;
+  OR?: Maybe<CampaignScalarWhereInput[] | CampaignScalarWhereInput>;
+  NOT?: Maybe<CampaignScalarWhereInput[] | CampaignScalarWhereInput>;
+}
+
+export interface HTMLContentUpdateManyMutationInput {
+  content?: Maybe<String>;
+}
+
+export interface CampaignUpdateManyWithWhereNestedInput {
+  where: CampaignScalarWhereInput;
+  data: CampaignUpdateManyDataInput;
+}
+
+export interface FlagUpdateInput {
+  imageSrc?: Maybe<String>;
+  description?: Maybe<String>;
+  location?: Maybe<LocationUpdateOneInput>;
+}
+
+export interface CampaignUpdateManyDataInput {
+  name?: Maybe<String>;
+}
+
+export type ReligionWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface UserUpsertWithoutCharactersInput {
+  update: UserUpdateWithoutCharactersDataInput;
+  create: UserCreateWithoutCharactersInput;
+}
+
+export interface CharacterCreateInput {
+  id?: Maybe<ID_Input>;
+  firstName: String;
+  lastName?: Maybe<String>;
+  type: CHARACTER_TYPE;
+  metadata?: Maybe<CharacterMetadataCreateOneWithoutCharacterInput>;
+  campaign: CampaignCreateOneWithoutPlayersInput;
+  user?: Maybe<UserCreateOneWithoutCharactersInput>;
+}
+
+export interface CharacterUpsertWithWhereUniqueWithoutCampaignInput {
+  where: CharacterWhereUniqueInput;
+  update: CharacterUpdateWithoutCampaignDataInput;
+  create: CharacterCreateWithoutCampaignInput;
+}
+
+export interface LocationCreateOneInput {
+  create?: Maybe<LocationCreateInput>;
+  connect?: Maybe<LocationWhereUniqueInput>;
+}
+
+export interface UserUpdateOneRequiredWithoutCampaignsInput {
+  create?: Maybe<UserCreateWithoutCampaignsInput>;
+  update?: Maybe<UserUpdateWithoutCampaignsDataInput>;
+  upsert?: Maybe<UserUpsertWithoutCampaignsInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface UserSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<UserWhereInput>;
+  AND?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+  OR?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+  NOT?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+}
+
+export interface UserUpdateWithoutCampaignsDataInput {
+  email?: Maybe<String>;
+  password?: Maybe<String>;
+  role?: Maybe<ROLE>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  characters?: Maybe<CharacterUpdateManyWithoutUserInput>;
+  resetToken?: Maybe<String>;
+  resetTokenExpiry?: Maybe<String>;
+}
+
+export interface ReligionUpdateManyMutationInput {
+  name?: Maybe<String>;
+}
+
+export interface CharacterUpdateManyWithoutUserInput {
+  create?: Maybe<
+    CharacterCreateWithoutUserInput[] | CharacterCreateWithoutUserInput
+  >;
+  delete?: Maybe<CharacterWhereUniqueInput[] | CharacterWhereUniqueInput>;
+  connect?: Maybe<CharacterWhereUniqueInput[] | CharacterWhereUniqueInput>;
+  set?: Maybe<CharacterWhereUniqueInput[] | CharacterWhereUniqueInput>;
+  disconnect?: Maybe<CharacterWhereUniqueInput[] | CharacterWhereUniqueInput>;
+  update?: Maybe<
+    | CharacterUpdateWithWhereUniqueWithoutUserInput[]
+    | CharacterUpdateWithWhereUniqueWithoutUserInput
+  >;
+  upsert?: Maybe<
+    | CharacterUpsertWithWhereUniqueWithoutUserInput[]
+    | CharacterUpsertWithWhereUniqueWithoutUserInput
+  >;
+  deleteMany?: Maybe<CharacterScalarWhereInput[] | CharacterScalarWhereInput>;
+  updateMany?: Maybe<
+    | CharacterUpdateManyWithWhereNestedInput[]
+    | CharacterUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface GovernmentPartyUpdateInput {
+  leader?: Maybe<CharacterUpdateOneInput>;
+  name?: Maybe<String>;
+  content?: Maybe<HTMLContentUpdateManyInput>;
+  government?: Maybe<GovernmentUpdateOneWithoutPartiesInput>;
+}
+
+export interface CharacterUpdateWithWhereUniqueWithoutUserInput {
+  where: CharacterWhereUniqueInput;
+  data: CharacterUpdateWithoutUserDataInput;
+}
+
+export type UserWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+  email?: Maybe<String>;
+}>;
+
+export interface CampaignUpsertWithoutLocationsInput {
+  update: CampaignUpdateWithoutLocationsDataInput;
+  create: CampaignCreateWithoutLocationsInput;
+}
+
+export interface UserUpsertWithoutCampaignsInput {
+  update: UserUpdateWithoutCampaignsDataInput;
+  create: UserCreateWithoutCampaignsInput;
+}
+
+export interface CharacterUpsertWithWhereUniqueWithoutUserInput {
+  where: CharacterWhereUniqueInput;
+  update: CharacterUpdateWithoutUserDataInput;
+  create: CharacterCreateWithoutUserInput;
+}
+
+export interface CharacterUpdateWithoutUserDataInput {
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  type?: Maybe<CHARACTER_TYPE>;
+  metadata?: Maybe<CharacterMetadataUpdateOneWithoutCharacterInput>;
+  campaign?: Maybe<CampaignUpdateOneRequiredWithoutPlayersInput>;
+}
+
+export interface LocationCreateManyWithoutCampaignInput {
+  create?: Maybe<
+    LocationCreateWithoutCampaignInput[] | LocationCreateWithoutCampaignInput
+  >;
+  connect?: Maybe<LocationWhereUniqueInput[] | LocationWhereUniqueInput>;
+}
+
+export interface CharacterMetadataUpdateManyMutationInput {
+  status?: Maybe<CHARACTER_STATUS>;
+  race?: Maybe<RACE>;
+  class?: Maybe<CLASS>;
+  alignment?: Maybe<ALIGNMENT>;
+  height?: Maybe<Int>;
+  weight?: Maybe<Int>;
+}
+
+export interface LocationCreateOneWithoutMetadataInput {
+  create?: Maybe<LocationCreateWithoutMetadataInput>;
+  connect?: Maybe<LocationWhereUniqueInput>;
+}
+
+export interface EtnicitySubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<EtnicityWhereInput>;
+  AND?: Maybe<
+    EtnicitySubscriptionWhereInput[] | EtnicitySubscriptionWhereInput
+  >;
+  OR?: Maybe<EtnicitySubscriptionWhereInput[] | EtnicitySubscriptionWhereInput>;
+  NOT?: Maybe<
+    EtnicitySubscriptionWhereInput[] | EtnicitySubscriptionWhereInput
+  >;
+}
+
+export interface EtnicityCreateManyInput {
+  create?: Maybe<EtnicityCreateInput[] | EtnicityCreateInput>;
+  connect?: Maybe<EtnicityWhereUniqueInput[] | EtnicityWhereUniqueInput>;
 }
 
 export interface NodeNode {
-    id: ID_Output;
+  id: ID_Output;
 }
 
 export interface UserPreviousValues {
-    id: ID_Output;
-    createdAt: DateTimeOutput;
-    updatedAt: DateTimeOutput;
-    email: string;
-    password: string;
-    role: ROLE;
-    firstName?: string;
-    lastName?: string;
-    resetToken?: string;
-    resetTokenExpiry?: string;
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  email: String;
+  password: String;
+  role: ROLE;
+  firstName?: String;
+  lastName?: String;
+  resetToken?: String;
+  resetTokenExpiry?: String;
 }
 
-export interface UserPreviousValuesPromise extends Promise<UserPreviousValues>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    createdAt: () => Promise<DateTimeOutput>;
-    updatedAt: () => Promise<DateTimeOutput>;
-    email: () => Promise<string>;
-    password: () => Promise<string>;
-    role: () => Promise<ROLE>;
-    firstName: () => Promise<string>;
-    lastName: () => Promise<string>;
-    resetToken: () => Promise<string>;
-    resetTokenExpiry: () => Promise<string>;
+export interface UserPreviousValuesPromise
+  extends Promise<UserPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  email: () => Promise<String>;
+  password: () => Promise<String>;
+  role: () => Promise<ROLE>;
+  firstName: () => Promise<String>;
+  lastName: () => Promise<String>;
+  resetToken: () => Promise<String>;
+  resetTokenExpiry: () => Promise<String>;
 }
 
-export interface UserPreviousValuesSubscription extends Promise<AsyncIterator<UserPreviousValues>>, Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-    createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-    updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-    email: () => Promise<AsyncIterator<string>>;
-    password: () => Promise<AsyncIterator<string>>;
-    role: () => Promise<AsyncIterator<ROLE>>;
-    firstName: () => Promise<AsyncIterator<string>>;
-    lastName: () => Promise<AsyncIterator<string>>;
-    resetToken: () => Promise<AsyncIterator<string>>;
-    resetTokenExpiry: () => Promise<AsyncIterator<string>>;
-}
-
-export interface AggregateCampaign {
-    count: Int;
-}
-
-export interface AggregateCampaignPromise extends Promise<AggregateCampaign>, Fragmentable {
-    count: () => Promise<Int>;
-}
-
-export interface AggregateCampaignSubscription extends Promise<AsyncIterator<AggregateCampaign>>, Fragmentable {
-    count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface Campaign {
-    id: ID_Output;
-    name: string;
-    createdAt: DateTimeOutput;
-    updatedAt: DateTimeOutput;
-}
-
-export interface CampaignPromise extends Promise<Campaign>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    name: () => Promise<string>;
-    createdAt: () => Promise<DateTimeOutput>;
-    updatedAt: () => Promise<DateTimeOutput>;
-    locations: <T = FragmentableArray<Location>>(args?: {
-        where?: LocationWhereInput;
-        orderBy?: LocationOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    players: <T = FragmentableArray<Character>>(args?: {
-        where?: CharacterWhereInput;
-        orderBy?: CharacterOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-}
-
-export interface CampaignSubscription extends Promise<AsyncIterator<Campaign>>, Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-    name: () => Promise<AsyncIterator<string>>;
-    createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-    updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-    locations: <T = Promise<AsyncIterator<LocationSubscription>>>(args?: {
-        where?: LocationWhereInput;
-        orderBy?: LocationOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    players: <T = Promise<AsyncIterator<CharacterSubscription>>>(args?: {
-        where?: CharacterWhereInput;
-        orderBy?: CharacterOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-}
-
-export interface CampaignNullablePromise extends Promise<Campaign | null>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    name: () => Promise<string>;
-    createdAt: () => Promise<DateTimeOutput>;
-    updatedAt: () => Promise<DateTimeOutput>;
-    locations: <T = FragmentableArray<Location>>(args?: {
-        where?: LocationWhereInput;
-        orderBy?: LocationOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    players: <T = FragmentableArray<Character>>(args?: {
-        where?: CharacterWhereInput;
-        orderBy?: CharacterOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
+export interface UserPreviousValuesSubscription
+  extends Promise<AsyncIterator<UserPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  email: () => Promise<AsyncIterator<String>>;
+  password: () => Promise<AsyncIterator<String>>;
+  role: () => Promise<AsyncIterator<ROLE>>;
+  firstName: () => Promise<AsyncIterator<String>>;
+  lastName: () => Promise<AsyncIterator<String>>;
+  resetToken: () => Promise<AsyncIterator<String>>;
+  resetTokenExpiry: () => Promise<AsyncIterator<String>>;
 }
 
 export interface CampaignEdge {
-    node: Campaign;
-    cursor: string;
+  node: Campaign;
+  cursor: String;
 }
 
-export interface CampaignEdgePromise extends Promise<CampaignEdge>, Fragmentable {
-    node: <T = CampaignPromise>() => T;
-    cursor: () => Promise<string>;
+export interface CampaignEdgePromise
+  extends Promise<CampaignEdge>,
+    Fragmentable {
+  node: <T = CampaignPromise>() => T;
+  cursor: () => Promise<String>;
 }
 
-export interface CampaignEdgeSubscription extends Promise<AsyncIterator<CampaignEdge>>, Fragmentable {
-    node: <T = CampaignSubscription>() => T;
-    cursor: () => Promise<AsyncIterator<string>>;
+export interface CampaignEdgeSubscription
+  extends Promise<AsyncIterator<CampaignEdge>>,
+    Fragmentable {
+  node: <T = CampaignSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface Skill {
-    id: ID_Output;
-    name: SKILL;
-    value: Int;
+export interface Campaign {
+  id: ID_Output;
+  name: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
 }
 
-export interface SkillPromise extends Promise<Skill>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    name: () => Promise<SKILL>;
-    value: () => Promise<Int>;
-    character: <T = CharacterPromise>() => T;
+export interface CampaignPromise extends Promise<Campaign>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  locations: <T = FragmentableArray<Location>>(args?: {
+    where?: LocationWhereInput;
+    orderBy?: LocationOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  players: <T = FragmentableArray<Character>>(args?: {
+    where?: CharacterWhereInput;
+    orderBy?: CharacterOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  dm: <T = UserPromise>() => T;
 }
 
-export interface SkillSubscription extends Promise<AsyncIterator<Skill>>, Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-    name: () => Promise<AsyncIterator<SKILL>>;
-    value: () => Promise<AsyncIterator<Int>>;
-    character: <T = CharacterSubscription>() => T;
+export interface CampaignSubscription
+  extends Promise<AsyncIterator<Campaign>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  locations: <T = Promise<AsyncIterator<LocationSubscription>>>(args?: {
+    where?: LocationWhereInput;
+    orderBy?: LocationOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  players: <T = Promise<AsyncIterator<CharacterSubscription>>>(args?: {
+    where?: CharacterWhereInput;
+    orderBy?: CharacterOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  dm: <T = UserSubscription>() => T;
 }
 
-export interface SkillNullablePromise extends Promise<Skill | null>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    name: () => Promise<SKILL>;
-    value: () => Promise<Int>;
-    character: <T = CharacterPromise>() => T;
+export interface CampaignNullablePromise
+  extends Promise<Campaign | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  locations: <T = FragmentableArray<Location>>(args?: {
+    where?: LocationWhereInput;
+    orderBy?: LocationOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  players: <T = FragmentableArray<Character>>(args?: {
+    where?: CharacterWhereInput;
+    orderBy?: CharacterOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  dm: <T = UserPromise>() => T;
 }
 
 export interface CampaignConnection {
-    pageInfo: PageInfo;
-    edges: CampaignEdge[];
+  pageInfo: PageInfo;
+  edges: CampaignEdge[];
 }
 
-export interface CampaignConnectionPromise extends Promise<CampaignConnection>, Fragmentable {
-    pageInfo: <T = PageInfoPromise>() => T;
-    edges: <T = FragmentableArray<CampaignEdge>>() => T;
-    aggregate: <T = AggregateCampaignPromise>() => T;
+export interface CampaignConnectionPromise
+  extends Promise<CampaignConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<CampaignEdge>>() => T;
+  aggregate: <T = AggregateCampaignPromise>() => T;
 }
 
-export interface CampaignConnectionSubscription extends Promise<AsyncIterator<CampaignConnection>>, Fragmentable {
-    pageInfo: <T = PageInfoSubscription>() => T;
-    edges: <T = Promise<AsyncIterator<CampaignEdgeSubscription>>>() => T;
-    aggregate: <T = AggregateCampaignSubscription>() => T;
+export interface CampaignConnectionSubscription
+  extends Promise<AsyncIterator<CampaignConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<CampaignEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateCampaignSubscription>() => T;
 }
 
-export interface AggregateUser {
-    count: Int;
+export interface Skill {
+  id: ID_Output;
+  name: SKILL;
+  value: Int;
 }
 
-export interface AggregateUserPromise extends Promise<AggregateUser>, Fragmentable {
-    count: () => Promise<Int>;
+export interface SkillPromise extends Promise<Skill>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<SKILL>;
+  value: () => Promise<Int>;
+  character: <T = CharacterPromise>() => T;
 }
 
-export interface AggregateUserSubscription extends Promise<AsyncIterator<AggregateUser>>, Fragmentable {
-    count: () => Promise<AsyncIterator<Int>>;
+export interface SkillSubscription
+  extends Promise<AsyncIterator<Skill>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<SKILL>>;
+  value: () => Promise<AsyncIterator<Int>>;
+  character: <T = CharacterSubscription>() => T;
+}
+
+export interface SkillNullablePromise
+  extends Promise<Skill | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<SKILL>;
+  value: () => Promise<Int>;
+  character: <T = CharacterPromise>() => T;
 }
 
 export interface AggregateAbility {
-    count: Int;
+  count: Int;
 }
 
-export interface AggregateAbilityPromise extends Promise<AggregateAbility>, Fragmentable {
-    count: () => Promise<Int>;
+export interface AggregateAbilityPromise
+  extends Promise<AggregateAbility>,
+    Fragmentable {
+  count: () => Promise<Int>;
 }
 
-export interface AggregateAbilitySubscription extends Promise<AsyncIterator<AggregateAbility>>, Fragmentable {
-    count: () => Promise<AsyncIterator<Int>>;
+export interface AggregateAbilitySubscription
+  extends Promise<AsyncIterator<AggregateAbility>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface UserConnection {
-    pageInfo: PageInfo;
-    edges: UserEdge[];
+export interface AggregateUser {
+  count: Int;
 }
 
-export interface UserConnectionPromise extends Promise<UserConnection>, Fragmentable {
-    pageInfo: <T = PageInfoPromise>() => T;
-    edges: <T = FragmentableArray<UserEdge>>() => T;
-    aggregate: <T = AggregateUserPromise>() => T;
+export interface AggregateUserPromise
+  extends Promise<AggregateUser>,
+    Fragmentable {
+  count: () => Promise<Int>;
 }
 
-export interface UserConnectionSubscription extends Promise<AsyncIterator<UserConnection>>, Fragmentable {
-    pageInfo: <T = PageInfoSubscription>() => T;
-    edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
-    aggregate: <T = AggregateUserSubscription>() => T;
-}
-
-export interface Ability {
-    id: ID_Output;
-    type: ABILITY_TYPE;
-    value: Int;
-    modifier: Int;
-}
-
-export interface AbilityPromise extends Promise<Ability>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    type: () => Promise<ABILITY_TYPE>;
-    value: () => Promise<Int>;
-    modifier: () => Promise<Int>;
-    character: <T = CharacterPromise>() => T;
-}
-
-export interface AbilitySubscription extends Promise<AsyncIterator<Ability>>, Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-    type: () => Promise<AsyncIterator<ABILITY_TYPE>>;
-    value: () => Promise<AsyncIterator<Int>>;
-    modifier: () => Promise<AsyncIterator<Int>>;
-    character: <T = CharacterSubscription>() => T;
-}
-
-export interface AbilityNullablePromise extends Promise<Ability | null>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    type: () => Promise<ABILITY_TYPE>;
-    value: () => Promise<Int>;
-    modifier: () => Promise<Int>;
-    character: <T = CharacterPromise>() => T;
-}
-
-export interface Character {
-    id: ID_Output;
-    firstName: string;
-    lastName?: string;
-    type: CHARACTER_TYPE;
-}
-
-export interface CharacterPromise extends Promise<Character>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    firstName: () => Promise<string>;
-    lastName: () => Promise<string>;
-    type: () => Promise<CHARACTER_TYPE>;
-    metadata: <T = CharacterMetadataPromise>() => T;
-    campaign: <T = CampaignPromise>() => T;
-}
-
-export interface CharacterSubscription extends Promise<AsyncIterator<Character>>, Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-    firstName: () => Promise<AsyncIterator<string>>;
-    lastName: () => Promise<AsyncIterator<string>>;
-    type: () => Promise<AsyncIterator<CHARACTER_TYPE>>;
-    metadata: <T = CharacterMetadataSubscription>() => T;
-    campaign: <T = CampaignSubscription>() => T;
-}
-
-export interface CharacterNullablePromise extends Promise<Character | null>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    firstName: () => Promise<string>;
-    lastName: () => Promise<string>;
-    type: () => Promise<CHARACTER_TYPE>;
-    metadata: <T = CharacterMetadataPromise>() => T;
-    campaign: <T = CampaignPromise>() => T;
-}
-
-export interface AbilitySubscriptionPayload {
-    mutation: MutationType;
-    node: Ability;
-    updatedFields: string[];
-    previousValues: AbilityPreviousValues;
-}
-
-export interface AbilitySubscriptionPayloadPromise extends Promise<AbilitySubscriptionPayload>, Fragmentable {
-    mutation: () => Promise<MutationType>;
-    node: <T = AbilityPromise>() => T;
-    updatedFields: () => Promise<string[]>;
-    previousValues: <T = AbilityPreviousValuesPromise>() => T;
-}
-
-export interface AbilitySubscriptionPayloadSubscription
-    extends Promise<AsyncIterator<AbilitySubscriptionPayload>>,
-        Fragmentable {
-    mutation: () => Promise<AsyncIterator<MutationType>>;
-    node: <T = AbilitySubscription>() => T;
-    updatedFields: () => Promise<AsyncIterator<string[]>>;
-    previousValues: <T = AbilityPreviousValuesSubscription>() => T;
-}
-
-export interface AggregateSkill {
-    count: Int;
-}
-
-export interface AggregateSkillPromise extends Promise<AggregateSkill>, Fragmentable {
-    count: () => Promise<Int>;
-}
-
-export interface AggregateSkillSubscription extends Promise<AsyncIterator<AggregateSkill>>, Fragmentable {
-    count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface AbilityPreviousValues {
-    id: ID_Output;
-    type: ABILITY_TYPE;
-    value: Int;
-    modifier: Int;
-}
-
-export interface AbilityPreviousValuesPromise extends Promise<AbilityPreviousValues>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    type: () => Promise<ABILITY_TYPE>;
-    value: () => Promise<Int>;
-    modifier: () => Promise<Int>;
-}
-
-export interface AbilityPreviousValuesSubscription extends Promise<AsyncIterator<AbilityPreviousValues>>, Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-    type: () => Promise<AsyncIterator<ABILITY_TYPE>>;
-    value: () => Promise<AsyncIterator<Int>>;
-    modifier: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface SkillConnection {
-    pageInfo: PageInfo;
-    edges: SkillEdge[];
-}
-
-export interface SkillConnectionPromise extends Promise<SkillConnection>, Fragmentable {
-    pageInfo: <T = PageInfoPromise>() => T;
-    edges: <T = FragmentableArray<SkillEdge>>() => T;
-    aggregate: <T = AggregateSkillPromise>() => T;
-}
-
-export interface SkillConnectionSubscription extends Promise<AsyncIterator<SkillConnection>>, Fragmentable {
-    pageInfo: <T = PageInfoSubscription>() => T;
-    edges: <T = Promise<AsyncIterator<SkillEdgeSubscription>>>() => T;
-    aggregate: <T = AggregateSkillSubscription>() => T;
+export interface AggregateUserSubscription
+  extends Promise<AsyncIterator<AggregateUser>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface AbilityEdge {
-    node: Ability;
-    cursor: string;
+  node: Ability;
+  cursor: String;
 }
 
 export interface AbilityEdgePromise extends Promise<AbilityEdge>, Fragmentable {
-    node: <T = AbilityPromise>() => T;
-    cursor: () => Promise<string>;
-}
-
-export interface AbilityEdgeSubscription extends Promise<AsyncIterator<AbilityEdge>>, Fragmentable {
-    node: <T = AbilitySubscription>() => T;
-    cursor: () => Promise<AsyncIterator<string>>;
-}
-
-export interface ReligionEdge {
-    node: Religion;
-    cursor: string;
-}
-
-export interface ReligionEdgePromise extends Promise<ReligionEdge>, Fragmentable {
-    node: <T = ReligionPromise>() => T;
-    cursor: () => Promise<string>;
-}
-
-export interface ReligionEdgeSubscription extends Promise<AsyncIterator<ReligionEdge>>, Fragmentable {
-    node: <T = ReligionSubscription>() => T;
-    cursor: () => Promise<AsyncIterator<string>>;
-}
-
-export interface CampaignSubscriptionPayload {
-    mutation: MutationType;
-    node: Campaign;
-    updatedFields: string[];
-    previousValues: CampaignPreviousValues;
-}
-
-export interface CampaignSubscriptionPayloadPromise extends Promise<CampaignSubscriptionPayload>, Fragmentable {
-    mutation: () => Promise<MutationType>;
-    node: <T = CampaignPromise>() => T;
-    updatedFields: () => Promise<string[]>;
-    previousValues: <T = CampaignPreviousValuesPromise>() => T;
-}
-
-export interface CampaignSubscriptionPayloadSubscription
-    extends Promise<AsyncIterator<CampaignSubscriptionPayload>>,
-        Fragmentable {
-    mutation: () => Promise<AsyncIterator<MutationType>>;
-    node: <T = CampaignSubscription>() => T;
-    updatedFields: () => Promise<AsyncIterator<string[]>>;
-    previousValues: <T = CampaignPreviousValuesSubscription>() => T;
-}
-
-export interface AggregatePopulation {
-    count: Int;
-}
-
-export interface AggregatePopulationPromise extends Promise<AggregatePopulation>, Fragmentable {
-    count: () => Promise<Int>;
-}
-
-export interface AggregatePopulationSubscription extends Promise<AsyncIterator<AggregatePopulation>>, Fragmentable {
-    count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface CampaignPreviousValues {
-    id: ID_Output;
-    name: string;
-    createdAt: DateTimeOutput;
-    updatedAt: DateTimeOutput;
-}
-
-export interface CampaignPreviousValuesPromise extends Promise<CampaignPreviousValues>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    name: () => Promise<string>;
-    createdAt: () => Promise<DateTimeOutput>;
-    updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface CampaignPreviousValuesSubscription
-    extends Promise<AsyncIterator<CampaignPreviousValues>>,
-        Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-    name: () => Promise<AsyncIterator<string>>;
-    createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-    updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface PopulationConnection {
-    pageInfo: PageInfo;
-    edges: PopulationEdge[];
-}
-
-export interface PopulationConnectionPromise extends Promise<PopulationConnection>, Fragmentable {
-    pageInfo: <T = PageInfoPromise>() => T;
-    edges: <T = FragmentableArray<PopulationEdge>>() => T;
-    aggregate: <T = AggregatePopulationPromise>() => T;
-}
-
-export interface PopulationConnectionSubscription extends Promise<AsyncIterator<PopulationConnection>>, Fragmentable {
-    pageInfo: <T = PageInfoSubscription>() => T;
-    edges: <T = Promise<AsyncIterator<PopulationEdgeSubscription>>>() => T;
-    aggregate: <T = AggregatePopulationSubscription>() => T;
-}
-
-export interface PopulationEdge {
-    node: Population;
-    cursor: string;
-}
-
-export interface PopulationEdgePromise extends Promise<PopulationEdge>, Fragmentable {
-    node: <T = PopulationPromise>() => T;
-    cursor: () => Promise<string>;
-}
-
-export interface PopulationEdgeSubscription extends Promise<AsyncIterator<PopulationEdge>>, Fragmentable {
-    node: <T = PopulationSubscription>() => T;
-    cursor: () => Promise<AsyncIterator<string>>;
-}
-
-export interface LocationMetaData {
-    id: ID_Output;
-    weather?: WEATHER;
-    climate?: CLIMATE;
-}
-
-export interface LocationMetaDataPromise extends Promise<LocationMetaData>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    location: <T = LocationPromise>() => T;
-    population: <T = PopulationPromise>() => T;
-    languages: <T = FragmentableArray<Language>>(args?: {
-        where?: LanguageWhereInput;
-        orderBy?: LanguageOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    religions: <T = FragmentableArray<Religion>>(args?: {
-        where?: ReligionWhereInput;
-        orderBy?: ReligionOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    ethnicities: <T = FragmentableArray<Etnicity>>(args?: {
-        where?: EtnicityWhereInput;
-        orderBy?: EtnicityOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    flag: <T = FragmentableArray<Flag>>(args?: {
-        where?: FlagWhereInput;
-        orderBy?: FlagOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    economy: <T = EconomyPromise>() => T;
-    government: <T = GovernmentPromise>() => T;
-    weather: () => Promise<WEATHER>;
-    climate: () => Promise<CLIMATE>;
-}
-
-export interface LocationMetaDataSubscription extends Promise<AsyncIterator<LocationMetaData>>, Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-    location: <T = LocationSubscription>() => T;
-    population: <T = PopulationSubscription>() => T;
-    languages: <T = Promise<AsyncIterator<LanguageSubscription>>>(args?: {
-        where?: LanguageWhereInput;
-        orderBy?: LanguageOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    religions: <T = Promise<AsyncIterator<ReligionSubscription>>>(args?: {
-        where?: ReligionWhereInput;
-        orderBy?: ReligionOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    ethnicities: <T = Promise<AsyncIterator<EtnicitySubscription>>>(args?: {
-        where?: EtnicityWhereInput;
-        orderBy?: EtnicityOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    flag: <T = Promise<AsyncIterator<FlagSubscription>>>(args?: {
-        where?: FlagWhereInput;
-        orderBy?: FlagOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    economy: <T = EconomySubscription>() => T;
-    government: <T = GovernmentSubscription>() => T;
-    weather: () => Promise<AsyncIterator<WEATHER>>;
-    climate: () => Promise<AsyncIterator<CLIMATE>>;
-}
-
-export interface LocationMetaDataNullablePromise extends Promise<LocationMetaData | null>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    location: <T = LocationPromise>() => T;
-    population: <T = PopulationPromise>() => T;
-    languages: <T = FragmentableArray<Language>>(args?: {
-        where?: LanguageWhereInput;
-        orderBy?: LanguageOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    religions: <T = FragmentableArray<Religion>>(args?: {
-        where?: ReligionWhereInput;
-        orderBy?: ReligionOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    ethnicities: <T = FragmentableArray<Etnicity>>(args?: {
-        where?: EtnicityWhereInput;
-        orderBy?: EtnicityOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    flag: <T = FragmentableArray<Flag>>(args?: {
-        where?: FlagWhereInput;
-        orderBy?: FlagOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    economy: <T = EconomyPromise>() => T;
-    government: <T = GovernmentPromise>() => T;
-    weather: () => Promise<WEATHER>;
-    climate: () => Promise<CLIMATE>;
-}
-
-export interface SkillPreviousValues {
-    id: ID_Output;
-    name: SKILL;
-    value: Int;
-}
-
-export interface SkillPreviousValuesPromise extends Promise<SkillPreviousValues>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    name: () => Promise<SKILL>;
-    value: () => Promise<Int>;
-}
-
-export interface SkillPreviousValuesSubscription extends Promise<AsyncIterator<SkillPreviousValues>>, Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-    name: () => Promise<AsyncIterator<SKILL>>;
-    value: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface AggregateLocationMetaData {
-    count: Int;
-}
-
-export interface AggregateLocationMetaDataPromise extends Promise<AggregateLocationMetaData>, Fragmentable {
-    count: () => Promise<Int>;
-}
-
-export interface AggregateLocationMetaDataSubscription
-    extends Promise<AsyncIterator<AggregateLocationMetaData>>,
-        Fragmentable {
-    count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface LocationMetaDataEdge {
-    node: LocationMetaData;
-    cursor: string;
-}
-
-export interface LocationMetaDataEdgePromise extends Promise<LocationMetaDataEdge>, Fragmentable {
-    node: <T = LocationMetaDataPromise>() => T;
-    cursor: () => Promise<string>;
-}
-
-export interface LocationMetaDataEdgeSubscription extends Promise<AsyncIterator<LocationMetaDataEdge>>, Fragmentable {
-    node: <T = LocationMetaDataSubscription>() => T;
-    cursor: () => Promise<AsyncIterator<string>>;
-}
-
-export interface CharacterMetadata {
-    id: ID_Output;
-    status?: CHARACTER_STATUS;
-    race?: RACE;
-    class?: CLASS;
-    alignment?: ALIGNMENT;
-    height?: Int;
-    weight?: Int;
-}
-
-export interface CharacterMetadataPromise extends Promise<CharacterMetadata>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    character: <T = CharacterPromise>() => T;
-    abilities: <T = FragmentableArray<Ability>>(args?: {
-        where?: AbilityWhereInput;
-        orderBy?: AbilityOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    skills: <T = FragmentableArray<Skill>>(args?: {
-        where?: SkillWhereInput;
-        orderBy?: SkillOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    status: () => Promise<CHARACTER_STATUS>;
-    race: () => Promise<RACE>;
-    class: () => Promise<CLASS>;
-    alignment: () => Promise<ALIGNMENT>;
-    height: () => Promise<Int>;
-    weight: () => Promise<Int>;
-}
-
-export interface CharacterMetadataSubscription extends Promise<AsyncIterator<CharacterMetadata>>, Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-    character: <T = CharacterSubscription>() => T;
-    abilities: <T = Promise<AsyncIterator<AbilitySubscription>>>(args?: {
-        where?: AbilityWhereInput;
-        orderBy?: AbilityOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    skills: <T = Promise<AsyncIterator<SkillSubscription>>>(args?: {
-        where?: SkillWhereInput;
-        orderBy?: SkillOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    status: () => Promise<AsyncIterator<CHARACTER_STATUS>>;
-    race: () => Promise<AsyncIterator<RACE>>;
-    class: () => Promise<AsyncIterator<CLASS>>;
-    alignment: () => Promise<AsyncIterator<ALIGNMENT>>;
-    height: () => Promise<AsyncIterator<Int>>;
-    weight: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface CharacterMetadataNullablePromise extends Promise<CharacterMetadata | null>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    character: <T = CharacterPromise>() => T;
-    abilities: <T = FragmentableArray<Ability>>(args?: {
-        where?: AbilityWhereInput;
-        orderBy?: AbilityOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    skills: <T = FragmentableArray<Skill>>(args?: {
-        where?: SkillWhereInput;
-        orderBy?: SkillOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    status: () => Promise<CHARACTER_STATUS>;
-    race: () => Promise<RACE>;
-    class: () => Promise<CLASS>;
-    alignment: () => Promise<ALIGNMENT>;
-    height: () => Promise<Int>;
-    weight: () => Promise<Int>;
-}
-
-export interface CharacterSubscriptionPayload {
-    mutation: MutationType;
-    node: Character;
-    updatedFields: string[];
-    previousValues: CharacterPreviousValues;
-}
-
-export interface CharacterSubscriptionPayloadPromise extends Promise<CharacterSubscriptionPayload>, Fragmentable {
-    mutation: () => Promise<MutationType>;
-    node: <T = CharacterPromise>() => T;
-    updatedFields: () => Promise<string[]>;
-    previousValues: <T = CharacterPreviousValuesPromise>() => T;
-}
-
-export interface CharacterSubscriptionPayloadSubscription
-    extends Promise<AsyncIterator<CharacterSubscriptionPayload>>,
-        Fragmentable {
-    mutation: () => Promise<AsyncIterator<MutationType>>;
-    node: <T = CharacterSubscription>() => T;
-    updatedFields: () => Promise<AsyncIterator<string[]>>;
-    previousValues: <T = CharacterPreviousValuesSubscription>() => T;
-}
-
-export interface LocationEdge {
-    node: Location;
-    cursor: string;
-}
-
-export interface LocationEdgePromise extends Promise<LocationEdge>, Fragmentable {
-    node: <T = LocationPromise>() => T;
-    cursor: () => Promise<string>;
-}
-
-export interface LocationEdgeSubscription extends Promise<AsyncIterator<LocationEdge>>, Fragmentable {
-    node: <T = LocationSubscription>() => T;
-    cursor: () => Promise<AsyncIterator<string>>;
-}
-
-export interface CharacterPreviousValues {
-    id: ID_Output;
-    firstName: string;
-    lastName?: string;
-    type: CHARACTER_TYPE;
-}
-
-export interface CharacterPreviousValuesPromise extends Promise<CharacterPreviousValues>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    firstName: () => Promise<string>;
-    lastName: () => Promise<string>;
-    type: () => Promise<CHARACTER_TYPE>;
-}
-
-export interface CharacterPreviousValuesSubscription
-    extends Promise<AsyncIterator<CharacterPreviousValues>>,
-        Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-    firstName: () => Promise<AsyncIterator<string>>;
-    lastName: () => Promise<AsyncIterator<string>>;
-    type: () => Promise<AsyncIterator<CHARACTER_TYPE>>;
-}
-
-export interface AggregateLanguage {
-    count: Int;
-}
-
-export interface AggregateLanguagePromise extends Promise<AggregateLanguage>, Fragmentable {
-    count: () => Promise<Int>;
-}
-
-export interface AggregateLanguageSubscription extends Promise<AsyncIterator<AggregateLanguage>>, Fragmentable {
-    count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface PageInfo {
-    hasNextPage: boolean;
-    hasPreviousPage: boolean;
-    startCursor?: string;
-    endCursor?: string;
-}
-
-export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
-    hasNextPage: () => Promise<boolean>;
-    hasPreviousPage: () => Promise<boolean>;
-    startCursor: () => Promise<string>;
-    endCursor: () => Promise<string>;
-}
-
-export interface PageInfoSubscription extends Promise<AsyncIterator<PageInfo>>, Fragmentable {
-    hasNextPage: () => Promise<AsyncIterator<boolean>>;
-    hasPreviousPage: () => Promise<AsyncIterator<boolean>>;
-    startCursor: () => Promise<AsyncIterator<string>>;
-    endCursor: () => Promise<AsyncIterator<string>>;
-}
-
-export interface LanguageConnection {
-    pageInfo: PageInfo;
-    edges: LanguageEdge[];
-}
-
-export interface LanguageConnectionPromise extends Promise<LanguageConnection>, Fragmentable {
-    pageInfo: <T = PageInfoPromise>() => T;
-    edges: <T = FragmentableArray<LanguageEdge>>() => T;
-    aggregate: <T = AggregateLanguagePromise>() => T;
-}
-
-export interface LanguageConnectionSubscription extends Promise<AsyncIterator<LanguageConnection>>, Fragmentable {
-    pageInfo: <T = PageInfoSubscription>() => T;
-    edges: <T = Promise<AsyncIterator<LanguageEdgeSubscription>>>() => T;
-    aggregate: <T = AggregateLanguageSubscription>() => T;
-}
-
-export interface CharacterMetadataSubscriptionPayload {
-    mutation: MutationType;
-    node: CharacterMetadata;
-    updatedFields: string[];
-    previousValues: CharacterMetadataPreviousValues;
-}
-
-export interface CharacterMetadataSubscriptionPayloadPromise
-    extends Promise<CharacterMetadataSubscriptionPayload>,
-        Fragmentable {
-    mutation: () => Promise<MutationType>;
-    node: <T = CharacterMetadataPromise>() => T;
-    updatedFields: () => Promise<string[]>;
-    previousValues: <T = CharacterMetadataPreviousValuesPromise>() => T;
-}
-
-export interface CharacterMetadataSubscriptionPayloadSubscription
-    extends Promise<AsyncIterator<CharacterMetadataSubscriptionPayload>>,
-        Fragmentable {
-    mutation: () => Promise<AsyncIterator<MutationType>>;
-    node: <T = CharacterMetadataSubscription>() => T;
-    updatedFields: () => Promise<AsyncIterator<string[]>>;
-    previousValues: <T = CharacterMetadataPreviousValuesSubscription>() => T;
-}
-
-export interface HTMLContentEdge {
-    node: HTMLContent;
-    cursor: string;
-}
-
-export interface HTMLContentEdgePromise extends Promise<HTMLContentEdge>, Fragmentable {
-    node: <T = HTMLContentPromise>() => T;
-    cursor: () => Promise<string>;
-}
-
-export interface HTMLContentEdgeSubscription extends Promise<AsyncIterator<HTMLContentEdge>>, Fragmentable {
-    node: <T = HTMLContentSubscription>() => T;
-    cursor: () => Promise<AsyncIterator<string>>;
-}
-
-export interface CharacterMetadataPreviousValues {
-    id: ID_Output;
-    status?: CHARACTER_STATUS;
-    race?: RACE;
-    class?: CLASS;
-    alignment?: ALIGNMENT;
-    height?: Int;
-    weight?: Int;
-}
-
-export interface CharacterMetadataPreviousValuesPromise extends Promise<CharacterMetadataPreviousValues>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    status: () => Promise<CHARACTER_STATUS>;
-    race: () => Promise<RACE>;
-    class: () => Promise<CLASS>;
-    alignment: () => Promise<ALIGNMENT>;
-    height: () => Promise<Int>;
-    weight: () => Promise<Int>;
-}
-
-export interface CharacterMetadataPreviousValuesSubscription
-    extends Promise<AsyncIterator<CharacterMetadataPreviousValues>>,
-        Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-    status: () => Promise<AsyncIterator<CHARACTER_STATUS>>;
-    race: () => Promise<AsyncIterator<RACE>>;
-    class: () => Promise<AsyncIterator<CLASS>>;
-    alignment: () => Promise<AsyncIterator<ALIGNMENT>>;
-    height: () => Promise<AsyncIterator<Int>>;
-    weight: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface AggregateGovernmentParty {
-    count: Int;
-}
-
-export interface AggregateGovernmentPartyPromise extends Promise<AggregateGovernmentParty>, Fragmentable {
-    count: () => Promise<Int>;
-}
-
-export interface AggregateGovernmentPartySubscription
-    extends Promise<AsyncIterator<AggregateGovernmentParty>>,
-        Fragmentable {
-    count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface AbilityConnection {
-    pageInfo: PageInfo;
-    edges: AbilityEdge[];
-}
-
-export interface AbilityConnectionPromise extends Promise<AbilityConnection>, Fragmentable {
-    pageInfo: <T = PageInfoPromise>() => T;
-    edges: <T = FragmentableArray<AbilityEdge>>() => T;
-    aggregate: <T = AggregateAbilityPromise>() => T;
-}
-
-export interface AbilityConnectionSubscription extends Promise<AsyncIterator<AbilityConnection>>, Fragmentable {
-    pageInfo: <T = PageInfoSubscription>() => T;
-    edges: <T = Promise<AsyncIterator<AbilityEdgeSubscription>>>() => T;
-    aggregate: <T = AggregateAbilitySubscription>() => T;
-}
-
-export interface GovernmentPartyConnection {
-    pageInfo: PageInfo;
-    edges: GovernmentPartyEdge[];
-}
-
-export interface GovernmentPartyConnectionPromise extends Promise<GovernmentPartyConnection>, Fragmentable {
-    pageInfo: <T = PageInfoPromise>() => T;
-    edges: <T = FragmentableArray<GovernmentPartyEdge>>() => T;
-    aggregate: <T = AggregateGovernmentPartyPromise>() => T;
-}
-
-export interface GovernmentPartyConnectionSubscription
-    extends Promise<AsyncIterator<GovernmentPartyConnection>>,
-        Fragmentable {
-    pageInfo: <T = PageInfoSubscription>() => T;
-    edges: <T = Promise<AsyncIterator<GovernmentPartyEdgeSubscription>>>() => T;
-    aggregate: <T = AggregateGovernmentPartySubscription>() => T;
-}
-
-export interface CurrencySubscriptionPayload {
-    mutation: MutationType;
-    node: Currency;
-    updatedFields: string[];
-    previousValues: CurrencyPreviousValues;
-}
-
-export interface CurrencySubscriptionPayloadPromise extends Promise<CurrencySubscriptionPayload>, Fragmentable {
-    mutation: () => Promise<MutationType>;
-    node: <T = CurrencyPromise>() => T;
-    updatedFields: () => Promise<string[]>;
-    previousValues: <T = CurrencyPreviousValuesPromise>() => T;
-}
-
-export interface CurrencySubscriptionPayloadSubscription
-    extends Promise<AsyncIterator<CurrencySubscriptionPayload>>,
-        Fragmentable {
-    mutation: () => Promise<AsyncIterator<MutationType>>;
-    node: <T = CurrencySubscription>() => T;
-    updatedFields: () => Promise<AsyncIterator<string[]>>;
-    previousValues: <T = CurrencyPreviousValuesSubscription>() => T;
-}
-
-export interface GovernmentEdge {
-    node: Government;
-    cursor: string;
-}
-
-export interface GovernmentEdgePromise extends Promise<GovernmentEdge>, Fragmentable {
-    node: <T = GovernmentPromise>() => T;
-    cursor: () => Promise<string>;
-}
-
-export interface GovernmentEdgeSubscription extends Promise<AsyncIterator<GovernmentEdge>>, Fragmentable {
-    node: <T = GovernmentSubscription>() => T;
-    cursor: () => Promise<AsyncIterator<string>>;
-}
-
-export interface CurrencyPreviousValues {
-    id: ID_Output;
-    name: string;
-    sign?: string;
-}
-
-export interface CurrencyPreviousValuesPromise extends Promise<CurrencyPreviousValues>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    name: () => Promise<string>;
-    sign: () => Promise<string>;
-}
-
-export interface CurrencyPreviousValuesSubscription
-    extends Promise<AsyncIterator<CurrencyPreviousValues>>,
-        Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-    name: () => Promise<AsyncIterator<string>>;
-    sign: () => Promise<AsyncIterator<string>>;
-}
-
-export interface AggregateFlag {
-    count: Int;
-}
-
-export interface AggregateFlagPromise extends Promise<AggregateFlag>, Fragmentable {
-    count: () => Promise<Int>;
-}
-
-export interface AggregateFlagSubscription extends Promise<AsyncIterator<AggregateFlag>>, Fragmentable {
-    count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface GovernmentParty {
-    id: ID_Output;
-    name: string;
-}
-
-export interface GovernmentPartyPromise extends Promise<GovernmentParty>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    leader: <T = CharacterPromise>() => T;
-    name: () => Promise<string>;
-    content: <T = FragmentableArray<HTMLContent>>(args?: {
-        where?: HTMLContentWhereInput;
-        orderBy?: HTMLContentOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    government: <T = GovernmentPromise>() => T;
-}
-
-export interface GovernmentPartySubscription extends Promise<AsyncIterator<GovernmentParty>>, Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-    leader: <T = CharacterSubscription>() => T;
-    name: () => Promise<AsyncIterator<string>>;
-    content: <T = Promise<AsyncIterator<HTMLContentSubscription>>>(args?: {
-        where?: HTMLContentWhereInput;
-        orderBy?: HTMLContentOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    government: <T = GovernmentSubscription>() => T;
-}
-
-export interface GovernmentPartyNullablePromise extends Promise<GovernmentParty | null>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    leader: <T = CharacterPromise>() => T;
-    name: () => Promise<string>;
-    content: <T = FragmentableArray<HTMLContent>>(args?: {
-        where?: HTMLContentWhereInput;
-        orderBy?: HTMLContentOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    government: <T = GovernmentPromise>() => T;
-}
-
-export interface FlagConnection {
-    pageInfo: PageInfo;
-    edges: FlagEdge[];
-}
-
-export interface FlagConnectionPromise extends Promise<FlagConnection>, Fragmentable {
-    pageInfo: <T = PageInfoPromise>() => T;
-    edges: <T = FragmentableArray<FlagEdge>>() => T;
-    aggregate: <T = AggregateFlagPromise>() => T;
-}
-
-export interface FlagConnectionSubscription extends Promise<AsyncIterator<FlagConnection>>, Fragmentable {
-    pageInfo: <T = PageInfoSubscription>() => T;
-    edges: <T = Promise<AsyncIterator<FlagEdgeSubscription>>>() => T;
-    aggregate: <T = AggregateFlagSubscription>() => T;
-}
-
-export interface EconomySubscriptionPayload {
-    mutation: MutationType;
-    node: Economy;
-    updatedFields: string[];
-    previousValues: EconomyPreviousValues;
-}
-
-export interface EconomySubscriptionPayloadPromise extends Promise<EconomySubscriptionPayload>, Fragmentable {
-    mutation: () => Promise<MutationType>;
-    node: <T = EconomyPromise>() => T;
-    updatedFields: () => Promise<string[]>;
-    previousValues: <T = EconomyPreviousValuesPromise>() => T;
-}
-
-export interface EconomySubscriptionPayloadSubscription
-    extends Promise<AsyncIterator<EconomySubscriptionPayload>>,
-        Fragmentable {
-    mutation: () => Promise<AsyncIterator<MutationType>>;
-    node: <T = EconomySubscription>() => T;
-    updatedFields: () => Promise<AsyncIterator<string[]>>;
-    previousValues: <T = EconomyPreviousValuesSubscription>() => T;
-}
-
-export interface EtnicityEdge {
-    node: Etnicity;
-    cursor: string;
-}
-
-export interface EtnicityEdgePromise extends Promise<EtnicityEdge>, Fragmentable {
-    node: <T = EtnicityPromise>() => T;
-    cursor: () => Promise<string>;
-}
-
-export interface EtnicityEdgeSubscription extends Promise<AsyncIterator<EtnicityEdge>>, Fragmentable {
-    node: <T = EtnicitySubscription>() => T;
-    cursor: () => Promise<AsyncIterator<string>>;
-}
-
-export interface EconomyPreviousValues {
-    id: ID_Output;
-}
-
-export interface EconomyPreviousValuesPromise extends Promise<EconomyPreviousValues>, Fragmentable {
-    id: () => Promise<ID_Output>;
-}
-
-export interface EconomyPreviousValuesSubscription extends Promise<AsyncIterator<EconomyPreviousValues>>, Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-}
-
-export interface AggregateEconomy {
-    count: Int;
-}
-
-export interface AggregateEconomyPromise extends Promise<AggregateEconomy>, Fragmentable {
-    count: () => Promise<Int>;
-}
-
-export interface AggregateEconomySubscription extends Promise<AsyncIterator<AggregateEconomy>>, Fragmentable {
-    count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface SkillSubscriptionPayload {
-    mutation: MutationType;
-    node: Skill;
-    updatedFields: string[];
-    previousValues: SkillPreviousValues;
-}
-
-export interface SkillSubscriptionPayloadPromise extends Promise<SkillSubscriptionPayload>, Fragmentable {
-    mutation: () => Promise<MutationType>;
-    node: <T = SkillPromise>() => T;
-    updatedFields: () => Promise<string[]>;
-    previousValues: <T = SkillPreviousValuesPromise>() => T;
-}
-
-export interface SkillSubscriptionPayloadSubscription
-    extends Promise<AsyncIterator<SkillSubscriptionPayload>>,
-        Fragmentable {
-    mutation: () => Promise<AsyncIterator<MutationType>>;
-    node: <T = SkillSubscription>() => T;
-    updatedFields: () => Promise<AsyncIterator<string[]>>;
-    previousValues: <T = SkillPreviousValuesSubscription>() => T;
-}
-
-export interface EconomyConnection {
-    pageInfo: PageInfo;
-    edges: EconomyEdge[];
-}
-
-export interface EconomyConnectionPromise extends Promise<EconomyConnection>, Fragmentable {
-    pageInfo: <T = PageInfoPromise>() => T;
-    edges: <T = FragmentableArray<EconomyEdge>>() => T;
-    aggregate: <T = AggregateEconomyPromise>() => T;
-}
-
-export interface EconomyConnectionSubscription extends Promise<AsyncIterator<EconomyConnection>>, Fragmentable {
-    pageInfo: <T = PageInfoSubscription>() => T;
-    edges: <T = Promise<AsyncIterator<EconomyEdgeSubscription>>>() => T;
-    aggregate: <T = AggregateEconomySubscription>() => T;
-}
-
-export interface EtnicitySubscriptionPayload {
-    mutation: MutationType;
-    node: Etnicity;
-    updatedFields: string[];
-    previousValues: EtnicityPreviousValues;
-}
-
-export interface EtnicitySubscriptionPayloadPromise extends Promise<EtnicitySubscriptionPayload>, Fragmentable {
-    mutation: () => Promise<MutationType>;
-    node: <T = EtnicityPromise>() => T;
-    updatedFields: () => Promise<string[]>;
-    previousValues: <T = EtnicityPreviousValuesPromise>() => T;
-}
-
-export interface EtnicitySubscriptionPayloadSubscription
-    extends Promise<AsyncIterator<EtnicitySubscriptionPayload>>,
-        Fragmentable {
-    mutation: () => Promise<AsyncIterator<MutationType>>;
-    node: <T = EtnicitySubscription>() => T;
-    updatedFields: () => Promise<AsyncIterator<string[]>>;
-    previousValues: <T = EtnicityPreviousValuesSubscription>() => T;
-}
-
-export interface CurrencyEdge {
-    node: Currency;
-    cursor: string;
-}
-
-export interface CurrencyEdgePromise extends Promise<CurrencyEdge>, Fragmentable {
-    node: <T = CurrencyPromise>() => T;
-    cursor: () => Promise<string>;
-}
-
-export interface CurrencyEdgeSubscription extends Promise<AsyncIterator<CurrencyEdge>>, Fragmentable {
-    node: <T = CurrencySubscription>() => T;
-    cursor: () => Promise<AsyncIterator<string>>;
-}
-
-export interface EtnicityPreviousValues {
-    id: ID_Output;
-    name: string;
-}
-
-export interface EtnicityPreviousValuesPromise extends Promise<EtnicityPreviousValues>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    name: () => Promise<string>;
-}
-
-export interface EtnicityPreviousValuesSubscription
-    extends Promise<AsyncIterator<EtnicityPreviousValues>>,
-        Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-    name: () => Promise<AsyncIterator<string>>;
-}
-
-export interface AggregateCharacterMetadata {
-    count: Int;
-}
-
-export interface AggregateCharacterMetadataPromise extends Promise<AggregateCharacterMetadata>, Fragmentable {
-    count: () => Promise<Int>;
-}
-
-export interface AggregateCharacterMetadataSubscription
-    extends Promise<AsyncIterator<AggregateCharacterMetadata>>,
-        Fragmentable {
-    count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface Government {
-    id: ID_Output;
-}
-
-export interface GovernmentPromise extends Promise<Government>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    leader: <T = CharacterPromise>() => T;
-    parties: <T = FragmentableArray<GovernmentParty>>(args?: {
-        where?: GovernmentPartyWhereInput;
-        orderBy?: GovernmentPartyOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    content: <T = FragmentableArray<HTMLContent>>(args?: {
-        where?: HTMLContentWhereInput;
-        orderBy?: HTMLContentOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-}
-
-export interface GovernmentSubscription extends Promise<AsyncIterator<Government>>, Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-    leader: <T = CharacterSubscription>() => T;
-    parties: <T = Promise<AsyncIterator<GovernmentPartySubscription>>>(args?: {
-        where?: GovernmentPartyWhereInput;
-        orderBy?: GovernmentPartyOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    content: <T = Promise<AsyncIterator<HTMLContentSubscription>>>(args?: {
-        where?: HTMLContentWhereInput;
-        orderBy?: HTMLContentOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-}
-
-export interface GovernmentNullablePromise extends Promise<Government | null>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    leader: <T = CharacterPromise>() => T;
-    parties: <T = FragmentableArray<GovernmentParty>>(args?: {
-        where?: GovernmentPartyWhereInput;
-        orderBy?: GovernmentPartyOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    content: <T = FragmentableArray<HTMLContent>>(args?: {
-        where?: HTMLContentWhereInput;
-        orderBy?: HTMLContentOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-}
-
-export interface CharacterMetadataConnection {
-    pageInfo: PageInfo;
-    edges: CharacterMetadataEdge[];
-}
-
-export interface CharacterMetadataConnectionPromise extends Promise<CharacterMetadataConnection>, Fragmentable {
-    pageInfo: <T = PageInfoPromise>() => T;
-    edges: <T = FragmentableArray<CharacterMetadataEdge>>() => T;
-    aggregate: <T = AggregateCharacterMetadataPromise>() => T;
-}
-
-export interface CharacterMetadataConnectionSubscription
-    extends Promise<AsyncIterator<CharacterMetadataConnection>>,
-        Fragmentable {
-    pageInfo: <T = PageInfoSubscription>() => T;
-    edges: <T = Promise<AsyncIterator<CharacterMetadataEdgeSubscription>>>() => T;
-    aggregate: <T = AggregateCharacterMetadataSubscription>() => T;
-}
-
-export interface FlagSubscriptionPayload {
-    mutation: MutationType;
-    node: Flag;
-    updatedFields: string[];
-    previousValues: FlagPreviousValues;
-}
-
-export interface FlagSubscriptionPayloadPromise extends Promise<FlagSubscriptionPayload>, Fragmentable {
-    mutation: () => Promise<MutationType>;
-    node: <T = FlagPromise>() => T;
-    updatedFields: () => Promise<string[]>;
-    previousValues: <T = FlagPreviousValuesPromise>() => T;
-}
-
-export interface FlagSubscriptionPayloadSubscription
-    extends Promise<AsyncIterator<FlagSubscriptionPayload>>,
-        Fragmentable {
-    mutation: () => Promise<AsyncIterator<MutationType>>;
-    node: <T = FlagSubscription>() => T;
-    updatedFields: () => Promise<AsyncIterator<string[]>>;
-    previousValues: <T = FlagPreviousValuesSubscription>() => T;
-}
-
-export interface CharacterEdge {
-    node: Character;
-    cursor: string;
-}
-
-export interface CharacterEdgePromise extends Promise<CharacterEdge>, Fragmentable {
-    node: <T = CharacterPromise>() => T;
-    cursor: () => Promise<string>;
-}
-
-export interface CharacterEdgeSubscription extends Promise<AsyncIterator<CharacterEdge>>, Fragmentable {
-    node: <T = CharacterSubscription>() => T;
-    cursor: () => Promise<AsyncIterator<string>>;
-}
-
-export interface FlagPreviousValues {
-    id: ID_Output;
-    imageSrc?: string;
-    description: string;
-}
-
-export interface FlagPreviousValuesPromise extends Promise<FlagPreviousValues>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    imageSrc: () => Promise<string>;
-    description: () => Promise<string>;
-}
-
-export interface FlagPreviousValuesSubscription extends Promise<AsyncIterator<FlagPreviousValues>>, Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-    imageSrc: () => Promise<AsyncIterator<string>>;
-    description: () => Promise<AsyncIterator<string>>;
+  node: <T = AbilityPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface AbilityEdgeSubscription
+  extends Promise<AsyncIterator<AbilityEdge>>,
+    Fragmentable {
+  node: <T = AbilitySubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface UserConnection {
+  pageInfo: PageInfo;
+  edges: UserEdge[];
+}
+
+export interface UserConnectionPromise
+  extends Promise<UserConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<UserEdge>>() => T;
+  aggregate: <T = AggregateUserPromise>() => T;
+}
+
+export interface UserConnectionSubscription
+  extends Promise<AsyncIterator<UserConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateUserSubscription>() => T;
+}
+
+export interface Ability {
+  id: ID_Output;
+  type: ABILITY_TYPE;
+  value: Int;
+  modifier: Int;
+}
+
+export interface AbilityPromise extends Promise<Ability>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  type: () => Promise<ABILITY_TYPE>;
+  value: () => Promise<Int>;
+  modifier: () => Promise<Int>;
+  character: <T = CharacterPromise>() => T;
+}
+
+export interface AbilitySubscription
+  extends Promise<AsyncIterator<Ability>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  type: () => Promise<AsyncIterator<ABILITY_TYPE>>;
+  value: () => Promise<AsyncIterator<Int>>;
+  modifier: () => Promise<AsyncIterator<Int>>;
+  character: <T = CharacterSubscription>() => T;
+}
+
+export interface AbilityNullablePromise
+  extends Promise<Ability | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  type: () => Promise<ABILITY_TYPE>;
+  value: () => Promise<Int>;
+  modifier: () => Promise<Int>;
+  character: <T = CharacterPromise>() => T;
 }
 
 export interface BatchPayload {
-    count: Long;
+  count: Long;
 }
 
-export interface BatchPayloadPromise extends Promise<BatchPayload>, Fragmentable {
-    count: () => Promise<Long>;
+export interface BatchPayloadPromise
+  extends Promise<BatchPayload>,
+    Fragmentable {
+  count: () => Promise<Long>;
 }
 
-export interface BatchPayloadSubscription extends Promise<AsyncIterator<BatchPayload>>, Fragmentable {
-    count: () => Promise<AsyncIterator<Long>>;
+export interface BatchPayloadSubscription
+  extends Promise<AsyncIterator<BatchPayload>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Long>>;
 }
 
-export interface Currency {
-    id: ID_Output;
-    name: string;
-    sign?: string;
+export interface AbilitySubscriptionPayload {
+  mutation: MutationType;
+  node: Ability;
+  updatedFields: String[];
+  previousValues: AbilityPreviousValues;
 }
 
-export interface CurrencyPromise extends Promise<Currency>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    name: () => Promise<string>;
-    sign: () => Promise<string>;
+export interface AbilitySubscriptionPayloadPromise
+  extends Promise<AbilitySubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = AbilityPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = AbilityPreviousValuesPromise>() => T;
 }
 
-export interface CurrencySubscription extends Promise<AsyncIterator<Currency>>, Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-    name: () => Promise<AsyncIterator<string>>;
-    sign: () => Promise<AsyncIterator<string>>;
+export interface AbilitySubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<AbilitySubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = AbilitySubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = AbilityPreviousValuesSubscription>() => T;
 }
 
-export interface CurrencyNullablePromise extends Promise<Currency | null>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    name: () => Promise<string>;
-    sign: () => Promise<string>;
+export interface AggregateSkill {
+  count: Int;
 }
 
-export interface UserEdge {
-    node: User;
-    cursor: string;
+export interface AggregateSkillPromise
+  extends Promise<AggregateSkill>,
+    Fragmentable {
+  count: () => Promise<Int>;
 }
 
-export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
-    node: <T = UserPromise>() => T;
-    cursor: () => Promise<string>;
+export interface AggregateSkillSubscription
+  extends Promise<AsyncIterator<AggregateSkill>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface UserEdgeSubscription extends Promise<AsyncIterator<UserEdge>>, Fragmentable {
-    node: <T = UserSubscription>() => T;
-    cursor: () => Promise<AsyncIterator<string>>;
+export interface AbilityPreviousValues {
+  id: ID_Output;
+  type: ABILITY_TYPE;
+  value: Int;
+  modifier: Int;
 }
 
-export interface GovernmentSubscriptionPayload {
-    mutation: MutationType;
-    node: Government;
-    updatedFields: string[];
-    previousValues: GovernmentPreviousValues;
+export interface AbilityPreviousValuesPromise
+  extends Promise<AbilityPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  type: () => Promise<ABILITY_TYPE>;
+  value: () => Promise<Int>;
+  modifier: () => Promise<Int>;
 }
 
-export interface GovernmentSubscriptionPayloadPromise extends Promise<GovernmentSubscriptionPayload>, Fragmentable {
-    mutation: () => Promise<MutationType>;
-    node: <T = GovernmentPromise>() => T;
-    updatedFields: () => Promise<string[]>;
-    previousValues: <T = GovernmentPreviousValuesPromise>() => T;
+export interface AbilityPreviousValuesSubscription
+  extends Promise<AsyncIterator<AbilityPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  type: () => Promise<AsyncIterator<ABILITY_TYPE>>;
+  value: () => Promise<AsyncIterator<Int>>;
+  modifier: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface GovernmentSubscriptionPayloadSubscription
-    extends Promise<AsyncIterator<GovernmentSubscriptionPayload>>,
-        Fragmentable {
-    mutation: () => Promise<AsyncIterator<MutationType>>;
-    node: <T = GovernmentSubscription>() => T;
-    updatedFields: () => Promise<AsyncIterator<string[]>>;
-    previousValues: <T = GovernmentPreviousValuesSubscription>() => T;
+export interface SkillConnection {
+  pageInfo: PageInfo;
+  edges: SkillEdge[];
 }
 
-export interface User {
-    id: ID_Output;
-    createdAt: DateTimeOutput;
-    updatedAt: DateTimeOutput;
-    email: string;
-    password: string;
-    role: ROLE;
-    firstName?: string;
-    lastName?: string;
-    resetToken?: string;
-    resetTokenExpiry?: string;
+export interface SkillConnectionPromise
+  extends Promise<SkillConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<SkillEdge>>() => T;
+  aggregate: <T = AggregateSkillPromise>() => T;
 }
 
-export interface UserPromise extends Promise<User>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    createdAt: () => Promise<DateTimeOutput>;
-    updatedAt: () => Promise<DateTimeOutput>;
-    email: () => Promise<string>;
-    password: () => Promise<string>;
-    role: () => Promise<ROLE>;
-    campaigns: <T = FragmentableArray<Campaign>>(args?: {
-        where?: CampaignWhereInput;
-        orderBy?: CampaignOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    firstName: () => Promise<string>;
-    lastName: () => Promise<string>;
-    characters: <T = FragmentableArray<Character>>(args?: {
-        where?: CharacterWhereInput;
-        orderBy?: CharacterOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    resetToken: () => Promise<string>;
-    resetTokenExpiry: () => Promise<string>;
+export interface SkillConnectionSubscription
+  extends Promise<AsyncIterator<SkillConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<SkillEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateSkillSubscription>() => T;
 }
 
-export interface UserSubscription extends Promise<AsyncIterator<User>>, Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-    createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-    updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-    email: () => Promise<AsyncIterator<string>>;
-    password: () => Promise<AsyncIterator<string>>;
-    role: () => Promise<AsyncIterator<ROLE>>;
-    campaigns: <T = Promise<AsyncIterator<CampaignSubscription>>>(args?: {
-        where?: CampaignWhereInput;
-        orderBy?: CampaignOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    firstName: () => Promise<AsyncIterator<string>>;
-    lastName: () => Promise<AsyncIterator<string>>;
-    characters: <T = Promise<AsyncIterator<CharacterSubscription>>>(args?: {
-        where?: CharacterWhereInput;
-        orderBy?: CharacterOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    resetToken: () => Promise<AsyncIterator<string>>;
-    resetTokenExpiry: () => Promise<AsyncIterator<string>>;
+export interface ReligionEdge {
+  node: Religion;
+  cursor: String;
 }
 
-export interface UserNullablePromise extends Promise<User | null>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    createdAt: () => Promise<DateTimeOutput>;
-    updatedAt: () => Promise<DateTimeOutput>;
-    email: () => Promise<string>;
-    password: () => Promise<string>;
-    role: () => Promise<ROLE>;
-    campaigns: <T = FragmentableArray<Campaign>>(args?: {
-        where?: CampaignWhereInput;
-        orderBy?: CampaignOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    firstName: () => Promise<string>;
-    lastName: () => Promise<string>;
-    characters: <T = FragmentableArray<Character>>(args?: {
-        where?: CharacterWhereInput;
-        orderBy?: CharacterOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    resetToken: () => Promise<string>;
-    resetTokenExpiry: () => Promise<string>;
+export interface ReligionEdgePromise
+  extends Promise<ReligionEdge>,
+    Fragmentable {
+  node: <T = ReligionPromise>() => T;
+  cursor: () => Promise<String>;
 }
 
-export interface GovernmentPreviousValues {
-    id: ID_Output;
+export interface ReligionEdgeSubscription
+  extends Promise<AsyncIterator<ReligionEdge>>,
+    Fragmentable {
+  node: <T = ReligionSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface GovernmentPreviousValuesPromise extends Promise<GovernmentPreviousValues>, Fragmentable {
-    id: () => Promise<ID_Output>;
+export interface AggregatePopulation {
+  count: Int;
 }
 
-export interface GovernmentPreviousValuesSubscription
-    extends Promise<AsyncIterator<GovernmentPreviousValues>>,
-        Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
+export interface AggregatePopulationPromise
+  extends Promise<AggregatePopulation>,
+    Fragmentable {
+  count: () => Promise<Int>;
 }
 
-export interface AggregateReligion {
-    count: Int;
+export interface AggregatePopulationSubscription
+  extends Promise<AsyncIterator<AggregatePopulation>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface AggregateReligionPromise extends Promise<AggregateReligion>, Fragmentable {
-    count: () => Promise<Int>;
+export interface CampaignSubscriptionPayload {
+  mutation: MutationType;
+  node: Campaign;
+  updatedFields: String[];
+  previousValues: CampaignPreviousValues;
 }
 
-export interface AggregateReligionSubscription extends Promise<AsyncIterator<AggregateReligion>>, Fragmentable {
-    count: () => Promise<AsyncIterator<Int>>;
+export interface CampaignSubscriptionPayloadPromise
+  extends Promise<CampaignSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = CampaignPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = CampaignPreviousValuesPromise>() => T;
 }
 
-export interface Economy {
-    id: ID_Output;
+export interface CampaignSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<CampaignSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = CampaignSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = CampaignPreviousValuesSubscription>() => T;
 }
 
-export interface EconomyPromise extends Promise<Economy>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    currency: <T = CurrencyPromise>() => T;
-    location: <T = FragmentableArray<Location>>(args?: {
-        where?: LocationWhereInput;
-        orderBy?: LocationOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
+export interface PopulationConnection {
+  pageInfo: PageInfo;
+  edges: PopulationEdge[];
 }
 
-export interface EconomySubscription extends Promise<AsyncIterator<Economy>>, Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-    currency: <T = CurrencySubscription>() => T;
-    location: <T = Promise<AsyncIterator<LocationSubscription>>>(args?: {
-        where?: LocationWhereInput;
-        orderBy?: LocationOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
+export interface PopulationConnectionPromise
+  extends Promise<PopulationConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<PopulationEdge>>() => T;
+  aggregate: <T = AggregatePopulationPromise>() => T;
 }
 
-export interface EconomyNullablePromise extends Promise<Economy | null>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    currency: <T = CurrencyPromise>() => T;
-    location: <T = FragmentableArray<Location>>(args?: {
-        where?: LocationWhereInput;
-        orderBy?: LocationOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
+export interface PopulationConnectionSubscription
+  extends Promise<AsyncIterator<PopulationConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<PopulationEdgeSubscription>>>() => T;
+  aggregate: <T = AggregatePopulationSubscription>() => T;
+}
+
+export interface CampaignPreviousValues {
+  id: ID_Output;
+  name: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface CampaignPreviousValuesPromise
+  extends Promise<CampaignPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface CampaignPreviousValuesSubscription
+  extends Promise<AsyncIterator<CampaignPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface AggregateLocationMetaData {
+  count: Int;
+}
+
+export interface AggregateLocationMetaDataPromise
+  extends Promise<AggregateLocationMetaData>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateLocationMetaDataSubscription
+  extends Promise<AsyncIterator<AggregateLocationMetaData>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface PageInfo {
+  hasNextPage: Boolean;
+  hasPreviousPage: Boolean;
+  startCursor?: String;
+  endCursor?: String;
+}
+
+export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
+  hasNextPage: () => Promise<Boolean>;
+  hasPreviousPage: () => Promise<Boolean>;
+  startCursor: () => Promise<String>;
+  endCursor: () => Promise<String>;
+}
+
+export interface PageInfoSubscription
+  extends Promise<AsyncIterator<PageInfo>>,
+    Fragmentable {
+  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
+  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
+  startCursor: () => Promise<AsyncIterator<String>>;
+  endCursor: () => Promise<AsyncIterator<String>>;
 }
 
 export interface LocationMetaDataConnection {
-    pageInfo: PageInfo;
-    edges: LocationMetaDataEdge[];
+  pageInfo: PageInfo;
+  edges: LocationMetaDataEdge[];
 }
 
-export interface LocationMetaDataConnectionPromise extends Promise<LocationMetaDataConnection>, Fragmentable {
-    pageInfo: <T = PageInfoPromise>() => T;
-    edges: <T = FragmentableArray<LocationMetaDataEdge>>() => T;
-    aggregate: <T = AggregateLocationMetaDataPromise>() => T;
+export interface LocationMetaDataConnectionPromise
+  extends Promise<LocationMetaDataConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<LocationMetaDataEdge>>() => T;
+  aggregate: <T = AggregateLocationMetaDataPromise>() => T;
 }
 
 export interface LocationMetaDataConnectionSubscription
-    extends Promise<AsyncIterator<LocationMetaDataConnection>>,
-        Fragmentable {
-    pageInfo: <T = PageInfoSubscription>() => T;
-    edges: <T = Promise<AsyncIterator<LocationMetaDataEdgeSubscription>>>() => T;
-    aggregate: <T = AggregateLocationMetaDataSubscription>() => T;
-}
-
-export interface GovernmentPartySubscriptionPayload {
-    mutation: MutationType;
-    node: GovernmentParty;
-    updatedFields: string[];
-    previousValues: GovernmentPartyPreviousValues;
-}
-
-export interface GovernmentPartySubscriptionPayloadPromise
-    extends Promise<GovernmentPartySubscriptionPayload>,
-        Fragmentable {
-    mutation: () => Promise<MutationType>;
-    node: <T = GovernmentPartyPromise>() => T;
-    updatedFields: () => Promise<string[]>;
-    previousValues: <T = GovernmentPartyPreviousValuesPromise>() => T;
-}
-
-export interface GovernmentPartySubscriptionPayloadSubscription
-    extends Promise<AsyncIterator<GovernmentPartySubscriptionPayload>>,
-        Fragmentable {
-    mutation: () => Promise<AsyncIterator<MutationType>>;
-    node: <T = GovernmentPartySubscription>() => T;
-    updatedFields: () => Promise<AsyncIterator<string[]>>;
-    previousValues: <T = GovernmentPartyPreviousValuesSubscription>() => T;
-}
-
-export interface LocationConnection {
-    pageInfo: PageInfo;
-    edges: LocationEdge[];
-}
-
-export interface LocationConnectionPromise extends Promise<LocationConnection>, Fragmentable {
-    pageInfo: <T = PageInfoPromise>() => T;
-    edges: <T = FragmentableArray<LocationEdge>>() => T;
-    aggregate: <T = AggregateLocationPromise>() => T;
-}
-
-export interface LocationConnectionSubscription extends Promise<AsyncIterator<LocationConnection>>, Fragmentable {
-    pageInfo: <T = PageInfoSubscription>() => T;
-    edges: <T = Promise<AsyncIterator<LocationEdgeSubscription>>>() => T;
-    aggregate: <T = AggregateLocationSubscription>() => T;
-}
-
-export interface GovernmentPartyPreviousValues {
-    id: ID_Output;
-    name: string;
-}
-
-export interface GovernmentPartyPreviousValuesPromise extends Promise<GovernmentPartyPreviousValues>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    name: () => Promise<string>;
-}
-
-export interface GovernmentPartyPreviousValuesSubscription
-    extends Promise<AsyncIterator<GovernmentPartyPreviousValues>>,
-        Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-    name: () => Promise<AsyncIterator<string>>;
-}
-
-export interface AggregateHTMLContent {
-    count: Int;
-}
-
-export interface AggregateHTMLContentPromise extends Promise<AggregateHTMLContent>, Fragmentable {
-    count: () => Promise<Int>;
-}
-
-export interface AggregateHTMLContentSubscription extends Promise<AsyncIterator<AggregateHTMLContent>>, Fragmentable {
-    count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface Flag {
-    id: ID_Output;
-    imageSrc?: string;
-    description: string;
-}
-
-export interface FlagPromise extends Promise<Flag>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    imageSrc: () => Promise<string>;
-    description: () => Promise<string>;
-    location: <T = LocationPromise>() => T;
-}
-
-export interface FlagSubscription extends Promise<AsyncIterator<Flag>>, Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-    imageSrc: () => Promise<AsyncIterator<string>>;
-    description: () => Promise<AsyncIterator<string>>;
-    location: <T = LocationSubscription>() => T;
-}
-
-export interface FlagNullablePromise extends Promise<Flag | null>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    imageSrc: () => Promise<string>;
-    description: () => Promise<string>;
-    location: <T = LocationPromise>() => T;
-}
-
-export interface GovernmentPartyEdge {
-    node: GovernmentParty;
-    cursor: string;
-}
-
-export interface GovernmentPartyEdgePromise extends Promise<GovernmentPartyEdge>, Fragmentable {
-    node: <T = GovernmentPartyPromise>() => T;
-    cursor: () => Promise<string>;
-}
-
-export interface GovernmentPartyEdgeSubscription extends Promise<AsyncIterator<GovernmentPartyEdge>>, Fragmentable {
-    node: <T = GovernmentPartySubscription>() => T;
-    cursor: () => Promise<AsyncIterator<string>>;
-}
-
-export interface HTMLContentSubscriptionPayload {
-    mutation: MutationType;
-    node: HTMLContent;
-    updatedFields: string[];
-    previousValues: HTMLContentPreviousValues;
-}
-
-export interface HTMLContentSubscriptionPayloadPromise extends Promise<HTMLContentSubscriptionPayload>, Fragmentable {
-    mutation: () => Promise<MutationType>;
-    node: <T = HTMLContentPromise>() => T;
-    updatedFields: () => Promise<string[]>;
-    previousValues: <T = HTMLContentPreviousValuesPromise>() => T;
-}
-
-export interface HTMLContentSubscriptionPayloadSubscription
-    extends Promise<AsyncIterator<HTMLContentSubscriptionPayload>>,
-        Fragmentable {
-    mutation: () => Promise<AsyncIterator<MutationType>>;
-    node: <T = HTMLContentSubscription>() => T;
-    updatedFields: () => Promise<AsyncIterator<string[]>>;
-    previousValues: <T = HTMLContentPreviousValuesSubscription>() => T;
-}
-
-export interface GovernmentConnection {
-    pageInfo: PageInfo;
-    edges: GovernmentEdge[];
-}
-
-export interface GovernmentConnectionPromise extends Promise<GovernmentConnection>, Fragmentable {
-    pageInfo: <T = PageInfoPromise>() => T;
-    edges: <T = FragmentableArray<GovernmentEdge>>() => T;
-    aggregate: <T = AggregateGovernmentPromise>() => T;
-}
-
-export interface GovernmentConnectionSubscription extends Promise<AsyncIterator<GovernmentConnection>>, Fragmentable {
-    pageInfo: <T = PageInfoSubscription>() => T;
-    edges: <T = Promise<AsyncIterator<GovernmentEdgeSubscription>>>() => T;
-    aggregate: <T = AggregateGovernmentSubscription>() => T;
-}
-
-export interface HTMLContentPreviousValues {
-    id: ID_Output;
-    content: string;
-}
-
-export interface HTMLContentPreviousValuesPromise extends Promise<HTMLContentPreviousValues>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    content: () => Promise<string>;
-}
-
-export interface HTMLContentPreviousValuesSubscription
-    extends Promise<AsyncIterator<HTMLContentPreviousValues>>,
-        Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-    content: () => Promise<AsyncIterator<string>>;
-}
-
-export interface AggregateEtnicity {
-    count: Int;
-}
-
-export interface AggregateEtnicityPromise extends Promise<AggregateEtnicity>, Fragmentable {
-    count: () => Promise<Int>;
-}
-
-export interface AggregateEtnicitySubscription extends Promise<AsyncIterator<AggregateEtnicity>>, Fragmentable {
-    count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface Etnicity {
-    id: ID_Output;
-    name: string;
-}
-
-export interface EtnicityPromise extends Promise<Etnicity>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    name: () => Promise<string>;
-}
-
-export interface EtnicitySubscription extends Promise<AsyncIterator<Etnicity>>, Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-    name: () => Promise<AsyncIterator<string>>;
-}
-
-export interface EtnicityNullablePromise extends Promise<Etnicity | null>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    name: () => Promise<string>;
-}
-
-export interface EconomyEdge {
-    node: Economy;
-    cursor: string;
-}
-
-export interface EconomyEdgePromise extends Promise<EconomyEdge>, Fragmentable {
-    node: <T = EconomyPromise>() => T;
-    cursor: () => Promise<string>;
-}
-
-export interface EconomyEdgeSubscription extends Promise<AsyncIterator<EconomyEdge>>, Fragmentable {
-    node: <T = EconomySubscription>() => T;
-    cursor: () => Promise<AsyncIterator<string>>;
-}
-
-export interface LanguageSubscriptionPayload {
-    mutation: MutationType;
-    node: Language;
-    updatedFields: string[];
-    previousValues: LanguagePreviousValues;
-}
-
-export interface LanguageSubscriptionPayloadPromise extends Promise<LanguageSubscriptionPayload>, Fragmentable {
-    mutation: () => Promise<MutationType>;
-    node: <T = LanguagePromise>() => T;
-    updatedFields: () => Promise<string[]>;
-    previousValues: <T = LanguagePreviousValuesPromise>() => T;
-}
-
-export interface LanguageSubscriptionPayloadSubscription
-    extends Promise<AsyncIterator<LanguageSubscriptionPayload>>,
-        Fragmentable {
-    mutation: () => Promise<AsyncIterator<MutationType>>;
-    node: <T = LanguageSubscription>() => T;
-    updatedFields: () => Promise<AsyncIterator<string[]>>;
-    previousValues: <T = LanguagePreviousValuesSubscription>() => T;
-}
-
-export interface CurrencyConnection {
-    pageInfo: PageInfo;
-    edges: CurrencyEdge[];
-}
-
-export interface CurrencyConnectionPromise extends Promise<CurrencyConnection>, Fragmentable {
-    pageInfo: <T = PageInfoPromise>() => T;
-    edges: <T = FragmentableArray<CurrencyEdge>>() => T;
-    aggregate: <T = AggregateCurrencyPromise>() => T;
-}
-
-export interface CurrencyConnectionSubscription extends Promise<AsyncIterator<CurrencyConnection>>, Fragmentable {
-    pageInfo: <T = PageInfoSubscription>() => T;
-    edges: <T = Promise<AsyncIterator<CurrencyEdgeSubscription>>>() => T;
-    aggregate: <T = AggregateCurrencySubscription>() => T;
-}
-
-export interface LanguagePreviousValues {
-    id: ID_Output;
-    name: string;
-    script?: LANGUAGE_SCRIPT;
-}
-
-export interface LanguagePreviousValuesPromise extends Promise<LanguagePreviousValues>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    name: () => Promise<string>;
-    script: () => Promise<LANGUAGE_SCRIPT>;
-}
-
-export interface LanguagePreviousValuesSubscription
-    extends Promise<AsyncIterator<LanguagePreviousValues>>,
-        Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-    name: () => Promise<AsyncIterator<string>>;
-    script: () => Promise<AsyncIterator<LANGUAGE_SCRIPT>>;
-}
-
-export interface AggregateCharacter {
-    count: Int;
-}
-
-export interface AggregateCharacterPromise extends Promise<AggregateCharacter>, Fragmentable {
-    count: () => Promise<Int>;
-}
-
-export interface AggregateCharacterSubscription extends Promise<AsyncIterator<AggregateCharacter>>, Fragmentable {
-    count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface HTMLContent {
-    id: ID_Output;
-    content: string;
-}
-
-export interface HTMLContentPromise extends Promise<HTMLContent>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    content: () => Promise<string>;
-    invisibleTo: <T = FragmentableArray<Character>>(args?: {
-        where?: CharacterWhereInput;
-        orderBy?: CharacterOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-}
-
-export interface HTMLContentSubscription extends Promise<AsyncIterator<HTMLContent>>, Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-    content: () => Promise<AsyncIterator<string>>;
-    invisibleTo: <T = Promise<AsyncIterator<CharacterSubscription>>>(args?: {
-        where?: CharacterWhereInput;
-        orderBy?: CharacterOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-}
-
-export interface HTMLContentNullablePromise extends Promise<HTMLContent | null>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    content: () => Promise<string>;
-    invisibleTo: <T = FragmentableArray<Character>>(args?: {
-        where?: CharacterWhereInput;
-        orderBy?: CharacterOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-}
-
-export interface UserSubscriptionPayload {
-    mutation: MutationType;
-    node: User;
-    updatedFields: string[];
-    previousValues: UserPreviousValues;
-}
-
-export interface UserSubscriptionPayloadPromise extends Promise<UserSubscriptionPayload>, Fragmentable {
-    mutation: () => Promise<MutationType>;
-    node: <T = UserPromise>() => T;
-    updatedFields: () => Promise<string[]>;
-    previousValues: <T = UserPreviousValuesPromise>() => T;
-}
-
-export interface UserSubscriptionPayloadSubscription
-    extends Promise<AsyncIterator<UserSubscriptionPayload>>,
-        Fragmentable {
-    mutation: () => Promise<AsyncIterator<MutationType>>;
-    node: <T = UserSubscription>() => T;
-    updatedFields: () => Promise<AsyncIterator<string[]>>;
-    previousValues: <T = UserPreviousValuesSubscription>() => T;
-}
-
-export interface LocationSubscriptionPayload {
-    mutation: MutationType;
-    node: Location;
-    updatedFields: string[];
-    previousValues: LocationPreviousValues;
-}
-
-export interface LocationSubscriptionPayloadPromise extends Promise<LocationSubscriptionPayload>, Fragmentable {
-    mutation: () => Promise<MutationType>;
-    node: <T = LocationPromise>() => T;
-    updatedFields: () => Promise<string[]>;
-    previousValues: <T = LocationPreviousValuesPromise>() => T;
-}
-
-export interface LocationSubscriptionPayloadSubscription
-    extends Promise<AsyncIterator<LocationSubscriptionPayload>>,
-        Fragmentable {
-    mutation: () => Promise<AsyncIterator<MutationType>>;
-    node: <T = LocationSubscription>() => T;
-    updatedFields: () => Promise<AsyncIterator<string[]>>;
-    previousValues: <T = LocationPreviousValuesSubscription>() => T;
-}
-
-export interface SkillEdge {
-    node: Skill;
-    cursor: string;
-}
-
-export interface SkillEdgePromise extends Promise<SkillEdge>, Fragmentable {
-    node: <T = SkillPromise>() => T;
-    cursor: () => Promise<string>;
-}
-
-export interface SkillEdgeSubscription extends Promise<AsyncIterator<SkillEdge>>, Fragmentable {
-    node: <T = SkillSubscription>() => T;
-    cursor: () => Promise<AsyncIterator<string>>;
-}
-
-export interface LocationPreviousValues {
-    id: ID_Output;
-    type: LOCATION_TYPE;
-    name: string;
-    parent?: ID_Output;
-}
-
-export interface LocationPreviousValuesPromise extends Promise<LocationPreviousValues>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    type: () => Promise<LOCATION_TYPE>;
-    name: () => Promise<string>;
-    parent: () => Promise<ID_Output>;
-}
-
-export interface LocationPreviousValuesSubscription
-    extends Promise<AsyncIterator<LocationPreviousValues>>,
-        Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-    type: () => Promise<AsyncIterator<LOCATION_TYPE>>;
-    name: () => Promise<AsyncIterator<string>>;
-    parent: () => Promise<AsyncIterator<ID_Output>>;
+  extends Promise<AsyncIterator<LocationMetaDataConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<LocationMetaDataEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateLocationMetaDataSubscription>() => T;
+}
+
+export interface CharacterSubscriptionPayload {
+  mutation: MutationType;
+  node: Character;
+  updatedFields: String[];
+  previousValues: CharacterPreviousValues;
+}
+
+export interface CharacterSubscriptionPayloadPromise
+  extends Promise<CharacterSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = CharacterPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = CharacterPreviousValuesPromise>() => T;
+}
+
+export interface CharacterSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<CharacterSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = CharacterSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = CharacterPreviousValuesSubscription>() => T;
 }
 
 export interface AggregateLocation {
-    count: Int;
+  count: Int;
 }
 
-export interface AggregateLocationPromise extends Promise<AggregateLocation>, Fragmentable {
-    count: () => Promise<Int>;
+export interface AggregateLocationPromise
+  extends Promise<AggregateLocation>,
+    Fragmentable {
+  count: () => Promise<Int>;
 }
 
-export interface AggregateLocationSubscription extends Promise<AsyncIterator<AggregateLocation>>, Fragmentable {
-    count: () => Promise<AsyncIterator<Int>>;
+export interface AggregateLocationSubscription
+  extends Promise<AsyncIterator<AggregateLocation>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface Religion {
-    id: ID_Output;
-    name: string;
+export interface CharacterPreviousValues {
+  id: ID_Output;
+  firstName: String;
+  lastName?: String;
+  type: CHARACTER_TYPE;
 }
 
-export interface ReligionPromise extends Promise<Religion>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    name: () => Promise<string>;
-    deity: <T = CharacterPromise>() => T;
-    content: <T = FragmentableArray<HTMLContent>>(args?: {
-        where?: HTMLContentWhereInput;
-        orderBy?: HTMLContentOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    location: <T = LocationPromise>() => T;
+export interface CharacterPreviousValuesPromise
+  extends Promise<CharacterPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  firstName: () => Promise<String>;
+  lastName: () => Promise<String>;
+  type: () => Promise<CHARACTER_TYPE>;
 }
 
-export interface ReligionSubscription extends Promise<AsyncIterator<Religion>>, Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-    name: () => Promise<AsyncIterator<string>>;
-    deity: <T = CharacterSubscription>() => T;
-    content: <T = Promise<AsyncIterator<HTMLContentSubscription>>>(args?: {
-        where?: HTMLContentWhereInput;
-        orderBy?: HTMLContentOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    location: <T = LocationSubscription>() => T;
+export interface CharacterPreviousValuesSubscription
+  extends Promise<AsyncIterator<CharacterPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  firstName: () => Promise<AsyncIterator<String>>;
+  lastName: () => Promise<AsyncIterator<String>>;
+  type: () => Promise<AsyncIterator<CHARACTER_TYPE>>;
 }
 
-export interface ReligionNullablePromise extends Promise<Religion | null>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    name: () => Promise<string>;
-    deity: <T = CharacterPromise>() => T;
-    content: <T = FragmentableArray<HTMLContent>>(args?: {
-        where?: HTMLContentWhereInput;
-        orderBy?: HTMLContentOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    location: <T = LocationPromise>() => T;
+export interface LocationConnection {
+  pageInfo: PageInfo;
+  edges: LocationEdge[];
 }
 
-export interface HTMLContentConnection {
-    pageInfo: PageInfo;
-    edges: HTMLContentEdge[];
+export interface LocationConnectionPromise
+  extends Promise<LocationConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<LocationEdge>>() => T;
+  aggregate: <T = AggregateLocationPromise>() => T;
 }
 
-export interface HTMLContentConnectionPromise extends Promise<HTMLContentConnection>, Fragmentable {
-    pageInfo: <T = PageInfoPromise>() => T;
-    edges: <T = FragmentableArray<HTMLContentEdge>>() => T;
-    aggregate: <T = AggregateHTMLContentPromise>() => T;
+export interface LocationConnectionSubscription
+  extends Promise<AsyncIterator<LocationConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<LocationEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateLocationSubscription>() => T;
 }
 
-export interface HTMLContentConnectionSubscription extends Promise<AsyncIterator<HTMLContentConnection>>, Fragmentable {
-    pageInfo: <T = PageInfoSubscription>() => T;
-    edges: <T = Promise<AsyncIterator<HTMLContentEdgeSubscription>>>() => T;
-    aggregate: <T = AggregateHTMLContentSubscription>() => T;
+export interface AbilityConnection {
+  pageInfo: PageInfo;
+  edges: AbilityEdge[];
 }
 
-export interface LocationMetaDataSubscriptionPayload {
-    mutation: MutationType;
-    node: LocationMetaData;
-    updatedFields: string[];
-    previousValues: LocationMetaDataPreviousValues;
+export interface AbilityConnectionPromise
+  extends Promise<AbilityConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<AbilityEdge>>() => T;
+  aggregate: <T = AggregateAbilityPromise>() => T;
 }
 
-export interface LocationMetaDataSubscriptionPayloadPromise
-    extends Promise<LocationMetaDataSubscriptionPayload>,
-        Fragmentable {
-    mutation: () => Promise<MutationType>;
-    node: <T = LocationMetaDataPromise>() => T;
-    updatedFields: () => Promise<string[]>;
-    previousValues: <T = LocationMetaDataPreviousValuesPromise>() => T;
-}
-
-export interface LocationMetaDataSubscriptionPayloadSubscription
-    extends Promise<AsyncIterator<LocationMetaDataSubscriptionPayload>>,
-        Fragmentable {
-    mutation: () => Promise<AsyncIterator<MutationType>>;
-    node: <T = LocationMetaDataSubscription>() => T;
-    updatedFields: () => Promise<AsyncIterator<string[]>>;
-    previousValues: <T = LocationMetaDataPreviousValuesSubscription>() => T;
-}
-
-export interface FlagEdge {
-    node: Flag;
-    cursor: string;
-}
-
-export interface FlagEdgePromise extends Promise<FlagEdge>, Fragmentable {
-    node: <T = FlagPromise>() => T;
-    cursor: () => Promise<string>;
-}
-
-export interface FlagEdgeSubscription extends Promise<AsyncIterator<FlagEdge>>, Fragmentable {
-    node: <T = FlagSubscription>() => T;
-    cursor: () => Promise<AsyncIterator<string>>;
-}
-
-export interface LocationMetaDataPreviousValues {
-    id: ID_Output;
-    weather?: WEATHER;
-    climate?: CLIMATE;
-}
-
-export interface LocationMetaDataPreviousValuesPromise extends Promise<LocationMetaDataPreviousValues>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    weather: () => Promise<WEATHER>;
-    climate: () => Promise<CLIMATE>;
-}
-
-export interface LocationMetaDataPreviousValuesSubscription
-    extends Promise<AsyncIterator<LocationMetaDataPreviousValues>>,
-        Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-    weather: () => Promise<AsyncIterator<WEATHER>>;
-    climate: () => Promise<AsyncIterator<CLIMATE>>;
-}
-
-export interface AggregateCurrency {
-    count: Int;
-}
-
-export interface AggregateCurrencyPromise extends Promise<AggregateCurrency>, Fragmentable {
-    count: () => Promise<Int>;
-}
-
-export interface AggregateCurrencySubscription extends Promise<AsyncIterator<AggregateCurrency>>, Fragmentable {
-    count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface Language {
-    id: ID_Output;
-    name: string;
-    script?: LANGUAGE_SCRIPT;
-}
-
-export interface LanguagePromise extends Promise<Language>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    name: () => Promise<string>;
-    script: () => Promise<LANGUAGE_SCRIPT>;
-    location: <T = FragmentableArray<Location>>(args?: {
-        where?: LocationWhereInput;
-        orderBy?: LocationOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-}
-
-export interface LanguageSubscription extends Promise<AsyncIterator<Language>>, Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-    name: () => Promise<AsyncIterator<string>>;
-    script: () => Promise<AsyncIterator<LANGUAGE_SCRIPT>>;
-    location: <T = Promise<AsyncIterator<LocationSubscription>>>(args?: {
-        where?: LocationWhereInput;
-        orderBy?: LocationOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-}
-
-export interface LanguageNullablePromise extends Promise<Language | null>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    name: () => Promise<string>;
-    script: () => Promise<LANGUAGE_SCRIPT>;
-    location: <T = FragmentableArray<Location>>(args?: {
-        where?: LocationWhereInput;
-        orderBy?: LocationOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-}
-
-export interface CharacterConnection {
-    pageInfo: PageInfo;
-    edges: CharacterEdge[];
-}
-
-export interface CharacterConnectionPromise extends Promise<CharacterConnection>, Fragmentable {
-    pageInfo: <T = PageInfoPromise>() => T;
-    edges: <T = FragmentableArray<CharacterEdge>>() => T;
-    aggregate: <T = AggregateCharacterPromise>() => T;
-}
-
-export interface CharacterConnectionSubscription extends Promise<AsyncIterator<CharacterConnection>>, Fragmentable {
-    pageInfo: <T = PageInfoSubscription>() => T;
-    edges: <T = Promise<AsyncIterator<CharacterEdgeSubscription>>>() => T;
-    aggregate: <T = AggregateCharacterSubscription>() => T;
-}
-
-export interface PopulationSubscriptionPayload {
-    mutation: MutationType;
-    node: Population;
-    updatedFields: string[];
-    previousValues: PopulationPreviousValues;
-}
-
-export interface PopulationSubscriptionPayloadPromise extends Promise<PopulationSubscriptionPayload>, Fragmentable {
-    mutation: () => Promise<MutationType>;
-    node: <T = PopulationPromise>() => T;
-    updatedFields: () => Promise<string[]>;
-    previousValues: <T = PopulationPreviousValuesPromise>() => T;
-}
-
-export interface PopulationSubscriptionPayloadSubscription
-    extends Promise<AsyncIterator<PopulationSubscriptionPayload>>,
-        Fragmentable {
-    mutation: () => Promise<AsyncIterator<MutationType>>;
-    node: <T = PopulationSubscription>() => T;
-    updatedFields: () => Promise<AsyncIterator<string[]>>;
-    previousValues: <T = PopulationPreviousValuesSubscription>() => T;
-}
-
-export interface ReligionConnection {
-    pageInfo: PageInfo;
-    edges: ReligionEdge[];
-}
-
-export interface ReligionConnectionPromise extends Promise<ReligionConnection>, Fragmentable {
-    pageInfo: <T = PageInfoPromise>() => T;
-    edges: <T = FragmentableArray<ReligionEdge>>() => T;
-    aggregate: <T = AggregateReligionPromise>() => T;
-}
-
-export interface ReligionConnectionSubscription extends Promise<AsyncIterator<ReligionConnection>>, Fragmentable {
-    pageInfo: <T = PageInfoSubscription>() => T;
-    edges: <T = Promise<AsyncIterator<ReligionEdgeSubscription>>>() => T;
-    aggregate: <T = AggregateReligionSubscription>() => T;
-}
-
-export interface AggregateGovernment {
-    count: Int;
-}
-
-export interface AggregateGovernmentPromise extends Promise<AggregateGovernment>, Fragmentable {
-    count: () => Promise<Int>;
-}
-
-export interface AggregateGovernmentSubscription extends Promise<AsyncIterator<AggregateGovernment>>, Fragmentable {
-    count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface ReligionPreviousValues {
-    id: ID_Output;
-    name: string;
-}
-
-export interface ReligionPreviousValuesPromise extends Promise<ReligionPreviousValues>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    name: () => Promise<string>;
-}
-
-export interface ReligionPreviousValuesSubscription
-    extends Promise<AsyncIterator<ReligionPreviousValues>>,
-        Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-    name: () => Promise<AsyncIterator<string>>;
-}
-
-export interface ReligionSubscriptionPayload {
-    mutation: MutationType;
-    node: Religion;
-    updatedFields: string[];
-    previousValues: ReligionPreviousValues;
-}
-
-export interface ReligionSubscriptionPayloadPromise extends Promise<ReligionSubscriptionPayload>, Fragmentable {
-    mutation: () => Promise<MutationType>;
-    node: <T = ReligionPromise>() => T;
-    updatedFields: () => Promise<string[]>;
-    previousValues: <T = ReligionPreviousValuesPromise>() => T;
-}
-
-export interface ReligionSubscriptionPayloadSubscription
-    extends Promise<AsyncIterator<ReligionSubscriptionPayload>>,
-        Fragmentable {
-    mutation: () => Promise<AsyncIterator<MutationType>>;
-    node: <T = ReligionSubscription>() => T;
-    updatedFields: () => Promise<AsyncIterator<string[]>>;
-    previousValues: <T = ReligionPreviousValuesSubscription>() => T;
-}
-
-export interface Population {
-    id: ID_Output;
-    inhabitants: Int;
-    density: Int;
-    densityUnit: DENSITY_UNIT;
-}
-
-export interface PopulationPromise extends Promise<Population>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    location: <T = LocationPromise>() => T;
-    inhabitants: () => Promise<Int>;
-    density: () => Promise<Int>;
-    densityUnit: () => Promise<DENSITY_UNIT>;
-}
-
-export interface PopulationSubscription extends Promise<AsyncIterator<Population>>, Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-    location: <T = LocationSubscription>() => T;
-    inhabitants: () => Promise<AsyncIterator<Int>>;
-    density: () => Promise<AsyncIterator<Int>>;
-    densityUnit: () => Promise<AsyncIterator<DENSITY_UNIT>>;
-}
-
-export interface PopulationNullablePromise extends Promise<Population | null>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    location: <T = LocationPromise>() => T;
-    inhabitants: () => Promise<Int>;
-    density: () => Promise<Int>;
-    densityUnit: () => Promise<DENSITY_UNIT>;
-}
-
-export interface PopulationPreviousValues {
-    id: ID_Output;
-    inhabitants: Int;
-    density: Int;
-    densityUnit: DENSITY_UNIT;
-}
-
-export interface PopulationPreviousValuesPromise extends Promise<PopulationPreviousValues>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    inhabitants: () => Promise<Int>;
-    density: () => Promise<Int>;
-    densityUnit: () => Promise<DENSITY_UNIT>;
-}
-
-export interface PopulationPreviousValuesSubscription
-    extends Promise<AsyncIterator<PopulationPreviousValues>>,
-        Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-    inhabitants: () => Promise<AsyncIterator<Int>>;
-    density: () => Promise<AsyncIterator<Int>>;
-    densityUnit: () => Promise<AsyncIterator<DENSITY_UNIT>>;
-}
-
-export interface EtnicityConnection {
-    pageInfo: PageInfo;
-    edges: EtnicityEdge[];
-}
-
-export interface EtnicityConnectionPromise extends Promise<EtnicityConnection>, Fragmentable {
-    pageInfo: <T = PageInfoPromise>() => T;
-    edges: <T = FragmentableArray<EtnicityEdge>>() => T;
-    aggregate: <T = AggregateEtnicityPromise>() => T;
-}
-
-export interface EtnicityConnectionSubscription extends Promise<AsyncIterator<EtnicityConnection>>, Fragmentable {
-    pageInfo: <T = PageInfoSubscription>() => T;
-    edges: <T = Promise<AsyncIterator<EtnicityEdgeSubscription>>>() => T;
-    aggregate: <T = AggregateEtnicitySubscription>() => T;
+export interface AbilityConnectionSubscription
+  extends Promise<AsyncIterator<AbilityConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<AbilityEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateAbilitySubscription>() => T;
 }
 
 export interface LanguageEdge {
-    node: Language;
-    cursor: string;
+  node: Language;
+  cursor: String;
 }
 
-export interface LanguageEdgePromise extends Promise<LanguageEdge>, Fragmentable {
-    node: <T = LanguagePromise>() => T;
-    cursor: () => Promise<string>;
+export interface LanguageEdgePromise
+  extends Promise<LanguageEdge>,
+    Fragmentable {
+  node: <T = LanguagePromise>() => T;
+  cursor: () => Promise<String>;
 }
 
-export interface LanguageEdgeSubscription extends Promise<AsyncIterator<LanguageEdge>>, Fragmentable {
-    node: <T = LanguageSubscription>() => T;
-    cursor: () => Promise<AsyncIterator<string>>;
+export interface LanguageEdgeSubscription
+  extends Promise<AsyncIterator<LanguageEdge>>,
+    Fragmentable {
+  node: <T = LanguageSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface CharacterMetadataSubscriptionPayload {
+  mutation: MutationType;
+  node: CharacterMetadata;
+  updatedFields: String[];
+  previousValues: CharacterMetadataPreviousValues;
+}
+
+export interface CharacterMetadataSubscriptionPayloadPromise
+  extends Promise<CharacterMetadataSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = CharacterMetadataPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = CharacterMetadataPreviousValuesPromise>() => T;
+}
+
+export interface CharacterMetadataSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<CharacterMetadataSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = CharacterMetadataSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = CharacterMetadataPreviousValuesSubscription>() => T;
+}
+
+export interface AggregateHTMLContent {
+  count: Int;
+}
+
+export interface AggregateHTMLContentPromise
+  extends Promise<AggregateHTMLContent>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateHTMLContentSubscription
+  extends Promise<AsyncIterator<AggregateHTMLContent>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface CharacterMetadataPreviousValues {
+  id: ID_Output;
+  status?: CHARACTER_STATUS;
+  race?: RACE;
+  class?: CLASS;
+  alignment?: ALIGNMENT;
+  height?: Int;
+  weight?: Int;
+}
+
+export interface CharacterMetadataPreviousValuesPromise
+  extends Promise<CharacterMetadataPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  status: () => Promise<CHARACTER_STATUS>;
+  race: () => Promise<RACE>;
+  class: () => Promise<CLASS>;
+  alignment: () => Promise<ALIGNMENT>;
+  height: () => Promise<Int>;
+  weight: () => Promise<Int>;
+}
+
+export interface CharacterMetadataPreviousValuesSubscription
+  extends Promise<AsyncIterator<CharacterMetadataPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  status: () => Promise<AsyncIterator<CHARACTER_STATUS>>;
+  race: () => Promise<AsyncIterator<RACE>>;
+  class: () => Promise<AsyncIterator<CLASS>>;
+  alignment: () => Promise<AsyncIterator<ALIGNMENT>>;
+  height: () => Promise<AsyncIterator<Int>>;
+  weight: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface HTMLContentConnection {
+  pageInfo: PageInfo;
+  edges: HTMLContentEdge[];
+}
+
+export interface HTMLContentConnectionPromise
+  extends Promise<HTMLContentConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<HTMLContentEdge>>() => T;
+  aggregate: <T = AggregateHTMLContentPromise>() => T;
+}
+
+export interface HTMLContentConnectionSubscription
+  extends Promise<AsyncIterator<HTMLContentConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<HTMLContentEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateHTMLContentSubscription>() => T;
+}
+
+export interface User {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  email: String;
+  password: String;
+  role: ROLE;
+  firstName?: String;
+  lastName?: String;
+  resetToken?: String;
+  resetTokenExpiry?: String;
+}
+
+export interface UserPromise extends Promise<User>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  email: () => Promise<String>;
+  password: () => Promise<String>;
+  role: () => Promise<ROLE>;
+  campaigns: <T = FragmentableArray<Campaign>>(args?: {
+    where?: CampaignWhereInput;
+    orderBy?: CampaignOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  firstName: () => Promise<String>;
+  lastName: () => Promise<String>;
+  characters: <T = FragmentableArray<Character>>(args?: {
+    where?: CharacterWhereInput;
+    orderBy?: CharacterOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  resetToken: () => Promise<String>;
+  resetTokenExpiry: () => Promise<String>;
+}
+
+export interface UserSubscription
+  extends Promise<AsyncIterator<User>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  email: () => Promise<AsyncIterator<String>>;
+  password: () => Promise<AsyncIterator<String>>;
+  role: () => Promise<AsyncIterator<ROLE>>;
+  campaigns: <T = Promise<AsyncIterator<CampaignSubscription>>>(args?: {
+    where?: CampaignWhereInput;
+    orderBy?: CampaignOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  firstName: () => Promise<AsyncIterator<String>>;
+  lastName: () => Promise<AsyncIterator<String>>;
+  characters: <T = Promise<AsyncIterator<CharacterSubscription>>>(args?: {
+    where?: CharacterWhereInput;
+    orderBy?: CharacterOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  resetToken: () => Promise<AsyncIterator<String>>;
+  resetTokenExpiry: () => Promise<AsyncIterator<String>>;
+}
+
+export interface UserNullablePromise
+  extends Promise<User | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  email: () => Promise<String>;
+  password: () => Promise<String>;
+  role: () => Promise<ROLE>;
+  campaigns: <T = FragmentableArray<Campaign>>(args?: {
+    where?: CampaignWhereInput;
+    orderBy?: CampaignOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  firstName: () => Promise<String>;
+  lastName: () => Promise<String>;
+  characters: <T = FragmentableArray<Character>>(args?: {
+    where?: CharacterWhereInput;
+    orderBy?: CharacterOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  resetToken: () => Promise<String>;
+  resetTokenExpiry: () => Promise<String>;
+}
+
+export interface GovernmentPartyEdge {
+  node: GovernmentParty;
+  cursor: String;
+}
+
+export interface GovernmentPartyEdgePromise
+  extends Promise<GovernmentPartyEdge>,
+    Fragmentable {
+  node: <T = GovernmentPartyPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface GovernmentPartyEdgeSubscription
+  extends Promise<AsyncIterator<GovernmentPartyEdge>>,
+    Fragmentable {
+  node: <T = GovernmentPartySubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface CurrencySubscriptionPayload {
+  mutation: MutationType;
+  node: Currency;
+  updatedFields: String[];
+  previousValues: CurrencyPreviousValues;
+}
+
+export interface CurrencySubscriptionPayloadPromise
+  extends Promise<CurrencySubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = CurrencyPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = CurrencyPreviousValuesPromise>() => T;
+}
+
+export interface CurrencySubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<CurrencySubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = CurrencySubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = CurrencyPreviousValuesSubscription>() => T;
+}
+
+export interface AggregateGovernment {
+  count: Int;
+}
+
+export interface AggregateGovernmentPromise
+  extends Promise<AggregateGovernment>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateGovernmentSubscription
+  extends Promise<AsyncIterator<AggregateGovernment>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface CurrencyPreviousValues {
+  id: ID_Output;
+  name: String;
+  sign?: String;
+}
+
+export interface CurrencyPreviousValuesPromise
+  extends Promise<CurrencyPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  sign: () => Promise<String>;
+}
+
+export interface CurrencyPreviousValuesSubscription
+  extends Promise<AsyncIterator<CurrencyPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  sign: () => Promise<AsyncIterator<String>>;
+}
+
+export interface GovernmentConnection {
+  pageInfo: PageInfo;
+  edges: GovernmentEdge[];
+}
+
+export interface GovernmentConnectionPromise
+  extends Promise<GovernmentConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<GovernmentEdge>>() => T;
+  aggregate: <T = AggregateGovernmentPromise>() => T;
+}
+
+export interface GovernmentConnectionSubscription
+  extends Promise<AsyncIterator<GovernmentConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<GovernmentEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateGovernmentSubscription>() => T;
+}
+
+export interface GovernmentParty {
+  id: ID_Output;
+  name: String;
+}
+
+export interface GovernmentPartyPromise
+  extends Promise<GovernmentParty>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  leader: <T = CharacterPromise>() => T;
+  name: () => Promise<String>;
+  content: <T = FragmentableArray<HTMLContent>>(args?: {
+    where?: HTMLContentWhereInput;
+    orderBy?: HTMLContentOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  government: <T = GovernmentPromise>() => T;
+}
+
+export interface GovernmentPartySubscription
+  extends Promise<AsyncIterator<GovernmentParty>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  leader: <T = CharacterSubscription>() => T;
+  name: () => Promise<AsyncIterator<String>>;
+  content: <T = Promise<AsyncIterator<HTMLContentSubscription>>>(args?: {
+    where?: HTMLContentWhereInput;
+    orderBy?: HTMLContentOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  government: <T = GovernmentSubscription>() => T;
+}
+
+export interface GovernmentPartyNullablePromise
+  extends Promise<GovernmentParty | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  leader: <T = CharacterPromise>() => T;
+  name: () => Promise<String>;
+  content: <T = FragmentableArray<HTMLContent>>(args?: {
+    where?: HTMLContentWhereInput;
+    orderBy?: HTMLContentOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  government: <T = GovernmentPromise>() => T;
+}
+
+export interface AggregateFlag {
+  count: Int;
+}
+
+export interface AggregateFlagPromise
+  extends Promise<AggregateFlag>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateFlagSubscription
+  extends Promise<AsyncIterator<AggregateFlag>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface EconomySubscriptionPayload {
+  mutation: MutationType;
+  node: Economy;
+  updatedFields: String[];
+  previousValues: EconomyPreviousValues;
+}
+
+export interface EconomySubscriptionPayloadPromise
+  extends Promise<EconomySubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = EconomyPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = EconomyPreviousValuesPromise>() => T;
+}
+
+export interface EconomySubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<EconomySubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = EconomySubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = EconomyPreviousValuesSubscription>() => T;
+}
+
+export interface FlagConnection {
+  pageInfo: PageInfo;
+  edges: FlagEdge[];
+}
+
+export interface FlagConnectionPromise
+  extends Promise<FlagConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<FlagEdge>>() => T;
+  aggregate: <T = AggregateFlagPromise>() => T;
+}
+
+export interface FlagConnectionSubscription
+  extends Promise<AsyncIterator<FlagConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<FlagEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateFlagSubscription>() => T;
+}
+
+export interface EconomyPreviousValues {
+  id: ID_Output;
+}
+
+export interface EconomyPreviousValuesPromise
+  extends Promise<EconomyPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+}
+
+export interface EconomyPreviousValuesSubscription
+  extends Promise<AsyncIterator<EconomyPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+}
+
+export interface EtnicityEdge {
+  node: Etnicity;
+  cursor: String;
+}
+
+export interface EtnicityEdgePromise
+  extends Promise<EtnicityEdge>,
+    Fragmentable {
+  node: <T = EtnicityPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface EtnicityEdgeSubscription
+  extends Promise<AsyncIterator<EtnicityEdge>>,
+    Fragmentable {
+  node: <T = EtnicitySubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface Government {
+  id: ID_Output;
+}
+
+export interface GovernmentPromise extends Promise<Government>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  leader: <T = CharacterPromise>() => T;
+  parties: <T = FragmentableArray<GovernmentParty>>(args?: {
+    where?: GovernmentPartyWhereInput;
+    orderBy?: GovernmentPartyOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  content: <T = FragmentableArray<HTMLContent>>(args?: {
+    where?: HTMLContentWhereInput;
+    orderBy?: HTMLContentOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface GovernmentSubscription
+  extends Promise<AsyncIterator<Government>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  leader: <T = CharacterSubscription>() => T;
+  parties: <T = Promise<AsyncIterator<GovernmentPartySubscription>>>(args?: {
+    where?: GovernmentPartyWhereInput;
+    orderBy?: GovernmentPartyOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  content: <T = Promise<AsyncIterator<HTMLContentSubscription>>>(args?: {
+    where?: HTMLContentWhereInput;
+    orderBy?: HTMLContentOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface GovernmentNullablePromise
+  extends Promise<Government | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  leader: <T = CharacterPromise>() => T;
+  parties: <T = FragmentableArray<GovernmentParty>>(args?: {
+    where?: GovernmentPartyWhereInput;
+    orderBy?: GovernmentPartyOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  content: <T = FragmentableArray<HTMLContent>>(args?: {
+    where?: HTMLContentWhereInput;
+    orderBy?: HTMLContentOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface AggregateEconomy {
+  count: Int;
+}
+
+export interface AggregateEconomyPromise
+  extends Promise<AggregateEconomy>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateEconomySubscription
+  extends Promise<AsyncIterator<AggregateEconomy>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface EtnicitySubscriptionPayload {
+  mutation: MutationType;
+  node: Etnicity;
+  updatedFields: String[];
+  previousValues: EtnicityPreviousValues;
+}
+
+export interface EtnicitySubscriptionPayloadPromise
+  extends Promise<EtnicitySubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = EtnicityPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = EtnicityPreviousValuesPromise>() => T;
+}
+
+export interface EtnicitySubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<EtnicitySubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = EtnicitySubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = EtnicityPreviousValuesSubscription>() => T;
+}
+
+export interface EconomyConnection {
+  pageInfo: PageInfo;
+  edges: EconomyEdge[];
+}
+
+export interface EconomyConnectionPromise
+  extends Promise<EconomyConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<EconomyEdge>>() => T;
+  aggregate: <T = AggregateEconomyPromise>() => T;
+}
+
+export interface EconomyConnectionSubscription
+  extends Promise<AsyncIterator<EconomyConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<EconomyEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateEconomySubscription>() => T;
+}
+
+export interface EtnicityPreviousValues {
+  id: ID_Output;
+  name: String;
+}
+
+export interface EtnicityPreviousValuesPromise
+  extends Promise<EtnicityPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+}
+
+export interface EtnicityPreviousValuesSubscription
+  extends Promise<AsyncIterator<EtnicityPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+}
+
+export interface CurrencyEdge {
+  node: Currency;
+  cursor: String;
+}
+
+export interface CurrencyEdgePromise
+  extends Promise<CurrencyEdge>,
+    Fragmentable {
+  node: <T = CurrencyPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface CurrencyEdgeSubscription
+  extends Promise<AsyncIterator<CurrencyEdge>>,
+    Fragmentable {
+  node: <T = CurrencySubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface Currency {
+  id: ID_Output;
+  name: String;
+  sign?: String;
+}
+
+export interface CurrencyPromise extends Promise<Currency>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  sign: () => Promise<String>;
+}
+
+export interface CurrencySubscription
+  extends Promise<AsyncIterator<Currency>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  sign: () => Promise<AsyncIterator<String>>;
+}
+
+export interface CurrencyNullablePromise
+  extends Promise<Currency | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  sign: () => Promise<String>;
+}
+
+export interface AggregateCharacterMetadata {
+  count: Int;
+}
+
+export interface AggregateCharacterMetadataPromise
+  extends Promise<AggregateCharacterMetadata>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateCharacterMetadataSubscription
+  extends Promise<AsyncIterator<AggregateCharacterMetadata>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface FlagSubscriptionPayload {
+  mutation: MutationType;
+  node: Flag;
+  updatedFields: String[];
+  previousValues: FlagPreviousValues;
+}
+
+export interface FlagSubscriptionPayloadPromise
+  extends Promise<FlagSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = FlagPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = FlagPreviousValuesPromise>() => T;
+}
+
+export interface FlagSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<FlagSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = FlagSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = FlagPreviousValuesSubscription>() => T;
+}
+
+export interface CharacterMetadataConnection {
+  pageInfo: PageInfo;
+  edges: CharacterMetadataEdge[];
+}
+
+export interface CharacterMetadataConnectionPromise
+  extends Promise<CharacterMetadataConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<CharacterMetadataEdge>>() => T;
+  aggregate: <T = AggregateCharacterMetadataPromise>() => T;
+}
+
+export interface CharacterMetadataConnectionSubscription
+  extends Promise<AsyncIterator<CharacterMetadataConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<CharacterMetadataEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateCharacterMetadataSubscription>() => T;
+}
+
+export interface FlagPreviousValues {
+  id: ID_Output;
+  imageSrc?: String;
+  description: String;
+}
+
+export interface FlagPreviousValuesPromise
+  extends Promise<FlagPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  imageSrc: () => Promise<String>;
+  description: () => Promise<String>;
+}
+
+export interface FlagPreviousValuesSubscription
+  extends Promise<AsyncIterator<FlagPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  imageSrc: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+}
+
+export interface CharacterEdge {
+  node: Character;
+  cursor: String;
+}
+
+export interface CharacterEdgePromise
+  extends Promise<CharacterEdge>,
+    Fragmentable {
+  node: <T = CharacterPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface CharacterEdgeSubscription
+  extends Promise<AsyncIterator<CharacterEdge>>,
+    Fragmentable {
+  node: <T = CharacterSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface Economy {
+  id: ID_Output;
+}
+
+export interface EconomyPromise extends Promise<Economy>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  currency: <T = CurrencyPromise>() => T;
+  location: <T = FragmentableArray<Location>>(args?: {
+    where?: LocationWhereInput;
+    orderBy?: LocationOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface EconomySubscription
+  extends Promise<AsyncIterator<Economy>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  currency: <T = CurrencySubscription>() => T;
+  location: <T = Promise<AsyncIterator<LocationSubscription>>>(args?: {
+    where?: LocationWhereInput;
+    orderBy?: LocationOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface EconomyNullablePromise
+  extends Promise<Economy | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  currency: <T = CurrencyPromise>() => T;
+  location: <T = FragmentableArray<Location>>(args?: {
+    where?: LocationWhereInput;
+    orderBy?: LocationOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface AggregateCampaign {
+  count: Int;
+}
+
+export interface AggregateCampaignPromise
+  extends Promise<AggregateCampaign>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateCampaignSubscription
+  extends Promise<AsyncIterator<AggregateCampaign>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface GovernmentSubscriptionPayload {
+  mutation: MutationType;
+  node: Government;
+  updatedFields: String[];
+  previousValues: GovernmentPreviousValues;
+}
+
+export interface GovernmentSubscriptionPayloadPromise
+  extends Promise<GovernmentSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = GovernmentPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = GovernmentPreviousValuesPromise>() => T;
+}
+
+export interface GovernmentSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<GovernmentSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = GovernmentSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = GovernmentPreviousValuesSubscription>() => T;
+}
+
+export interface UserEdge {
+  node: User;
+  cursor: String;
+}
+
+export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
+  node: <T = UserPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface UserEdgeSubscription
+  extends Promise<AsyncIterator<UserEdge>>,
+    Fragmentable {
+  node: <T = UserSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
 }
 
 export interface Location {
-    id: ID_Output;
-    type: LOCATION_TYPE;
-    name: string;
-    parent?: ID_Output;
+  id: ID_Output;
+  type: LOCATION_TYPE;
+  name: String;
+  parent?: ID_Output;
 }
 
 export interface LocationPromise extends Promise<Location>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    type: () => Promise<LOCATION_TYPE>;
-    name: () => Promise<string>;
-    locations: <T = FragmentableArray<Location>>(args?: {
-        where?: LocationWhereInput;
-        orderBy?: LocationOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    metadata: <T = LocationMetaDataPromise>() => T;
-    campaign: <T = CampaignPromise>() => T;
-    parent: () => Promise<ID_Output>;
+  id: () => Promise<ID_Output>;
+  type: () => Promise<LOCATION_TYPE>;
+  name: () => Promise<String>;
+  locations: <T = FragmentableArray<Location>>(args?: {
+    where?: LocationWhereInput;
+    orderBy?: LocationOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  metadata: <T = LocationMetaDataPromise>() => T;
+  campaign: <T = CampaignPromise>() => T;
+  parent: () => Promise<ID_Output>;
 }
 
-export interface LocationSubscription extends Promise<AsyncIterator<Location>>, Fragmentable {
-    id: () => Promise<AsyncIterator<ID_Output>>;
-    type: () => Promise<AsyncIterator<LOCATION_TYPE>>;
-    name: () => Promise<AsyncIterator<string>>;
-    locations: <T = Promise<AsyncIterator<LocationSubscription>>>(args?: {
-        where?: LocationWhereInput;
-        orderBy?: LocationOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    metadata: <T = LocationMetaDataSubscription>() => T;
-    campaign: <T = CampaignSubscription>() => T;
-    parent: () => Promise<AsyncIterator<ID_Output>>;
+export interface LocationSubscription
+  extends Promise<AsyncIterator<Location>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  type: () => Promise<AsyncIterator<LOCATION_TYPE>>;
+  name: () => Promise<AsyncIterator<String>>;
+  locations: <T = Promise<AsyncIterator<LocationSubscription>>>(args?: {
+    where?: LocationWhereInput;
+    orderBy?: LocationOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  metadata: <T = LocationMetaDataSubscription>() => T;
+  campaign: <T = CampaignSubscription>() => T;
+  parent: () => Promise<AsyncIterator<ID_Output>>;
 }
 
-export interface LocationNullablePromise extends Promise<Location | null>, Fragmentable {
-    id: () => Promise<ID_Output>;
-    type: () => Promise<LOCATION_TYPE>;
-    name: () => Promise<string>;
-    locations: <T = FragmentableArray<Location>>(args?: {
-        where?: LocationWhereInput;
-        orderBy?: LocationOrderByInput;
-        skip?: Int;
-        after?: string;
-        before?: string;
-        first?: Int;
-        last?: Int;
-    }) => T;
-    metadata: <T = LocationMetaDataPromise>() => T;
-    campaign: <T = CampaignPromise>() => T;
-    parent: () => Promise<ID_Output>;
+export interface LocationNullablePromise
+  extends Promise<Location | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  type: () => Promise<LOCATION_TYPE>;
+  name: () => Promise<String>;
+  locations: <T = FragmentableArray<Location>>(args?: {
+    where?: LocationWhereInput;
+    orderBy?: LocationOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  metadata: <T = LocationMetaDataPromise>() => T;
+  campaign: <T = CampaignPromise>() => T;
+  parent: () => Promise<ID_Output>;
+}
+
+export interface LocationMetaData {
+  id: ID_Output;
+  weather?: WEATHER;
+  climate?: CLIMATE;
+}
+
+export interface LocationMetaDataPromise
+  extends Promise<LocationMetaData>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  location: <T = LocationPromise>() => T;
+  population: <T = PopulationPromise>() => T;
+  languages: <T = FragmentableArray<Language>>(args?: {
+    where?: LanguageWhereInput;
+    orderBy?: LanguageOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  religions: <T = FragmentableArray<Religion>>(args?: {
+    where?: ReligionWhereInput;
+    orderBy?: ReligionOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  ethnicities: <T = FragmentableArray<Etnicity>>(args?: {
+    where?: EtnicityWhereInput;
+    orderBy?: EtnicityOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  flag: <T = FragmentableArray<Flag>>(args?: {
+    where?: FlagWhereInput;
+    orderBy?: FlagOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  economy: <T = EconomyPromise>() => T;
+  government: <T = GovernmentPromise>() => T;
+  weather: () => Promise<WEATHER>;
+  climate: () => Promise<CLIMATE>;
+}
+
+export interface LocationMetaDataSubscription
+  extends Promise<AsyncIterator<LocationMetaData>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  location: <T = LocationSubscription>() => T;
+  population: <T = PopulationSubscription>() => T;
+  languages: <T = Promise<AsyncIterator<LanguageSubscription>>>(args?: {
+    where?: LanguageWhereInput;
+    orderBy?: LanguageOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  religions: <T = Promise<AsyncIterator<ReligionSubscription>>>(args?: {
+    where?: ReligionWhereInput;
+    orderBy?: ReligionOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  ethnicities: <T = Promise<AsyncIterator<EtnicitySubscription>>>(args?: {
+    where?: EtnicityWhereInput;
+    orderBy?: EtnicityOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  flag: <T = Promise<AsyncIterator<FlagSubscription>>>(args?: {
+    where?: FlagWhereInput;
+    orderBy?: FlagOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  economy: <T = EconomySubscription>() => T;
+  government: <T = GovernmentSubscription>() => T;
+  weather: () => Promise<AsyncIterator<WEATHER>>;
+  climate: () => Promise<AsyncIterator<CLIMATE>>;
+}
+
+export interface LocationMetaDataNullablePromise
+  extends Promise<LocationMetaData | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  location: <T = LocationPromise>() => T;
+  population: <T = PopulationPromise>() => T;
+  languages: <T = FragmentableArray<Language>>(args?: {
+    where?: LanguageWhereInput;
+    orderBy?: LanguageOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  religions: <T = FragmentableArray<Religion>>(args?: {
+    where?: ReligionWhereInput;
+    orderBy?: ReligionOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  ethnicities: <T = FragmentableArray<Etnicity>>(args?: {
+    where?: EtnicityWhereInput;
+    orderBy?: EtnicityOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  flag: <T = FragmentableArray<Flag>>(args?: {
+    where?: FlagWhereInput;
+    orderBy?: FlagOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  economy: <T = EconomyPromise>() => T;
+  government: <T = GovernmentPromise>() => T;
+  weather: () => Promise<WEATHER>;
+  climate: () => Promise<CLIMATE>;
+}
+
+export interface SkillPreviousValues {
+  id: ID_Output;
+  name: SKILL;
+  value: Int;
+}
+
+export interface SkillPreviousValuesPromise
+  extends Promise<SkillPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<SKILL>;
+  value: () => Promise<Int>;
+}
+
+export interface SkillPreviousValuesSubscription
+  extends Promise<AsyncIterator<SkillPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<SKILL>>;
+  value: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface GovernmentPreviousValues {
+  id: ID_Output;
+}
+
+export interface GovernmentPreviousValuesPromise
+  extends Promise<GovernmentPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+}
+
+export interface GovernmentPreviousValuesSubscription
+  extends Promise<AsyncIterator<GovernmentPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+}
+
+export interface SkillEdge {
+  node: Skill;
+  cursor: String;
+}
+
+export interface SkillEdgePromise extends Promise<SkillEdge>, Fragmentable {
+  node: <T = SkillPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface SkillEdgeSubscription
+  extends Promise<AsyncIterator<SkillEdge>>,
+    Fragmentable {
+  node: <T = SkillSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface ReligionConnection {
+  pageInfo: PageInfo;
+  edges: ReligionEdge[];
+}
+
+export interface ReligionConnectionPromise
+  extends Promise<ReligionConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<ReligionEdge>>() => T;
+  aggregate: <T = AggregateReligionPromise>() => T;
+}
+
+export interface ReligionConnectionSubscription
+  extends Promise<AsyncIterator<ReligionConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<ReligionEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateReligionSubscription>() => T;
+}
+
+export interface Flag {
+  id: ID_Output;
+  imageSrc?: String;
+  description: String;
+}
+
+export interface FlagPromise extends Promise<Flag>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  imageSrc: () => Promise<String>;
+  description: () => Promise<String>;
+  location: <T = LocationPromise>() => T;
+}
+
+export interface FlagSubscription
+  extends Promise<AsyncIterator<Flag>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  imageSrc: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+  location: <T = LocationSubscription>() => T;
+}
+
+export interface FlagNullablePromise
+  extends Promise<Flag | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  imageSrc: () => Promise<String>;
+  description: () => Promise<String>;
+  location: <T = LocationPromise>() => T;
+}
+
+export interface Character {
+  id: ID_Output;
+  firstName: String;
+  lastName?: String;
+  type: CHARACTER_TYPE;
+}
+
+export interface CharacterPromise extends Promise<Character>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  firstName: () => Promise<String>;
+  lastName: () => Promise<String>;
+  type: () => Promise<CHARACTER_TYPE>;
+  metadata: <T = CharacterMetadataPromise>() => T;
+  campaign: <T = CampaignPromise>() => T;
+  user: <T = UserPromise>() => T;
+}
+
+export interface CharacterSubscription
+  extends Promise<AsyncIterator<Character>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  firstName: () => Promise<AsyncIterator<String>>;
+  lastName: () => Promise<AsyncIterator<String>>;
+  type: () => Promise<AsyncIterator<CHARACTER_TYPE>>;
+  metadata: <T = CharacterMetadataSubscription>() => T;
+  campaign: <T = CampaignSubscription>() => T;
+  user: <T = UserSubscription>() => T;
+}
+
+export interface CharacterNullablePromise
+  extends Promise<Character | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  firstName: () => Promise<String>;
+  lastName: () => Promise<String>;
+  type: () => Promise<CHARACTER_TYPE>;
+  metadata: <T = CharacterMetadataPromise>() => T;
+  campaign: <T = CampaignPromise>() => T;
+  user: <T = UserPromise>() => T;
+}
+
+export interface GovernmentPartySubscriptionPayload {
+  mutation: MutationType;
+  node: GovernmentParty;
+  updatedFields: String[];
+  previousValues: GovernmentPartyPreviousValues;
+}
+
+export interface GovernmentPartySubscriptionPayloadPromise
+  extends Promise<GovernmentPartySubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = GovernmentPartyPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = GovernmentPartyPreviousValuesPromise>() => T;
+}
+
+export interface GovernmentPartySubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<GovernmentPartySubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = GovernmentPartySubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = GovernmentPartyPreviousValuesSubscription>() => T;
+}
+
+export interface UserSubscriptionPayload {
+  mutation: MutationType;
+  node: User;
+  updatedFields: String[];
+  previousValues: UserPreviousValues;
+}
+
+export interface UserSubscriptionPayloadPromise
+  extends Promise<UserSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = UserPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = UserPreviousValuesPromise>() => T;
+}
+
+export interface UserSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<UserSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = UserSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = UserPreviousValuesSubscription>() => T;
+}
+
+export interface GovernmentPartyPreviousValues {
+  id: ID_Output;
+  name: String;
+}
+
+export interface GovernmentPartyPreviousValuesPromise
+  extends Promise<GovernmentPartyPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+}
+
+export interface GovernmentPartyPreviousValuesSubscription
+  extends Promise<AsyncIterator<GovernmentPartyPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateLanguage {
+  count: Int;
+}
+
+export interface AggregateLanguagePromise
+  extends Promise<AggregateLanguage>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateLanguageSubscription
+  extends Promise<AsyncIterator<AggregateLanguage>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface SkillSubscriptionPayload {
+  mutation: MutationType;
+  node: Skill;
+  updatedFields: String[];
+  previousValues: SkillPreviousValues;
+}
+
+export interface SkillSubscriptionPayloadPromise
+  extends Promise<SkillSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = SkillPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = SkillPreviousValuesPromise>() => T;
+}
+
+export interface SkillSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<SkillSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = SkillSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = SkillPreviousValuesSubscription>() => T;
+}
+
+export interface HTMLContentEdge {
+  node: HTMLContent;
+  cursor: String;
+}
+
+export interface HTMLContentEdgePromise
+  extends Promise<HTMLContentEdge>,
+    Fragmentable {
+  node: <T = HTMLContentPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface HTMLContentEdgeSubscription
+  extends Promise<AsyncIterator<HTMLContentEdge>>,
+    Fragmentable {
+  node: <T = HTMLContentSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface HTMLContentSubscriptionPayload {
+  mutation: MutationType;
+  node: HTMLContent;
+  updatedFields: String[];
+  previousValues: HTMLContentPreviousValues;
+}
+
+export interface HTMLContentSubscriptionPayloadPromise
+  extends Promise<HTMLContentSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = HTMLContentPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = HTMLContentPreviousValuesPromise>() => T;
+}
+
+export interface HTMLContentSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<HTMLContentSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = HTMLContentSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = HTMLContentPreviousValuesSubscription>() => T;
+}
+
+export interface GovernmentPartyConnection {
+  pageInfo: PageInfo;
+  edges: GovernmentPartyEdge[];
+}
+
+export interface GovernmentPartyConnectionPromise
+  extends Promise<GovernmentPartyConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<GovernmentPartyEdge>>() => T;
+  aggregate: <T = AggregateGovernmentPartyPromise>() => T;
+}
+
+export interface GovernmentPartyConnectionSubscription
+  extends Promise<AsyncIterator<GovernmentPartyConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<GovernmentPartyEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateGovernmentPartySubscription>() => T;
+}
+
+export interface HTMLContentPreviousValues {
+  id: ID_Output;
+  content: String;
+}
+
+export interface HTMLContentPreviousValuesPromise
+  extends Promise<HTMLContentPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  content: () => Promise<String>;
+}
+
+export interface HTMLContentPreviousValuesSubscription
+  extends Promise<AsyncIterator<HTMLContentPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  content: () => Promise<AsyncIterator<String>>;
+}
+
+export interface CharacterMetadata {
+  id: ID_Output;
+  status?: CHARACTER_STATUS;
+  race?: RACE;
+  class?: CLASS;
+  alignment?: ALIGNMENT;
+  height?: Int;
+  weight?: Int;
+}
+
+export interface CharacterMetadataPromise
+  extends Promise<CharacterMetadata>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  character: <T = CharacterPromise>() => T;
+  abilities: <T = FragmentableArray<Ability>>(args?: {
+    where?: AbilityWhereInput;
+    orderBy?: AbilityOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  skills: <T = FragmentableArray<Skill>>(args?: {
+    where?: SkillWhereInput;
+    orderBy?: SkillOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  status: () => Promise<CHARACTER_STATUS>;
+  race: () => Promise<RACE>;
+  class: () => Promise<CLASS>;
+  alignment: () => Promise<ALIGNMENT>;
+  height: () => Promise<Int>;
+  weight: () => Promise<Int>;
+}
+
+export interface CharacterMetadataSubscription
+  extends Promise<AsyncIterator<CharacterMetadata>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  character: <T = CharacterSubscription>() => T;
+  abilities: <T = Promise<AsyncIterator<AbilitySubscription>>>(args?: {
+    where?: AbilityWhereInput;
+    orderBy?: AbilityOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  skills: <T = Promise<AsyncIterator<SkillSubscription>>>(args?: {
+    where?: SkillWhereInput;
+    orderBy?: SkillOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  status: () => Promise<AsyncIterator<CHARACTER_STATUS>>;
+  race: () => Promise<AsyncIterator<RACE>>;
+  class: () => Promise<AsyncIterator<CLASS>>;
+  alignment: () => Promise<AsyncIterator<ALIGNMENT>>;
+  height: () => Promise<AsyncIterator<Int>>;
+  weight: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface CharacterMetadataNullablePromise
+  extends Promise<CharacterMetadata | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  character: <T = CharacterPromise>() => T;
+  abilities: <T = FragmentableArray<Ability>>(args?: {
+    where?: AbilityWhereInput;
+    orderBy?: AbilityOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  skills: <T = FragmentableArray<Skill>>(args?: {
+    where?: SkillWhereInput;
+    orderBy?: SkillOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  status: () => Promise<CHARACTER_STATUS>;
+  race: () => Promise<RACE>;
+  class: () => Promise<CLASS>;
+  alignment: () => Promise<ALIGNMENT>;
+  height: () => Promise<Int>;
+  weight: () => Promise<Int>;
+}
+
+export interface Etnicity {
+  id: ID_Output;
+  name: String;
+}
+
+export interface EtnicityPromise extends Promise<Etnicity>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+}
+
+export interface EtnicitySubscription
+  extends Promise<AsyncIterator<Etnicity>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+}
+
+export interface EtnicityNullablePromise
+  extends Promise<Etnicity | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+}
+
+export interface AggregateEtnicity {
+  count: Int;
+}
+
+export interface AggregateEtnicityPromise
+  extends Promise<AggregateEtnicity>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateEtnicitySubscription
+  extends Promise<AsyncIterator<AggregateEtnicity>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface LanguageSubscriptionPayload {
+  mutation: MutationType;
+  node: Language;
+  updatedFields: String[];
+  previousValues: LanguagePreviousValues;
+}
+
+export interface LanguageSubscriptionPayloadPromise
+  extends Promise<LanguageSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = LanguagePromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = LanguagePreviousValuesPromise>() => T;
+}
+
+export interface LanguageSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<LanguageSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = LanguageSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = LanguagePreviousValuesSubscription>() => T;
+}
+
+export interface EconomyEdge {
+  node: Economy;
+  cursor: String;
+}
+
+export interface EconomyEdgePromise extends Promise<EconomyEdge>, Fragmentable {
+  node: <T = EconomyPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface EconomyEdgeSubscription
+  extends Promise<AsyncIterator<EconomyEdge>>,
+    Fragmentable {
+  node: <T = EconomySubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface LanguagePreviousValues {
+  id: ID_Output;
+  name: String;
+  script?: LANGUAGE_SCRIPT;
+}
+
+export interface LanguagePreviousValuesPromise
+  extends Promise<LanguagePreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  script: () => Promise<LANGUAGE_SCRIPT>;
+}
+
+export interface LanguagePreviousValuesSubscription
+  extends Promise<AsyncIterator<LanguagePreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  script: () => Promise<AsyncIterator<LANGUAGE_SCRIPT>>;
+}
+
+export interface CurrencyConnection {
+  pageInfo: PageInfo;
+  edges: CurrencyEdge[];
+}
+
+export interface CurrencyConnectionPromise
+  extends Promise<CurrencyConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<CurrencyEdge>>() => T;
+  aggregate: <T = AggregateCurrencyPromise>() => T;
+}
+
+export interface CurrencyConnectionSubscription
+  extends Promise<AsyncIterator<CurrencyConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<CurrencyEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateCurrencySubscription>() => T;
+}
+
+export interface HTMLContent {
+  id: ID_Output;
+  content: String;
+}
+
+export interface HTMLContentPromise extends Promise<HTMLContent>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  content: () => Promise<String>;
+  invisibleTo: <T = FragmentableArray<Character>>(args?: {
+    where?: CharacterWhereInput;
+    orderBy?: CharacterOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface HTMLContentSubscription
+  extends Promise<AsyncIterator<HTMLContent>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  content: () => Promise<AsyncIterator<String>>;
+  invisibleTo: <T = Promise<AsyncIterator<CharacterSubscription>>>(args?: {
+    where?: CharacterWhereInput;
+    orderBy?: CharacterOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface HTMLContentNullablePromise
+  extends Promise<HTMLContent | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  content: () => Promise<String>;
+  invisibleTo: <T = FragmentableArray<Character>>(args?: {
+    where?: CharacterWhereInput;
+    orderBy?: CharacterOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface AggregateCharacter {
+  count: Int;
+}
+
+export interface AggregateCharacterPromise
+  extends Promise<AggregateCharacter>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateCharacterSubscription
+  extends Promise<AsyncIterator<AggregateCharacter>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface LocationSubscriptionPayload {
+  mutation: MutationType;
+  node: Location;
+  updatedFields: String[];
+  previousValues: LocationPreviousValues;
+}
+
+export interface LocationSubscriptionPayloadPromise
+  extends Promise<LocationSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = LocationPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = LocationPreviousValuesPromise>() => T;
+}
+
+export interface LocationSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<LocationSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = LocationSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = LocationPreviousValuesSubscription>() => T;
+}
+
+export interface AggregateReligion {
+  count: Int;
+}
+
+export interface AggregateReligionPromise
+  extends Promise<AggregateReligion>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateReligionSubscription
+  extends Promise<AsyncIterator<AggregateReligion>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface LocationPreviousValues {
+  id: ID_Output;
+  type: LOCATION_TYPE;
+  name: String;
+  parent?: ID_Output;
+}
+
+export interface LocationPreviousValuesPromise
+  extends Promise<LocationPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  type: () => Promise<LOCATION_TYPE>;
+  name: () => Promise<String>;
+  parent: () => Promise<ID_Output>;
+}
+
+export interface LocationPreviousValuesSubscription
+  extends Promise<AsyncIterator<LocationPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  type: () => Promise<AsyncIterator<LOCATION_TYPE>>;
+  name: () => Promise<AsyncIterator<String>>;
+  parent: () => Promise<AsyncIterator<ID_Output>>;
+}
+
+export interface LocationMetaDataEdge {
+  node: LocationMetaData;
+  cursor: String;
+}
+
+export interface LocationMetaDataEdgePromise
+  extends Promise<LocationMetaDataEdge>,
+    Fragmentable {
+  node: <T = LocationMetaDataPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface LocationMetaDataEdgeSubscription
+  extends Promise<AsyncIterator<LocationMetaDataEdge>>,
+    Fragmentable {
+  node: <T = LocationMetaDataSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface Religion {
+  id: ID_Output;
+  name: String;
+}
+
+export interface ReligionPromise extends Promise<Religion>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  deity: <T = CharacterPromise>() => T;
+  content: <T = FragmentableArray<HTMLContent>>(args?: {
+    where?: HTMLContentWhereInput;
+    orderBy?: HTMLContentOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  location: <T = LocationPromise>() => T;
+}
+
+export interface ReligionSubscription
+  extends Promise<AsyncIterator<Religion>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  deity: <T = CharacterSubscription>() => T;
+  content: <T = Promise<AsyncIterator<HTMLContentSubscription>>>(args?: {
+    where?: HTMLContentWhereInput;
+    orderBy?: HTMLContentOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  location: <T = LocationSubscription>() => T;
+}
+
+export interface ReligionNullablePromise
+  extends Promise<Religion | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  deity: <T = CharacterPromise>() => T;
+  content: <T = FragmentableArray<HTMLContent>>(args?: {
+    where?: HTMLContentWhereInput;
+    orderBy?: HTMLContentOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  location: <T = LocationPromise>() => T;
+}
+
+export interface LanguageConnection {
+  pageInfo: PageInfo;
+  edges: LanguageEdge[];
+}
+
+export interface LanguageConnectionPromise
+  extends Promise<LanguageConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<LanguageEdge>>() => T;
+  aggregate: <T = AggregateLanguagePromise>() => T;
+}
+
+export interface LanguageConnectionSubscription
+  extends Promise<AsyncIterator<LanguageConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<LanguageEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateLanguageSubscription>() => T;
+}
+
+export interface LocationMetaDataSubscriptionPayload {
+  mutation: MutationType;
+  node: LocationMetaData;
+  updatedFields: String[];
+  previousValues: LocationMetaDataPreviousValues;
+}
+
+export interface LocationMetaDataSubscriptionPayloadPromise
+  extends Promise<LocationMetaDataSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = LocationMetaDataPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = LocationMetaDataPreviousValuesPromise>() => T;
+}
+
+export interface LocationMetaDataSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<LocationMetaDataSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = LocationMetaDataSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = LocationMetaDataPreviousValuesSubscription>() => T;
+}
+
+export interface GovernmentEdge {
+  node: Government;
+  cursor: String;
+}
+
+export interface GovernmentEdgePromise
+  extends Promise<GovernmentEdge>,
+    Fragmentable {
+  node: <T = GovernmentPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface GovernmentEdgeSubscription
+  extends Promise<AsyncIterator<GovernmentEdge>>,
+    Fragmentable {
+  node: <T = GovernmentSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface LocationMetaDataPreviousValues {
+  id: ID_Output;
+  weather?: WEATHER;
+  climate?: CLIMATE;
+}
+
+export interface LocationMetaDataPreviousValuesPromise
+  extends Promise<LocationMetaDataPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  weather: () => Promise<WEATHER>;
+  climate: () => Promise<CLIMATE>;
+}
+
+export interface LocationMetaDataPreviousValuesSubscription
+  extends Promise<AsyncIterator<LocationMetaDataPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  weather: () => Promise<AsyncIterator<WEATHER>>;
+  climate: () => Promise<AsyncIterator<CLIMATE>>;
+}
+
+export interface EtnicityConnection {
+  pageInfo: PageInfo;
+  edges: EtnicityEdge[];
+}
+
+export interface EtnicityConnectionPromise
+  extends Promise<EtnicityConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<EtnicityEdge>>() => T;
+  aggregate: <T = AggregateEtnicityPromise>() => T;
+}
+
+export interface EtnicityConnectionSubscription
+  extends Promise<AsyncIterator<EtnicityConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<EtnicityEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateEtnicitySubscription>() => T;
+}
+
+export interface Language {
+  id: ID_Output;
+  name: String;
+  script?: LANGUAGE_SCRIPT;
+}
+
+export interface LanguagePromise extends Promise<Language>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  script: () => Promise<LANGUAGE_SCRIPT>;
+  location: <T = FragmentableArray<Location>>(args?: {
+    where?: LocationWhereInput;
+    orderBy?: LocationOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface LanguageSubscription
+  extends Promise<AsyncIterator<Language>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  script: () => Promise<AsyncIterator<LANGUAGE_SCRIPT>>;
+  location: <T = Promise<AsyncIterator<LocationSubscription>>>(args?: {
+    where?: LocationWhereInput;
+    orderBy?: LocationOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface LanguageNullablePromise
+  extends Promise<Language | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  script: () => Promise<LANGUAGE_SCRIPT>;
+  location: <T = FragmentableArray<Location>>(args?: {
+    where?: LocationWhereInput;
+    orderBy?: LocationOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
 }
 
 export interface CharacterMetadataEdge {
-    node: CharacterMetadata;
-    cursor: string;
+  node: CharacterMetadata;
+  cursor: String;
 }
 
-export interface CharacterMetadataEdgePromise extends Promise<CharacterMetadataEdge>, Fragmentable {
-    node: <T = CharacterMetadataPromise>() => T;
-    cursor: () => Promise<string>;
+export interface CharacterMetadataEdgePromise
+  extends Promise<CharacterMetadataEdge>,
+    Fragmentable {
+  node: <T = CharacterMetadataPromise>() => T;
+  cursor: () => Promise<String>;
 }
 
-export interface CharacterMetadataEdgeSubscription extends Promise<AsyncIterator<CharacterMetadataEdge>>, Fragmentable {
-    node: <T = CharacterMetadataSubscription>() => T;
-    cursor: () => Promise<AsyncIterator<string>>;
+export interface CharacterMetadataEdgeSubscription
+  extends Promise<AsyncIterator<CharacterMetadataEdge>>,
+    Fragmentable {
+  node: <T = CharacterMetadataSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface PopulationSubscriptionPayload {
+  mutation: MutationType;
+  node: Population;
+  updatedFields: String[];
+  previousValues: PopulationPreviousValues;
+}
+
+export interface PopulationSubscriptionPayloadPromise
+  extends Promise<PopulationSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = PopulationPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = PopulationPreviousValuesPromise>() => T;
+}
+
+export interface PopulationSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<PopulationSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = PopulationSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = PopulationPreviousValuesSubscription>() => T;
+}
+
+export interface PopulationEdge {
+  node: Population;
+  cursor: String;
+}
+
+export interface PopulationEdgePromise
+  extends Promise<PopulationEdge>,
+    Fragmentable {
+  node: <T = PopulationPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface PopulationEdgeSubscription
+  extends Promise<AsyncIterator<PopulationEdge>>,
+    Fragmentable {
+  node: <T = PopulationSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateGovernmentParty {
+  count: Int;
+}
+
+export interface AggregateGovernmentPartyPromise
+  extends Promise<AggregateGovernmentParty>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateGovernmentPartySubscription
+  extends Promise<AsyncIterator<AggregateGovernmentParty>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface ReligionPreviousValues {
+  id: ID_Output;
+  name: String;
+}
+
+export interface ReligionPreviousValuesPromise
+  extends Promise<ReligionPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+}
+
+export interface ReligionPreviousValuesSubscription
+  extends Promise<AsyncIterator<ReligionPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+}
+
+export interface ReligionSubscriptionPayload {
+  mutation: MutationType;
+  node: Religion;
+  updatedFields: String[];
+  previousValues: ReligionPreviousValues;
+}
+
+export interface ReligionSubscriptionPayloadPromise
+  extends Promise<ReligionSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = ReligionPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = ReligionPreviousValuesPromise>() => T;
+}
+
+export interface ReligionSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<ReligionSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = ReligionSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = ReligionPreviousValuesSubscription>() => T;
+}
+
+export interface Population {
+  id: ID_Output;
+  inhabitants: Int;
+  density: Int;
+  densityUnit: DENSITY_UNIT;
+}
+
+export interface PopulationPromise extends Promise<Population>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  location: <T = LocationPromise>() => T;
+  inhabitants: () => Promise<Int>;
+  density: () => Promise<Int>;
+  densityUnit: () => Promise<DENSITY_UNIT>;
+}
+
+export interface PopulationSubscription
+  extends Promise<AsyncIterator<Population>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  location: <T = LocationSubscription>() => T;
+  inhabitants: () => Promise<AsyncIterator<Int>>;
+  density: () => Promise<AsyncIterator<Int>>;
+  densityUnit: () => Promise<AsyncIterator<DENSITY_UNIT>>;
+}
+
+export interface PopulationNullablePromise
+  extends Promise<Population | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  location: <T = LocationPromise>() => T;
+  inhabitants: () => Promise<Int>;
+  density: () => Promise<Int>;
+  densityUnit: () => Promise<DENSITY_UNIT>;
+}
+
+export interface PopulationPreviousValues {
+  id: ID_Output;
+  inhabitants: Int;
+  density: Int;
+  densityUnit: DENSITY_UNIT;
+}
+
+export interface PopulationPreviousValuesPromise
+  extends Promise<PopulationPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  inhabitants: () => Promise<Int>;
+  density: () => Promise<Int>;
+  densityUnit: () => Promise<DENSITY_UNIT>;
+}
+
+export interface PopulationPreviousValuesSubscription
+  extends Promise<AsyncIterator<PopulationPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  inhabitants: () => Promise<AsyncIterator<Int>>;
+  density: () => Promise<AsyncIterator<Int>>;
+  densityUnit: () => Promise<AsyncIterator<DENSITY_UNIT>>;
+}
+
+export interface FlagEdge {
+  node: Flag;
+  cursor: String;
+}
+
+export interface FlagEdgePromise extends Promise<FlagEdge>, Fragmentable {
+  node: <T = FlagPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface FlagEdgeSubscription
+  extends Promise<AsyncIterator<FlagEdge>>,
+    Fragmentable {
+  node: <T = FlagSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface LocationEdge {
+  node: Location;
+  cursor: String;
+}
+
+export interface LocationEdgePromise
+  extends Promise<LocationEdge>,
+    Fragmentable {
+  node: <T = LocationPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface LocationEdgeSubscription
+  extends Promise<AsyncIterator<LocationEdge>>,
+    Fragmentable {
+  node: <T = LocationSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface CharacterConnection {
+  pageInfo: PageInfo;
+  edges: CharacterEdge[];
+}
+
+export interface CharacterConnectionPromise
+  extends Promise<CharacterConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<CharacterEdge>>() => T;
+  aggregate: <T = AggregateCharacterPromise>() => T;
+}
+
+export interface CharacterConnectionSubscription
+  extends Promise<AsyncIterator<CharacterConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<CharacterEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateCharacterSubscription>() => T;
+}
+
+export interface AggregateCurrency {
+  count: Int;
+}
+
+export interface AggregateCurrencyPromise
+  extends Promise<AggregateCurrency>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateCurrencySubscription
+  extends Promise<AsyncIterator<AggregateCurrency>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
 /*
@@ -6428,6 +7340,11 @@ The `Boolean` scalar type represents `true` or `false`.
 export type Boolean = boolean;
 
 export type Long = string;
+
+/*
+The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
+*/
+export type String = string;
 
 /*
 The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
@@ -6439,11 +7356,6 @@ export type ID_Output = string;
 The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
 */
 export type Int = number;
-
-/*
-The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
-*/
-export type String = string;
 
 /*
 DateTime scalar input type, allowing Date
@@ -6460,130 +7372,130 @@ export type DateTimeOutput = string;
  */
 
 export const models: Model[] = [
-    {
-        name: 'User',
-        embedded: false,
-    },
-    {
-        name: 'Campaign',
-        embedded: false,
-    },
-    {
-        name: 'HTMLContent',
-        embedded: false,
-    },
-    {
-        name: 'Character',
-        embedded: false,
-    },
-    {
-        name: 'CharacterMetadata',
-        embedded: false,
-    },
-    {
-        name: 'Ability',
-        embedded: false,
-    },
-    {
-        name: 'Skill',
-        embedded: false,
-    },
-    {
-        name: 'Location',
-        embedded: false,
-    },
-    {
-        name: 'LocationMetaData',
-        embedded: false,
-    },
-    {
-        name: 'Government',
-        embedded: false,
-    },
-    {
-        name: 'GovernmentParty',
-        embedded: false,
-    },
-    {
-        name: 'Economy',
-        embedded: false,
-    },
-    {
-        name: 'Currency',
-        embedded: false,
-    },
-    {
-        name: 'Flag',
-        embedded: false,
-    },
-    {
-        name: 'Etnicity',
-        embedded: false,
-    },
-    {
-        name: 'Religion',
-        embedded: false,
-    },
-    {
-        name: 'Population',
-        embedded: false,
-    },
-    {
-        name: 'Language',
-        embedded: false,
-    },
-    {
-        name: 'CLIMATE',
-        embedded: false,
-    },
-    {
-        name: 'WEATHER',
-        embedded: false,
-    },
-    {
-        name: 'ALIGNMENT',
-        embedded: false,
-    },
-    {
-        name: 'DENSITY_UNIT',
-        embedded: false,
-    },
-    {
-        name: 'LANGUAGE_SCRIPT',
-        embedded: false,
-    },
-    {
-        name: 'SKILL',
-        embedded: false,
-    },
-    {
-        name: 'ABILITY_TYPE',
-        embedded: false,
-    },
-    {
-        name: 'ROLE',
-        embedded: false,
-    },
-    {
-        name: 'CHARACTER_STATUS',
-        embedded: false,
-    },
-    {
-        name: 'CHARACTER_TYPE',
-        embedded: false,
-    },
-    {
-        name: 'RACE',
-        embedded: false,
-    },
-    {
-        name: 'CLASS',
-        embedded: false,
-    },
-    {
-        name: 'LOCATION_TYPE',
-        embedded: false,
-    },
+  {
+    name: "User",
+    embedded: false
+  },
+  {
+    name: "Campaign",
+    embedded: false
+  },
+  {
+    name: "HTMLContent",
+    embedded: false
+  },
+  {
+    name: "Character",
+    embedded: false
+  },
+  {
+    name: "CharacterMetadata",
+    embedded: false
+  },
+  {
+    name: "Ability",
+    embedded: false
+  },
+  {
+    name: "Skill",
+    embedded: false
+  },
+  {
+    name: "Location",
+    embedded: false
+  },
+  {
+    name: "LocationMetaData",
+    embedded: false
+  },
+  {
+    name: "Government",
+    embedded: false
+  },
+  {
+    name: "GovernmentParty",
+    embedded: false
+  },
+  {
+    name: "Economy",
+    embedded: false
+  },
+  {
+    name: "Currency",
+    embedded: false
+  },
+  {
+    name: "Flag",
+    embedded: false
+  },
+  {
+    name: "Etnicity",
+    embedded: false
+  },
+  {
+    name: "Religion",
+    embedded: false
+  },
+  {
+    name: "Population",
+    embedded: false
+  },
+  {
+    name: "Language",
+    embedded: false
+  },
+  {
+    name: "CLIMATE",
+    embedded: false
+  },
+  {
+    name: "WEATHER",
+    embedded: false
+  },
+  {
+    name: "ALIGNMENT",
+    embedded: false
+  },
+  {
+    name: "DENSITY_UNIT",
+    embedded: false
+  },
+  {
+    name: "LANGUAGE_SCRIPT",
+    embedded: false
+  },
+  {
+    name: "SKILL",
+    embedded: false
+  },
+  {
+    name: "ABILITY_TYPE",
+    embedded: false
+  },
+  {
+    name: "ROLE",
+    embedded: false
+  },
+  {
+    name: "CHARACTER_STATUS",
+    embedded: false
+  },
+  {
+    name: "CHARACTER_TYPE",
+    embedded: false
+  },
+  {
+    name: "RACE",
+    embedded: false
+  },
+  {
+    name: "CLASS",
+    embedded: false
+  },
+  {
+    name: "LOCATION_TYPE",
+    embedded: false
+  }
 ];
 
 /**
@@ -6591,8 +7503,8 @@ export const models: Model[] = [
  */
 
 export const Prisma = makePrismaClientClass<ClientConstructor<Prisma>>({
-    typeDefs,
-    models,
-    endpoint: `https://eu1.prisma.sh/public-polaroriole-675/backend/dev`,
+  typeDefs,
+  models,
+  endpoint: `https://eu1.prisma.sh/public-polaroriole-675/backend/dev`
 });
 export const prisma = new Prisma();

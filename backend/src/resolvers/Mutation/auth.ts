@@ -12,7 +12,6 @@ export const auth = {
         });
 
         const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
-        console.log({ token });
         ctx.response.cookie('token', token, {
             httpOnly: true,
             maxAge: 1000 * 60 * 60 * 24 * 365, // 1 year

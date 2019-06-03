@@ -1,11 +1,12 @@
 # import * from './generated/graphql-schema/schema.graphql'
 type Mutation {
-  register(email: String!, password: String!, role: ROLE): User!
-  login(email: String!, password: String!): User
-  removeUsers: [User]
+    register(email: String!, password: String!, role: ROLE): User!
+    login(email: String!, password: String!): User
+    removeUsers: [User]
+    createCampaign(data: CampaignCreateWithoutDmInput!): Campaign!
 }
 
 type Query {
-  user: User!
-  users: [User]
+    user: User!
+    campaign(id: ID!): Campaign
 }

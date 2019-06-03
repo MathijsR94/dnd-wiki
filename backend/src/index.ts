@@ -4,10 +4,12 @@ import resolvers from './resolvers';
 import { Request } from './utils';
 import * as jwt from 'jsonwebtoken';
 import * as cookieParser from 'cookie-parser';
+import { permissions } from './middleware/shield';
 
 const server = new GraphQLServer({
     typeDefs: './src/schema.graphql',
     resolvers,
+    middlewares: [permissions],
     context: request => ({
         ...request,
         db,

@@ -1,11 +1,8 @@
-import { getUserId, Context } from '../../utils';
+import { getUser, Context } from '../../utils';
 
 export const Query = {
-    user(parent, args, ctx: Context) {
-        const id = getUserId(ctx);
-        return ctx.db.user({ id });
-    },
-    users(parent, args, ctx: Context) {
-        return ctx.db.users();
+    async user(parent, args, ctx: Context) {
+        const userId = ctx.request.userId;
+        return ctx.db.user({ id: userId });
     },
 };

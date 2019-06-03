@@ -1,280 +1,282 @@
 type User @model {
-  id: ID! @unique @id
-  createdAt: DateTime! @createdAt
-  updatedAt: DateTime! @updatedAt
-  email: String! @unique
-  password: String!
-  role: ROLE! @default(value: PLAYER)
-  campaigns: [Campaign] @relation(link: TABLE)
-  firstName: String
-  lastName: String
-  characters: [Character] @relation(link: TABLE)
-  resetToken: String
-  resetTokenExpiry: String
+    id: ID! @unique @id
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
+    email: String! @unique
+    password: String!
+    role: ROLE! @default(value: PLAYER)
+    campaigns: [Campaign] @relation(link: TABLE)
+    firstName: String
+    lastName: String
+    characters: [Character] @relation(link: TABLE)
+    resetToken: String
+    resetTokenExpiry: String
 }
 
 type Campaign {
-  id: ID! @unique @id
-  name: String!
-  createdAt: DateTime! @createdAt
-  updatedAt: DateTime! @updatedAt
-  locations: [Location] @relation(link: TABLE)
-  players: [Character] @relation(link: TABLE)
+    id: ID! @unique @id
+    name: String!
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
+    locations: [Location] @relation(link: TABLE)
+    players: [Character] @relation(link: TABLE)
+    dm: User!
 }
 
 type HTMLContent {
-  id: ID! @unique @id
-  content: String!
-  invisibleTo: [Character]
+    id: ID! @unique @id
+    content: String!
+    invisibleTo: [Character]
 }
 
 type Character {
-  id: ID! @unique @id
-  firstName: String!
-  lastName: String
-  type: CHARACTER_TYPE!
-  metadata: CharacterMetadata
-  campaign: Campaign!
+    id: ID! @unique @id
+    firstName: String!
+    lastName: String
+    type: CHARACTER_TYPE!
+    metadata: CharacterMetadata
+    campaign: Campaign!
+    user: User
 }
 
 type CharacterMetadata {
-  id: ID! @unique @id
-  character: Character! @relation(link: INLINE)
-  abilities: [Ability]
-  skills: [Skill]
-  status: CHARACTER_STATUS
-  race: RACE
-  class: CLASS
-  alignment: ALIGNMENT
-  height: Int
-  weight: Int
+    id: ID! @unique @id
+    character: Character! @relation(link: INLINE)
+    abilities: [Ability]
+    skills: [Skill]
+    status: CHARACTER_STATUS
+    race: RACE
+    class: CLASS
+    alignment: ALIGNMENT
+    height: Int
+    weight: Int
 }
 
 type Ability {
-  id: ID! @unique @id
-  type: ABILITY_TYPE!
-  value: Int!
-  modifier: Int!
-  character: Character!
+    id: ID! @unique @id
+    type: ABILITY_TYPE!
+    value: Int!
+    modifier: Int!
+    character: Character!
 }
 
 type Skill {
-  id: ID! @unique @id
-  name: SKILL!
-  value: Int!
-  character: Character!
+    id: ID! @unique @id
+    name: SKILL!
+    value: Int!
+    character: Character!
 }
 
 type Location {
-  id: ID! @unique @id
-  type: LOCATION_TYPE!
-  name: String!
-  locations: [Location]
-  metadata: LocationMetaData
-  campaign: Campaign!
-  parent: ID
+    id: ID! @unique @id
+    type: LOCATION_TYPE!
+    name: String!
+    locations: [Location]
+    metadata: LocationMetaData
+    campaign: Campaign!
+    parent: ID
 }
 
 type LocationMetaData {
-  id: ID! @unique @id
-  location: Location! @relation(link: INLINE)
-  population: Population
-  languages: [Language]
-  religions: [Religion]
-  ethnicities: [Etnicity]
-  flag: [Flag]
-  economy: Economy
-  government: Government
-  weather: WEATHER
-  climate: CLIMATE
+    id: ID! @unique @id
+    location: Location! @relation(link: INLINE)
+    population: Population
+    languages: [Language]
+    religions: [Religion]
+    ethnicities: [Etnicity]
+    flag: [Flag]
+    economy: Economy
+    government: Government
+    weather: WEATHER
+    climate: CLIMATE
 }
 
 type Government {
-  id: ID! @unique @id
-  leader: Character
-  parties: [GovernmentParty]
-  content: [HTMLContent]
+    id: ID! @unique @id
+    leader: Character
+    parties: [GovernmentParty]
+    content: [HTMLContent]
 }
 
 type GovernmentParty {
-  id: ID! @unique @id
-  leader: Character
-  name: String!
-  content: [HTMLContent]
-  government: Government
+    id: ID! @unique @id
+    leader: Character
+    name: String!
+    content: [HTMLContent]
+    government: Government
 }
 
 type Economy {
-  id: ID! @unique @id
-  currency: Currency
-  location: [Location] @relation(link: TABLE)
+    id: ID! @unique @id
+    currency: Currency
+    location: [Location] @relation(link: TABLE)
 }
 
 type Currency {
-  id: ID! @unique @id
-  name: String!
-  sign: String
+    id: ID! @unique @id
+    name: String!
+    sign: String
 }
 
 type Flag {
-  id: ID! @unique @id
-  imageSrc: String
-  description: String!
-  location: Location @relation(link: TABLE)
+    id: ID! @unique @id
+    imageSrc: String
+    description: String!
+    location: Location @relation(link: TABLE)
 }
 
 type Etnicity {
-  id: ID! @unique @id
-  name: String!
+    id: ID! @unique @id
+    name: String!
 }
 
 type Religion {
-  id: ID! @unique @id
-  name: String!
-  deity: Character
-  content: [HTMLContent]
-  location: Location @relation(link: TABLE)
+    id: ID! @unique @id
+    name: String!
+    deity: Character
+    content: [HTMLContent]
+    location: Location @relation(link: TABLE)
 }
 
 type Population {
-  id: ID! @unique @id
-  location: Location! @relation(link: TABLE)
-  inhabitants: Int!
-  density: Int!
-  densityUnit: DENSITY_UNIT!
+    id: ID! @unique @id
+    location: Location! @relation(link: TABLE)
+    inhabitants: Int!
+    density: Int!
+    densityUnit: DENSITY_UNIT!
 }
 
 type Language {
-  id: ID! @unique @id
-  name: String!
-  script: LANGUAGE_SCRIPT
-  location: [Location]
+    id: ID! @unique @id
+    name: String!
+    script: LANGUAGE_SCRIPT
+    location: [Location]
 }
 
 enum CLIMATE {
-  Tropical
-  Dry
-  Mild
-  Continental
-  Polar
+    Tropical
+    Dry
+    Mild
+    Continental
+    Polar
 }
 
 enum WEATHER {
-  Wind
-  Sun
-  Cloudy
-  Snow
+    Wind
+    Sun
+    Cloudy
+    Snow
 }
 
 enum ALIGNMENT {
-  LG
-  NG
-  CG
-  LN
-  TN
-  CN
-  LE
-  NE
-  CE
+    LG
+    NG
+    CG
+    LN
+    TN
+    CN
+    LE
+    NE
+    CE
 }
 
 enum DENSITY_UNIT {
-  SqKm
-  Custom
+    SqKm
+    Custom
 }
 
 enum LANGUAGE_SCRIPT {
-  Common
-  Dwarvish
-  Elvish
-  Infernal
-  Celestial
-  Draconic
-  None
+    Common
+    Dwarvish
+    Elvish
+    Infernal
+    Celestial
+    Draconic
+    None
 }
 
 enum SKILL {
-  Acrobatics
-  AnimalHandling
-  Arcana
-  Athletics
-  Deception
-  History
-  Insight
-  Intimidation
-  Investigation
-  Medicine
-  Nature
-  Perception
-  Performance
-  Persuasion
-  Religion
-  SleightOfHand
-  Stealth
-  Survival
+    Acrobatics
+    AnimalHandling
+    Arcana
+    Athletics
+    Deception
+    History
+    Insight
+    Intimidation
+    Investigation
+    Medicine
+    Nature
+    Perception
+    Performance
+    Persuasion
+    Religion
+    SleightOfHand
+    Stealth
+    Survival
 }
 
 enum ABILITY_TYPE {
-  STR
-  DEX
-  CON
-  INT
-  WIS
-  CHA
+    STR
+    DEX
+    CON
+    INT
+    WIS
+    CHA
 }
 
 enum ROLE {
-  PLAYER
-  ADMIN
+    PLAYER
+    ADMIN
 }
 
 enum CHARACTER_STATUS {
-  ALIVE
-  DEAD
+    ALIVE
+    DEAD
 }
 
 enum CHARACTER_TYPE {
-  PC
-  NPC
+    PC
+    NPC
 }
 
 enum RACE {
-  Dragonborn
-  Dwarf
-  Elf
-  Gnome
-  HalfElf
-  HalfOrc
-  Halfling
-  Human
-  Tiefling
+    Dragonborn
+    Dwarf
+    Elf
+    Gnome
+    HalfElf
+    HalfOrc
+    Halfling
+    Human
+    Tiefling
 }
 
 enum CLASS {
-  Barbarian
-  Bard
-  Cleric
-  Druid
-  Fighter
-  Monk
-  Paladin
-  Ranger
-  Rogue
-  Sorcerer
-  Warlock
-  Wizard
+    Barbarian
+    Bard
+    Cleric
+    Druid
+    Fighter
+    Monk
+    Paladin
+    Ranger
+    Rogue
+    Sorcerer
+    Warlock
+    Wizard
 }
 
 enum LOCATION_TYPE {
-  Village
-  City
-  BigCity
-  Municipality
-  Province
-  State
-  Country
-  Continent
-  World
-  Universe
-  Plane
+    Village
+    City
+    BigCity
+    Municipality
+    Province
+    State
+    Country
+    Continent
+    World
+    Universe
+    Plane
 }

@@ -1,13 +1,13 @@
-import React, { FunctionComponentElement } from 'react';
-import { ErrorMessage } from 'formik';
-import { useTranslation } from 'react-i18next';
-import { FormHelperText } from '@material-ui/core';
+import React, { FunctionComponentElement } from "react";
+import { ErrorMessage } from "formik";
+import { useTranslation } from "react-i18next";
+import { FormHelperText } from "@material-ui/core";
 
-type Props = {
+interface Props {
   name: string;
-};
+}
 
-export default ({ name }: Props): FunctionComponentElement<Props> => {
+const FieldError = ({ name }: Props): FunctionComponentElement<Props> => {
   const { t } = useTranslation();
   return (
     <ErrorMessage
@@ -18,3 +18,6 @@ export default ({ name }: Props): FunctionComponentElement<Props> => {
     />
   );
 };
+
+FieldError.displayName = "FieldError";
+export default FieldError;

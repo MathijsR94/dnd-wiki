@@ -1,6 +1,6 @@
-import React, { Fragment, FunctionComponentElement } from 'react';
-import { Theme } from '@material-ui/core';
-import { useTranslation } from 'react-i18next';
+import React, { Fragment, FunctionComponentElement } from "react";
+import { Theme } from "@material-ui/core";
+import { useTranslation } from "react-i18next";
 import {
   Drawer,
   List,
@@ -10,15 +10,15 @@ import {
   createStyles,
   withStyles,
   WithStyles
-} from '@material-ui/core';
-import classNames from 'classnames';
-import { Link as RouterLink } from 'react-router-dom';
+} from "@material-ui/core";
+import classNames from "classnames";
+import { Link as RouterLink } from "react-router-dom";
 
 const items = [
   {
-    label: 'campaign.label',
+    label: "campaign.label",
     children: [
-      { label: 'campaign.create', icon: 'add', route: '/campaign/create' }
+      { label: "campaign.create", icon: "add", route: "/campaign/create" }
     ]
   }
 ];
@@ -35,10 +35,10 @@ const styles = (theme: Theme) =>
     item: {
       paddingTop: theme.spacing(0.5),
       paddingBottom: theme.spacing(0.5),
-      color: '#004499'
+      color: "#004499"
     },
     itemCategory: {
-      backgroundColor: '#f6f8fb',
+      backgroundColor: "#f6f8fb",
       paddingTop: theme.spacing(2),
       paddingBottom: theme.spacing(2)
     },

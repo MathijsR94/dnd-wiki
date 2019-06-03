@@ -16,9 +16,21 @@ export class AuthError extends Error {
     }
 }
 
-export function getUserId(ctx: Context) {
+export async function getUser(ctx: Context) {
     const { token } = ctx.request.cookies;
+    if (token) {
+        const { userId } = jwt.verify(token, process.env.APP_SECRET) as {
+            userId: string;
+        };
 
+        return await ctx.db.user({ id: userId });
+    }
+
+    throw new AuthError();
+}
+
+export async function getUserId(ctx: Context) {
+    const { token } = ctx.request.cookies;
     if (token) {
         const { userId } = jwt.verify(token, process.env.APP_SECRET) as {
             userId: string;

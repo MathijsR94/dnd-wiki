@@ -3,16 +3,24 @@
     "home": {
       "welcome": "Welcome to React and react-i18next"
     },
+    "auth": {
+      "loginButton": "Log in"
+    },
     "forms": {
       "invalid": {
         "email": "Invalid email"
       },
       "required": "This field is required",
-      "minLength": "The number of characters is too short"
+      "minLength": "The number of characters is too short",
+      "placeholder": {
+        "name": "name",
+        "email": "email"
+      }
     },
     "campaign": {
       "create": "Create",
-      "label": "Campaign"
+      "label": "Campaign",
+      "createButton": "Create campaign"
     }
   }
 }
