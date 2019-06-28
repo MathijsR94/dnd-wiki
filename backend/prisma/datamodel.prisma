@@ -13,14 +13,20 @@ type User @model {
     resetTokenExpiry: String
 }
 
+type Setting {
+    uuid: UUID! @unique @uuid
+    name: String!
+    locations: [Location!] @relation(link: TABLE)
+}
+
 type Campaign {
     id: ID! @unique @id
     name: String!
     createdAt: DateTime! @createdAt
     updatedAt: DateTime! @updatedAt
-    locations: [Location] @relation(link: TABLE)
     players: [Character] @relation(link: TABLE)
     dm: User!
+    setting: Setting!
 }
 
 type HTMLContent {
@@ -37,10 +43,10 @@ type Character {
     metadata: CharacterMetadata
     campaign: Campaign!
     user: User
-    quests: [Quest]
 }
 
 type CharacterMetadata {
+    quests: [Quest]
     id: ID! @unique @id
     character: Character! @relation(link: INLINE)
     function: CharacterFunction
@@ -81,7 +87,8 @@ type Personality {
 
 type Quest {
     name: String!
-    executor: [Character!]
+    executors: [Character!]
+    fullfilledBy: [Character!]
     givenBy: Character
     description: String
 }
@@ -221,12 +228,12 @@ type Economy {
     id: ID! @unique @id
     currency: Currency
     location: [Location] @relation(link: TABLE)
-    inkomsten
-    bedrijven
-        - shops
-            - tailor
-            - smith
-        - magic shops
+    trades: [Trade]
+}
+
+type Trade {
+    name: String!
+
 }
 
 type Currency {
