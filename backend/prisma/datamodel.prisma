@@ -37,17 +37,67 @@ type Character {
     metadata: CharacterMetadata
     campaign: Campaign!
     user: User
+    quests: [Quest]
 }
 
 type CharacterMetadata {
     id: ID! @unique @id
     character: Character! @relation(link: INLINE)
+    function: CharacterFunction
+    gender: GENDER
+    race: RACE
+    age: Int
+    class: CLASS
+    location: Location
+    status: CHARACTER_STATUS
+    allies: ALLY
+    religion: Religion
+    relatives: [Character]
+    groups: [Group]
+    enemies: [Group/Character/Location/Religion]
+    allies: [Group/Character/Location/Religion]
+    quests: [Quest]
+    alignment: ALIGNMENT
+    personality: Personality
+    interaction: CharacterInteraction
     abilities: [Ability]
     skills: [Skill]
-    status: CHARACTER_STATUS
-    race: RACE
-    class: CLASS
-    alignment: ALIGNMENT
+    build: CharacterBuild
+    roleplay: CharacterRolePlay
+}
+
+type CharacterRolePlay {
+    voicing: String
+}
+
+type CharacterInteraction {
+    metByParty: boolean
+    firstMet: DateTime
+}
+
+type Personality {
+
+}
+
+type Quest {
+    name: String!
+    executor: [Character!]
+    givenBy: Character
+    description: String
+}
+
+type Group {
+    name: String!
+    type: GROUP_TYPE!
+    characters: [Character!]
+}
+
+type CharacterFunction {
+    type:
+}
+
+type CharacterBuild {
+    size: CHARACTER_BUILD_SIZE
     height: Int
     weight: Int
 }
@@ -70,11 +120,16 @@ type Skill {
 type Location {
     id: ID! @unique @id
     type: LOCATION_TYPE!
+    typology: LocationTypology
     name: String!
     locations: [Location]
     metadata: LocationMetaData
     campaign: Campaign!
-    parent: ID
+}
+
+type LocationTypology {
+    id: ID! @unique @id
+    type: Barony etc
 }
 
 type LocationMetaData {
@@ -83,18 +138,74 @@ type LocationMetaData {
     population: Population
     languages: [Language]
     religions: [Religion]
-    ethnicities: [Etnicity]
-    flag: [Flag]
+    races: [RACE]
+    mark: [Flag/Sigil/Sign/Logo]
     economy: Economy
     government: Government
     weather: WEATHER
     climate: CLIMATE
+    quests: [Quest]
+    enemies: [Group/Character/Location/Religion]
+    allies: [Group/Character/Location/Religion]
 }
+
+type God {
+    name: String!
+    title: [String!]
+    alignment: ALIGNMENT
+    domain: GodDomain
+    description: String
+    location: [Location!]
+    worshippedBy: [Group/Religion/Location/Race/Class]
+    placesOfWorship: [Location!]
+}
+
+type HistoricalEvent {
+    start: EventDate!
+    end: EventDate!
+    duration: Int
+    location: [Location!]
+}
+
+type Era {
+    name: String!
+    start: EventDate!
+    end: EventDate
+}
+
+type EventDate {
+    day: Int!
+    month: Int!
+    year: Int!
+}
+
+type LoreCategory {
+
+}
+
+
+
+type Calendar {
+    daysPerWeek: Int!
+    weeksPerMonth: Int!
+    monthsPerYear: Int!
+}
+
+type GodDomain {
+    type: DOMAIN_TYPE
+    name: String!
+}
+
+enum DOMAIN_TYPE {
+    Custom
+}
+
 
 type Government {
     id: ID! @unique @id
     leader: Character
-    parties: [GovernmentParty]
+    type: GOVERNMENT_TYPE
+    freeform
     content: [HTMLContent]
 }
 
@@ -110,6 +221,12 @@ type Economy {
     id: ID! @unique @id
     currency: Currency
     location: [Location] @relation(link: TABLE)
+    inkomsten
+    bedrijven
+        - shops
+            - tailor
+            - smith
+        - magic shops
 }
 
 type Currency {
@@ -133,7 +250,7 @@ type Etnicity {
 type Religion {
     id: ID! @unique @id
     name: String!
-    deity: Character
+    worships: Character
     content: [HTMLContent]
     location: Location @relation(link: TABLE)
 }
@@ -279,4 +396,37 @@ enum LOCATION_TYPE {
     World
     Universe
     Plane
+}
+
+enum GENDER {
+    male
+    female
+    custom
+}
+
+
+enum GROUP_TYPE {
+    Cult
+    Group
+    Organization
+    Guild
+    Army
+    Company
+    Clan
+    Tribe
+    Order
+    Federation
+    Family
+    Syndicate
+    Cartel
+    Gang
+    Council
+    Crew
+    Club
+    Society
+    Union
+    Church
+    Temple
+    House
+    Custom
 }
