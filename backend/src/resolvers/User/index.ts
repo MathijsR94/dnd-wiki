@@ -7,4 +7,7 @@ export default {
     async characters(parent, args, ctx: Context) {
         return await ctx.db.user({ id: parent.id }).characters();
     },
+    async password() {
+        return '';
+    },
 };

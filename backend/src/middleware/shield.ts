@@ -1,8 +1,9 @@
-import { rule, shield, and, or, not } from 'graphql-shield';
+import { rule, shield } from 'graphql-shield';
 import { getUser } from '../utils';
 
 const isAuthenticated = rule()(async (parent, args, ctx, info) => {
     const user = await getUser(ctx);
+    console.log({ user });
     return user !== null;
 });
 

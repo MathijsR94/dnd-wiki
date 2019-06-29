@@ -18,6 +18,7 @@ export class AuthError extends Error {
 
 export async function getUser(ctx: Context) {
     const { token } = ctx.request.cookies;
+    console.log({ token });
     if (token) {
         const { userId } = jwt.verify(token, process.env.APP_SECRET) as {
             userId: string;

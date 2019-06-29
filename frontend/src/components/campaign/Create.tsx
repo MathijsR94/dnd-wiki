@@ -7,6 +7,8 @@ import * as Yup from "yup";
 import FieldError from "../shared/FieldError";
 import { withTranslation, WithTranslation } from "react-i18next";
 import { withRouter, RouteComponentProps } from "react-router";
+import { campaignsQuery } from "../nav/CampaignList";
+import { ApolloCache } from "apollo-cache";
 
 export const ROLES = {
   Player: "PLAYER",
@@ -17,6 +19,9 @@ const createCampaignMutation = gql`
   mutation createCampaignMutation($data: CampaignCreateWithoutDmInput!) {
     createCampaign(data: $data) {
       id
+      name
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -37,15 +42,33 @@ const CreateCampaignForm = ({
   t,
   history
 }: Props): FunctionComponentElement<Props> => (
-  <Mutation mutation={createCampaignMutation}>
+  <Mutation
+    mutation={createCampaignMutation}
+    update={(cache: any, { data: { createCampaign } }: any) => {
+      const { user } = cache.readQuery({ query: campaignsQuery });
+      cache.writeQuery({
+        query: campaignsQuery,
+        data: {
+          user: {
+            ...user,
+            campaigns: user.campaigns.concat([createCampaign])
+          }
+        }
+      });
+    }}
+  >
     {(createCampaign: MutationFunc<Values, {}>): ReactNode => (
       <Formik
         initialValues={{ name: "" }}
         onSubmit={({ name }, actions) => {
-          createCampaign({ variables: { data: { name } } }).then(() =>
-            history.push("/")
-          );
-          actions.setSubmitting(false);
+          createCampaign({ variables: { data: { name } } })
+            .then(() => {
+              actions.setSubmitting(false);
+              actions.resetForm();
+            })
+            .catch(() => {
+              actions.setSubmitting(false);
+            });
         }}
         validationSchema={CreateCampaignSchema}
         render={() => {

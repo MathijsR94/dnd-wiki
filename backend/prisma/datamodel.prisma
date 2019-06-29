@@ -18,53 +18,53 @@ type Campaign {
     name: String!
     createdAt: DateTime! @createdAt
     updatedAt: DateTime! @updatedAt
-    locations: [Location] @relation(link: TABLE)
     players: [Character] @relation(link: TABLE)
+    setting: CampaignSetting! @relation(link: TABLE)
     dm: User!
+}
+
+type CampaignSetting {
+    locations: [Location!] @relation(link: TABLE)
+    characters: [Character!] @relation(link: TABLE)
+    groups: [Group!] @relation(link: TABLE)
 }
 
 type HTMLContent {
     id: ID! @unique @id
     content: String!
-    invisibleTo: [Character]
 }
 
-type Character {
+type Group {
+    name: String!
+    setting: Setting!
+    type: GROUP_TYPE!
+}
+
+interface CharacterInterface {
     id: ID! @unique @id
     firstName: String!
     lastName: String
-    type: CHARACTER_TYPE!
     metadata: CharacterMetadata
+}
+
+type PlayableCharacter implements CharacterInterface {
     campaign: Campaign!
-    user: User
+    user: User!
+    type: CHARACTER_TYPE! @default(PC)
+}
+
+type NonPlayableCharacter implements CharacterInterface {
+    setting: [Setting!]
+    type: CHARACTER_TYPE! @default(NPC)
 }
 
 type CharacterMetadata {
     id: ID! @unique @id
     character: Character! @relation(link: INLINE)
-    abilities: [Ability]
-    skills: [Skill]
     status: CHARACTER_STATUS
     race: RACE
     class: CLASS
     alignment: ALIGNMENT
-    height: Int
-    weight: Int
-}
-
-type Ability {
-    id: ID! @unique @id
-    type: ABILITY_TYPE!
-    value: Int!
-    modifier: Int!
-    character: Character!
-}
-
-type Skill {
-    id: ID! @unique @id
-    name: SKILL!
-    value: Int!
-    character: Character!
 }
 
 type Location {
@@ -73,99 +73,13 @@ type Location {
     name: String!
     locations: [Location]
     metadata: LocationMetaData
-    campaign: Campaign!
+    setting: Setting!
     parent: ID
 }
 
 type LocationMetaData {
     id: ID! @unique @id
     location: Location! @relation(link: INLINE)
-    population: Population
-    languages: [Language]
-    religions: [Religion]
-    ethnicities: [Etnicity]
-    flag: [Flag]
-    economy: Economy
-    government: Government
-    weather: WEATHER
-    climate: CLIMATE
-}
-
-type Government {
-    id: ID! @unique @id
-    leader: Character
-    parties: [GovernmentParty]
-    content: [HTMLContent]
-}
-
-type GovernmentParty {
-    id: ID! @unique @id
-    leader: Character
-    name: String!
-    content: [HTMLContent]
-    government: Government
-}
-
-type Economy {
-    id: ID! @unique @id
-    currency: Currency
-    location: [Location] @relation(link: TABLE)
-}
-
-type Currency {
-    id: ID! @unique @id
-    name: String!
-    sign: String
-}
-
-type Flag {
-    id: ID! @unique @id
-    imageSrc: String
-    description: String!
-    location: Location @relation(link: TABLE)
-}
-
-type Etnicity {
-    id: ID! @unique @id
-    name: String!
-}
-
-type Religion {
-    id: ID! @unique @id
-    name: String!
-    deity: Character
-    content: [HTMLContent]
-    location: Location @relation(link: TABLE)
-}
-
-type Population {
-    id: ID! @unique @id
-    location: Location! @relation(link: TABLE)
-    inhabitants: Int!
-    density: Int!
-    densityUnit: DENSITY_UNIT!
-}
-
-type Language {
-    id: ID! @unique @id
-    name: String!
-    script: LANGUAGE_SCRIPT
-    location: [Location]
-}
-
-enum CLIMATE {
-    Tropical
-    Dry
-    Mild
-    Continental
-    Polar
-}
-
-enum WEATHER {
-    Wind
-    Sun
-    Cloudy
-    Snow
 }
 
 enum ALIGNMENT {
@@ -180,54 +94,9 @@ enum ALIGNMENT {
     CE
 }
 
-enum DENSITY_UNIT {
-    SqKm
-    Custom
-}
-
-enum LANGUAGE_SCRIPT {
-    Common
-    Dwarvish
-    Elvish
-    Infernal
-    Celestial
-    Draconic
-    None
-}
-
-enum SKILL {
-    Acrobatics
-    AnimalHandling
-    Arcana
-    Athletics
-    Deception
-    History
-    Insight
-    Intimidation
-    Investigation
-    Medicine
-    Nature
-    Perception
-    Performance
-    Persuasion
-    Religion
-    SleightOfHand
-    Stealth
-    Survival
-}
-
-enum ABILITY_TYPE {
-    STR
-    DEX
-    CON
-    INT
-    WIS
-    CHA
-}
-
 enum ROLE {
     PLAYER
-    ADMIN
+    GAMEMASTER
 }
 
 enum CHARACTER_STATUS {
@@ -279,4 +148,30 @@ enum LOCATION_TYPE {
     World
     Universe
     Plane
+}
+
+enum GROUP_TYPE {
+    Cult
+    Group
+    Organization
+    Guild
+    Army
+    Company
+    Clan
+    Tribe
+    Order
+    Federation
+    Family
+    Syndicate
+    Cartel
+    Gang
+    Council
+    Crew
+    Club
+    Society
+    Union
+    Church
+    Temple
+    House
+    Custom
 }

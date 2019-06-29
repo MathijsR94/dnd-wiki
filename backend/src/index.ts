@@ -20,7 +20,7 @@ server.express.use(cookieParser());
 
 server.express.use((req: Request, res, next) => {
     const { token } = req.cookies;
-
+    console.log({ req });
     if (token) {
         const { userId } = jwt.verify(token, process.env.APP_SECRET) as {
             userId: string;
@@ -31,4 +31,12 @@ server.express.use((req: Request, res, next) => {
     next();
 });
 
-server.start(() => console.log(`Server is running on http://localhost:4000`));
+server.start(
+    {
+        cors: {
+            credentials: true,
+            origin: ['http://localhost:3000'], // your frontend url.
+        },
+    },
+    () => console.log(`Server is running on http://localhost:4000`),
+);
