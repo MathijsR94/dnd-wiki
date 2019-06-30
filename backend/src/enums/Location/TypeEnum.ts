@@ -11,3 +11,5 @@ enum LOCATION_TYPE {
     Universe = 'universe',
     Plane = 'plane',
 }
+
+export default LOCATION_TYPE;

@@ -41,4 +41,20 @@ export default class User extends BaseEntity {
 
     @Column({ nullable: true })
     resetTokenExpiry?: string;
+
+    constructor(options: User) {
+        super();
+        if (options) {
+            this.id = options.id;
+            this.email = options.email;
+            this.password = options.password;
+            this.role = options.role;
+            this.firstName = options.firstName;
+            this.lastName = options.lastName;
+            this.resetToken = options.resetToken;
+            this.resetTokenExpiry = options.resetTokenExpiry;
+            this.createdAt = options.createdAt;
+            this.updatedAt = options.updatedAt;
+        }
+    }
 }

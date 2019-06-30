@@ -6,9 +6,12 @@ import {
     UpdateDateColumn,
     OneToMany,
     BaseEntity,
+    OneToOne,
+    JoinColumn,
 } from 'typeorm';
 import LocationMetaData from './MetaData';
 import CampaignSetting from '../CampaignSetting';
+import LOCATION_TYPE from '../../enums/Location/TypeEnum';
 
 @Entity()
 export default class Location extends BaseEntity {
@@ -24,10 +27,12 @@ export default class Location extends BaseEntity {
     @OneToMany(type => Location, location => location.id, { nullable: true })
     locations: [Location];
 
-    @Column({ nullable: true })
+    @OneToOne(type => LocationMetaData, { onDelete: 'CASCADE' })
+    @JoinColumn()
     metadata: LocationMetaData;
 
-    @Column()
+    @OneToOne(type => CampaignSetting)
+    @JoinColumn()
     setting: CampaignSetting;
 
     @CreateDateColumn()

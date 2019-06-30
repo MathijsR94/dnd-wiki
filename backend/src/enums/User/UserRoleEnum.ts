@@ -1,6 +1,6 @@
 enum USER_ROLE {
-    Player = 'player',
-    GameMaster = 'gameMaster',
+    Player = 'Player',
+    GameMaster = 'GameMaster',
 }
 
 export default USER_ROLE;

@@ -12,6 +12,7 @@ import {
 import Campaign from '../Campaign';
 import CharacterMetaData from './MetaData';
 import CHARACTER_TYPE from '../../enums/Character/TypeEnum';
+import User from '../User';
 
 @Entity()
 export default class Character extends BaseEntity {
@@ -36,4 +37,8 @@ export default class Character extends BaseEntity {
 
     @ManyToOne(type => Campaign)
     campaign: Campaign;
+
+    @OneToOne(type => User)
+    @JoinColumn()
+    user: User;
 }

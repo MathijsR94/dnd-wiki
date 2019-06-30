@@ -1,5 +1,5 @@
 type CampaignSetting {
     id: ID!
-    locations: [Location]
+    # locations: [Location]
     characters: [Character]
 }

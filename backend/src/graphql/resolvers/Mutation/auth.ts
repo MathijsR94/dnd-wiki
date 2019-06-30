@@ -1,20 +1,25 @@
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
-import { Context } from '../../utils';
-import User from '../../entities/User';
+import { Context } from '../../../utils';
+import User from '../../../entities/User';
 import { getRepository } from 'typeorm';
+import USER_ROLE from '../../../enums/User/UserRoleEnum';
 
 type AuthArgs = { email: string; password: string };
+type AuthArgsWithRole = AuthArgs & { role: USER_ROLE };
 
 export default {
-    register: async (parent: any, args: AuthArgs, ctx: Context): Promise<User> => {
+    register: async (parent: any, args: AuthArgsWithRole, ctx: Context): Promise<User> => {
         if (process.env.APP_SECRET) {
             const password = await bcrypt.hash(args.password, 10);
             // @ts-ignore
-            const user = await new User({
+            const user = new User({
                 email: args.email,
                 password,
+                role: args.role,
             });
+
+            console.log(user);
 
             const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
             ctx.response.cookie('token', token, {

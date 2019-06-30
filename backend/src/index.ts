@@ -1,5 +1,5 @@
 import { GraphQLServer, Options } from 'graphql-yoga';
-import resolvers from './resolvers';
+import resolvers from './graphql/resolvers';
 import { Request } from './utils';
 import * as jwt from 'jsonwebtoken';
 import * as cookieParser from 'cookie-parser';
@@ -7,6 +7,7 @@ import { createConnection } from 'typeorm';
 import { NextFunction } from 'express-serve-static-core';
 import { loadSchema } from 'graphql-toolkit';
 import { GraphQLDateTime } from 'graphql-iso-date';
+import 'reflect-metadata';
 
 loadSchema('src/graphql/types/**/*.graphql').then(data => {
     const typeDefs = data;
