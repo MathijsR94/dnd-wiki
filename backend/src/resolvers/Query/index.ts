@@ -1,11 +1,8 @@
-import { getUserId, Context } from '../../utils';
+import { getRepository } from 'typeorm';
+import User from '../../entities/User';
 
 export const Query = {
-    user(parent, args, ctx: Context) {
-        const id = getUserId(ctx);
-        return ctx.db.user({ id });
-    },
-    users(parent, args, ctx: Context) {
-        return ctx.db.users();
+    user: (parent: any, { id }: { id: string }) => {
+        return getRepository(User).findOne(id);
     },
 };

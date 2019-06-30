@@ -1,0 +1,9 @@
+type Campaign {
+    id: ID!
+    name: String!
+    createdAt: DateTime!
+    updatedAt: DateTime!
+    players: [Character]
+    setting: CampaignSetting!
+    dm: User!
+}

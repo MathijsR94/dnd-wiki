@@ -1,0 +1,14 @@
+type User {
+    id: ID!
+    createdAt: DateTime!
+    updatedAt: DateTime!
+    email: String!
+    password: String!
+    role: ROLE!
+    campaigns: [Campaign!]
+    firstName: String
+    lastName: String
+    characters: [Character!]
+    resetToken: String
+    resetTokenExpiry: String
+}

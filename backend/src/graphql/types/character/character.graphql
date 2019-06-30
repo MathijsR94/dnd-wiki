@@ -1,0 +1,6 @@
+type Character {
+    id: ID!
+    firstName: String!
+    lastName: String
+    metadata: CharacterMetadata
+}

@@ -1,43 +1,53 @@
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
 import { Context } from '../../utils';
+import User from '../../entities/User';
+import { getRepository } from 'typeorm';
 
-export const auth = {
-    async register(parent, args, ctx: Context) {
-        const password = await bcrypt.hash(args.password, 10);
-        const user = await ctx.db.createUser({
-            email: args.email,
-            password,
-            role: args.role,
-        });
+type AuthArgs = { email: string; password: string };
 
-        const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
-        console.log({ token });
-        ctx.response.cookie('token', token, {
-            httpOnly: true,
-            maxAge: 1000 * 60 * 60 * 24 * 365, // 1 year
-        });
-        return user;
-    },
-    async login(parent, { email, password }, ctx: Context, info) {
-        const user = await ctx.db.user({ email });
-        if (!user) {
-            throw new Error(`No user found with email ${email}`);
-        }
-        const validPassword = await bcrypt.compare(password, user.password);
-        if (!validPassword) {
-            throw new Error('Invalid password');
+export default {
+    register: async (parent: any, args: AuthArgs, ctx: Context): Promise<User> => {
+        if (process.env.APP_SECRET) {
+            const password = await bcrypt.hash(args.password, 10);
+            // @ts-ignore
+            const user = await new User({
+                email: args.email,
+                password,
+            });
+
+            const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
+            ctx.response.cookie('token', token, {
+                httpOnly: true,
+                maxAge: 1000 * 60 * 60 * 24 * 365, // 1 year
+            });
+
+            return await getRepository(User).save(user);
         }
 
-        const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
-        ctx.response.cookie('token', token, {
-            httpOnly: true,
-            maxAge: 1000 * 60 * 60 * 24 * 365,
-        });
-        return user;
+        return Promise.reject('Something went wrong');
     },
-    // TODO: remove
-    async removeUsers(parent, args, ctx: Context) {
-        await ctx.db.deleteManyUsers();
+    login: async (parent: any, args: AuthArgs, ctx: Context) => {
+        if (process.env.APP_SECRET) {
+            const user = await getRepository(User).findOne({ where: { email: args.email } });
+            if (!user) {
+                throw new Error(`No user found with email ${args.email}`);
+            }
+            const validPassword = await bcrypt.compare(args.password, user.password);
+            if (!validPassword) {
+                throw new Error('Invalid password');
+            }
+
+            const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
+            ctx.response.cookie('token', token, {
+                httpOnly: true,
+                maxAge: 1000 * 60 * 60 * 24 * 365,
+            });
+
+            const { password, ...rest } = await getRepository(User).findOneOrFail(user.id);
+            return rest;
+        }
+
+        return Promise.reject('Something went wrong');
     },
 };
