@@ -28,17 +28,16 @@ export default class Character extends BaseEntity {
     @Column()
     name: string;
 
-    @Column({ type: 'enum', enum: CHARACTER_TYPE, default: CHARACTER_TYPE.Npc })
+    @Column({ type: 'enum', enum: CHARACTER_TYPE, default: CHARACTER_TYPE.NPC })
     type: CHARACTER_TYPE;
 
     @OneToOne(type => CharacterMetaData, { nullable: true })
     @JoinColumn()
     metadata?: CharacterMetaData;
 
-    @ManyToOne(type => Campaign)
-    campaign: Campaign;
+    @ManyToOne(type => Campaign, { nullable: true })
+    campaign?: Campaign;
 
-    @OneToOne(type => User)
-    @JoinColumn()
+    @ManyToOne(type => User, { nullable: false })
     user: User;
 }

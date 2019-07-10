@@ -1,0 +1,7 @@
+type CharacterMetadata {
+    id: ID!
+}
+
+input CharacterMetaDataInput {
+    id: ID
+}

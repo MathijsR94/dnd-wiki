@@ -1,6 +1,6 @@
 enum CHARACTER_STATUS {
-    Alive,
-    Dead,
+    Alive = 'alive',
+    Dead = 'dead',
 }
 
 export default CHARACTER_STATUS;

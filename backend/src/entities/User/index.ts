@@ -6,8 +6,11 @@ import {
     CreateDateColumn,
     UpdateDateColumn,
     BaseEntity,
+    OneToMany,
 } from 'typeorm';
 import USER_ROLE from '../../enums/User/UserRoleEnum';
+import Campaign from '../Campaign';
+import Character from '../Character';
 
 @Entity()
 @Unique(['email'])
@@ -41,6 +44,12 @@ export default class User extends BaseEntity {
 
     @Column({ nullable: true })
     resetTokenExpiry?: string;
+
+    @OneToMany(type => Campaign, campaign => campaign.id, { nullable: true })
+    campaigns?: Campaign[];
+
+    @OneToMany(type => Character, character => character.id, { nullable: true })
+    characters?: Character[];
 
     constructor(options: User) {
         super();

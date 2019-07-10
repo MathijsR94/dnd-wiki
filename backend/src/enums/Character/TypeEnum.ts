@@ -1,6 +1,6 @@
 enum CHARACTER_TYPE {
-    Pc,
-    Npc,
+    PC = 'pc',
+    NPC = 'npc',
 }
 
 export default CHARACTER_TYPE;

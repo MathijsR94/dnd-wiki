@@ -1,9 +1,13 @@
-import { Query } from './Query';
-import auth from './Mutation/auth';
+import authMutation from './Mutation/auth';
+import userQuery from './Query/user';
+import characterMutation from './Mutation/character';
 
 export default {
-    Query,
+    Query: {
+        ...userQuery,
+    },
     Mutation: {
-        ...auth,
+        ...authMutation,
+        ...characterMutation,
     },
 };

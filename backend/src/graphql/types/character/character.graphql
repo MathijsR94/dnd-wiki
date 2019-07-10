@@ -1,6 +1,20 @@
 type Character {
     id: ID!
-    firstName: String!
-    lastName: String
-    # metadata: CharacterMetadata
+    name: String!
+    metadata: CharacterMetadata
+}
+
+input CharacterInput {
+    name: String!
+    userId: ID!
+    campaignId: ID
+    metadata: CharacterMetaDataInput
+}
+
+type Query {
+    character(id: ID!): Character
+}
+
+type Mutation {
+    createCharacter(data: CharacterInput!): Character!
 }
