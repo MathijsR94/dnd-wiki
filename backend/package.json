@@ -1,37 +1,38 @@
 {
-  "name": "backend",
-  "scripts": {
-    "start": "dotenv -- nodemon -e ts,graphql -x ts-node src/index.ts",
-    "debug": "dotenv -- nodemon -e ts,graphql -x ts-node --inspect src/index.ts",
-    "build": "rimraf dist && tsc",
-    "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
-  },
-  "dependencies": {
-    "@types/graphql-iso-date": "^3.3.1",
-    "bcryptjs": "2.4.3",
-    "cookie-parser": "^1.4.4",
-    "graphql-iso-date": "^3.6.1",
-    "graphql-toolkit": "^0.3.0",
-    "graphql-yoga": "1.17.4",
-    "jsonwebtoken": "8.5.1",
-    "pg": "^7.11.0",
-    "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.2.18"
-  },
-  "devDependencies": {
-    "@types/bcryptjs": "2.4.2",
-    "@types/cookie-parser": "^1.4.1",
-    "@types/jsonwebtoken": "^8.3.2",
-    "@types/node": "^12.0.10",
-    "@typescript-eslint/eslint-plugin": "^1.9.0",
-    "@typescript-eslint/parser": "^1.9.0",
-    "dotenv-cli": "1.4.0",
-    "eslint": "^5.16.0",
-    "eslint-config-prettier": "^4.3.0",
-    "eslint-plugin-prettier": "^3.1.0",
-    "nodemon": "1.19.1",
-    "prettier": "^1.17.1",
-    "ts-node": "7.0.1",
-    "typescript": "3.2.2"
-  }
+    "name": "backend",
+    "scripts": {
+        "start": "dotenv -- nodemon -e ts,graphql -x ts-node src/app.ts",
+        "debug": "dotenv -- nodemon -e ts,graphql -x ts-node --inspect src/app.ts",
+        "build": "rimraf dist && tsc",
+        "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
+    },
+    "dependencies": {
+        "@types/graphql-iso-date": "^3.3.1",
+        "apollo-errors": "^1.9.0",
+        "bcryptjs": "2.4.3",
+        "cookie-parser": "^1.4.4",
+        "graphql-iso-date": "^3.6.1",
+        "graphql-toolkit": "^0.3.0",
+        "graphql-yoga": "1.17.4",
+        "jsonwebtoken": "8.5.1",
+        "pg": "^7.11.0",
+        "reflect-metadata": "^0.1.13",
+        "typeorm": "^0.2.18"
+    },
+    "devDependencies": {
+        "@types/bcryptjs": "2.4.2",
+        "@types/cookie-parser": "^1.4.1",
+        "@types/jsonwebtoken": "^8.3.2",
+        "@types/node": "^12.0.10",
+        "@typescript-eslint/eslint-plugin": "^1.9.0",
+        "@typescript-eslint/parser": "^1.9.0",
+        "dotenv-cli": "1.4.0",
+        "eslint": "^5.16.0",
+        "eslint-config-prettier": "^4.3.0",
+        "eslint-plugin-prettier": "^3.1.0",
+        "nodemon": "1.19.1",
+        "prettier": "^1.17.1",
+        "ts-node": "7.0.1",
+        "typescript": "3.2.2"
+    }
 }

@@ -1,9 +1,11 @@
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
-import { Context } from '../../../utils';
+import { Context } from '../../../utilities/utils';
 import User from '../../../entities/User';
 import { getRepository } from 'typeorm';
 import USER_ROLE from '../../../enums/User/UserRoleEnum';
+import { InvalidCredentialsError, DuplicateUserError } from '../../../errors/Auth';
+import { GenericError } from '../../../errors/Generic';
 
 type AuthArgs = { email: string; password: string };
 type AuthArgsWithRole = AuthArgs & { role: USER_ROLE };
@@ -12,35 +14,35 @@ export default {
     register: async (parent: any, args: AuthArgsWithRole, ctx: Context): Promise<User> => {
         if (process.env.APP_SECRET) {
             const password = await bcrypt.hash(args.password, 10);
-            // @ts-ignore
-            const user = new User({
-                email: args.email,
-                password,
-                role: args.role,
-            });
+            const user = new User();
+            user.email = args.email;
+            user.password = password;
+            user.role = args.role;
 
-            console.log(user);
-
-            const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
-            ctx.response.cookie('token', token, {
-                httpOnly: true,
-                maxAge: 1000 * 60 * 60 * 24 * 365, // 1 year
-            });
-
-            return await getRepository(User).save(user);
+            try {
+                const newUser = await getRepository(User).save(user);
+                const token = jwt.sign({ userId: newUser.id }, process.env.APP_SECRET);
+                ctx.response.cookie('token', token, {
+                    httpOnly: true,
+                    maxAge: 1000 * 60 * 60 * 24 * 365, // 1 year
+                });
+                return newUser;
+            } catch (err) {
+                throw new DuplicateUserError();
+            }
         }
-
-        return Promise.reject('Something went wrong');
+        throw new GenericError();
     },
     login: async (parent: any, args: AuthArgs, ctx: Context) => {
         if (process.env.APP_SECRET) {
             const user = await getRepository(User).findOne({ where: { email: args.email } });
             if (!user) {
-                throw new Error(`No user found with email ${args.email}`);
+                throw new DuplicateUserError();
             }
+
             const validPassword = await bcrypt.compare(args.password, user.password);
             if (!validPassword) {
-                throw new Error('Invalid password');
+                throw new InvalidCredentialsError();
             }
 
             const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
@@ -53,6 +55,6 @@ export default {
             return rest;
         }
 
-        return Promise.reject('Something went wrong');
+        throw new GenericError();
     },
 };

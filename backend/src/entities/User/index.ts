@@ -7,6 +7,9 @@ import {
     UpdateDateColumn,
     BaseEntity,
     OneToMany,
+    Check,
+    JoinTable,
+    JoinColumn,
 } from 'typeorm';
 import USER_ROLE from '../../enums/User/UserRoleEnum';
 import Campaign from '../Campaign';
@@ -46,24 +49,10 @@ export default class User extends BaseEntity {
     resetTokenExpiry?: string;
 
     @OneToMany(type => Campaign, campaign => campaign.id, { nullable: true })
+    @JoinColumn()
     campaigns?: Campaign[];
 
     @OneToMany(type => Character, character => character.id, { nullable: true })
+    @JoinColumn()
     characters?: Character[];
-
-    constructor(options: User) {
-        super();
-        if (options) {
-            this.id = options.id;
-            this.email = options.email;
-            this.password = options.password;
-            this.role = options.role;
-            this.firstName = options.firstName;
-            this.lastName = options.lastName;
-            this.resetToken = options.resetToken;
-            this.resetTokenExpiry = options.resetTokenExpiry;
-            this.createdAt = options.createdAt;
-            this.updatedAt = options.updatedAt;
-        }
-    }
 }

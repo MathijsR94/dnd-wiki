@@ -6,8 +6,12 @@ import {
     UpdateDateColumn,
     OneToMany,
     BaseEntity,
+    OneToOne,
+    JoinColumn,
+    ManyToOne,
 } from 'typeorm';
 import Character from '../Character';
+import User from '../User';
 
 @Entity()
 export default class Campaign extends BaseEntity {
@@ -24,5 +28,9 @@ export default class Campaign extends BaseEntity {
     updatedAt: string;
 
     @OneToMany(type => Character, player => player.id, { nullable: true })
-    players: Character[];
+    players?: Character[];
+
+    @ManyToOne(type => User, user => user.id)
+    @JoinColumn()
+    dm: User;
 }

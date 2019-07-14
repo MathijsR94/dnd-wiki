@@ -7,3 +7,11 @@ type Campaign {
     setting: CampaignSetting!
     dm: User!
 }
+
+input CampaignCreateInput {
+    name: String!
+}
+
+type Mutation {
+    createCampaign(data: CampaignCreateInput!): Campaign!
+}

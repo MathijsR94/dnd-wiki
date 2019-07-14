@@ -1,4 +1,4 @@
-type User {
+type UserWithPassword {
     id: ID!
     createdAt: DateTime!
     updatedAt: DateTime!
@@ -13,7 +13,7 @@ type User {
     password: String!
 }
 
-type UserWithoutPassword {
+type User {
     id: ID!
     createdAt: DateTime!
     updatedAt: DateTime!
@@ -28,12 +28,12 @@ type UserWithoutPassword {
 }
 
 type Query {
-    user(id: ID!): UserWithoutPassword
+    user(id: ID!): User
 }
 
 type Mutation {
-    login(email: String!, password: String!): UserWithoutPassword
-    register(email: String!, password: String!, role: ROLE): UserWithoutPassword
+    login(email: String!, password: String!): User
+    register(email: String!, password: String!, role: ROLE): User
 }
 
 enum ROLE {

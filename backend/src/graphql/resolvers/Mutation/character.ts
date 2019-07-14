@@ -15,13 +15,10 @@ export default {
     createCharacter: async (parent: any, args: { data: CharacterInput }, ctx: Context) => {
         const { userId, name, metadata, campaignId } = args.data;
         if (args.data.userId === ctx.request.userId) {
-            const character = new Character();
             const user = await getRepository(User).findOneOrFail(userId);
+            const character = new Character();
             character.name = name;
-
-            if (user) {
-                character.user = user;
-            }
+            character.user = user;
 
             if (campaignId) {
                 const linkedCampaign = await getRepository(Campaign).findOneOrFail(campaignId);

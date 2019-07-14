@@ -1,6 +1,6 @@
 import { GraphQLServer, Options } from 'graphql-yoga';
 import resolvers from './graphql/resolvers';
-import { Request } from './utils';
+import { Request } from './utilities/utils';
 import * as jwt from 'jsonwebtoken';
 import * as cookieParser from 'cookie-parser';
 import { createConnection } from 'typeorm';
@@ -8,6 +8,12 @@ import { NextFunction } from 'express-serve-static-core';
 import { loadSchema } from 'graphql-toolkit';
 import { GraphQLDateTime } from 'graphql-iso-date';
 import 'reflect-metadata';
+import { formatError } from 'apollo-errors';
+
+const options: Options = {
+    formatError,
+    port: 4000,
+};
 
 loadSchema('src/graphql/types/**/*.graphql').then(data => {
     const typeDefs = data;
@@ -39,7 +45,7 @@ loadSchema('src/graphql/types/**/*.graphql').then(data => {
 
     createConnection()
         .then(() => {
-            server.start((options: Options) => console.log(`Server is running on http://localhost:${options.port}`));
+            server.start(options, () => console.log(`Server is running on http://localhost:${options.port}`));
         })
         .catch(err => {
             console.log(err);
