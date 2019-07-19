@@ -1,14 +1,14 @@
 import Character from '../../../entities/Character';
 import { getRepository } from 'typeorm';
 import User from '../../../entities/User';
-import { Context } from '../../../utils';
+import { Context } from '../../../utilities/utils';
 import Campaign from '../../../entities/Campaign';
 
 type CharacterInput = {
     name: Character['name'];
-    userId: string;
+    userId: User['id'];
     metadata?: Character['metadata'];
-    campaignId?: string;
+    campaignId?: Campaign['id'];
 };
 
 export default {

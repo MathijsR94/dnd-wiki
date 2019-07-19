@@ -1,6 +1,6 @@
 import { getRepository } from 'typeorm';
 import User from '../../../entities/User';
-import { Context } from '../../../utils';
+import { Context } from '../../../utilities/utils';
 import Campaign from '../../../entities/Campaign';
 
 type CampaignInput = {

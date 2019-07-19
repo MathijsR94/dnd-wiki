@@ -7,8 +7,8 @@ import USER_ROLE from '../../../enums/User/UserRoleEnum';
 import { InvalidCredentialsError, DuplicateUserError } from '../../../errors/Auth';
 import { GenericError } from '../../../errors/Generic';
 
-type AuthArgs = { email: string; password: string };
-type AuthArgsWithRole = AuthArgs & { role: USER_ROLE };
+type AuthArgs = { email: User['email']; password: User['password'] };
+type AuthArgsWithRole = AuthArgs & { role: User['role'] };
 
 export default {
     register: async (parent: any, args: AuthArgsWithRole, ctx: Context): Promise<User> => {

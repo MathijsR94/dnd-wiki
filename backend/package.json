@@ -7,11 +7,13 @@
         "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
     },
     "dependencies": {
+        "@sentry/node": "^5.5.0",
         "@types/graphql-iso-date": "^3.3.1",
         "apollo-errors": "^1.9.0",
         "bcryptjs": "2.4.3",
         "cookie-parser": "^1.4.4",
         "graphql-iso-date": "^3.6.1",
+        "graphql-middleware-sentry": "^3.2.0",
         "graphql-toolkit": "^0.3.0",
         "graphql-yoga": "1.17.4",
         "jsonwebtoken": "8.5.1",
