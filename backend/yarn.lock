@@ -116,9 +116,10 @@
     "@sentry/types" "5.5.0"
     tslib "^1.9.3"
 
-"@sentry/node@^5.5.0":
+"@sentry/node@5.5.0":
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/@sentry/node/-/node-5.5.0.tgz#70a627fc3957132e592278ece457f73ab5dd0ec3"
+  integrity sha512-Qn60k7NqJhzpI7PnW/dOz2Y1ofD6kMKGEgLWAO5vcbNShyQj7m2JYFk0c7nFU9HDgertqkxQnvhvIGvT+QokaQ==
   dependencies:
     "@sentry/core" "5.5.0"
     "@sentry/hub" "5.5.0"
@@ -157,9 +158,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/cookie-parser@^1.4.1":
+"@types/cookie-parser@1.4.1":
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/@types/cookie-parser/-/cookie-parser-1.4.1.tgz#e88a39c41960f31549b4c52dd8620aa4a2feb4bb"
+  integrity sha512-iJY6B3ZGufLiDf2OCAgiAAQuj1sMKC/wz/7XCEjZ+/MDuultfFJuSwrBKcLSmJ5iYApLzCCYBYJZs0Ws8GPmwA==
   dependencies:
     "@types/express" "*"
 
@@ -193,9 +195,10 @@
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@types/graphql-deduplicator/-/graphql-deduplicator-2.0.0.tgz#9e577b8f3feb3d067b0ca756f4a1fb356d533922"
 
-"@types/graphql-iso-date@^3.3.1":
+"@types/graphql-iso-date@3.3.1":
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/@types/graphql-iso-date/-/graphql-iso-date-3.3.1.tgz#dbb540ae62c68c00eba1d1feb4602d7209257e9d"
+  integrity sha512-x64IejUTqiiC2NGMgMYVOsKgViKknfnhzJHS8pMiYdDqbR5Fd9XHAkujGYvAOBkjFB6TDunY6S8uLDT/OnrKBA==
   dependencies:
     "@types/graphql" "*"
 
@@ -207,9 +210,10 @@
   version "14.0.3"
   resolved "https://registry.yarnpkg.com/@types/graphql/-/graphql-14.0.3.tgz#389e2e5b83ecdb376d9f98fae2094297bc112c1c"
 
-"@types/jsonwebtoken@^8.3.2":
+"@types/jsonwebtoken@8.3.2":
   version "8.3.2"
   resolved "https://registry.yarnpkg.com/@types/jsonwebtoken/-/jsonwebtoken-8.3.2.tgz#e3d5245197152346fae7ee87d5541aa5a92d0362"
+  integrity sha512-Mkjljd9DTpkPlrmGfTJvcP4aBU7yO2QmW7wNVhV4/6AEUxYoacqU7FJU/N0yFEHTsIrE4da3rUrjrR5ejicFmA==
   dependencies:
     "@types/node" "*"
 
@@ -221,9 +225,10 @@
   version "10.12.12"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.12.tgz#e15a9d034d9210f00320ef718a50c4a799417c47"
 
-"@types/node@^12.0.10":
+"@types/node@12.0.10":
   version "12.0.10"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.0.10.tgz#51babf9c7deadd5343620055fc8aff7995c8b031"
+  integrity sha512-LcsGbPomWsad6wmMNv7nBLw7YYYyfdYcz6xryKYQhx89c3XXan+8Q6AJ43G5XDIaklaVkK3mE4fCb0SBvMiPSQ==
 
 "@types/range-parser@*":
   version "1.2.3"
@@ -240,9 +245,10 @@
   version "0.5.4"
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.5.4.tgz#b863a4191e525206819e008097ebf0fb2e3a1cdc"
 
-"@typescript-eslint/eslint-plugin@^1.9.0":
+"@typescript-eslint/eslint-plugin@1.9.0":
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-1.9.0.tgz#29d73006811bf2563b88891ceeff1c5ea9c8d9c6"
+  integrity sha512-FOgfBorxjlBGpDIw+0LaZIXRX6GEEUfzj8LXwaQIUCp+gDOvkI+1WgugJ7SmWiISqK9Vj5r8S7NDKO/LB+6X9A==
   dependencies:
     "@typescript-eslint/experimental-utils" "1.9.0"
     "@typescript-eslint/parser" "1.9.0"
@@ -258,7 +264,7 @@
   dependencies:
     "@typescript-eslint/typescript-estree" "1.9.0"
 
-"@typescript-eslint/parser@1.9.0", "@typescript-eslint/parser@^1.9.0":
+"@typescript-eslint/parser@1.9.0":
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-1.9.0.tgz#5796cbfcb9a3a5757aeb671c1ac88d7a94a95962"
   dependencies:
@@ -364,9 +370,10 @@ apollo-cache-control@^0.1.0:
   dependencies:
     graphql-extensions "^0.0.x"
 
-apollo-errors@^1.9.0:
+apollo-errors@1.9.0:
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/apollo-errors/-/apollo-errors-1.9.0.tgz#f1ed0ca0a6be5cd2f24e2eaa7b0860a10146ff51"
+  integrity sha512-XVukHd0KLvgY6tNjsPS3/Re3U6RQlTKrTbIpqqeTMo2N34uQMr+H1UheV21o8hOZBAFosvBORVricJiP5vfmrw==
   dependencies:
     assert "^1.4.1"
     extendable-error "^0.1.5"
@@ -873,9 +880,10 @@ content-type@~1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/content-type/-/content-type-1.0.4.tgz#e138cc75e040c727b1966fe5e5f8c9aee256fe3b"
 
-cookie-parser@^1.4.4:
+cookie-parser@1.4.4:
   version "1.4.4"
   resolved "https://registry.yarnpkg.com/cookie-parser/-/cookie-parser-1.4.4.tgz#e6363de4ea98c3def9697b93421c09f30cf5d188"
+  integrity sha512-lo13tqF3JEtFO7FyA49CqbhaFkskRJ0u/UAiINgrIXeRCY41c88/zxtrECl8AKH3B0hj9q10+h3Kt8I7KlW4tw==
   dependencies:
     cookie "0.3.1"
     cookie-signature "1.0.6"
@@ -1125,15 +1133,17 @@ escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
 
-eslint-config-prettier@^4.3.0:
+eslint-config-prettier@4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-4.3.0.tgz#c55c1fcac8ce4518aeb77906984e134d9eb5a4f0"
+  integrity sha512-sZwhSTHVVz78+kYD3t5pCWSYEdVSBR0PXnwjDRsUs8ytIrK8PLXw+6FKp8r3Z7rx4ZszdetWlXYKOHoUrrwPlA==
   dependencies:
     get-stdin "^6.0.0"
 
-eslint-plugin-prettier@^3.1.0:
+eslint-plugin-prettier@3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-prettier/-/eslint-plugin-prettier-3.1.0.tgz#8695188f95daa93b0dc54b249347ca3b79c4686d"
+  integrity sha512-XWX2yVuwVNLOUhQijAkXz+rMPPoCr7WFiAl8ig6I7Xn+pPVhDhzg4DxHpmbeb0iqjO9UronEA3Tb09ChnFVHHA==
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
@@ -1152,9 +1162,10 @@ eslint-visitor-keys@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-1.0.0.tgz#3f3180fb2e291017716acb4c9d6d5b5c34a6a81d"
 
-eslint@^5.16.0:
+eslint@5.16.0:
   version "5.16.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-5.16.0.tgz#a1e3ac1aae4a3fbd8296fcf8f7ab7314cbb6abea"
+  integrity sha512-S3Rz11i7c8AA5JPv7xAH+dOyq/Cu/VXHiHXBPOU1k/JAM5dXqQPt3qcrhpHSorXmrpu2g0gkIBVXAqCpzfoZIg==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     ajv "^6.9.1"
@@ -1602,13 +1613,15 @@ graphql-import@0.7.1, graphql-import@^0.7.0:
     lodash "^4.17.4"
     resolve-from "^4.0.0"
 
-graphql-iso-date@^3.6.1:
+graphql-iso-date@3.6.1:
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/graphql-iso-date/-/graphql-iso-date-3.6.1.tgz#bd2d0dc886e0f954cbbbc496bbf1d480b57ffa96"
+  integrity sha512-AwFGIuYMJQXOEAgRlJlFL4H1ncFM8n8XmoVDTNypNOZyQ8LFDG2ppMFlsS862BSTCDcSUfHp8PD3/uJhv7t59Q==
 
-graphql-middleware-sentry@^3.2.0:
+graphql-middleware-sentry@3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/graphql-middleware-sentry/-/graphql-middleware-sentry-3.2.0.tgz#a72872ae4b9fbe286980023a3c531286b8258df7"
+  integrity sha512-tIrxJIL+MRh2pxoot+EYJIrFfPgB3OF4nqmmh1gi54q/V1rgv7w46Ahn2jgl2nTu4bKw6mtGVF4CKikWCMPa5Q==
 
 graphql-middleware@3.0.2:
   version "3.0.2"
@@ -1647,9 +1660,10 @@ graphql-tag-pluck@0.8.2:
     "@babel/types" "^7.4.4"
     source-map-support "^0.5.12"
 
-graphql-toolkit@^0.3.0:
+graphql-toolkit@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/graphql-toolkit/-/graphql-toolkit-0.3.0.tgz#9b754bd7b657267dd74f468e27513f33c52e81fb"
+  integrity sha512-4ikecqnmFtr8UrKgbfA8UD4DmVnCqVHEQSPFb0BhIAnqiDiaY5EGI9fa0VJQLGCpBZYwSvaW29hdu3jI+EykJw==
   dependencies:
     "@kamilkisiela/graphql-tools" "4.0.5"
     aggregate-error "2.2.0"
@@ -2763,9 +2777,10 @@ pg-types@~2.0.0:
     postgres-date "~1.0.4"
     postgres-interval "^1.1.0"
 
-pg@^7.11.0:
+pg@7.11.0:
   version "7.11.0"
   resolved "https://registry.yarnpkg.com/pg/-/pg-7.11.0.tgz#a8b9ae9cf19199b7952b72957573d0a9c5e67c0c"
+  integrity sha512-YO4V7vCmEMGoF390LJaFaohWNKaA2ayoQOEZmiHVcAUF+YsRThpf/TaKCgSvsSE7cDm37Q/Cy3Gz41xiX/XjTw==
   dependencies:
     buffer-writer "2.0.0"
     packet-reader "1.0.0"
@@ -2821,9 +2836,10 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier@^1.17.1:
+prettier@1.17.1:
   version "1.17.1"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.17.1.tgz#ed64b4e93e370cb8a25b9ef7fef3e4fd1c0995db"
+  integrity sha512-TzGRNvuUSmPgwivDqkZ9tM/qTGW9hqDKWOE9YHiyQdixlKbv7kvEqsmDPrcHJTKwthU774TQwZXVtaQ/mMsvjg==
 
 process-nextick-args@~2.0.0:
   version "2.0.0"
@@ -2930,9 +2946,10 @@ readdirp@^2.2.1:
     micromatch "^3.1.10"
     readable-stream "^2.0.2"
 
-reflect-metadata@^0.1.13:
+reflect-metadata@0.1.13, reflect-metadata@^0.1.13:
   version "0.1.13"
   resolved "https://registry.yarnpkg.com/reflect-metadata/-/reflect-metadata-0.1.13.tgz#67ae3ca57c972a2aa1642b10fe363fe32d49dc08"
+  integrity sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg==
 
 regex-not@^1.0.0, regex-not@^1.0.2:
   version "1.0.2"
@@ -3518,9 +3535,10 @@ type-is@~1.6.16:
     media-typer "0.3.0"
     mime-types "~2.1.18"
 
-typeorm@^0.2.18:
+typeorm@0.2.18:
   version "0.2.18"
   resolved "https://registry.yarnpkg.com/typeorm/-/typeorm-0.2.18.tgz#8ae1d21104117724af41ddc11035c40a705e1de8"
+  integrity sha512-S553GwtG5ab268+VmaLCN7gKDqFPIzUw0eGMTobJ9yr0Np62Ojfx8j1Oa9bIeh5p7Pz1/kmGabAHoP1MYK05pA==
   dependencies:
     app-root-path "^2.0.1"
     buffer "^5.1.0"
