@@ -1,0 +1,42 @@
+type UserWithPassword {
+    id: ID!
+    createdAt: DateTime!
+    updatedAt: DateTime!
+    email: String!
+    role: ROLE!
+    campaigns: [Campaign!]
+    firstName: String
+    lastName: String
+    characters: [Character!]
+    resetToken: String
+    resetTokenExpiry: String
+    password: String!
+}
+
+type User {
+    id: ID!
+    createdAt: DateTime!
+    updatedAt: DateTime!
+    email: String!
+    role: ROLE!
+    campaigns: [Campaign!]
+    firstName: String
+    lastName: String
+    characters: [Character!]
+    resetToken: String
+    resetTokenExpiry: String
+}
+
+type Query {
+    user(id: ID!): User
+}
+
+type Mutation {
+    login(email: String!, password: String!): User
+    register(email: String!, password: String!, role: ROLE): User
+}
+
+enum ROLE {
+    Player
+    GameMaster
+}
