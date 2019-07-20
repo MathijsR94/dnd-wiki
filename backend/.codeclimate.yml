@@ -1,7 +1,0 @@
-plugins:
-  eslint:
-    enabled: true
-    config:
-      config: ./.eslintrc.js
-      extensions:
-      - .ts
