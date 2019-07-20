@@ -1,7 +1,7 @@
 module.exports = {
   cacheDirectory: '.jest-cache',
   coverageDirectory: '.jest-coverage',
-  coveragePathIgnorePatterns: ['<rootDir>/packages/(?:.+?)/lib/'],
+  coveragePathIgnorePatterns: ['<rootDir>/apps/(?:.+?)/lib/'],
   coverageReporters: ['html', 'text'],
   coverageThreshold: {
       global: {
@@ -15,5 +15,5 @@ module.exports = {
   transform: {
     '^.+\\.tsx?$': 'ts-jest'
   },
-  roots: ['<rootDir>/packages'],
+  roots: ['<rootDir>/packages', '<rootDir>/apps'],
 };
