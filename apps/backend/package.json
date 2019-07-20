@@ -13,7 +13,7 @@
         "apollo-errors": "1.9.0",
         "bcryptjs": "2.4.3",
         "cookie-parser": "1.4.4",
-        "dotenv": "^8.0.0",
+        "dotenv": "8.0.0",
         "graphql-iso-date": "3.6.1",
         "graphql-middleware-sentry": "3.2.0",
         "graphql-toolkit": "0.3.0",
@@ -22,5 +22,9 @@
         "pg": "7.11.0",
         "reflect-metadata": "0.1.13",
         "typeorm": "0.2.18"
+    },
+    "devDependencies": {
+        "@types/jsonwebtoken": "^8.3.2",
+        "cookie-parser": "^1.4.4"
     }
 }
