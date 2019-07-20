@@ -16,6 +16,6 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    cd backend && yarn
-    yarn build
-  displayName: 'yarn install in backend and build'
+    cd apps/backend && yarn
+    yarn test
+  displayName: 'yarn install in backend and run tests'
