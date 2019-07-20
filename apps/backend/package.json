@@ -24,7 +24,7 @@
         "typeorm": "0.2.18"
     },
     "devDependencies": {
-        "@types/jsonwebtoken": "^8.3.2",
-        "cookie-parser": "^1.4.4"
+        "@types/cookie-parser": "1.4.1",
+        "@types/jsonwebtoken": "8.3.2"
     }
 }
