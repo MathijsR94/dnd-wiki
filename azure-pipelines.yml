@@ -16,5 +16,5 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    yarn test apps/backend
+    yarn && yarn test apps/backend
   displayName: 'Run backend tests'
