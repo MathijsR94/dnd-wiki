@@ -5,3 +5,5 @@ plugins:
       config: ./.eslintrc.js
       extensions:
       - .ts
+      - .tsx
+      - .js
