@@ -12,6 +12,7 @@ import { formatError } from 'apollo-errors';
 import { sentry } from 'graphql-middleware-sentry';
 import { Context } from 'graphql-yoga/dist/types';
 import { FatalErrorMessage } from './errors/Fatal';
+require('dotenv').config()
 
 const options: Options = {
     formatError,

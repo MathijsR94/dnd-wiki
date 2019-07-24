@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "build": "lerna exec --parallel -- babel --root-mode upward src -d lib --ignore **/*.story.js,**/*.spec.js",
-    "test": "jest"
+    "test": "jest",
+    "bootstrap": "lerna bootstrap --use-workspaces"
   },
   "devDependencies": {
     "@babel/cli": "7.5.5",
