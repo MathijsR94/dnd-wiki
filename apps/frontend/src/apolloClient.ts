@@ -1,5 +1,4 @@
-import ApolloClient from 'apollo-boost';
-import { InMemoryCache } from 'apollo-cache-inmemory';
+import ApolloClient, { InMemoryCache } from 'apollo-boost';
 
 export const client = new ApolloClient({
   cache: new InMemoryCache(),

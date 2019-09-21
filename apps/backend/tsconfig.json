@@ -1,10 +1,9 @@
 {
   "extends": "../../tsconfig.json",
-    "compilerOptions": {
-        "moduleResolution": "node",
-        "rootDir": "src",
-        "outDir": "dist",
-        "strictPropertyInitialization": false,
-        "typeRoots": ["./src/types"]
-    }
+  "compilerOptions": {
+      "moduleResolution": "node",
+      "rootDir": "src",
+      "outDir": "dist",
+      "strictPropertyInitialization": false,
+  }
 }
