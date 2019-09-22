@@ -1,0 +1,26 @@
+.toolbar__button {
+  background-color: #fff;
+  outline: 0;
+  border: 1px solid #f2f2f2;
+  display: flex;
+}
+
+.toolbar__button:hover {
+  background-color: #f9f9f9;
+}
+
+.toolbar__button--active {
+  background-color: #0047a3;
+}
+
+.toolbar__button--active svg {
+  fill: #fff;
+}
+
+.toolbar__button--active:hover {
+  background-color: #0052bd;
+}
+
+.draftJsToolbar__toolbar__dNtBH {
+  display: flex;
+}
