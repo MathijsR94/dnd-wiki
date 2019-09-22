@@ -1,0 +1,15 @@
+.DraftEditor-editorContainer {
+  box-sizing: border-box;
+  cursor: text;
+  padding: 16px;
+  border-radius: 2px;
+  margin: 1em 0;
+}
+
+.DraftEditor-editorContainer p {
+  margin: 0;
+}
+
+.DraftEditor-editorContainer [data-block='true'] [data-offset-key] span:hover {
+  outline: 1px solid #0047a3;
+}
