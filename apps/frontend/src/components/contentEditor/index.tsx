@@ -7,6 +7,8 @@ import {
     RawDraftContentState,
     AtomicBlockUtils,
     convertToRaw,
+    Entity,
+    Modifier,
 } from 'draft-js';
 import Editor, {EditorPlugin, composeDecorators} from 'draft-js-plugins-editor';
 import Toolbar, {staticToolbarPlugin} from './components/Toolbar';
@@ -14,16 +16,15 @@ import {Map} from 'immutable';
 import createAlignmentPlugin from 'draft-js-alignment-plugin';
 import createFocusPlugin from 'draft-js-focus-plugin';
 import createImagePlugin from 'draft-js-image-plugin';
+import createHideContentPlugin, {
+    HideContentPlugin,
+} from './plugins/hideContent';
 import blockRenderer from './format/blockRenderer';
-import entities from './entities';
 import 'draft-js-image-plugin/lib/plugin.css';
 import 'draft-js-alignment-plugin/lib/plugin.css';
 import './css/editorButtons.css';
 import './css/editor.css';
 
-/**
- * Plugins
- */
 const focusPlugin = createFocusPlugin();
 const alignmentPlugin = createAlignmentPlugin();
 const decorator = composeDecorators(
@@ -39,8 +40,11 @@ const blockRenderMap = Map({
     },
 });
 
+let hideContentPlugin: HideContentPlugin;
+
 type Props = {
     body?: RawDraftContentState;
+    editMode: boolean;
 };
 
 type State = {
@@ -48,12 +52,7 @@ type State = {
 };
 
 class ContentEditor extends Component<Props, State> {
-    plugins: Array<EditorPlugin> = [
-        staticToolbarPlugin,
-        focusPlugin,
-        alignmentPlugin,
-        imagePlugin,
-    ];
+    plugins: Array<EditorPlugin> = [];
     editor = createRef<Editor>();
 
     constructor(props: Props) {
@@ -65,10 +64,26 @@ class ContentEditor extends Component<Props, State> {
         this.state = {
             editorState,
         };
+
+        hideContentPlugin = createHideContentPlugin({
+            handleSelect: this.handleIdSelect,
+            selectionKey: 'ids',
+        });
+
+        this.plugins = [
+            hideContentPlugin,
+            staticToolbarPlugin,
+            focusPlugin,
+            alignmentPlugin,
+            imagePlugin,
+        ];
     }
 
     onChange = (e: EditorState) => {
-        console.log(JSON.stringify(convertToRaw(e.getCurrentContent())));
+        localStorage.setItem(
+            'contentState',
+            JSON.stringify(convertToRaw(e.getCurrentContent())),
+        );
         this.setState({editorState: e});
     };
 
@@ -84,33 +99,8 @@ class ContentEditor extends Component<Props, State> {
         return 'not-handled';
     };
 
-    onAddImage = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        e.preventDefault();
-        const {editorState} = this.state;
-        const urlValue = window.prompt('Paste Image Link');
-        const contentState = editorState.getCurrentContent();
-        const contentStateWithEntity = contentState.createEntity(
-            entities.image,
-            'IMMUTABLE',
-            {src: urlValue},
-        );
-        const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
-        const newEditorState = EditorState.set(editorState, {
-            currentContent: contentStateWithEntity,
-        });
-
-        this.setState(
-            {
-                editorState: AtomicBlockUtils.insertAtomicBlock(
-                    newEditorState,
-                    entityKey,
-                    ' ',
-                ),
-            },
-            () => {
-                setTimeout(() => this.focus(), 0);
-            },
-        );
+    handleIdSelect = (): Promise<Array<number>> => {
+        return Promise.resolve([1, 2]);
     };
 
     focus = () => {
@@ -119,8 +109,19 @@ class ContentEditor extends Component<Props, State> {
         }
     };
 
+    hideContent = async () => {
+        if (hideContentPlugin) {
+            const {editorState} = this.state;
+            hideContentPlugin
+                .hideContent(editorState, this.handleIdSelect, 'ids')
+                .then((newEditorState) => this.onChange(newEditorState))
+                .catch((err) => console.error(err));
+        }
+    };
+
     render(): ReactNode {
         const {editorState} = this.state;
+        const {editMode} = this.props;
         return (
             <Fragment>
                 <Editor
@@ -131,9 +132,15 @@ class ContentEditor extends Component<Props, State> {
                     blockRendererFn={blockRenderer}
                     blockRenderMap={blockRenderMap}
                     plugins={this.plugins}
+                    readOnly={!editMode}
                 />
-                <Toolbar onAddImage={this.onAddImage} />
-                <AlignmentTool />
+                {editMode && (
+                    <Fragment>
+                        <Toolbar />
+                        <button onClick={this.hideContent}>Hide</button>
+                        <AlignmentTool />
+                    </Fragment>
+                )}
             </Fragment>
         );
     }

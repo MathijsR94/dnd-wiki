@@ -29,7 +29,7 @@ const theme = {
     buttonWrapper: 'toolbar__button-wrapper',
 };
 
-export default ({onAddImage}: Props) => (
+export default () => (
     <Toolbar>
         {(externalProps: any) => (
             <Fragment>
