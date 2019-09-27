@@ -7,12 +7,12 @@
     "bootstrap": "lerna bootstrap --use-workspaces"
   },
   "devDependencies": {
-    "@babel/cli": "7.6.0",
-    "@babel/core": "7.6.0",
-    "@babel/preset-env": "7.6.0",
+    "@babel/cli": "7.6.2",
+    "@babel/core": "7.6.2",
+    "@babel/preset-env": "7.6.2",
     "@babel/preset-react": "7.0.0",
     "@types/jest": "24.0.18",
-    "@typescript-eslint/parser": "2.3.0",
+    "@typescript-eslint/parser": "2.3.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "24.9.0",
     "babel-loader": "8.0.6",
@@ -25,10 +25,10 @@
     "jest-resolve": "24.9.0",
     "lerna": "3.16.4",
     "prettier": "1.18.2",
-    "react-test-renderer": "16.9.0",
+    "react-test-renderer": "16.10.0",
     "ts-jest": "24.1.0",
     "typescript": "3.6.3",
-    "webpack": "4.40.2"
+    "webpack": "4.41.0"
   },
   "workspaces": [
     "packages/*",
