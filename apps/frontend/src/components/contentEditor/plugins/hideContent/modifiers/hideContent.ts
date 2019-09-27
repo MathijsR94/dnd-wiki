@@ -1,4 +1,4 @@
-import {EditorState, Modifier, AtomicBlockUtils} from 'draft-js';
+import {EditorState, Modifier} from 'draft-js';
 export type HideContent = (
     editorState: EditorState,
     handleSelect: () => Promise<Array<number>>,

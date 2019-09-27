@@ -5,21 +5,16 @@ import {
     DraftHandleValue,
     convertFromRaw,
     RawDraftContentState,
-    AtomicBlockUtils,
     convertToRaw,
-    Entity,
-    Modifier,
 } from 'draft-js';
 import Editor, {EditorPlugin, composeDecorators} from 'draft-js-plugins-editor';
 import Toolbar, {staticToolbarPlugin} from './components/Toolbar';
-import {Map} from 'immutable';
 import createAlignmentPlugin from 'draft-js-alignment-plugin';
 import createFocusPlugin from 'draft-js-focus-plugin';
 import createImagePlugin from 'draft-js-image-plugin';
 import createHideContentPlugin, {
     HideContentPlugin,
 } from './plugins/hideContent';
-import blockRenderer from './format/blockRenderer';
 import 'draft-js-image-plugin/lib/plugin.css';
 import 'draft-js-alignment-plugin/lib/plugin.css';
 import './css/editorButtons.css';
@@ -33,12 +28,6 @@ const decorator = composeDecorators(
 );
 const imagePlugin = createImagePlugin({decorator});
 const {AlignmentTool} = alignmentPlugin;
-
-const blockRenderMap = Map({
-    unstyled: {
-        element: 'p',
-    },
-});
 
 let hideContentPlugin: HideContentPlugin;
 
@@ -129,8 +118,6 @@ class ContentEditor extends Component<Props, State> {
                     editorState={editorState}
                     onChange={this.onChange}
                     handleKeyCommand={this.handleKeyCommand}
-                    blockRendererFn={blockRenderer}
-                    blockRenderMap={blockRenderMap}
                     plugins={this.plugins}
                     readOnly={!editMode}
                 />
