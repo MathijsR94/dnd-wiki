@@ -10,10 +10,10 @@ h3 span,
 h4 span,
 h5 span,
 h6 span {
-  font-family: 'Fjalla One', sans-serif;
+    font-family: 'Fjalla One', sans-serif;
 }
 
 p,
 span {
-  font-family: 'Noto Sans', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
 }

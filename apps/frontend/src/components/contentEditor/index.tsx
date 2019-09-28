@@ -1,4 +1,10 @@
-import React, {Component, ReactNode, Fragment, createRef} from 'react';
+import React, {
+    Component,
+    ReactNode,
+    Fragment,
+    createRef,
+    useState,
+} from 'react';
 import {
     EditorState,
     RichUtils,
@@ -19,7 +25,9 @@ import 'draft-js-image-plugin/lib/plugin.css';
 import 'draft-js-alignment-plugin/lib/plugin.css';
 import './css/editorButtons.css';
 import './css/editor.css';
-
+import {useModal} from 'react-modal-hook';
+import Modal from '../shared/modal';
+import useLocalStorage from '../../hooks/useLocalStorage';
 const focusPlugin = createFocusPlugin();
 const alignmentPlugin = createAlignmentPlugin();
 const decorator = composeDecorators(
@@ -40,97 +48,79 @@ type State = {
     editorState: EditorState;
 };
 
-class ContentEditor extends Component<Props, State> {
-    plugins: Array<EditorPlugin> = [];
-    editor = createRef<Editor>();
+const ContentEditor = ({body, editMode}: Props) => {
+    const initEditorState = body
+        ? EditorState.createWithContent(convertFromRaw(body))
+        : EditorState.createEmpty();
+    const [editorState, setEditorState] = useState(initEditorState);
 
-    constructor(props: Props) {
-        super(props);
-        const editorState = props.body
-            ? EditorState.createWithContent(convertFromRaw(props.body))
-            : EditorState.createEmpty();
+    hideContentPlugin = createHideContentPlugin({
+        handleSelect: handleIdSelect,
+        selectionKey: 'ids',
+    });
+    const plugins = [
+        hideContentPlugin,
+        staticToolbarPlugin,
+        focusPlugin,
+        alignmentPlugin,
+        imagePlugin,
+    ];
+    const [setContentState] = useLocalStorage('contentState', editorState);
 
-        this.state = {
-            editorState,
-        };
+    const [showModal] = useModal(({isOpen}) => (
+        <Modal isOpen={isOpen}>
+            <span>Joe!</span>
+        </Modal>
+    ));
 
-        hideContentPlugin = createHideContentPlugin({
-            handleSelect: this.handleIdSelect,
-            selectionKey: 'ids',
-        });
-
-        this.plugins = [
-            hideContentPlugin,
-            staticToolbarPlugin,
-            focusPlugin,
-            alignmentPlugin,
-            imagePlugin,
-        ];
+    function onChange(e: EditorState) {
+        setContentState(JSON.stringify(convertToRaw(e.getCurrentContent())));
+        setEditorState(e);
     }
 
-    onChange = (e: EditorState) => {
-        localStorage.setItem(
-            'contentState',
-            JSON.stringify(convertToRaw(e.getCurrentContent())),
-        );
-        this.setState({editorState: e});
-    };
-
-    handleKeyCommand = (
+    function handleKeyCommand(
         command: string,
         editorState: EditorState,
-    ): DraftHandleValue => {
+    ): DraftHandleValue {
         const newState = RichUtils.handleKeyCommand(editorState, command);
         if (newState) {
-            this.onChange(newState);
+            onChange(newState);
             return 'handled';
         }
         return 'not-handled';
-    };
+    }
 
-    handleIdSelect = (): Promise<Array<number>> => {
-        return Promise.resolve([1, 2]);
-    };
-
-    focus = () => {
-        if (this.editor && this.editor.current) {
-            this.editor.current.focus();
-        }
-    };
-
-    hideContent = async () => {
+    async function hideContent() {
         if (hideContentPlugin) {
-            const {editorState} = this.state;
             hideContentPlugin
-                .hideContent(editorState, this.handleIdSelect, 'ids')
-                .then((newEditorState) => this.onChange(newEditorState))
+                .hideContent(editorState, handleIdSelect, 'ids')
+                .then((newEditorState) => onChange(newEditorState))
                 .catch((err) => console.error(err));
         }
-    };
-
-    render(): ReactNode {
-        const {editorState} = this.state;
-        const {editMode} = this.props;
-        return (
-            <Fragment>
-                <Editor
-                    ref={this.editor}
-                    editorState={editorState}
-                    onChange={this.onChange}
-                    handleKeyCommand={this.handleKeyCommand}
-                    plugins={this.plugins}
-                    readOnly={!editMode}
-                />
-                {editMode && (
-                    <Fragment>
-                        <Toolbar />
-                        <button onClick={this.hideContent}>Hide</button>
-                        <AlignmentTool />
-                    </Fragment>
-                )}
-            </Fragment>
-        );
     }
-}
+
+    function handleIdSelect(): Promise<Array<number>> {
+        // @ts-ignore
+        return showModal();
+    }
+
+    return (
+        <Fragment>
+            <Editor
+                editorState={editorState}
+                onChange={onChange}
+                handleKeyCommand={handleKeyCommand}
+                plugins={plugins}
+                readOnly={!editMode}
+            />
+            {editMode && (
+                <Fragment>
+                    <Toolbar hideContent={hideContent} />
+                    <AlignmentTool />
+                </Fragment>
+            )}
+        </Fragment>
+    );
+};
 
 export default ContentEditor;

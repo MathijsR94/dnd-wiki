@@ -5,6 +5,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import ContentEditor from '../contentEditor';
 import './app.css';
 import {RawDraftContentState} from 'draft-js';
+import {ModalProvider} from 'react-modal-hook';
 
 const contentState = localStorage.getItem('contentState');
 const data: RawDraftContentState = contentState
@@ -17,14 +18,14 @@ const data: RawDraftContentState = contentState
 // @ts-ignore
 const editMode = true;
 
-const App = () => {
+export default () => {
     return (
         <ApolloProvider client={client}>
-            <Router>
-                <ContentEditor body={data} editMode={editMode} />
-            </Router>
+            <ModalProvider>
+                <Router>
+                    <ContentEditor body={data} editMode={editMode} />
+                </Router>
+            </ModalProvider>
         </ApolloProvider>
     );
 };
-
-export default App;

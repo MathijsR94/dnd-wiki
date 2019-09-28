@@ -11,10 +11,12 @@ import {
     CodeButton,
     BlockquoteButton,
     CodeBlockButton,
+    createBlockStyleButton,
 } from 'draft-js-buttons';
 import createToolbarPlugin, {Separator} from 'draft-js-static-toolbar-plugin';
 import 'draft-js-static-toolbar-plugin/lib/plugin.css';
 import '../css/toolbar.css';
+import HideContentButton from './buttons/HideContent';
 
 type Props = {
     onAddImage: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
@@ -29,7 +31,8 @@ const theme = {
     buttonWrapper: 'toolbar__button-wrapper',
 };
 
-export default () => (
+// @ts-ignore
+export default ({hideContent}) => (
     <Toolbar>
         {(externalProps: any) => (
             <Fragment>
@@ -45,6 +48,11 @@ export default () => (
                 <OrderedListButton theme={theme} {...externalProps} />
                 <BlockquoteButton theme={theme} {...externalProps} />
                 <CodeBlockButton theme={theme} {...externalProps} />
+                <HideContentButton
+                    hideContent={hideContent}
+                    theme={theme}
+                    {...externalProps}
+                />
             </Fragment>
         )}
     </Toolbar>
