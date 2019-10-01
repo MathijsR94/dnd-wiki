@@ -53,6 +53,10 @@ const ContentEditor = ({body, editMode}: Props) => {
         ? EditorState.createWithContent(convertFromRaw(body))
         : EditorState.createEmpty();
     const [editorState, setEditorState] = useState(initEditorState);
+    const [LSContentState, setLSContentState] = useLocalStorage(
+        'contentState',
+        editorState,
+    );
 
     hideContentPlugin = createHideContentPlugin({
         handleSelect: handleIdSelect,
@@ -65,7 +69,6 @@ const ContentEditor = ({body, editMode}: Props) => {
         alignmentPlugin,
         imagePlugin,
     ];
-    const [setContentState] = useLocalStorage('contentState', editorState);
 
     const [showModal] = useModal(({isOpen}) => (
         <Modal isOpen={isOpen}>
@@ -74,8 +77,8 @@ const ContentEditor = ({body, editMode}: Props) => {
     ));
 
     function onChange(e: EditorState) {
-        setContentState(JSON.stringify(convertToRaw(e.getCurrentContent())));
         setEditorState(e);
+        setLSContentState(convertToRaw(e.getCurrentContent()));
     }
 
     function handleKeyCommand(
