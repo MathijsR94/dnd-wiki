@@ -1,28 +1,33 @@
 import React from 'react';
 import {ApolloProvider} from '@apollo/react-hooks';
 import {client} from '../../apolloClient';
-import {BrowserRouter as Router} from 'react-router-dom';
-import ContentEditor from '../contentEditor';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import Home from './home';
+import Sidebar from '../sidebar';
+import Character from '../character';
+
+import styled from 'styled-components';
 import './app.css';
-import {RawDraftContentState} from 'draft-js';
+import ThemeProvider from '../../providers/theme';
 
-const contentState = localStorage.getItem('contentState');
-const data: RawDraftContentState = contentState
-    ? JSON.parse(contentState)
-    : null;
-
-/**
- * Simuleer het bewerken van een pagina, of een live omgeving
- */
-// @ts-ignore
-const editMode = true;
+const Container = styled.div`
+    display: flex;
+`;
 
 const App = () => {
     return (
         <ApolloProvider client={client}>
-            <Router>
-                <ContentEditor body={data} editMode={editMode} />
-            </Router>
+            <ThemeProvider>
+                <Router>
+                    <Container>
+                        <Sidebar />
+                        <Switch>
+                            <Route exact path="/" component={Home} />
+                            <Route path="/character" component={Character} />
+                        </Switch>
+                    </Container>
+                </Router>
+            </ThemeProvider>
         </ApolloProvider>
     );
 };
