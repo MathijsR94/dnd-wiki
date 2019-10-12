@@ -1,3 +1,10 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 h1,
 h2,
 h3,
@@ -10,10 +17,11 @@ h3 span,
 h4 span,
 h5 span,
 h6 span {
-  font-family: 'Fjalla One', sans-serif;
+    font-family: 'Fjalla One', sans-serif;
 }
 
+body,
 p,
 span {
-  font-family: 'Noto Sans', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
 }
