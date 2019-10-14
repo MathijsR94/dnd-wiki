@@ -11,12 +11,11 @@ export const Sidebar = styled.aside`
     flex-direction: column;
     background-color: ${(props) => props.theme.colors.aside.background};
     color: ${(props) => props.theme.colors.aside.text};
-    padding: ${(props) => props.theme.spacing(1)};
+    padding: ${(props) => props.theme.spacing([2, 1])};
 `;
 
 export default () => (
     <Sidebar>
         <CampaignSwitcher />
-        <SidebarProfile />
     </Sidebar>
 );

@@ -25,12 +25,48 @@ const useEffectTheme = () => {
     });
 
     useEffect(() => {
-        const lsDark = localStorage.getItem('dark') === 'true';
+        const lsDark = Boolean(localStorage.getItem('dark'));
 
         setThemeState({
             dark: lsDark,
             hasThemeLoaded: true,
         });
+    }, []);
+
+    useEffect(() => {
+        if (!window.matchMedia) {
+            return;
+        }
+        const dark = window.matchMedia('(prefers-color-scheme: dark)');
+        const listener = (e: MediaQueryListEvent) => {
+            if (!e) {
+                return;
+            }
+
+            setThemeState({
+                dark: e.matches,
+                hasThemeLoaded: true,
+            });
+            localStorage.setItem('dark', JSON.stringify(e.matches));
+        };
+
+        if (dark) {
+            if (dark.addEventListener) {
+                dark.addEventListener('change', listener);
+            }
+
+            localStorage.setItem('dark', JSON.stringify(dark.matches));
+            setThemeState({
+                dark: dark.matches,
+                hasThemeLoaded: true,
+            });
+        }
+
+        return () => {
+            if (dark && dark.removeEventListener) {
+                dark.removeEventListener('change', listener);
+            }
+        };
     }, []);
 
     return [themeState, setThemeState];

@@ -14,8 +14,12 @@ export default {
             heading: '#222',
         },
         select: {
-            background: '#eceef2',
+            background: '#fff',
             text: '#999ca7',
+        },
+        topbar: {
+            background: '#004394',
+            text: '#fff',
         },
         link: '#004394',
     },

@@ -4,6 +4,7 @@ import {client} from '../../apolloClient';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Home from './home';
 import Sidebar from '../sidebar';
+import Topbar from '../topbar';
 import Character from '../character';
 
 import styled from 'styled-components';
@@ -19,6 +20,7 @@ const App = () => {
         <ApolloProvider client={client}>
             <ThemeProvider>
                 <Router>
+                    <Topbar />
                     <Container>
                         <Sidebar />
                         <Switch>
