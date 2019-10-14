@@ -7,7 +7,6 @@ const user = {
     fullName: 'Aleesia Trismoira',
     race: 'Half-Elf',
     class: 'Druid',
-    avatar: 'https://placehold.it/75x75',
     level: 4,
 };
 
@@ -44,9 +43,6 @@ export default () => {
 
     return (
         <SidebarProfile>
-            <SidebarProfileAvatar>
-                <img src={user.avatar} />
-            </SidebarProfileAvatar>
             <SidebarProfileInfo>
                 <h3>{user.fullName}</h3>
                 <p>

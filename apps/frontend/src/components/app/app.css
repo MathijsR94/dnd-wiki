@@ -18,6 +18,7 @@ h4 span,
 h5 span,
 h6 span {
     font-family: 'Fjalla One', sans-serif;
+    margin-top: 0;
 }
 
 body,

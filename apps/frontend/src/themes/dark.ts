@@ -17,6 +17,10 @@ export default {
             background: '#1e2d3e',
             text: '#6e7885',
         },
+        topbar: {
+            background: '#5ba8eb',
+            text: '#fff',
+        },
         link: '#5ba8eb',
     },
 };
