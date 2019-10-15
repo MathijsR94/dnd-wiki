@@ -22,7 +22,6 @@ const App = () => {
                 <Router>
                     <Topbar />
                     <Container>
-                        <Sidebar />
                         <Switch>
                             <Route exact path="/" component={Home} />
                             <Route path="/character" component={Character} />

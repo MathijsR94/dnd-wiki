@@ -1,9 +1,14 @@
 import React from 'react';
 import Main from '../main';
 import Link from '../shared/link';
+import CharacterSidebarLeft from './sidebarLeft';
+import CharacterSidebarRight from './sidebarRight';
 
 export default () => (
-    <Main>
+    <Main
+        sidebarLeft={<CharacterSidebarLeft />}
+        sidebarRight={<CharacterSidebarRight />}
+    >
         <h1>Byman, Eater Of Sheep</h1>
 
         <p>

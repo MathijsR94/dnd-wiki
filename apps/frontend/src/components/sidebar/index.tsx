@@ -1,21 +1,34 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import styled from 'styled-components';
-import CampaignSwitcher from '../campaign/switcher';
-import SidebarProfile from '../user/sidebarProfile';
 
-export const Sidebar = styled.aside`
+type Props = {
+    side: 'left' | 'right';
+    children: ReactNode;
+};
+
+const Sidebar = styled.aside`
     display: flex;
-    flex: 1 1 15%;
+    flex: 1 1 ${(props: Props) => (props.side === 'left' ? '20%' : '35%')};
     min-height: calc(100vh - ${(props) => props.theme.spacing(2)});
     overflow-y: scroll;
     flex-direction: column;
     background-color: ${(props) => props.theme.colors.aside.background};
     color: ${(props) => props.theme.colors.aside.text};
-    padding: ${(props) => props.theme.spacing([2, 1])};
+    position: relative;
+
+    &:after {
+        content: '';
+        display: block;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        ${(props: Props) => (props.side === 'left' ? 'right: 0' : 'left: 0')}
+        width: 25px;
+        box-shadow: inset
+            ${(props: Props) =>
+                props.side === 'left' ? '-7px 0 9px -7px' : '10px 0 14px -4px'}
+            ${(props) => props.theme.colors.aside.shadow};
+    }
 `;
 
-export default () => (
-    <Sidebar>
-        <CampaignSwitcher />
-    </Sidebar>
-);
+export default (props: Props) => <Sidebar {...props} />;

@@ -7,6 +7,7 @@ export default {
             background: '#11171f',
             text: '#fff',
             heading: '#ced3d4',
+            shadow: 'rgba(0, 0, 0, 0.4)',
         },
         main: {
             background: '#131e2b',
@@ -22,5 +23,6 @@ export default {
             text: '#fff',
         },
         link: '#5ba8eb',
+        separator: '#252b34',
     },
 };
