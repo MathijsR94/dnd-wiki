@@ -3,13 +3,13 @@ import {ApolloProvider} from '@apollo/react-hooks';
 import {client} from '../../apolloClient';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Home from './home';
-import Sidebar from '../sidebar';
 import Topbar from '../topbar';
 import Character from '../character';
 
 import styled from 'styled-components';
-import './app.css';
 import ThemeProvider from '../../providers/theme';
+import './app.css';
+import '../../i18n';
 
 const Container = styled.div`
     display: flex;

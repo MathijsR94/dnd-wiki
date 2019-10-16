@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
 import {lighten} from 'polished';
 
-const StyledLink = styled(Link)`
+const Link = styled.a`
     color: ${(props) => props.theme.colors.link};
     text-decoration: none;
 
@@ -13,10 +12,10 @@ const StyledLink = styled(Link)`
 `;
 
 type Props = {
-    href: string;
-    children: string;
+    href?: string;
+    children?: string;
 };
 
 export default ({href = '#', children}: Props) => (
-    <StyledLink to={href}>{children}</StyledLink>
+    <Link href={href}>{children}</Link>
 );
