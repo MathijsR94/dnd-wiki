@@ -3,6 +3,7 @@ import Main from '../main';
 import Link from '../shared/link';
 import CharacterSidebarLeft from './sidebarLeft';
 import CharacterSidebarRight from './sidebarRight';
+import slugify from '../../libs/slugify';
 
 export default () => (
     <Main
@@ -18,7 +19,7 @@ export default () => (
             it is angry.
         </p>
 
-        <h2 id="a-red-dragons-lair">A Red Dragon’s Lair</h2>
+        <h2 id={slugify('A Red Dragon’s Lair')}>A Red Dragon’s Lair</h2>
 
         <p>
             Red dragons lair in high mountains or hills, dwelling in caverns
@@ -41,9 +42,9 @@ export default () => (
             has slain, and the nations it has conquered.
         </p>
 
-        <h3>Regional Effects</h3>
+        <h3 id={slugify('Regional Effects')}>Regional Effects</h3>
 
-        <p id="regional-effects">
+        <p>
             The region containing a legendary red dragon’s lair is warped by the
             dragon’s magic, which creates one or more of the following effects:
         </p>
