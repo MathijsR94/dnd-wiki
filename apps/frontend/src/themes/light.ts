@@ -1,4 +1,9 @@
 import shared from './shared';
+import {darken} from 'polished';
+
+const variables = {
+    topbar: '#004394',
+};
 
 export default {
     ...shared,
@@ -19,10 +24,14 @@ export default {
             text: '#999ca7',
         },
         topbar: {
-            background: '#004394',
+            background: variables.topbar,
             text: '#fff',
         },
-        link: '#004394',
+        searchBar: {
+            background: darken(0.1, variables.topbar),
+            placeholder: '#d0d0d0',
+        },
+        link: variables.topbar,
         separator: '#e1e3e8',
     },
 };

@@ -12,79 +12,56 @@ export default () => (
         <h1>Byman, Eater Of Sheep</h1>
 
         <p>
-            <strong>Pellentesque habitant morbi tristique</strong> senectus et
-            netus et malesuada fames ac turpis egestas. Vestibulum tortor quam,
-            feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu
-            libero sit amet quam egestas semper.
-            <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend
-            leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum
-            erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit
-            amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros
-            ipsum rutrum orci, sagittis tempus lacus enim ac dui.
-            <Link href="/">Donec non enim</Link> in turpis pulvinar facilisis.
-            Ut felis.
+            The odor of sulfur and pumice surrounds a red dragon, whose
+            swept-back horns and spinal frill define its silhouette. Its beaked
+            snout vents smoke at all times, and its eyes dance with flame when
+            it is angry.
         </p>
 
-        <h2>Header Level 2</h2>
-
-        <ol>
-            <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-            <li>Aliquam tincidunt mauris eu risus.</li>
-        </ol>
-
-        <blockquote>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-                magna. Cras in mi at felis aliquet congue. Ut a est eget ligula
-                molestie gravida. Curabitur massa. Donec eleifend, libero at
-                sagittis mollis, tellus est malesuada tellus, at luctus turpis
-                elit sit amet quam. Vivamus pretium ornare est.
-            </p>
-        </blockquote>
-
-        <h3>Header Level 3</h3>
-
-        <ul>
-            <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-            <li>Aliquam tincidunt mauris eu risus.</li>
-        </ul>
+        <h2 id="a-red-dragons-lair">A Red Dragon’s Lair</h2>
 
         <p>
-            <strong>Pellentesque habitant morbi tristique</strong> senectus et
-            netus et malesuada fames ac turpis egestas. Vestibulum tortor quam,
-            feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu
-            libero sit amet quam egestas semper.
-            <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend
-            leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum
-            erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit
-            amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros
-            ipsum rutrum orci, sagittis tempus lacus enim ac dui.
-            <Link href="/">Donec non enim</Link> in turpis pulvinar facilisis.
-            Ut felis.
+            Red dragons lair in high mountains or hills, dwelling in caverns
+            under snow-capped peaks, or within the deep halls of abandoned mines
+            and dwarven strongholds. Caves with volcanic or geothermal activity
+            are the most highly prized red dragon lairs, creating hazards that
+            hinder intruders and letting searing heat and volcanic gases wash
+            over a dragon as it sleeps.
+        </p>
+        <p>
+            With its hoard well protected deep within the lair, a red dragon
+            spends as much of its time outside the mountain as in it. For a red
+            dragon, the great heights of the world are the throne from which it
+            can look out to survey all it controls—and the wider world it seeks
+            to control.
+        </p>
+        <p>
+            Throughout the lair complex, servants erect monuments to the
+            dragon’s power, telling the grim story of its life, the enemies it
+            has slain, and the nations it has conquered.
         </p>
 
-        <h2>Header Level 2</h2>
+        <h3>Regional Effects</h3>
 
-        <ol>
-            <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-            <li>Aliquam tincidunt mauris eu risus.</li>
-        </ol>
-
-        <blockquote>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-                magna. Cras in mi at felis aliquet congue. Ut a est eget ligula
-                molestie gravida. Curabitur massa. Donec eleifend, libero at
-                sagittis mollis, tellus est malesuada tellus, at luctus turpis
-                elit sit amet quam. Vivamus pretium ornare est.
-            </p>
-        </blockquote>
-
-        <h3>Header Level 3</h3>
+        <p id="regional-effects">
+            The region containing a legendary red dragon’s lair is warped by the
+            dragon’s magic, which creates one or more of the following effects:
+        </p>
 
         <ul>
-            <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-            <li>Aliquam tincidunt mauris eu risus.</li>
+            <li>
+                Small earthquakes are common within 6 miles of the dragon’s
+                lair.
+            </li>
+            <li>
+                Water sources within 1 mile of the lair are supernaturally warm
+                and tainted by sulfur.
+            </li>
+            <li>
+                Rocky fissures within 1 mile of the dragon’s lair form portals
+                to the Elemental Plane of Fire, allowing creatures of elemental
+                fire into the world to dwell nearby.
+            </li>
         </ul>
     </Main>
 );

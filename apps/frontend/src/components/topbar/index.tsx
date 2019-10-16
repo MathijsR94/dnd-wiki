@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import ThemeSwitcher from '../shared/themeSwitch';
+import SearchBar from '../shared/search';
 
 const Topbar = styled.div`
     display: flex;
     flex-direction: row;
     background-color: ${(props) => props.theme.colors.topbar.background};
-    height: 40px;
     width: 100%;
     align-items: center;
     justify-content: space-between;
@@ -16,7 +16,7 @@ const Left = styled.div`
     flex: 1 1 25%;
     display: flex;
     justify-content: flex-start;
-    padding: 0 ${(props) => props.theme.spacing(1)};
+    padding: ${(props) => props.theme.spacing([0, 1])};
 `;
 
 const Center = styled.div`
@@ -35,7 +35,9 @@ const Right = styled.div`
 export default () => (
     <Topbar>
         <Left></Left>
-        <Center></Center>
+        <Center>
+            <SearchBar />
+        </Center>
         <Right>
             <ThemeSwitcher />
         </Right>

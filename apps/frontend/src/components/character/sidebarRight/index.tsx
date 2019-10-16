@@ -5,8 +5,16 @@ import InformationTable from '../../shared/informationTable';
 
 const rows = [
     {
-        label: 'Test',
-        content: 'Bliep',
+        label: 'metadata.size',
+        content: 'Gargantuan',
+    },
+    {
+        label: 'metadata.alignment',
+        content: 'Chaotic Evil (CE)',
+    },
+    {
+        label: 'metadata.metOn',
+        content: '14th Dilkar 3501',
     },
 ];
 export default () => (
