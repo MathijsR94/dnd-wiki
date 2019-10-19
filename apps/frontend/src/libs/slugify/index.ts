@@ -1,7 +1,6 @@
-export default function slugify(text: string) {
-    if (typeof text === 'string') {
-        return text
-            .toString()
+export default function slugify(input: string) {
+    if (typeof input === 'string') {
+        return input
             .toLowerCase()
             .replace(/\s+/g, '-') // Replace spaces with -
             .replace(/[^\w\-]+/g, '') // Remove all non-word chars
