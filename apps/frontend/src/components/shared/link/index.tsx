@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import styled from 'styled-components';
 import {lighten} from 'polished';
 
@@ -13,7 +13,7 @@ const Link = styled.a`
 
 type Props = {
     href?: string;
-    children?: string;
+    children?: ReactNode;
 };
 
 export default ({href = '#', children}: Props) => (

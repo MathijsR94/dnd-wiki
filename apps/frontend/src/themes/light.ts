@@ -2,7 +2,7 @@ import shared from './shared';
 import {darken} from 'polished';
 
 const variables = {
-    topbar: '#004394',
+    topbar: '#eceef2',
 };
 
 export default {
@@ -28,10 +28,11 @@ export default {
             text: '#fff',
         },
         searchBar: {
-            background: darken(0.1, variables.topbar),
-            placeholder: '#d0d0d0',
+            focus: darken(0.1, variables.topbar),
+            placeholder: '#989ba6',
+            border: '#989ba6',
         },
-        link: variables.topbar,
+        link: '#004394',
         separator: '#e1e3e8',
     },
 };

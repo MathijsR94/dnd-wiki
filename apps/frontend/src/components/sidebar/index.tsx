@@ -8,7 +8,7 @@ type Props = {
 
 const Sidebar = styled.aside`
     display: flex;
-    flex: 1 1 ${(props: Props) => (props.side === 'left' ? '30%' : '40%')};
+    flex: 1 1 ${(props) => props.theme.layout[props.side]};
     min-height: calc(100vh - ${(props) => props.theme.spacing(2)});
     overflow-y: scroll;
     flex-direction: column;

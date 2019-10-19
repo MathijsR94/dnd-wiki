@@ -19,6 +19,7 @@ import 'draft-js-image-plugin/lib/plugin.css';
 import 'draft-js-alignment-plugin/lib/plugin.css';
 import './css/editorButtons.css';
 import './css/editor.css';
+import Heading from './components/heading';
 
 const focusPlugin = createFocusPlugin();
 const alignmentPlugin = createAlignmentPlugin();
@@ -40,6 +41,27 @@ type State = {
     editorState: EditorState;
 };
 
+const headings = [
+    'header-one',
+    'header-two',
+    'header-three',
+    'header-four',
+    'header-five',
+    'header-six',
+];
+
+function myBlockRenderer(contentBlock: any) {
+    const type = contentBlock.getType();
+
+    if (headings.includes(type)) {
+        return {
+            component: Heading,
+            props: {
+                text: contentBlock.getText(),
+            },
+        };
+    }
+}
 class ContentEditor extends Component<Props, State> {
     plugins: Array<EditorPlugin> = [];
     editor = createRef<Editor>();
@@ -120,6 +142,7 @@ class ContentEditor extends Component<Props, State> {
                     handleKeyCommand={this.handleKeyCommand}
                     plugins={this.plugins}
                     readOnly={!editMode}
+                    blockRendererFn={myBlockRenderer}
                 />
                 {editMode && (
                     <Fragment>
