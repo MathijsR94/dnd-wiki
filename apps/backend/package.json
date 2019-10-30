@@ -11,7 +11,7 @@
         "bootstrap": "lerna bootstrap --use-workspaces"
     },
     "dependencies": {
-        "@sentry/node": "5.6.2",
+        "@sentry/node": "5.7.0",
         "@types/graphql-iso-date": "3.3.3",
         "apollo-errors": "1.9.0",
         "bcryptjs": "2.4.3",
