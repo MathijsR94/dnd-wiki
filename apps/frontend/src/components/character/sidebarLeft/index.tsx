@@ -50,7 +50,7 @@ const H2 = styled.h2`
 export default () => {
     const {t} = useTranslation();
     return (
-        <Sidebar side="left">
+        <Sidebar side="left" role="navigation">
             <Inner>
                 <H2>{t('aside.headingContent')}</H2>
                 <List type={list.type} showBorder={true} items={list.items} />

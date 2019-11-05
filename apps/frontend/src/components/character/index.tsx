@@ -1,6 +1,5 @@
 import React from 'react';
 import Main from '../main';
-import Link from '../shared/link';
 import CharacterSidebarLeft from './sidebarLeft';
 import CharacterSidebarRight from './sidebarRight';
 import slugify from '../../libs/slugify';

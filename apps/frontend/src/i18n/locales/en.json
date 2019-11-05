@@ -11,7 +11,8 @@
             "minLength": "The number of characters is too short"
         },
         "searchBar": {
-            "placeholder": "Search..."
+            "placeholder": "Try something like searching for a city or character",
+            "label": "Search"
         },
         "campaign": {
             "create": "Create",

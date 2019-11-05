@@ -1,4 +1,4 @@
 import React from 'react';
-import Main from '../main';
+import {Redirect} from 'react-router';
 
-export default () => <Main>Home</Main>;
+export default () => <Redirect to="/character" />;
