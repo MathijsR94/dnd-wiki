@@ -18,7 +18,7 @@ const rows = [
     },
 ];
 export default () => (
-    <Sidebar side="right">
+    <Sidebar side="right" role="complementary">
         <CharacterImage
             imageSrc="https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/147/1000/1000/636252758629652181.jpeg"
             characterName="Byman, Eater Of Sheep"

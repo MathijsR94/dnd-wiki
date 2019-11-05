@@ -1,27 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
 import {useTranslation} from 'react-i18next';
-import {lighten} from 'polished';
-import FeatherIcon from 'feather-icons-react';
 
 const Container = styled.div`
-    flex: 1;
-    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
 `;
 
 const SearchBar = styled.input`
+    width: 100%;
     padding: ${(props) => props.theme.spacing(0.5)};
-    background-color: ${(props) => props.theme.colors.topbar.background}
+    background-color: ${(props) => props.theme.colors.searchBar.background}
     border: none;
-    padding: ${(props) => props.theme.spacing(1.5)}
-    color: #222;
-    text-indent: ${(props) => props.theme.spacing(1.5)};
-    display: flex;
-    flex: 1;
+    padding: ${(props) => props.theme.spacing(1)}
+    color: ${(props) => props.theme.colors.searchBar.text};
+    margin-left: 1em;
+    border-bottom: 2px solid transparent;
+    margin: ${(props) => props.theme.spacing([1, 0, 1, 1])};
 
     &:focus {
-        background-color: ${(props) =>
-            lighten(0.05, props.theme.colors.topbar.background)}
+        outline: none;
+        border-bottom: 2px solid ${(props) => props.theme.colors.link};
     }
     ::-webkit-input-placeholder {
         /* Chrome/Opera/Safari */
@@ -41,22 +41,18 @@ const SearchBar = styled.input`
     }
 `;
 
-const SearchIcon = styled.span`
-    position: absolute;
-    top: 55%;
-    transform: translateY(-50%);
-    left: 7px;
-    color: ${(props) => props.theme.colors.aside.text};
-`;
+const Label = styled.label`
+    font-size: 0.875em;
+    color: ${(props) => props.theme.colors.main.text};
+`
+
 export default () => {
     const {t} = useTranslation();
 
     return (
         <Container>
-            <SearchIcon>
-                <FeatherIcon icon="search" size={16} />
-            </SearchIcon>
-            <SearchBar type="text" placeholder={t('searchBar.placeholder')} />
+            <Label htmlFor="topbar-search">{t('searchBar.label')}</Label>
+            <SearchBar type="text" id="topbar-search" placeholder={t('searchBar.placeholder')} />
         </Container>
     );
 };

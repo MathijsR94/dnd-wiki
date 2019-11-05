@@ -110,7 +110,7 @@ export default () => {
     const test = generateStructure();
     console.log({test});
     return (
-        <Sidebar side="left">
+        <Sidebar side="left" role="navigation">
             <Inner>
                 <H2>{t('aside.headingContent')}</H2>
                 <List type={test.type} showBorder={true} items={test.items} />

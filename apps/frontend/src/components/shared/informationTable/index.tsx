@@ -34,7 +34,7 @@ const Column = styled.div`
     &:first-of-type {
         font-weight: 600;
         width: 45%;
-        color: ${(props) => props.theme.colors.aside.text};
+        color: ${(props) => props.theme.colors.aside.heading};
     }
 `;
 
