@@ -1,37 +1,42 @@
 import shared from './shared';
-import {darken} from 'polished';
+import {lighten} from 'polished';
 
 const variables = {
-    topbar: '#004394',
+    primary: '#fff',
+    secondary: '#f1f5f9',
+    link: '#2561b0',
+    text: '#626365',
+    heading: '#323032',
 };
 
 export default {
     ...shared,
     colors: {
+        ...variables,
         aside: {
-            background: '#f6f8fa',
-            text: '#989ba6',
-            heading: '#222',
+            background: variables.secondary,
+            text: variables.text,
+            heading: variables.heading,
             shadow: 'rgba(0, 0, 0, 0.1)',
         },
         main: {
-            background: '#fff',
-            text: '#222',
-            heading: '#222',
+            background: variables.primary,
+            text: variables.text,
+            heading: variables.heading,
         },
         select: {
             background: '#fff',
             text: '#999ca7',
         },
         topbar: {
-            background: variables.topbar,
-            text: '#fff',
+            background: variables.secondary,
+            text: variables.text,
         },
         searchBar: {
-            background: darken(0.1, variables.topbar),
-            placeholder: '#d0d0d0',
+            background: variables.secondary,
+            placeholder: lighten(0.2, variables.text),
+            color: variables.text,
         },
-        link: variables.topbar,
         separator: '#e1e3e8',
     },
 };

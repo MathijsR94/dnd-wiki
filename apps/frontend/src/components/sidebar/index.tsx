@@ -4,9 +4,10 @@ import styled from 'styled-components';
 type Props = {
     side: 'left' | 'right';
     children: ReactNode;
+    role?: 'navigation' | 'complementary';
 };
 
-const Sidebar = styled.aside`
+const Sidebar = styled.div`
     display: flex;
     flex: 1 1 ${(props: Props) => (props.side === 'left' ? '30%' : '40%')};
     min-height: calc(100vh - ${(props) => props.theme.spacing(2)});
@@ -31,4 +32,4 @@ const Sidebar = styled.aside`
     }
 `;
 
-export default (props: Props) => <Sidebar {...props} />;
+export default ({role, ...rest}: Props) => <Sidebar role={role} {...rest} />;

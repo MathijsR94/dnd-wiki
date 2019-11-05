@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import ThemeSwitcher from '../shared/themeSwitch';
 import SearchBar from '../shared/search';
 
-const Topbar = styled.div`
+const Topbar = styled.header`
     display: flex;
     flex-direction: row;
     background-color: ${(props) => props.theme.colors.topbar.background};

@@ -1,4 +1,4 @@
-import React, {ReactNode, ReactElement, ComponentType} from 'react';
+import React, {ReactNode, ReactElement, Fragment} from 'react';
 import styled from 'styled-components';
 
 const Main = styled.main`
@@ -14,6 +14,10 @@ const Content = styled.div`
     background-color: ${(props) => props.theme.colors.main.background}
     color: ${(props) => props.theme.colors.main.text}
     padding: ${(props) => props.theme.spacing(4)}
+
+    h1, h2, h3, h4, h5, h6 {
+        color: ${(props) => props.theme.colors.main.heading};
+    }
 `;
 
 // const ContentSidebar = styled(Sidebar)`
@@ -32,9 +36,11 @@ type Props = {
 };
 
 export default ({children, sidebarLeft, sidebarRight}: Props) => (
-    <Main>
+    <Fragment>
         {sidebarLeft}
-        <Content>{children}</Content>
+        <Main>
+            <Content>{children}</Content>
+        </Main>
         {sidebarRight}
-    </Main>
+    </Fragment>
 );
