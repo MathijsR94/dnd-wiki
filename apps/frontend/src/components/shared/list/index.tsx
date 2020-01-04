@@ -1,11 +1,10 @@
-import React from 'react';
+import React, {ComponentType} from 'react';
 import styled from 'styled-components';
-import Link from '../../shared/link';
 
 type Props = {
     type: ItemType;
     showBorder: boolean;
-    items?: Array<Item>;
+    items: Array<Item | undefined>;
 };
 
 const Ul = styled.ul`
@@ -22,8 +21,7 @@ const Ol = styled.ol`
     > li {
         display: table;
         counter-increment: item;
-        margin-bottom: ${(props) => props.theme.spacing(0.5)};
-        padding: ${(props) => props.theme.spacing([1, 0])}
+        padding: ${(props) => props.theme.spacing([0.5, 0])}
 
         &:before {
             content: counters(item, '.') '. ';
@@ -55,35 +53,48 @@ export enum ItemType {
 export type Item = {
     type: ItemType;
     content?: string;
-    items?: Array<Item>;
+    items?: Array<Item | undefined>;
     wrapper?: {
-        component: 'Link';
+        component: ComponentType;
         props: Object;
     };
 };
 
 const Span = styled.span``;
 
-const mapItems = (item: Item) => {
-    // assume a list
-    if (item.type !== ItemType.li && item.items) {
-        const List = item.type === ItemType.ul ? Ul : Ol;
-        return <List key={item.content}>{item.items.map(mapItems)}</List>;
+const mapItems = (item: Item | undefined, type: ItemType) => {
+    if (!item) return;
+    const ListItem = type === ItemType.ul ? ULListItem : OLListItem;
+    const Wrapper =
+        item.wrapper && item.wrapper.component ? item.wrapper.component : Span;
+    const props = item.wrapper ? item.wrapper.props : {};
+
+    if (item.items && item.items.length > 0) {
+        const List = type === ItemType.ul ? Ul : Ol;
+        return (
+            <ListItem>
+                <Wrapper {...props}>{item.content}</Wrapper>
+                <List>
+                    {item.items
+                        .map((item) => mapItems(item, type))
+                        .filter(Boolean)}
+                </List>
+            </ListItem>
+        );
     }
 
-    const Li = item.type === ItemType.ul ? ULListItem : OLListItem;
-    const Wrapper = item.wrapper ? Link : Span;
-    const props = (item.wrapper && item.wrapper.props) || {};
-
     return (
-        <Li key={item.content}>
+        <ListItem>
             <Wrapper {...props}>{item.content}</Wrapper>
-            {item.items && item.items.map(mapItems)}
-        </Li>
+        </ListItem>
     );
 };
 
 export default ({type, items}: Props) => {
     const List = type === ItemType.ul ? Ul : Ol;
-    return <List>{items && items.map(mapItems)}</List>;
+    return (
+        <List>
+            {items && items.map((item) => mapItems(item, type)).filter(Boolean)}
+        </List>
+    );
 };

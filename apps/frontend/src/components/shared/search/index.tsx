@@ -23,7 +23,6 @@ const SearchBar = styled.input`
         outline: none;
         border-bottom: 2px solid ${(props) => props.theme.colors.link};
     }
-
     ::-webkit-input-placeholder {
         /* Chrome/Opera/Safari */
         color: ${(props) => props.theme.colors.searchBar.placeholder};
