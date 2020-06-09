@@ -1,33 +1,37 @@
 {
-    "version": "0.0.1",
-    "name": "dnd-wiki-backend",
-    "main": "lib/index.js",
-    "module": "src/app.ts",
-    "scripts": {
-        "start": "dotenv -- nodemon -e ts,graphql -x ts-node src/app.ts",
-        "debug": "dotenv -- nodemon -e ts,graphql -x ts-node --inspect src/app.ts",
-        "build": "rimraf dist && tsc",
-        "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
-        "bootstrap": "lerna bootstrap --use-workspaces"
-    },
-    "dependencies": {
-        "@sentry/node": "5.7.0",
-        "@types/graphql-iso-date": "3.3.3",
-        "apollo-errors": "1.9.0",
-        "bcryptjs": "2.4.3",
-        "cookie-parser": "1.4.4",
-        "dotenv": "8.1.0",
-        "graphql-iso-date": "3.6.1",
-        "graphql-middleware-sentry": "3.2.0",
-        "graphql-toolkit": "0.5.15",
-        "graphql-yoga": "1.18.3",
-        "jsonwebtoken": "8.5.1",
-        "pg": "7.12.1",
-        "reflect-metadata": "0.1.13",
-        "typeorm": "0.2.19"
-    },
-    "devDependencies": {
-        "@types/cookie-parser": "1.4.2",
-        "@types/jsonwebtoken": "8.3.4"
-    }
+  "version": "0.0.1",
+  "name": "dnd-wiki-backend",
+  "main": "lib/index.js",
+  "module": "src/app.ts",
+  "scripts": {
+    "start": "dotenv -- nodemon -e ts,graphql -x ts-node src/app.ts",
+    "debug": "dotenv -- nodemon -e ts,graphql -x ts-node --inspect src/app.ts",
+    "build": "rimraf dist && tsc",
+    "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
+    "bootstrap": "lerna bootstrap --use-workspaces",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "dependencies": {
+    "@sentry/node": "5.7.0",
+    "@types/graphql-iso-date": "3.3.3",
+    "apollo-errors": "1.9.0",
+    "bcryptjs": "2.4.3",
+    "cookie-parser": "1.4.4",
+    "dotenv": "8.1.0",
+    "graphql-iso-date": "3.6.1",
+    "graphql-middleware-sentry": "3.2.0",
+    "graphql-toolkit": "0.5.15",
+    "graphql-yoga": "1.18.3",
+    "jsonwebtoken": "8.5.1",
+    "pg": "7.12.1",
+    "reflect-metadata": "0.1.13",
+    "typeorm": "0.2.19",
+    "snyk": "^1.336.0"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "1.4.2",
+    "@types/jsonwebtoken": "8.3.4"
+  },
+  "snyk": true
 }
