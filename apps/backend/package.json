@@ -19,7 +19,7 @@
         "dotenv": "8.1.0",
         "graphql-iso-date": "3.6.1",
         "graphql-middleware-sentry": "3.2.0",
-        "graphql-toolkit": "0.5.15",
+        "graphql-toolkit": "0.6.0",
         "graphql-yoga": "1.18.3",
         "jsonwebtoken": "8.5.1",
         "pg": "7.12.1",
